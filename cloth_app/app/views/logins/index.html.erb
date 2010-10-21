@@ -1,0 +1,22 @@
+<h1>Logins</h1>
+
+<table width="100%">
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Last login</th>
+    <th>Last logout</th>
+  </tr>
+
+  <% @logins.each do |l| %>
+
+    <tr>
+      <td><%#= l.contact.last_name %>,<%#= l.contact.first_name %> </td>
+      <td><%#= l.contact.email %></td>
+      <td><%= format_datetime(l.updated_at) %></td>
+      <td><%= format_datetime(l.logout) %></td>
+    </tr>
+
+  <% end %>
+
+</table>
