@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101022075821) do
+ActiveRecord::Schema.define(:version => 20101022125730) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -23,10 +23,11 @@ ActiveRecord::Schema.define(:version => 20101022075821) do
     t.string   "title"
     t.string   "subtitle"
     t.text     "article"
-    t.string   "image"
+    t.string   "image_file_name"
     t.string   "link"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "category_id"
   end
 
 end

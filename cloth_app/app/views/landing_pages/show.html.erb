@@ -1,1 +1,17 @@
-<%= "show.html" %>
+<div class="tr">
+  <% @landing_pages.each do |landing_page| %>
+  <div class="td">
+     <h1><%= landing_page.title %></h1>
+    <h2><%= landing_page.subtitle %> </h2>
+
+    <p>
+      <%= landing_page.article %>
+    </p>
+
+    <p>
+      <%= image_tag(landing_page.image.to_s, :size => "200x150")%>
+    </p>
+  </div>
+
+<% end %>
+</div>

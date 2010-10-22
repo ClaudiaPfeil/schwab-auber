@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
 
   def home
-    
+    category = Category.find_by_name("Welcome")
+    @welcome = category.contents
   end
 
   def index

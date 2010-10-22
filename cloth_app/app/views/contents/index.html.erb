@@ -17,11 +17,11 @@
   <div class="tr">
     <div class="td"><%= content.title%> </div>
     <div class="td"><%= content.subtitle%> </div>
-    <div class="td"><%= truncate(content.article, 20, "...")%> </div>
+    <div class="td"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>
     <div class="td"><%= content.link%> </div>
-    <div class="td"><%= content.image%> </div>
+    <div class="td"><%= image_tag(content.image.to_s, :size => "200x150")%> </div>
     <div class="td"><%= link_to  "Edit", edit_content_path(content)%> </div>
-    <div class="td"><%= linkt_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %> </div>
+    <div class="td"><%= link_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %> </div>
   </div>
 
 <% end %>

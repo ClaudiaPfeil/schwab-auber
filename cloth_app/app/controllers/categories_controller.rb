@@ -29,7 +29,7 @@ class CategoriesController < ApplicationController
   end
 
   def show
-    redirect_to edit_category_path(@category)
+    
   end
 
   def destroy
@@ -40,7 +40,7 @@ class CategoriesController < ApplicationController
   private
 
     def init_category
-      init_current_object { @category = Categeroy.find_by_id(params[:id])}
+      init_current_object { @category = Category.find_by_id(params[:id])}
     end
 
     def init_current_object

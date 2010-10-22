@@ -1,20 +1,19 @@
 <%= "Category" %>
 
-<p>
+<p align="right">
  <%= link_to "New", new_category_path %>
 </p>
 
-<div class="tr">
-  <div class="td"><%= "Name"%> </div>
-  <div class="td"><%= "Description"%> </div>
+<div class="tr_next">
+  <div class="td"><b><%= "Name"%></b> </div>
+  <div class="td"><b><%= "Description"%></b> </div>
 </div>
 
 <% @categories.each do |category| %>
 
-  <div class="tr">
+  <div class="tr_next">
     <div class="td"><%= category.name%> </div>
-    <div class="td"><%= truncate(category.description, 20, "...")%> </div>
-    <div class="td"><%= link_to  "Edit", edit_category_path(category)%> </div>
+    <div class="td"><%= category.description%> </div>
   </div>
 
 <% end %>

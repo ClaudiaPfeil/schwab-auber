@@ -28,6 +28,13 @@ GIT
     meta-tags (1.2.3)
 
 GIT
+  remote: git://github.com/lmumar/paperclip.git
+  revision: bdc48fca6326fbfb6db0fcaa7ee56a989560482e
+  branch: rails3
+  specs:
+    paperclip (2.3.2)
+
+GIT
   remote: git://github.com/mislav/will_paginate.git
   revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
   branch: rails3
@@ -118,6 +125,7 @@ DEPENDENCIES
   meta-tags!
   minimal!
   mysql (= 2.8.1)
+  paperclip!
   rails (= 3.0.0)
   rpx_now!
   ruby-debug

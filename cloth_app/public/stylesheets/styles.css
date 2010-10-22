@@ -81,6 +81,13 @@ div.tr {
   width: 575px;
 }
 
+div.tr_next {
+  display: table-row;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
 div.tr_image {
   display: table-row;
   background-color: #CCCC99;
@@ -107,12 +114,80 @@ div.content {
 }
 
 div.td {
-  display: inline-block;
+  display: table-cell;
   valign: top;
   width: 250px;
   margin: 1em;
+  text-align: left;
+  vertical-align: top;
 }
 
 img {
   border: none;
+}
+
+/*formtastic*/
+fieldset {
+  border: none;
+}
+
+fieldset.inputs > ol {
+  list-style-type: none;
+  float: left;
+}
+
+fieldset.buttons > ol {
+  list-style-type: none;
+}
+
+label {
+  /*float: left;*/
+  vertical-align: text-top;
+  line-height: 2.5;
+  text-align: left;
+}
+
+ol {
+  margin-left: 1em;
+  
+}
+
+input {
+  float: right;
+  margin-right: 9em;
+  line-height: 1.5;
+}
+
+textarea {
+  float: right;
+  margin-right: 0em;
+  line-height: 1;
+}
+
+li.string_optional {
+  margin-bottom: 2em;
+}
+
+li.file.optional {
+  list-style-type: none;
+}
+
+li.file.optional > label {
+  margin-left: 14em;
+}
+
+li.file.optional > input {
+  padding-right: 7em;
+}
+
+li.content_image_input.file.optional > label {
+  text-align: left;
+}
+
+li.commit > input {
+  margin-right: 27em;
+}
+
+select {
+  margin-right: 20em;
 }

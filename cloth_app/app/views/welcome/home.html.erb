@@ -1,3 +1,20 @@
-<h1>Willkommen!</h1>
+<div class="tr">
+  <% @welcome.each do |welcome| %>
+  <div class="td">
+     <h1><%= welcome.title %></h1>
+    <h2><%= welcome.subtitle %> </h2>
 
-<h2>Das sind unsere Kleiderpackete:</h2>
+    <p>
+      <%= welcome.article %>
+    </p>
+
+    <p>
+      <%= image_tag(welcome.image.to_s, :size => "200x150")%>
+    </p>
+  </div>
+   
+<% end %>
+</div>
+
+
+
