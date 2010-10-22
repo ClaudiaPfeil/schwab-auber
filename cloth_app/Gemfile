@@ -32,3 +32,6 @@ gem 'mysql', '2.8.1'
 
 gem 'rpx_now',    :git => 'git://github.com/grosser/rpx_now.git'
 gem 'meta-tags',  :git => 'git://github.com/kpumuk/meta-tags.git'
+gem 'minimal',      :git => 'git://github.com/dinge/minimal.git'
+gem 'formtastic',   :git => 'git://github.com/justinfrench/formtastic.git', :branch => '1.1-stable'
+gem 'will_paginate',:git => 'git://github.com/mislav/will_paginate.git',    :branch => 'rails3'

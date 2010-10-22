@@ -2,8 +2,25 @@ ClothApp::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => "welcome#home"
-  resources :logins
+  
+ 
   resources :landing_pages
+  resources :contents
+  resources :categories
+
+  match 'login' => 'sessions#new', :as => :login
+  match 'logout' => 'sessions#destroy', :as => :logout
+  match 'signup' => 'users#new', :as => :signup
+  match 'activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
+
+  resources :users do
+    member do
+      put :suspend
+      put :unsuspend
+      delete :purge
+    end
+  end
+
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

@@ -1,0 +1,27 @@
+<%= "Contents" %>
+
+<p>
+ <%= link_to "New", new_content_path %>
+</p>
+
+<div class="tr">
+  <div class="td"><%= "Title"%> </div>
+  <div class="td"><%= "Subtitle"%> </div>
+  <div class="td"><%= "Article"%> </div>
+  <div class="td"><%= "Link"%> </div>
+  <div class="td"><%= "Image"%> </div>
+</div>
+
+<% @contents.each do |content| %>
+
+  <div class="tr">
+    <div class="td"><%= content.title%> </div>
+    <div class="td"><%= content.subtitle%> </div>
+    <div class="td"><%= truncate(content.article, 20, "...")%> </div>
+    <div class="td"><%= content.link%> </div>
+    <div class="td"><%= content.image%> </div>
+    <div class="td"><%= link_to  "Edit", edit_content_path(content)%> </div>
+    <div class="td"><%= linkt_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %> </div>
+  </div>
+
+<% end %>

@@ -1,4 +1,10 @@
 GIT
+  remote: git://github.com/dinge/minimal.git
+  revision: b9db4f7cfacccc58c1699a6f5c2ff8928678936f
+  specs:
+    minimal (0.0.8)
+
+GIT
   remote: git://github.com/grosser/rpx_now.git
   revision: 7f47e2d0c8c6018b13d18370bdc8e64d1d28162c
   specs:
@@ -6,10 +12,27 @@ GIT
       json_pure
 
 GIT
+  remote: git://github.com/justinfrench/formtastic.git
+  revision: 7a11c7161b254099452929b57240fd73ca467f72
+  branch: 1.1-stable
+  specs:
+    formtastic (1.1.0)
+      actionpack (>= 2.3.0)
+      activesupport (>= 2.3.0)
+      i18n (>= 0.4.0)
+
+GIT
   remote: git://github.com/kpumuk/meta-tags.git
   revision: bc239194c89dc1bc2974ea394207f0dab73308a3
   specs:
     meta-tags (1.2.3)
+
+GIT
+  remote: git://github.com/mislav/will_paginate.git
+  revision: b1a5beeec9f56ecbe3594fcdca76d92b6767ce50
+  branch: rails3
+  specs:
+    will_paginate (3.0.pre3)
 
 GEM
   remote: http://rubygems.org/
@@ -91,9 +114,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  formtastic!
   meta-tags!
+  minimal!
   mysql (= 2.8.1)
   rails (= 3.0.0)
   rpx_now!
   ruby-debug
   sqlite3-ruby
+  will_paginate!
