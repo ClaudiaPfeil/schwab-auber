@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
   before_filter :init_category, :action => {:edit, :update, :destroy, :show}
+  before_filter :login_required
 
   def index
     @categories = Category.all

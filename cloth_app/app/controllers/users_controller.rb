@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  include AuthenticatedSystem
+  #include AuthenticatedSystem
+  before_filter :login_required
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]

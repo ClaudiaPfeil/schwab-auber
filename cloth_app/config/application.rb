@@ -8,6 +8,7 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module ClothApp
   class Application < Rails::Application
+    
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -40,5 +41,7 @@ module ClothApp
     config.filter_parameters += [:password]
 
     config.active_record.observers = :user_observer
+
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

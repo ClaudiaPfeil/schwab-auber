@@ -1,5 +1,6 @@
 class ContentsController < ApplicationController
   before_filter :init_content, :action => {:edit, :update, :show, :destroy}
+  before_filter :login_required
 
   def index
     @contents = Content.all
