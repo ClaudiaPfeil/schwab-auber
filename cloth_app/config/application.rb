@@ -43,5 +43,13 @@ module ClothApp
     config.active_record.observers = :user_observer
 
     config.autoload_paths += %W(#{config.root}/lib)
+
+    ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.googlemail.com', # default: localhost
+      :port           => '25',                  # default: 25
+      :user_name      => 'claudia.pfeil',
+      :password       => 'aidualc83',
+      :authentication => :plain                 # :plain, :login or :cram_md5
+    }
   end
 end

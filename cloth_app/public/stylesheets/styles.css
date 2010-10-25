@@ -10,6 +10,12 @@ A:visited { text-decoration: none; color: #FFFF00; margin: 0; padding: 0; }
 A:hover { text-decoration: underline; color: #FFFF00; margin: 0; padding: 0; }
 A:active { text-decoration: underline; color: #CCCC99; margin: 0; padding: 0; }
 
+h1 {  font-size: 14pt;  color: #336699; font-style: italic; }
+
+h2 {  font-size: 12pt; color: #336699; font-weight: lighter;  }
+
+h3 {  font-size: 8pt; color: #336699; font-weight: bold; }
+
 img { margin: 0; padding: 0; }
 
 span.text1
@@ -81,6 +87,16 @@ div.tr {
   width: 575px;
 }
 
+div.tr_titles {
+  display: table-row;
+  margin: 0;
+  padding: 0;
+  width: 575px;
+  position: absolute;
+  top: 6.5em;
+  left: 40em;
+}
+
 div.tr_next {
   display: table-row;
   margin: 0;
@@ -97,6 +113,19 @@ div.tr_image {
 div.td_image {
   width: 45px;
   float: left;
+}
+
+div.td_titles {
+  width: 95px;
+  float: left;
+  display: table-cell;
+  margin-left: 0.25em;
+}
+
+div.td_titles > a {
+  font-size: 8pt;
+  font-weight: bold;
+  color: #336699;
 }
 
 div.subnavi {
@@ -144,7 +173,8 @@ label {
   /*float: left;*/
   vertical-align: text-top;
   line-height: 2.5;
-  text-align: left;
+  horizontal-align: left;
+  display: inline-block;
 }
 
 ol {
@@ -156,6 +186,10 @@ input {
   float: right;
   margin-right: 9em;
   line-height: 1.5;
+}
+
+input#remember_me {
+  margin-right: 19em;
 }
 
 textarea {

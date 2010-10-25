@@ -1,12 +1,10 @@
 class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
-  #include AuthenticatedSystem
-  before_filter :login_required
+  include AuthenticatedSystem
   
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
   before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
-  
 
   # render new.rhtml
   def new
@@ -19,6 +17,8 @@ class UsersController < ApplicationController
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
+      #add standard role=registered
+      @user.update_attributes(:role => "registered")
       redirect_back_or_default('/', :notice => "Thanks for signing up!  We're sending you an email with your activation code.")
     else
       flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."

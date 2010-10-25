@@ -11,18 +11,28 @@
   <center>
 
   <div class="tr">
-    <div class="td_image"><img src="/images/sonne.gif" width="41" height="38" alt=""></div>
+    <div class="td_image"><%= image_tag( "/images/sonne.gif", :width => "41", :height => "38", :alt => "") %></div>
   </div>
 
   <div class="tr">
+    
+    <%= image_tag("/images/menue_home.gif", :width => '108', :height => '40', :alt => '' )%>
+    <%= image_tag('/images/menue_thema1.gif', :width => '94', :height => '41', :alt => 'Profiles') %>
+    <%= image_tag("/images/menue_thema1.gif", :width => '94', :height => '41', :alt => 'Packages' )%>
+    <%= image_tag('/images/menue_thema1.gif', :width => '94', :height => '41', :alt => 'Searches') %>
+    <%= image_tag('/images/menue_thema1.gif', :width => '94', :height => '41', :alt => 'Test') %>
+    <%= image_tag('/images/menue_kontakt.gif', :width => '94', :height => '41', :alt => 'Contact') %>
 
-    <img src="/images/menue_home.gif"  width="108" height="40" alt="">
-    <a href="beispielseite.htm"><img src="/images/menue_thema1.gif"   width="94"  height="41" alt=""></a>
-    <a href="beispielseite.htm"><img src="/images/menue_thema2.gif"   width="94"  height="41" alt=""></a>
-    <a href="beispielseite.htm"><img src="/images/menue_thema3.gif"   width="94"  height="41" alt=""></a>
-    <a href="beispielseite.htm"><img src="/images/menue_thema4.gif"   width="94"  height="41" alt=""></a>
-    <a href="kontakt.htm"><img src="/images/menue_kontakt.gif"  width="91"  height="40" alt=""></a>
+  </div>
 
+  <div class="tr_titles">
+
+    <div class="td_titles"><%= link_to "PROFILES", profiles_path %> </div>
+    <div class="td_titles"><%= link_to "PACKAGES", packages_path %> </div>
+    <div class="td_titles"><%= link_to "SEARCH", searches_path %> </div>
+    <div class="td_titles"><%= link_to "TEST", profiles_path %> </div>
+    <div class="td_titles"><%= link_to "CONTACT", contacts_path %></div>
+    
   </div>
 
   <div class="tr_image">
@@ -32,9 +42,9 @@
 <div class="subnavi">
   <!--||| Der erste Punkt zeigt den Seitenbereich an und wird nicht verlinkt. Die Sublinks = das Untermenü hier anpassen. |||-->
   <span class="sub"><b>home .</b>
-    <a href="beispielseite_sub.htm">untermenü n°1</a> .
-    <a href="beispielseite_sub.htm">untermenü n°2</a> .
-    <a href="beispielseite_sub.htm">untermenü n°3</a>
+    <a href="<%=  profiles_path%>">profiles</a> .
+    <a href="<%=  packages_path%>">packages</a> .
+    <a href="<%=  searches_path%>">search</a>
     <br>
   </span>
 
@@ -51,7 +61,7 @@
 </div>
 
 <br>
-<span class="sub">&copy; 2001 . Name . <a href="mailto:beispiel@example.org">email senden</a></span>
+<span class="sub">&copy; 2010.ClaudiaPfeil. <a href="mailto:infoatclaudia-pfeil.com">email senden</a></span>
 <br>&nbsp;<br>
 
 

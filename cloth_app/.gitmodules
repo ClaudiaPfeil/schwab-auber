@@ -1,0 +1,14 @@
+[submodule "vendor/plugins/restful_authentication"]
+	path = vendor/plugins/restful_authentication
+	url  = git://github.com/Satish/restful-authentication.git
+
+[submodule "vendor/plugins/acts_as_statemachine"]
+	path = vendor/plugins/acts_as_statemachine
+	url  = git://github.com/omghax/acts_as_state_machine.git
+
+[submodule "vendor/plugins/dynamic_form"]
+	path = vendor/plugins/dynamic_form
+	url  = git://github.com/rails/dynamic_form.git
+[submodule "vendor/plugins/padlock_authorization"]
+	path = vendor/plugins/padlock_authorization
+	url = git://github.com/baldwindavid/padlock_authorization.git

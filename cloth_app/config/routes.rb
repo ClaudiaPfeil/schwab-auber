@@ -7,6 +7,10 @@ ClothApp::Application.routes.draw do
   resources :landing_pages
   resources :contents
   resources :categories
+  resources :profiles
+  resources :packages
+  resources :contacts
+  resources :searches
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -20,6 +24,8 @@ ClothApp::Application.routes.draw do
       delete :purge
     end
   end
+
+  resource :session, :only => [:new, :create, :destroy]
 
 
   # Sample of regular route:

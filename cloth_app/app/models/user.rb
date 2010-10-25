@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   include Authorization::StatefulRoles
-
+  set_table_name 'users'
 
   validates :login, :presence   => true,
                     :uniqueness => true,
@@ -28,7 +28,8 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
-
+  # users roles
+  ROLES = %w[admin publisher premium base registered guest]
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
   #
@@ -48,6 +49,20 @@ class User < ActiveRecord::Base
 
   def email=(value)
     write_attribute :email, (value ? value.downcase : nil)
+  end
+
+  def roles=(roles)
+    self.roles_mask = (roles & ROLES).map { |r| 2**ROLES.index(r) }.sum
+  end
+
+  def roles
+    ROLES.reject do |r|
+      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+    end
+  end
+
+  def is?(role)
+    roles.include?(role.to_s)
   end
 
   protected
