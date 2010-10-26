@@ -1,7 +1,9 @@
 <%= "Contents" %>
 
 <p>
- <%= link_to "New", new_content_path %>
+  <% if can? :create, Content %>
+    <%= link_to "New", new_content_path %>
+  <%end%>
 </p>
 
 <div class="tr">
@@ -20,8 +22,12 @@
     <div class="td"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>
     <div class="td"><%= content.link%> </div>
     <div class="td"><%= image_tag(content.image.to_s, :size => "200x150")%> </div>
-    <div class="td"><%= link_to  "Edit", edit_content_path(content)%> </div>
-    <div class="td"><%= link_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %> </div>
+    <% if can? :update, content %>
+      <div class="td"><%= link_to  "Edit", edit_content_path(content)%> </div>
+    <% end %>
+    <% if can? :destroy, content %>
+      <div class="td"><%= link_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %> </div>
+    <%end%>
   </div>
 
 <% end %>

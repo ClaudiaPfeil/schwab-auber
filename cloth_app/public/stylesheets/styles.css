@@ -115,6 +115,11 @@ div.td_image {
   float: left;
 }
 
+div.td_space {
+  width: 575px;
+  float: left;
+}
+
 div.td_titles {
   width: 95px;
   float: left;
@@ -146,7 +151,16 @@ div.td {
   display: table-cell;
   valign: top;
   width: 250px;
-  margin: 1em;
+  padding: 0.5em;
+  text-align: left;
+  vertical-align: top;
+}
+
+div.td_content {
+  display: table-cell;
+  valign: top;
+  width: 250px;
+  padding: 1.5em;
   text-align: left;
   vertical-align: top;
 }
@@ -184,12 +198,13 @@ ol {
 
 input {
   float: right;
-  margin-right: 9em;
+  margin-right: 4em;
   line-height: 1.5;
 }
 
 input#remember_me {
-  margin-right: 19em;
+  margin-right: 12em;
+  vertical-align: bottom;
 }
 
 textarea {

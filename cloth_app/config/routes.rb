@@ -11,6 +11,7 @@ ClothApp::Application.routes.draw do
   resources :packages
   resources :contacts
   resources :searches
+  resources :helps
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout

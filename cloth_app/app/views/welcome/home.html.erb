@@ -1,20 +1,29 @@
 <div class="tr">
-  <% @welcome.each do |welcome| %>
-  <div class="td">
-     <h1><%= welcome.title %></h1>
-    <h2><%= welcome.subtitle %> </h2>
+<% sum = @welcome.count  %>
 
-    <p>
-      <%= welcome.article %>
-    </p>
+<% @welcome.each do |welcome| %>
+  <% sum = sum -1 %>
 
-    <p>
-      <%= image_tag(welcome.image.to_s, :size => "200x150")%>
-    </p>
-  </div>
+  <% if sum.modulo(2) == 0 %>
    
-<% end %>
-</div>
+      <div class="td_content">
+
+        <%= render "content",:welcome => welcome %>
+
+      </div>
+
+    </div>
+  <% else %>
+
+    <div class="td_content">
+
+      <%= render "content",:welcome => welcome %>
+
+    </div>
+
+  <% end %>
+
+<% end%>
 
 
 

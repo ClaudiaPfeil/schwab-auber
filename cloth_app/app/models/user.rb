@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   attr_accessible :login, :email, :name, :password, :password_confirmation
 
   # users roles
+  scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0 "} }
   ROLES = %w[admin publisher premium base registered guest]
 
   # Authenticates a user by their login name and unencrypted password.  Returns the user or nil.
@@ -57,12 +58,12 @@ class User < ActiveRecord::Base
 
   def roles
     ROLES.reject do |r|
-      ((roles_mask || 0) & 2**ROLES.index(r)).zero?
+      ((roles || 0) & 2**ROLES.index(r)).zero?
     end
   end
 
-  def is?(role)
-    roles.include?(role.to_s)
+  def is?(this_role)
+    role.include?(this_role.to_s) unless role.nil?
   end
 
   protected

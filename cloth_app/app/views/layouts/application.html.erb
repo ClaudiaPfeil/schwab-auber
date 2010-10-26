@@ -16,12 +16,12 @@
 
   <div class="tr">
     
-    <%= image_tag("/images/menue_home.gif", :width => '108', :height => '40', :alt => '' )%>
+    <%= link_to  image_tag("/images/menue_home.gif", :width => '108', :height => '40', :alt => 'Home' ), root_path%>
     <%= image_tag('/images/menue_thema1.gif', :width => '94', :height => '41', :alt => 'Profiles') %>
     <%= image_tag("/images/menue_thema1.gif", :width => '94', :height => '41', :alt => 'Packages' )%>
     <%= image_tag('/images/menue_thema1.gif', :width => '94', :height => '41', :alt => 'Searches') %>
-    <%= image_tag('/images/menue_thema1.gif', :width => '94', :height => '41', :alt => 'Test') %>
-    <%= image_tag('/images/menue_kontakt.gif', :width => '94', :height => '41', :alt => 'Contact') %>
+    <%= image_tag('/images/menue_thema1.gif', :width => '94', :height => '41', :alt => 'Hilfe') %>
+    <%= image_tag('/images/menue_kontakt.gif', :width => '94', :height => '41', :alt => 'Kontakt') %>
 
   </div>
 
@@ -30,13 +30,13 @@
     <div class="td_titles"><%= link_to "PROFILES", profiles_path %> </div>
     <div class="td_titles"><%= link_to "PACKAGES", packages_path %> </div>
     <div class="td_titles"><%= link_to "SEARCH", searches_path %> </div>
-    <div class="td_titles"><%= link_to "TEST", profiles_path %> </div>
+    <div class="td_titles"><%= link_to "HILFE", helps_path %> </div>
     <div class="td_titles"><%= link_to "CONTACT", contacts_path %></div>
     
   </div>
 
   <div class="tr_image">
-    <img src="/images/pixel.gif" width="1" height="8" alt="">
+    <div class="td_space"><%= image_tag('/images/pixel.gif', :width => "1", :height => "8", :alt => "")%></div>
   </div>
 
 <div class="subnavi">
