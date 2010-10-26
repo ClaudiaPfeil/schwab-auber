@@ -31,7 +31,7 @@ set :scm, :git
 set :scm_verbose, true
 
 #submodules
-set :git_enable_submodules, 1
+set :git_enable_submodules, true
 
 ##
 
