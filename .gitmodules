@@ -1,7 +1,7 @@
 
-[submodule "vendor/plugins/acts_as_state_machine"]
-	path = vendor/plugins/acts_as_state_machine
-	url = git://github.com/omghax/acts_as_state_machine.git
+[submodule "cloth_app/vendor/plugins/restful_authentication"]
+	path = vendor/plugins/restful_authentication
+	url = git://github.com/Satish/restful-authentication.git
 [submodule "cloth_app/vendor/plugins/acts_as_state_machine"]
 	path = cloth_app/vendor/plugins/acts_as_state_machine
 	url = git://github.com/omghax/acts_as_state_machine.git
