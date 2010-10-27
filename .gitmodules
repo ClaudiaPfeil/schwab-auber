@@ -1,1 +1,10 @@
 
+[submodule "vendor/plugins/acts_as_state_machine"]
+	path = vendor/plugins/acts_as_state_machine
+	url = git://github.com/omghax/acts_as_state_machine.git
+[submodule "cloth_app/vendor/plugins/acts_as_state_machine"]
+	path = cloth_app/vendor/plugins/acts_as_state_machine
+	url = git://github.com/omghax/acts_as_state_machine.git
+[submodule "cloth_app/vendor/plugins/padlock_authorization"]
+	path = cloth_app/vendor/plugins/padlock_authorization
+	url = git://github.com/baldwindavid/padlock_authorization.git

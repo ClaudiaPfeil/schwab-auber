@@ -38,8 +38,7 @@ gem 'will_paginate',:git => 'git://github.com/mislav/will_paginate.git',    :bra
 gem 'paperclip', :git => 'git://github.com/lmumar/paperclip.git', :branch => 'rails3'
 gem "cancan"
 #gem "role_model"
-gem 'acts_as_state_machine'
+#gem 'acts_as_state_machine'
 gem 'dynamic_form', :git => 'git://github.com/rails/dynamic_form.git'
-gem 'jeremydurham-restful_authentication'
 
                                
