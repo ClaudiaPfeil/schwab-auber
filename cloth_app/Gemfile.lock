@@ -41,6 +41,13 @@ GIT
   specs:
     will_paginate (3.0.pre3)
 
+GIT
+  remote: git://github.com/rails/dynamic_form.git
+  revision: ebb03213ef8268e24c60e5e162b811d199777227
+  specs:
+    dynamic_form (1.0.0)
+      rails (>= 3.0.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -71,6 +78,8 @@ GEM
       activemodel (= 3.0.0)
       activesupport (= 3.0.0)
     activesupport (3.0.0)
+    acts_as_state_machine (2.2.0)
+      activerecord (>= 2.1)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     builder (2.1.2)
@@ -79,6 +88,8 @@ GEM
     erubis (2.6.6)
       abstract (>= 1.0.0)
     i18n (0.4.1)
+    jeremydurham-restful_authentication (1.1.7)
+      rails (> 2.3.4)
     json_pure (1.4.6)
     linecache (0.43)
     mail (2.2.7)
@@ -122,8 +133,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_state_machine
   cancan
+  dynamic_form!
   formtastic!
+  jeremydurham-restful_authentication
   meta-tags!
   minimal!
   mysql (= 2.8.1)
