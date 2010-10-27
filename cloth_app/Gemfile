@@ -39,6 +39,6 @@ gem 'paperclip', :git => 'git://github.com/lmumar/paperclip.git', :branch => 'ra
 gem "cancan"
 #gem "role_model"
 #gem 'acts_as_state_machine'
-gem 'dynamic_form', :git => 'git://github.com/rails/dynamic_form.git'
+#gem 'dynamic_form', :git => 'git://github.com/rails/dynamic_form.git'
 
                                

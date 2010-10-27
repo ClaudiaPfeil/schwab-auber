@@ -41,13 +41,6 @@ GIT
   specs:
     will_paginate (3.0.pre3)
 
-GIT
-  remote: git://github.com/rails/dynamic_form.git
-  revision: ebb03213ef8268e24c60e5e162b811d199777227
-  specs:
-    dynamic_form (1.0.0)
-      rails (>= 3.0.0)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -130,7 +123,6 @@ PLATFORMS
 
 DEPENDENCIES
   cancan
-  dynamic_form!
   formtastic!
   meta-tags!
   minimal!

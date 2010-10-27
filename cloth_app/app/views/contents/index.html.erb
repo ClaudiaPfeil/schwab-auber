@@ -7,11 +7,10 @@
 </p>
 
 <div class="tr">
-  <div class="td"><%= "Title"%> </div>
-  <div class="td"><%= "Subtitle"%> </div>
-  <div class="td"><%= "Article"%> </div>
-  <div class="td"><%= "Link"%> </div>
-  <div class="td"><%= "Image"%> </div>
+  <div class="td"><b><%= "Title"%></b> </div>
+  <div class="td"><b><%= "Subtitle"%></b> </div>
+  <div class="td"><b><%= "Article"%></b> </div>
+  <div class="td"><b><%= "Link"%></b> </div>
 </div>
 
 <% @contents.each do |content| %>
@@ -21,7 +20,6 @@
     <div class="td"><%= content.subtitle%> </div>
     <div class="td"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>
     <div class="td"><%= content.link%> </div>
-    <div class="td"><%= image_tag(content.image.to_s, :size => "200x150")%> </div>
     <% if can? :update, content %>
       <div class="td"><%= link_to  "Edit", edit_content_path(content)%> </div>
     <% end %>
