@@ -1,7 +1,8 @@
-.bundle
-db/*.sqlite3
-log/*.log
-tmp/**/*
-config/database.yml
+/.bundle/*
+/db/*.sqlite3
+/log/*.log
+/tmp/**/*
+/config/database.yml
 /config/initializers/site_keys.rb
-/public/system/
+/public/system
+/doc/database.yml

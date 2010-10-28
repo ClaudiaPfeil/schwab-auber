@@ -1,4 +1,4 @@
-require 'test_helper'
+require '../test_helper'
 require 'sessions_controller'
 
 # Re-raise errors caught by the controller.

@@ -1,0 +1,16 @@
+one:
+  size:           9
+  next_size:      10
+  age:            6
+  saison:         Frühling
+  kind:           Hosen, Schuhe, Socken, Strümpfe, Hemd, Pulli, Polo
+  amount_clothes: 14
+  label:          Esprit
+  amount_labels:  1
+  colors:         Rot, Blau, Grün
+  notice:         Guter Zustand
+  accepted:       true
+  confirmed:      true
+  sex:            Junge
+  previewed:      true
+

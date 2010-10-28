@@ -8,7 +8,9 @@ ClothApp::Application.routes.draw do
   resources :contents
   resources :categories
   resources :profiles
-  resources :packages
+  resources :packages do
+      get :search, :on => :collection
+  end
   resources :contacts
   resources :searches
   resources :helps

@@ -1,4 +1,4 @@
-require 'test_helper'
+require '../test_helper'
 
 class UserTest < ActiveSupport::TestCase
   # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.

@@ -28,8 +28,14 @@
   <div class="tr_titles">
 
     <div class="td_titles"><%= link_to "PROFILES", profiles_path %> </div>
-    <div class="td_titles"><%= link_to "PACKAGES", packages_path %> </div>
-    <div class="td_titles"><%= link_to "SEARCH", searches_path %> </div>
+    <div class="td_titles">
+      <% if can? :read, Package%>
+        <%= link_to "PACKAGES", packages_path %>
+      <% else %>
+        <%= link_to "PACKAGES", search_packages_path %>
+      <% end %>
+    </div>
+    <div class="td_titles"><%= link_to "SEARCH", search_packages_path %> </div>
     <div class="td_titles"><%= link_to "HILFE", helps_path %> </div>
     <div class="td_titles"><%= link_to "CONTACT", contacts_path %></div>
     
@@ -44,7 +50,7 @@
   <span class="sub"><b>home .</b>
     <a href="<%=  profiles_path%>">profiles</a> .
     <a href="<%=  packages_path%>">packages</a> .
-    <a href="<%=  searches_path%>">search</a>
+    <a href="<%=  search_packages_path%>">search</a>
     <br>
   </span>
 
@@ -61,7 +67,7 @@
 </div>
 
 <br>
-<span class="sub">&copy; 2010.ClaudiaPfeil. <a href="mailto:infoatclaudia-pfeil.com">email senden</a></span>
+<span class="sub">&copy; 2010.Schwab&Auber GbR. <a href="mailto:infoatkinderkleiderbox.de">E-mail senden</a></span>
 <br>&nbsp;<br>
 
 

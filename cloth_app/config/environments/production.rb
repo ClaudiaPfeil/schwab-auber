@@ -47,5 +47,5 @@ ClothApp::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  SITE_URL  = "kinderkleider-box"
+  SITE_URL  = "http://user13811513-2.zeta.railshoster.de/"
 end
