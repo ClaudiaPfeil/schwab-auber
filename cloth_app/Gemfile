@@ -30,7 +30,7 @@ gem 'mysql', '2.8.1'
 #   gem 'webrat'
 # end
 
-gem 'minimal',      :git => 'git://github.com/dinge/minimal.git'
+#gem 'minimal',      :git => 'git://github.com/dinge/minimal.git'
 gem 'formtastic',   :git => 'git://github.com/justinfrench/formtastic.git', :branch => '1.1-stable'
 gem 'will_paginate',:git => 'git://github.com/mislav/will_paginate.git',    :branch => 'rails3'
 gem 'paperclip', :git => 'git://github.com/lmumar/paperclip.git', :branch => 'rails3'
