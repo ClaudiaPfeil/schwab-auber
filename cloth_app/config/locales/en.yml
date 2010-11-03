@@ -3,3 +3,19 @@
 
 en:
   hello: "Hello world"
+  actionmailer:
+    user_mailer:
+      signup_notification:
+        subject: "KidsKarton account activation"
+        message: "..."
+
+      activation:
+        subject: "Your KidsKarton account has been activated!"
+        message: "Your account has been created.
+
+                  Username: {{login}}
+                  Password: {{password}}
+
+                  Visit this url to activate your account:
+
+                  {{url}}"

@@ -3,8 +3,6 @@ ClothApp::Application.routes.draw do
   # first created -> highest priority.
   root :to => "welcome#home"
   
- 
-  resources :landing_pages
   resources :contents
   resources :categories
   resources :profiles
@@ -14,11 +12,13 @@ ClothApp::Application.routes.draw do
   resources :contacts
   resources :searches
   resources :helps
+  resources :impressums
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'signup' => 'users#new', :as => :signup
   match 'activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
+  match 'landing_page' => 'landing_pages#show', :as => :landing_page
 
   resources :users do
     member do

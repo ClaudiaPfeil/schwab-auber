@@ -1,0 +1,16 @@
+<%= field_set_tag do %>
+  <%= form_tag search_packages_path, :method => :get, :class => :search_form do %>
+      <%= text_field_tag :search_key,
+                        params[:search_key],
+                        :type => :search,
+                        :autosave => :packages,
+                        :results => 50
+                        #:autocomplete => autocomplete_order_list_order_oldarticle_name_order_list_orders_path
+                        %>
+
+      <%= select_tag    :search_type,
+                        options_for_select(
+                          localized_collection_options_for_select(Package::SearchTypes, :search_types),
+                          params[:search_type]) %>
+  <% end %>
+<% end %>

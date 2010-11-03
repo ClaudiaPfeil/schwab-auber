@@ -18,18 +18,10 @@ class PackagesController < ApplicationController
   def create
     @package = Package.new(params[:packages])
 
-    if @package.accepted?
-      redirect_to packages_path(@package), :notice => "Please preview and confirm the package"
-    end
-
-    if @package.confirmed?
-      if @package.save
-        redirect_to packages_path(@package), :notice => "Package created successfully"
-      else
-        render :action => 'new', :notice => "Package wasn't created"
-      end
+    if @package.save
+      redirect_to packages_path(@package), :notice => "Package created successfully"
     else
-      redirect_to packages_path(@package), :notice => "Please confirm the new package"
+      render :action => 'new', :notice => "Package wasn't created"
     end
     
   end

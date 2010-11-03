@@ -32,9 +32,10 @@
 <div class="subnavi">
   <!--||| Der erste Punkt zeigt den Seitenbereich an und wird nicht verlinkt. Die Sublinks = das Untermenü hier anpassen. |||-->
   <span class="sub"><b>home .</b>
-    <a href="<%=  profiles_path%>">profiles</a> .
-    <a href="<%=  packages_path%>">packages</a> .
-    <a href="<%=  searches_path%>">search</a>
+    <%= link_to 'home', root_path %>
+    <%= link_to '. packages',  packages_path%>
+    <%= link_to '. search',  search_packages_path%>
+    <%= link_to ". impressum ", impressums_path  %>
     <br>
   </span>
 
@@ -58,7 +59,7 @@
 </div>
 
 <br>
-<span class="sub">&copy; 2010.ClaudiaPfeil. <a href="mailto:infoatclaudia-pfeil.com">email senden</a></span>
+<span class="sub">&copy; 2010.Schwab&Auber GbR. <a href="mailto:infoatkinderkleiderbox.de">E-mail senden</a></span>
 <br>&nbsp;<br>
 
 

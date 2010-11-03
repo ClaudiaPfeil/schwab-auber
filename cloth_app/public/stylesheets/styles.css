@@ -209,7 +209,7 @@ input#remember_me {
 
 textarea {
   float: right;
-  margin-right: 0em;
+  margin-righ: 0em;
   line-height: 1;
 }
 
@@ -238,5 +238,5 @@ li.commit > input {
 }
 
 select {
-  margin-right: 20em;
+  margin-right: 15em;
 }

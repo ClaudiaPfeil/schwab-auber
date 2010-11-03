@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101027212157) do
+ActiveRecord::Schema.define(:version => 20101028122657) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(:version => 20101027212157) do
     t.integer  "amount_labels"
     t.string   "colors"
     t.text     "notice"
-    t.string   "sex"
+    t.boolean  "sex"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

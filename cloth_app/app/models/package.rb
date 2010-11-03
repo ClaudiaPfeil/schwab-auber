@@ -2,6 +2,7 @@ class Package < ActiveRecord::Base
   belongs_to :user
 
   validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors, :accepted, :confirmed
+  
   before_save do
     confirmed?
     accepted?
@@ -16,6 +17,8 @@ class Package < ActiveRecord::Base
     sql = [attribute_names].flatten.map { |a| '%s LIKE :search_key' % a }.join(' OR ')
     where(sql, :search_key => "%#{search_key}%").default_ordered
   }
+
+  SearchTypes  = %w(name sex size label)
 
   def is_destroyable?
     true
