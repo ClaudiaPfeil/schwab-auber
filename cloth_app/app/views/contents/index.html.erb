@@ -1,6 +1,6 @@
 <%= "Contents" %>
 
-<p>
+<p align="right">
   <% if can? :create, Content %>
     <%= link_to "New", new_content_path %>
   <%end%>
@@ -14,18 +14,31 @@
 </div>
 
 <% @contents.each do |content| %>
-
+    
   <div class="tr">
     <div class="td"><%= content.title%> </div>
     <div class="td"><%= content.subtitle%> </div>
     <div class="td"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>
     <div class="td"><%= content.link%> </div>
-    <% if can? :update, content %>
-      <div class="td"><%= link_to  "Edit", edit_content_path(content)%> </div>
-    <% end %>
-    <% if can? :destroy, content %>
-      <div class="td"><%= link_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %> </div>
-    <%end%>
+    <div class="td">
+      <% if can? :update, Content %>
+        <%= link_to  "Edit", edit_content_path(content)%>
+      <% end %>
+      <% if can? :read, Content %>
+        <% unless content.category.name == 'Welcome' %>
+          <%= link_to "Preview",create_path(content.category.name.downcase), :popup => true%>
+        <% end %>
+        <% if content.category.name == 'Welcome' %>
+          <%= link_to "Preview", root_path(:preview => true), :popup => true %>
+        <% end %>
+      <%end%>
+      <% if can? :publish, Content %>
+        <%= link_to "Publish", content, :confirm => 'Are you sure?', :method => :publish%>
+      <%end%>
+      <% if can? :destroy, Content %>
+        <%= link_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %>
+      <%end%>
+    </div>
   </div>
 
 <% end %>

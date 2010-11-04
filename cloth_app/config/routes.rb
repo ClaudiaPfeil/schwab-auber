@@ -3,7 +3,9 @@ ClothApp::Application.routes.draw do
   # first created -> highest priority.
   root :to => "welcome#home"
   
-  resources :contents
+  resources :contents do
+      get :publish, :on => :member
+  end
   resources :categories
   resources :profiles
   resources :packages do
@@ -19,7 +21,8 @@ ClothApp::Application.routes.draw do
   match 'signup' => 'users#new', :as => :signup
   match 'activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
   match 'landing_page' => 'landing_pages#show', :as => :landing_page
-
+  match ':controller/:action/:preview'
+ 
   resources :users do
     member do
       put :suspend

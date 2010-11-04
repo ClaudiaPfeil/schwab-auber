@@ -3,6 +3,8 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+    category = Category.find_by_name("Login")
+    @content = category.contents unless category.contents.nil?
   end
 
   def create

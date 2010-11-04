@@ -9,7 +9,7 @@ class Package < ActiveRecord::Base
     enough_clothes?
   end
   
-  attr_accessor :previewed, :accepted
+  attr_accessor :previewed, :accepted, :confirmed
 
   scope :default_ordered, order('created_at DESC, size DESC')
 

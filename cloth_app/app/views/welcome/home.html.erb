@@ -2,24 +2,29 @@
 <% sum = @welcome.count  %>
 
 <% @welcome.each do |welcome| %>
-  <% sum = sum -1 %>
+  
+  <% if welcome.is_published? || params[:preview] %>
 
-  <% if sum.modulo(2) == 0 %>
-   
+    <% sum = sum -1 %>
+
+    <% if sum.modulo(2) == 0 %>
+
+        <div class="td_content">
+
+          <%= render "content",:welcome => welcome %>
+
+        </div>
+
+      </div>
+    <% else %>
+
       <div class="td_content">
 
         <%= render "content",:welcome => welcome %>
 
       </div>
 
-    </div>
-  <% else %>
-
-    <div class="td_content">
-
-      <%= render "content",:welcome => welcome %>
-
-    </div>
+    <% end %>
 
   <% end %>
 

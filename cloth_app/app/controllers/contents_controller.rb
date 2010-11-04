@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  
   before_filter :init_content, :action => {:edit, :update, :show, :destroy}
   before_filter :login_required
   load_and_authorize_resource
@@ -39,6 +40,12 @@ class ContentsController < ApplicationController
     redirect_to contents_path
   end
 
+  def publish
+    if @content.update_attribute(:published => true)
+      redirect_to contents_path, :notice => "Content successfully published"
+    end
+  end
+
   private
 
     def init_content
@@ -48,4 +55,5 @@ class ContentsController < ApplicationController
     def init_current_object
       @current_object = yield
     end
+    
 end

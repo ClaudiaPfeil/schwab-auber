@@ -1,10 +1,11 @@
 class PackagesController < ApplicationController
+  
   before_filter :init_package, :action => [:show, :edit, :update, :destroy]
   before_filter :login_required
   load_and_authorize_resource
 
   def index
-    @packages = Package.where(:user_id => current_user.id)
+    @packages = Package.all
   end
 
   def show
@@ -49,10 +50,11 @@ class PackagesController < ApplicationController
   private
 
     def init_package
-      init_current_object { @package = Package.where(:id => params[:id], :user_id => current_user.id)}
+      init_current_object { @package = Package.where(:id => params[:id], :user_id => current_user.id)} unless current_user.nil?
     end
 
     def init_current_object
       @current_object = yield
     end
+    
 end

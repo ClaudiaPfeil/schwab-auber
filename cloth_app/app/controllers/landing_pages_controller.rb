@@ -6,7 +6,7 @@ class LandingPagesController < ApplicationController
   end
 
   def show
-    category = Category.find_by_name("LandingPage")
+    category = Category.find_by_name("Landing_Page")
     @landing_pages = category.contents
   end
  
