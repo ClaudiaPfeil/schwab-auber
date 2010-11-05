@@ -1,4 +1,4 @@
-<%= semantic_form_for @package do |package| %>
+<%= semantic_form_for @package, :input_html => {:id => 'simpledialog'} do |package| %>
 
   <%= package.inputs 'Packages' do  %>
     <%= package.input :name  %>

@@ -3,11 +3,11 @@ class Package < ActiveRecord::Base
 
   validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors, :accepted, :confirmed
   
-  before_save do
-    confirmed?
-    accepted?
-    enough_clothes?
-  end
+#  before_save do
+#    confirmed?
+#    accepted?
+#    enough_clothes?
+#  end
   
   attr_accessor :previewed, :accepted, :confirmed
 

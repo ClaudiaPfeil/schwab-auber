@@ -4,6 +4,6 @@
 module Cms
     def get_content(title)
       category = Category.find_by_name(title)
-      @contents = category.contents unless category.contents.nil?
+      category.contents unless category.contents.nil?
     end
 end

@@ -1,4 +1,5 @@
 class LandingPagesController < ApplicationController
+  include Cms
   layout "landing_page"
 
   def index
@@ -6,8 +7,7 @@ class LandingPagesController < ApplicationController
   end
 
   def show
-    category = Category.find_by_name("Landing_Page")
-    @contents = category.contents
+    @contents = get_content("Landing_Page")
   end
  
 end

@@ -9,4 +9,13 @@ $(document).ready(function(){
   });
 });
 
-$.prompt('Möchten sie das neue Kleiderpacket wirklich erstellen?',{buttons: { Ja: true, Abbrechen: false }});
+$(document).ready(function () {
+  $('.simpledialog').simpleDialog();
+});
+
+$(function () {
+        $('#alert').click(function () {
+          alert('Hello, world!');
+          return false;
+        })
+      });

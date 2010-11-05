@@ -1,8 +1,8 @@
 class WelcomeController < ApplicationController
-  
+  include Cms
+
   def home
-    category = Category.find_by_name("Welcome")
-    @contents = category.contents unless category.contents.nil?
+    @contents = get_content("Welcome")
   end
 
   def index

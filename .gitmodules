@@ -11,3 +11,6 @@
 [submodule "cloth_app/vendor/plugins/restful_authentication"]
 	path = cloth_app/vendor/plugins/restful_authentication
 	url = git://github.com/Satish/restful-authentication.git
+[submodule "cloth_app/public/javascripts/jquery-ujs"]
+	path = cloth_app/public/javascripts/jquery-ujs
+	url = git://github.com/rails/jquery-ujs.git

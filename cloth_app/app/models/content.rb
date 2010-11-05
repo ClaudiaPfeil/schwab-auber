@@ -1,5 +1,5 @@
 class Content < ActiveRecord::Base
-  
+
   has_attached_file :image
   belongs_to :category
 
@@ -12,5 +12,5 @@ class Content < ActiveRecord::Base
   def is_published?
     published
   end
-  
+
 end

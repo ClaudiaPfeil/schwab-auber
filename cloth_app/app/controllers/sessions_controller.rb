@@ -1,10 +1,10 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
-
+  include Cms
+  
   # render new.rhtml
   def new
-    category = Category.find_by_name("Login")
-    @content = category.contents unless category.contents.nil?
+    @contents = get_content("Welcome")
   end
 
   def create
