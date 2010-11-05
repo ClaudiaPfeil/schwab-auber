@@ -39,7 +39,7 @@ class Package < ActiveRecord::Base
     end
 
     def enough_clothes?
-      true if amount_clothes >= 10
+      true if amount_clothes.to_i > 10
     end
   
 end

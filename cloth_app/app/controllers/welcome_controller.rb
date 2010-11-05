@@ -2,7 +2,7 @@ class WelcomeController < ApplicationController
   
   def home
     category = Category.find_by_name("Welcome")
-    @welcome = category.contents unless category.contents.nil?
+    @contents = category.contents unless category.contents.nil?
   end
 
   def index

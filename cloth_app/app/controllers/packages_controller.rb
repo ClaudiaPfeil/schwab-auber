@@ -19,6 +19,13 @@ class PackagesController < ApplicationController
   def create
     @package = Package.new(params[:packages])
 
+    #get content from cms
+    category = Category.find_by_name("Welcome")
+    @contents = category.contents unless category.contents.nil?
+
+    #has customer accepted the terms & conditions?
+    accept_terms_and_conditions
+
     if @package.save
       redirect_to packages_path(@package), :notice => "Package created successfully"
     else
@@ -55,6 +62,10 @@ class PackagesController < ApplicationController
 
     def init_current_object
       @current_object = yield
+    end
+
+    def accept_term_and_conditions
+      redirect_to terms_and_condition_packages_path(@package)
     end
     
 end

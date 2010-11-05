@@ -1,0 +1,13 @@
+<h1><%= content.title %></h1>
+<h2><%= content.subtitle %> </h2>
+<p>
+  <%= content.article %>
+</p>
+<p>
+  <%= link_to "#{content.link_name}", content.link %>
+</p>
+<p>
+  <% if content.image_file_name.length > 1 %>
+    <%= image_tag(content.image.to_s, :size => "200x150") %>
+  <% end %>
+</p>

@@ -1,0 +1,32 @@
+<div class="tr">
+<% sum = contents.count  %>
+
+<% contents.each do |content| %>
+
+  <% if content.is_published? || params[:preview] %>
+
+    <% sum = sum -1 %>
+
+    <% if sum.modulo(2) == 0 %>
+
+        <div class="td_content">
+
+          <%= render "content",:content => content %>
+
+        </div>
+
+      </div>
+    <% else %>
+
+      <div class="td_content">
+
+        <%= render "content",:content => content %>
+
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+<% end%>
+

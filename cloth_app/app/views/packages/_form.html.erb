@@ -1,6 +1,18 @@
 <%= semantic_form_for @package do |package| %>
 
-  <%= package.inputs %>
+  <%= package.inputs 'Packages' do  %>
+    <%= package.input :name  %>
+    <%= package.input :size  %>
+    <%= package.input :next_size  %>
+    <%= package.input :age  %>
+    <%= package.input :saison  %>
+    <%= package.input :kind, :input_html => {:cols => 40, :rows => 5}  %>
+    <%= package.input :amount_clothes  %>
+    <%= package.input :label  %>
+    <%= package.input :amount_labels  %>
+    <%= package.input :colors  %>
+    <%= package.input :notice, :input_html => {:cols => 40, :rows => 5}  %>
+  <% end %>
 
   <%= package.buttons %>
 

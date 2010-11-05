@@ -1,7 +1,17 @@
 <%= semantic_form_for @content,:html => {:multipart => true} do |content| %>
 
-  <%= content.inputs %>
-  <%= content.input :image, :as => :file %>
+  <%= content.inputs 'Content' do %>
+    <%= content.input :category %>
+    <%= content.input :title %>
+    <%= content.input :subtitle %>
+    <%= content.input :article, :input_html => {:cols => 40, :rows => 5} %>
+    <%= content.input :image_file_name  %>
+    <%= content.input :link %>
+    <%= content.input :link_name %>
+    <%= content.input :image, :as => :file %>
+    <%= content.input :published %>
+  <% end %>
+
   <%= content.buttons %>
 
 <% end %>

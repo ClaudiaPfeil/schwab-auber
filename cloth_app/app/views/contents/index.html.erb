@@ -33,10 +33,10 @@
         <% end %>
       <%end%>
       <% if can? :publish, Content %>
-        <%= link_to "Publish", content, :confirm => 'Are you sure?', :method => :publish%>
+        <%= link_to "Publish", content, :confirm => 'Möchten sie den Inhalt wirklich veröffentlichen?', :method => 'publish' %>
       <%end%>
       <% if can? :destroy, Content %>
-        <%= link_to "Destroy", content, :confirm => 'Are you sure?', :method => :delete %>
+        <%= link_to "Destroy", content, :confirm => 'Möchten sie den Inhalt wirklich löschen?' , :method => 'delete' %>
       <%end%>
     </div>
   </div>

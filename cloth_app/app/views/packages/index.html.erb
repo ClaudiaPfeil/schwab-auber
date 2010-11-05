@@ -20,10 +20,10 @@
     <div class="td"><%= package.name%> </div>
     <div class="td"><%= package.sex%> </div>
     <div class="td"><%= package.size%> </div>
-    <div class="td"><%= package.amount%> </div>
-    <div class="td"><%= truncate(package.description, :length => 20, :omission => "...")%> </div>
+    <div class="td"><%= package.amount_clothes%> </div>
+    <div class="td"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
     <% if can? :update, package %>
-      <div class="td"><%= link_to  "Edit", edit_package_path(content)%> </div>
+      <div class="td"><%= link_to  "Edit", edit_package_path(package)%> </div>
     <% end %>
     <% if can? :destroy, package %>
       <div class="td"><%= link_to "Destroy", package, :confirm => 'Are you sure?', :method => :delete %> </div>
