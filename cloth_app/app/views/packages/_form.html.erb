@@ -2,7 +2,7 @@
 
   <%= package.inputs 'Paket' do  %>
     <p><%= package.input :name  %></p>
-    <p><%= package.input :sex %></p>
+    <p><%= package.input :sex, :hint => 'Ein Paket für Jungs' %></p>
     <p><%= package.input :size %></p>
     <p><%= package.input :next_size %></p>
     <p><%= package.input :age %></p>
@@ -15,7 +15,10 @@
     <p><%= package.input :notice%></p>
   <% end %>
 
-  <%= package.input :user_id, :as => :hidden, :value => current_user.id %>
+  <%= package.inputs link_to "Regeln", terms_and_conditions_path, :id => "rules" do %>
+    <%= package.input :accepted, :as => :boolean, :hint => 'Ich akzeptiere die Regeln.' %>
+    <%= package.input :confirmed, :as => :boolean, :hint => 'Ich habe die Regeln akzeptiert und bestätige diese.' %>
+  <% end %>
 
   <%= package.buttons %>
 

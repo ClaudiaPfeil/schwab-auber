@@ -50,6 +50,10 @@ class PackagesController < ApplicationController
     Package.search_by_attributes(search_key, search_type)#.paginate(pagination_defaults)
   end
 
+  def accept_terms_and_conditions
+    redirect_to terms_and_conditions_path(@package)
+  end
+
   private
 
     def init_package
@@ -59,9 +63,5 @@ class PackagesController < ApplicationController
     def init_current_object
       @current_object = yield
     end
-
-#    def accept_terms_and_conditions
-#      redirect_to terms_and_conditions_path(@package)
-#    end
     
 end

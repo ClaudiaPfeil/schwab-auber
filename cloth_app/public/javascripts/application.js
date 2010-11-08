@@ -9,9 +9,11 @@ $(document).ready(function(){
   });
 });
 
-//$(function() {
-//    $('#package_submit').simpleDialog();
-//});
+$(function() {
+    $('#rules').simpleDialog();
+});
+
+//
 
 //$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));
 

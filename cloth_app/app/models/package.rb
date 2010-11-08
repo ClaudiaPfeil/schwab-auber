@@ -2,13 +2,13 @@ class Package < ActiveRecord::Base
   
   belongs_to :user
 
-  validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors
+  validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors, :accepted, :confirmed
   
-#  before_save do
-#    enough_clothes?
-#    has_accepted_rules?
-#    has_confirmed?
-#  end
+  before_save do
+    enough_clothes?
+    has_accepted_rules?
+    has_confirmed_rules?
+  end
   
   attr_accessor :accepted, :confirmed
   accepts_nested_attributes_for :user, :allow_destroy => true
@@ -32,11 +32,11 @@ class Package < ActiveRecord::Base
 
   private
 
-    def confirmed?
+    def has_confirmed_rules?
       true if confirmed == true
     end
 
-    def accepted?
+    def has_accepted_rules?
       true if accepted == true
     end
 
