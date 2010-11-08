@@ -22,18 +22,18 @@
     <div class="td"><%= content.link%> </div>
     <div class="td">
       <% if can? :update, Content %>
-        <%= link_to  "Edit", edit_content_path(content)%>
+        <%= link_to  "Edit", edit_content_path(content), :id => 'edit'%>
       <% end %>
       <% if can? :read, Content %>
         <% unless content.category.name == 'Welcome' %>
-          <%= link_to "Preview",create_path(content.category.name.downcase), :popup => true%>
+          <%= link_to "Preview",create_path(content.category.name.downcase), :popup => true, :id => 'preview' %>
         <% end %>
         <% if content.category.name == 'Welcome' %>
-          <%= link_to "Preview", root_path(:preview => true), :popup => true %>
+          <%= link_to "Preview", root_path(:preview => true), :popup => true, :id => 'preview' %>
         <% end %>
       <%end%>
       <% if can? :publish, Content %>
-        <%= link_to "Publish", content, :confirm => 'Möchten sie den Inhalt wirklich veröffentlichen?', :method => 'publish' %>
+        <%= link_to "Publish", publish_content_path(content), :id => 'publish' %>
       <%end%>
       <% if can? :destroy, Content %>
         <%= link_to "Destroy", content, :confirm => 'Möchten sie den Inhalt wirklich löschen?' , :method => 'delete' %>

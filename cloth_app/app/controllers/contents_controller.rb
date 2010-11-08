@@ -41,7 +41,7 @@ class ContentsController < ApplicationController
   end
 
   def publish
-    if @content.update_attribute(:published => true)
+    if @content.update_attribute(:published, true)
       redirect_to contents_path, :notice => "Content successfully published"
     end
   end

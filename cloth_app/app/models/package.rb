@@ -1,15 +1,17 @@
 class Package < ActiveRecord::Base
+  
   belongs_to :user
 
-  validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors, :accepted, :confirmed
+  validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors
   
 #  before_save do
-#    confirmed?
-#    accepted?
 #    enough_clothes?
+#    has_accepted_rules?
+#    has_confirmed?
 #  end
   
-  attr_accessor :previewed, :accepted, :confirmed
+  attr_accessor :accepted, :confirmed
+  accepts_nested_attributes_for :user, :allow_destroy => true
 
   scope :default_ordered, order('created_at DESC, size DESC')
 
@@ -20,7 +22,7 @@ class Package < ActiveRecord::Base
 
   SearchTypes  = %w(name sex size label)
 
-  def is_destroyable?
+  def destroyable?
     true
   end
 
@@ -31,7 +33,7 @@ class Package < ActiveRecord::Base
   private
 
     def confirmed?
-      true if previewed == true
+      true if confirmed == true
     end
 
     def accepted?
@@ -39,7 +41,7 @@ class Package < ActiveRecord::Base
     end
 
     def enough_clothes?
-      true if amount_clothes.to_i > 10
+      true if amount_clothes.to_i > 9
     end
   
 end

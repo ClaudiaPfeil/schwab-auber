@@ -198,7 +198,6 @@ ol {
 
 input {
   float: right;
-  margin-right: 4em;
   line-height: 1.5;
 }
 
@@ -234,9 +233,11 @@ li.content_image_input.file.optional > label {
 }
 
 li.commit > input {
-  margin-right: 27em;
+  margin-right: 30em;
 }
 
 select {
   margin-right: 15em;
 }
+
+radio.optional { list-style-type: none;}

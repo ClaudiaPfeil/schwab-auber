@@ -6,6 +6,7 @@ class PackagesController < ApplicationController
   load_and_authorize_resource
 
   def index
+    @contents = get_content("Packages")
     @packages = Package.all
   end
 
@@ -18,11 +19,8 @@ class PackagesController < ApplicationController
   end
 
   def create
-    @package = Package.new(params[:packages])
-    #accept_terms_and_conditions
-
-    @contents = get_content("Packages")
-
+    @package = Package.new(params[:package])
+    
     if @package.save
       redirect_to packages_path(@package), :notice => "Package created successfully"
     else
@@ -42,6 +40,7 @@ class PackagesController < ApplicationController
   end
 
   def destroy
+    debugger
     @package.destroy if @package.destroyable?
     redirect_to packages_path
   end
@@ -54,15 +53,15 @@ class PackagesController < ApplicationController
   private
 
     def init_package
-      init_current_object { @package = Package.where(:id => params[:id], :user_id => current_user.id)} unless current_user.nil?
+      init_current_object { @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
     end
 
     def init_current_object
       @current_object = yield
     end
 
-    def accept_terms_and_conditions
-      redirect_to terms_and_conditions_path(@package)
-    end
+#    def accept_terms_and_conditions
+#      redirect_to terms_and_conditions_path(@package)
+#    end
     
 end

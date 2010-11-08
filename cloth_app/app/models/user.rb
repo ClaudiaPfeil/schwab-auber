@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   include Authentication::ByCookieToken
   include Authorization::StatefulRoles
   set_table_name 'users'
+  
   has_many :packages
 
   validates :login, :presence   => true,

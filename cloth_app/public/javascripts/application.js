@@ -9,13 +9,9 @@ $(document).ready(function(){
   });
 });
 
-$(document).ready(function () {
-  $('.simpledialog').simpleDialog();
-});
+//$(function() {
+//    $('#package_submit').simpleDialog();
+//});
 
-$(function () {
-        $('#alert').click(function () {
-          alert('Hello, world!');
-          return false;
-        })
-      });
+//$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));
+
