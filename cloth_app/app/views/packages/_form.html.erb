@@ -1,25 +1,31 @@
 <%= semantic_form_for @package do |package| %>
 
-  <%= package.inputs 'Paket' do  %>
+  <%= package.inputs I18n.t('package') do  %>
     <p><%= package.input :name  %></p>
-    <p><%= package.input :sex, :hint => 'Ein Paket für Jungs' %></p>
+    <p><%= package.input :sex, :as => :check_boxes, :collection => {"Junge" => 1, "Mädchen" => 2}%></p>
     <p><%= package.input :size %></p>
     <p><%= package.input :next_size %></p>
     <p><%= package.input :age %></p>
     <p><%= package.input :saison %></p>
-    <%= package.input :kind %><br><br>
-    <p><%= package.input :amount_clothes %></p>
+    <%= package.input :kind, :hint => I18n.t('hint_kind') %><br><br>
+    <p><%= package.input :amount_clothes, :hint => I18n.t('hint_amount_clothes') %></p>
     <p><%= package.input :label %></p>
     <p><%= package.input :amount_labels %></p>
-    <p><%= package.input :colors %></p>
+    <p><%= package.input :colors, :hint => I18n.t('hint_colors') %></p>
     <p><%= package.input :notice%></p>
   <% end %>
 
-  <%= package.inputs link_to "Regeln", terms_and_conditions_path, :id => "rules" do %>
-    <%= package.input :accepted, :as => :boolean, :hint => 'Ich akzeptiere die Regeln.' %>
-    <%= package.input :confirmed, :as => :boolean, :hint => 'Ich habe die Regeln akzeptiert und bestätige diese.' %>
+  <%= package.inputs link_to I18n.t('rules'), '#', :rel => "test", :class => 'simpledialog' do %>
+    <%= package.input :accepted, :as => :boolean, :hint => I18n.t('hint_accepted') %>
+    <%= package.input :confirmed, :as => :boolean, :hint => I18n.t('hint_confirmed') %>
   <% end %>
 
   <%= package.buttons %>
 
 <% end %>
+
+<div id="test" style="display: none">
+  <h1>Bonjour monde! Das sind die Regeln [...]</h1>
+  <%#= render '/contents/cms/site', :@contents => @contents %>
+</div>
+

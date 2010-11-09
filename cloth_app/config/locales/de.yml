@@ -1,4 +1,24 @@
 de:
+  title: Title
+  subtitle: Untertitel
+  article: Artikel
+  link: URL
+  size: Größe
+  sex:  Junge oder Mädchen?
+  amount: Anzahl Kleidungsstücke
+  description:  Beschreibung
+  name: Kleidungspaket
+  boy: Junge
+  girl: Mädchen
+  hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
+  packages: Kleidungspakete
+  package: Kleidungspaket
+  rules: Regeln
+  hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
+  hint_colors: 'Die drei überwiegenden Farben des Kleiderpakets, z.B.: rot-grün-blau.'
+  hint_accepted:  Ich habe die Regeln akzeptiert.
+  hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
+  hint_sex: Sind die Kleidungsstücke von einem Jungen?
   actionmailer:
     user_mailer:
       signup_notification:
@@ -163,3 +183,4 @@ de:
         odd: "muss ungerade sein"
         even: "muss gerade sein"
         record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: {{errors}}"
+        

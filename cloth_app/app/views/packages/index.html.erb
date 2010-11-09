@@ -1,4 +1,4 @@
-<%= "Packages" %>
+<h2><%= I18n.t("packages") %></h2>
 
 <p>
   <% if can? :create, Package %>
@@ -7,27 +7,29 @@
 </p>
 
 <div class="tr">
-  <div class="td"><b><%= "Name"%></b> </div>
-  <div class="td"><b><%= "Sex"%></b> </div>
-  <div class="td"><b><%= "Size"%></b> </div>
-  <div class="td"><b><%= "Amount"%></b> </div>
-  <div class="td"><b><%= "Description"%></b> </div>
+  <div class="td"><b><%= I18n.t("name")%></b> </div>
+  <div class="td"><b><%= I18n.t("sex")%></b> </div>
+  <div class="td"><b><%= I18n.t("size")%></b> </div>
+  <div class="td"><b><%= I18n.t("amount")%></b> </div>
+  <div class="td"><b><%= I18n.t("description")%></b> </div>
 </div>
 
 <% @packages.each do |package| %>
 
   <div class="tr">
     <div class="td"><%= package.name%> </div>
-    <div class="td"><%= package.sex%> </div>
+    <div class="td"><%= package.sex ? I18n.t("boy") : I18n.t("girl")%> </div>
     <div class="td"><%= package.size%> </div>
     <div class="td"><%= package.amount_clothes%> </div>
     <div class="td"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
-    <% if can? :update, package %>
-      <div class="td"><%= link_to  "Edit", edit_package_path(package)%> </div>
-    <% end %>
-    <% if can? :destroy, package %>
-      <div class="td"><%= link_to "Destroy", package, :confirm => 'Möchten sie das Packet wirklich löschen?', :method => :delete %> </div>
-    <%end%>
+    <div class="td">
+      <% if can? :update, package %>
+       <%= link_to  "Edit", edit_package_path(package)%>
+      <% end %>
+      <% if can? :destroy, package %>
+        <%= link_to "Destroy", package, :confirm => 'Möchten sie das Packet wirklich löschen?', :method => :delete %>
+      <%end%>
+    </div>
   </div>
 
 <% end %>

@@ -53,8 +53,8 @@ pre {margin:1.5em 0;white-space:pre;}
 pre, code, tt {font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
 li ul, li ol {margin:0;}
 ul, ol {margin:0 1.5em 1.5em 0;padding-left:1.5em;}
-ul {list-style-type:disc;}
-ol {list-style-type:decimal;}
+ul {list-style-type:none;}
+ol {list-style-type:none;}
 dl {margin:0 0 1.5em 0;}
 dl dt {font-weight:bold;}
 dd {margin-left:1.5em;}
@@ -81,7 +81,7 @@ caption {background:#eee;}
 /* forms.css */
 label {font-weight:bold;width: 200px;vertical-align: top;}
 fieldset {padding:0 1.4em 1.4em 1.4em;margin:0 0 1.5em 0;border:none;}
-legend {font-weight:bold;font-size:1.2em;margin-top:-0.2em;margin-bottom:1em;}
+legend {font-weight:bold;;margin-top:-0.2em;margin-bottom:1em;}
 fieldset, #IE8#HACK {padding-top:1.4em;}
 legend, #IE8#HACK {margin-top:0;margin-bottom:0;}
 input[type=text], input[type=password], input.text, input.title, textarea {background-color:#fff;border:1px solid #bbb;}

@@ -9,8 +9,8 @@ $(document).ready(function(){
   });
 });
 
-$(function() {
-    $('#rules').simpleDialog();
+$(document).ready(function () {
+  $('.simpledialog').simpleDialog();
 });
 
 //

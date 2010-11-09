@@ -7,10 +7,10 @@
 </p>
 
 <div class="tr">
-  <div class="td"><b><%= "Title"%></b> </div>
-  <div class="td"><b><%= "Subtitle"%></b> </div>
-  <div class="td"><b><%= "Article"%></b> </div>
-  <div class="td"><b><%= "Link"%></b> </div>
+  <div class="td"><b><%=  I18n.t('title')%></b> </div>
+  <div class="td"><b><%= I18n.t('subtitle')%></b> </div>
+  <div class="td"><b><%= I18n.t('article')%></b> </div>
+  <div class="td"><b><%= I18n.t('link')%></b> </div>
 </div>
 
 <% @contents.each do |content| %>

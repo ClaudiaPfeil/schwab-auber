@@ -1,0 +1,19 @@
+de:
+  formtastic:
+    :yes: 'Ja'
+    :no: 'Nein'
+    create: '%{model} erstellen'
+    save: '%{model} sichern'
+    update: '%{model} aktualisieren'
+    search: 'Suchen'
+    submit: 'Abschicken'
+    required: 'Erforderlich'
+    send:   'Senden'
+    edit:   'Editieren'
+    history: 'Historie'
+    show:   'Anzeigen'
+    date:
+      formats:
+        default: "%d.%m.%Y"
+    titles:
+      address: "Post details"

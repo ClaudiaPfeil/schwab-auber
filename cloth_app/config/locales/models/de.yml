@@ -1,0 +1,50 @@
+de:
+  activerecord:
+    models:
+      content: Inhalt
+      package: Kleiderpaket
+      user: Kunde
+    attributes:
+      content:
+        title: Titel
+        subtitle: Untertitel
+        article:  Text
+        image:  Bild
+        link:  URL Ziel
+        link_name:  Bezeichnung der URL
+        image_file_name:  Name des Bildes
+        published:  Veröffentlichen
+        category: Kategorie
+      package:
+        name: Paketbezeichnung
+        sex:  Junge oder Mädchen?
+        hint_sex: Sind die Kleidungsstücke von einem Jungen?
+        size: Kleidergröße
+        next_size: nächst höhere Kleidergröße
+        age:  Alter
+        saison: Jahreszeit
+        kind: Kleidersachen
+        hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
+        amount_clothes: Anzahl der Kleiderstücke
+        label:  Marke der Kleidung
+        amount_labels:  Menge der Marken
+        colors: Farben der Kleidung
+        hint_colors: 'Die drei überwiegenden Farben des Kleiderpakets, z.B.: rot-grün-blau.'
+        notice: Beschreibung zum Kleiderpaket
+        rules:  Relgen
+        accepted: Akzeptieren
+        hint_accepted:  Ich habe die Regeln akzeptiert.
+        confirmed: Bestätigen
+        hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
+        true: Junge
+      user:
+        role: Nutzerrolle
+        role_mask: Gruppe der Rollen
+        
+
+
+
+
+
+
+      
