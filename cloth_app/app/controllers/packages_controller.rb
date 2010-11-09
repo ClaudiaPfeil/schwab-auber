@@ -46,6 +46,13 @@ class PackagesController < ApplicationController
 
   def search
     search_type, search_key = params[:search_type], params[:search_key]
+    if search_type == 'sex'
+      if search_key == 'Junge'
+        search_key = 2
+      elsif search_key == 'Mädchen'
+        search_key = 1
+      end
+    end
     @packages = Package.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
   end
 

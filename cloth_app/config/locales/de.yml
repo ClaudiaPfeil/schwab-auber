@@ -20,6 +20,7 @@ de:
   hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
   hint_sex: Sind die Kleidungsstücke von einem Jungen?
   search_packages: Suche nach Kleidungspaketen
+  label: Marke
   packages:
     search_types:
       name: Bezeichnung Kleidungspaket
