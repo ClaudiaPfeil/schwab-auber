@@ -2,8 +2,12 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
+            <url>app/views/packages/_form.html.erb</url>
+            <line>16</line>
+        </file>
+        <file>
             <url>app/models/package.rb</url>
-            <line>45</line>
+            <line>47</line>
         </file>
     </editor-bookmarks>
 </project-private>

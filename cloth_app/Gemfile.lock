@@ -116,7 +116,7 @@ DEPENDENCIES
   minimal!
   mysql (= 2.8.1)
   paperclip!
-  rails (= 3.0.0)
+  rails
   ruby-debug
   sqlite3-ruby
   will_paginate!
