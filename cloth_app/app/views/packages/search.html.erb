@@ -1,3 +1,24 @@
-<%= "Packet suchen" %>
+<h2><%= I18n.t("search_packages") %></h2>
+
 <%= render :partial => 'search_form' %>
 
+<% unless @packages.nil? %>
+<div class="tr">
+  <div class="td"><b><%= I18n.t("name")%></b> </div>
+  <div class="td"><b><%= I18n.t("sex")%></b> </div>
+  <div class="td"><b><%= I18n.t("size")%></b> </div>
+  <div class="td"><b><%= I18n.t("amount")%></b> </div>
+  <div class="td"><b><%= I18n.t("description")%></b> </div>
+</div>
+
+<% @packages.each do |package| %>
+  <div class="tr">
+    <div class="td"><%= package.name%> </div>
+    <div class="td"><%= package.sex ? I18n.t("boy") : I18n.t("girl")%> </div>
+    <div class="td"><%= package.size%> </div>
+    <div class="td"><%= package.amount_clothes%> </div>
+    <div class="td"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
+  </div>
+<% end %>
+
+<% end %>

@@ -40,18 +40,13 @@ class PackagesController < ApplicationController
   end
 
   def destroy
-    debugger
     @package.destroy if @package.destroyable?
     redirect_to packages_path
   end
 
   def search
     search_type, search_key = params[:search_type], params[:search_key]
-    Package.search_by_attributes(search_key, search_type)#.paginate(pagination_defaults)
-  end
-
-  def accept_terms_and_conditions
-    redirect_to terms_and_conditions_path(@package)
+    @packages = Package.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
   end
 
   private

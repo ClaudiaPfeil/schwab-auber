@@ -254,3 +254,7 @@ li#package_sex_input.check_boxes.optional > fieldset > ol {
 li#package_sex_input.check_boxes.optional > fieldset > ol > li > label > input {
   float: none;
 }
+
+input#search_key {
+  float: none;
+}

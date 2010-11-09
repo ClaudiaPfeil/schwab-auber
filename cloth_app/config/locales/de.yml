@@ -11,7 +11,7 @@ de:
   boy: Junge
   girl: Mädchen
   hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
-  packages: Kleidungspakete
+  show_packages: Kleidungspakete
   package: Kleidungspaket
   rules: Regeln
   hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
@@ -19,6 +19,14 @@ de:
   hint_accepted:  Ich habe die Regeln akzeptiert.
   hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
   hint_sex: Sind die Kleidungsstücke von einem Jungen?
+  search_packages: Suche nach Kleidungspaketen
+  packages:
+    search_types:
+      name: Bezeichnung Kleidungspaket
+      size: Kleidergröße
+      amount: Anzahl Kleidungsstücken
+      sex:  Junge oder Mädchen?
+      label:  Marke
   actionmailer:
     user_mailer:
       signup_notification:

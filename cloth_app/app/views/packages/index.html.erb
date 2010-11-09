@@ -1,4 +1,4 @@
-<h2><%= I18n.t("packages") %></h2>
+<h2><%= I18n.t("show_packages") %></h2>
 
 <p>
   <% if can? :create, Package %>
@@ -18,7 +18,7 @@
 
   <div class="tr">
     <div class="td"><%= package.name%> </div>
-    <div class="td"><%= package.sex ? I18n.t("boy") : I18n.t("girl")%> </div>
+    <div class="td"><%= package.sex ? I18n.t("girl") : I18n.t("boy")%> </div>
     <div class="td"><%= package.size%> </div>
     <div class="td"><%= package.amount_clothes%> </div>
     <div class="td"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
