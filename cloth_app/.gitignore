@@ -5,4 +5,4 @@
 /config/database.yml
 /config/initializers/site_keys.rb
 /public/system
-/doc/database.yml
+/doc/*
