@@ -1,5 +1,7 @@
 class WelcomeController < ApplicationController
   include Cms
+  include CanCan::Ability
+  include AuthenticatedSystem
 
   def home
     @contents = get_content("Welcome")

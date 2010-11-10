@@ -1,6 +1,8 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   include Cms
+  include CanCan::Ability
+  include AuthenticatedSystem
   
   # render new.rhtml
   def new

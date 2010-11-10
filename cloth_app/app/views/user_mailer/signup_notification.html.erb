@@ -1,8 +1,8 @@
-Your account has been created.
+<%= I18n.t('message_1') %>
 
-  Username: <%=h @user.login %>
+  Login: <%=h @user.login %>
   Password: <%=h @user.password %>
 
-Visit this url to activate your account:
+<%= I18n.t('message_2') %>
 
 <%=h @url %>

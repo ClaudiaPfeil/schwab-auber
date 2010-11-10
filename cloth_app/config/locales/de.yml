@@ -32,19 +32,13 @@ de:
   actionmailer:
     user_mailer:
       signup_notification:
-        subject:  "KidsKarton Konto Bestätigung"
-        message:  ""
+        subject:  "KidsKarton Konto Aktivierung"
+        message_1: "Ihr KidsKarton Konto wurde eingerichtet"
+        message_2: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
 
       activation:
-        subject: "Ihr Konto wurde bestätigt"
-        message: "Ihr Konto wurde eingerichtet.
-
-                  Username: {{login}}
-                  Password: {{password}}
-
-                  Klicken sie auf diesen Link, um ihr Konto zu aktivieren:
-
-                  {{url}}"
+        subject: "Ihr KidsKarton Konto wurde bestätigt"
+        message: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
   date:
     formats:
       default: "%d.%m.%Y"
