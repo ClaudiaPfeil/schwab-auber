@@ -2,6 +2,7 @@ de:
   formtastic:
     :yes: 'Ja'
     :no: 'Nein'
+    register: 'Registrieren'
     create: '%{model} erstellen'
     save: '%{model} sichern'
     update: '%{model} aktualisieren'
@@ -17,3 +18,4 @@ de:
         default: "%d.%m.%Y"
     titles:
       address: "Post details"
+    

@@ -40,6 +40,17 @@ de:
       user:
         role: Nutzerrolle
         role_mask: Gruppe der Rollen
+        login:  Login Name
+        password: Passwort
+        password_confirmation:  Passwort wiederholen
+        street_and_number: Straße und Hausnummer
+        first_name: Vorname
+        last_name:  Nachname
+        postcode: Postleitzahl
+        town: Stadt
+        email: E-Mail
+        register: Registrieren
+        
         
 
 

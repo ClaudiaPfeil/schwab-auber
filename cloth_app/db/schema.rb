@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101104091821) do
+ActiveRecord::Schema.define(:version => 20101110125517) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -66,6 +66,11 @@ ActiveRecord::Schema.define(:version => 20101104091821) do
     t.datetime "deleted_at"
     t.string   "role"
     t.integer  "roles_mask"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street_and_number"
+    t.string   "postcode"
+    t.string   "town"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

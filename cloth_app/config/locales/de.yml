@@ -19,6 +19,7 @@ de:
   hint_accepted:  Ich habe die Regeln akzeptiert.
   hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
   hint_sex: Sind die Kleidungsstücke von einem Jungen?
+  hint_password_confirmation: Bitte bestätigen sie ihr Password!
   search_packages: Suche nach Kleidungspaketen
   label: Marke
   packages:

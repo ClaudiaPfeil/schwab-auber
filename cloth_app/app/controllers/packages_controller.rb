@@ -2,12 +2,13 @@ class PackagesController < ApplicationController
   include Cms
   
   before_filter :init_package, :action => [:show, :edit, :update, :destroy]
-  before_filter :login_required
+  before_filter :init_content, :action => [:index, :show, :edit, :update]
+  #before_filter :login_required
   load_and_authorize_resource
 
   def index
-    @contents = get_content("Packages")
     @packages = Package.find_by_user_id(current_user.id)
+    @packages = @packages.to_a
   end
 
   def show
@@ -60,6 +61,10 @@ class PackagesController < ApplicationController
 
     def init_package
       init_current_object { @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+    end
+
+    def init_content
+      init_current_object { @contents = get_content("Packages")}
     end
 
     def init_current_object
