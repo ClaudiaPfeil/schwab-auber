@@ -22,6 +22,11 @@ de:
   hint_password_confirmation: Bitte bestätigen sie ihr Password!
   search_packages: Suche nach Kleidungspaketen
   label: Marke
+  subject_signup:  "KidsKarton Konto Aktivierung"
+  signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
+  signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
+  subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
+  message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
   packages:
     search_types:
       name: Bezeichnung Kleidungspaket
@@ -29,16 +34,12 @@ de:
       amount: Anzahl Kleidungsstücken
       sex:  Junge oder Mädchen?
       label:  Marke
-  actionmailer:
-    user_mailer:
-      signup_notification:
-        subject:  "KidsKarton Konto Aktivierung"
-        message_1: "Ihr KidsKarton Konto wurde eingerichtet"
-        message_2: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
-
-      activation:
-        subject: "Ihr KidsKarton Konto wurde bestätigt"
-        message: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
+  mailers/user_mailer:
+      subject_signup:  "KidsKarton Konto Aktivierung"
+      signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
+      signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
+      subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
+      message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
   date:
     formats:
       default: "%d.%m.%Y"

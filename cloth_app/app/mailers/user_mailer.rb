@@ -2,13 +2,13 @@ class UserMailer < ActionMailer::Base
 
   def signup_notification(user)
     setup_email(user.reload)
-    @subject    += I18n.t('subject')
+    @subject    += I18n.t('subject_signup')
     @url  = "http://#{SITE_URL}/activate/#{user.activation_code}"
   end
   
   def activation(user)
     setup_email(user)
-    @subject    += I18n.t('subject')
+    @subject    += I18n.t('subject_activation')
     @url  = "http://#{SITE_URL}/"
   end
   
