@@ -1,25 +1,24 @@
-<div class="tr">
-  <div class="td_content">
-    <h1>Anmelden</h1>
+<div class="span-9 prepend-1">
+  <h1>Anmelden</h1>
 
-    <%= form_tag session_path do -%>
-    <p><%= label_tag 'login' %>
-    <%= text_field_tag 'login', @login %></p>
+  <%= form_tag session_path do -%>
+  <p><%= label_tag 'login' %>
+  <%= text_field_tag 'login', @login %></p>
 
-    <p><%= label_tag 'password' %>
-    <%= password_field_tag 'password', nil %></p>
+  <p><%= label_tag 'password' %>
+  <%= password_field_tag 'password', nil %></p>
 
-    <p><%= label_tag 'remember_me', 'Remember me' %>
-    <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+  <p><%= label_tag 'remember_me', 'Remember me' %>
+  <%= check_box_tag 'remember_me', '1', @remember_me %></p>
 
-    <p><%= submit_tag 'Log in' %></p>
-    <% end -%>
-
-  </div>
-
-  <%= render '/contents/cms/site', :contents => @contents %>
+  <p><%= submit_tag 'Log in' %></p>
+  <% end -%>
 
 </div>
+
+<%= render '/contents/cms/site', :contents => @contents %>
+
+
 
 
 

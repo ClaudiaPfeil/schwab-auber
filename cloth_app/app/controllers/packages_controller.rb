@@ -7,7 +7,7 @@ class PackagesController < ApplicationController
 
   def index
     @contents = get_content("Packages")
-    @packages = Package.all
+    @packages = Package.find_by_user_id(current_user.id)
   end
 
   def show
