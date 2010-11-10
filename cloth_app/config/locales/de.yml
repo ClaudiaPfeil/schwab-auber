@@ -187,4 +187,6 @@ de:
         odd: "muss ungerade sein"
         even: "muss gerade sein"
         record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: {{errors}}"
+        bad_email_message: sollte wie eine E-Mail Adresse aussehen
+        bad_login_message: benutzen sie bitte nur Zeichen wie .-_@ und Nummern
         

@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
                     :format     => { :with => Authentication.email_regex, :message => Authentication.bad_email_message },
                     :length     => { :within => 6..100 }
 
-  
+  validates_presence_of :first_name, :last_name, :street_and_number, :postcode, :town
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation

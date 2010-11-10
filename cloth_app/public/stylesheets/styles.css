@@ -212,6 +212,10 @@ textarea {
   line-height: 1;
 }
 
+li {
+  list-style-type: none;
+}
+
 li.string_optional {
   margin-bottom: 2em;
 }

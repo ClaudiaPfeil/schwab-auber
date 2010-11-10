@@ -5,15 +5,16 @@
 <div class="tr">
 
   <%= link_to image_tag("/images/menue_home.gif", :width => '200', :height => '60', :alt => 'Home' ), root_path%>
-  <%# if (can? :update, Profile) || (can? :read, Profile) %>
-    <%#= link_to image_tag('/images/menue_profile.gif', :width => '134', :height => '60', :alt => 'Profile'), profiles_path%>
-  <%# end %>
+  <%# if can? :update, Profile %>
+    <%#= link_to image_tag("/images/menue_profile.gif", :width => '134', :height => '60', :alt => 'Profile' ), profiles_path%>
+  <%# else %>
+    <%= image_tag("/images/vorlage_thema.gif", :width => '134', :height => '60', :alt => 'KidsKarton')  %>
+  <%#end%>
   <% if can? :update, Package %>
     <%= link_to image_tag("/images/menue_pakete.gif", :width => '134', :height => '60', :alt => 'Pakete' ), packages_path%>
   <% else %>
     <%= image_tag("/images/vorlage_thema.gif", :width => '134', :height => '60', :alt => 'KidsKarton')  %>
   <%end%>
-  <%= link_to image_tag("/images/menue_pakete.gif", :width => '134', :height => '60', :alt => 'Pakete'), search_packages_path %>
   <%= link_to image_tag('/images/menue_suche.gif', :width => '134', :height => '60', :alt => 'Searches'), search_packages_path %>
   <%= link_to image_tag('/images/menue_hilfe.gif', :width => '134', :height => '60', :alt => 'Hilfe'), helps_path %>
   <%= link_to image_tag('/images/menue_kontakt.gif', :width => '134', :height => '60', :alt => 'Kontakt'), contacts_path %>
@@ -29,18 +30,18 @@
     <%= link_to '. packages',  packages_path%>
     <%= link_to '. search',  search_packages_path%>
     <%= link_to ". impressum ", impressums_path  %>
-    <%# if current_user %>
+    <% if current_user %>
 
-      <%#= link_to '. profiles', profiles_path%>
+      <%= link_to '. profiles', profiles_path%>
 
-      <%#  if (can? :manage, Content) || (can? :publish, Content) %>
-        <%#= link_to '. content', contents_path %>
-        <%#= link_to '. landing_page', landing_page_path %>
-      <%#  end %>
+      <%  if (can? :manage, Content) || (can? :publish, Content) %>
+        <%= link_to '. content', contents_path %>
+        <%= link_to '. landing_page', landing_page_path %>
+      <%  end %>
 
       <%= link_to '. logout', logout_path%>
 
-    <%# end %>
+    <% end %>
     <br>
   </span>
 

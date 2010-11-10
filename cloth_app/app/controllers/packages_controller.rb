@@ -4,11 +4,11 @@ class PackagesController < ApplicationController
   before_filter :init_package, :action => [:show, :edit, :update, :destroy]
   before_filter :init_content, :action => [:index, :show, :edit, :update]
   #before_filter :login_required
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   def index
-    @packages = Package.find_by_user_id(current_user.id)
-    @packages = @packages.to_a
+    @packages = Package.find_by_user_id(current_user.id) if current_user
+    @packages = @packages.to_a unless @packages.nil?
   end
 
   def show
