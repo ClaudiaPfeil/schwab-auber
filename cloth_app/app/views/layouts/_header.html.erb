@@ -6,7 +6,7 @@
 
   <%= link_to image_tag("/images/menue_home.gif", :width => '200', :height => '60', :alt => 'Home' ), root_path%>
   <%= link_to image_tag('/images/menue_profile.gif', :width => '134', :height => '60', :alt => 'Profile'), profiles_path%>
-  <% if can? :read, Package%>
+  <% if can? :read, Package %>
     <%= link_to image_tag("/images/menue_pakete.gif", :width => '134', :height => '60', :alt => 'Pakete' ), packages_path%>
   <% else %>
     <%= link_to image_tag("/images/menue_pakete.gif", :width => '134', :height => '60', :alt => 'Pakete'), search_packages_path %>
