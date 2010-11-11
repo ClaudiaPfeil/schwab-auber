@@ -17,7 +17,13 @@ class Ability
       can :create,  Package if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
       can :update,  Package if (user.is? :registered) || (user.is? :premium) || (user.is? :admin) 
       can :destroy, Package if (user.is? :admin)
-      can :search,  Package if (user.is? :guest) || (user.is? :registered) || (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :search,  Package if (user.is? :guest) || (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      
+      can :read,    Order if (user.is? :premium) || (user.is? :admin)
+      can :create,  Order if (user.is? :premium) || (user.is? :admin)
+      can :update,  Order if (user.is? :premium) || (user.is? :admin)
+      can :destroy, Order if (user.is? :premium) || (user.is? :admin)
+      can :search,  Order if (user.is? :premium) || (user.is? :admin)
 
 #      can :read,    Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
 #      can :create,  Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
