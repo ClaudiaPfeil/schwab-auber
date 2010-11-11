@@ -16,8 +16,8 @@
   <% end %>
 
   <%= package.inputs link_to I18n.t('rules'), '#', :rel => "test", :class => 'simpledialog' do %>
-    <%= package.input :accepted, :as => :radio, :hint => I18n.t('hint_accepted') %>
-    <%= package.input :confirmed, :as => :radio, :hint => I18n.t('hint_confirmed') %>
+    <%= package.input :accepted, :as => :boolean, :hint => I18n.t("hint_accepted") %>
+    <%= package.input :confirmed, :as => :boolean, :hint => I18n.t("hint_confirmed") %>
   <% end %>
 
   <%= package.input :user_id, :value => current_user.id, :as => :hidden %>

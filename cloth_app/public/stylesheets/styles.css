@@ -196,18 +196,22 @@ ol {
   
 }
 
-li#package_confirmed_input > fieldset > ol {
-  float: right;
+li#package_confirmed_input {
   margin-left: 250px;
+  margin-right: 5px;
 }
 
-li#package_accepted_input > fieldset > ol  {
-  float: right;
+li#package_accepted_input {
   margin-left: 250px;
+  margin-right: 5px;
 }
 
-li.accepted_false {
-  display: table-cell;
+input#package_accepted {
+  margin-right: 5px;
+}
+
+input#package_confirmed {
+  margin-right: 5px;
 }
 
 input {

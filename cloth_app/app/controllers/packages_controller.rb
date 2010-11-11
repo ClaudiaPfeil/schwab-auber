@@ -22,7 +22,7 @@ class PackagesController < ApplicationController
   def create
     @package = Package.new(params[:package])
     
-    if @package.confirmed ==1 && @package.accepted == 1 && @package.save
+    if @package.save
       redirect_to packages_path(@package), :notice => "Package created successfully"
     else
       render :action => 'new', :notice => "Package wasn't created"
@@ -33,7 +33,7 @@ class PackagesController < ApplicationController
   def edit; end
 
   def update
-    if @package.confirmed == 1 && @package.accepted == 1 && @package.update_attributes(params[:package])
+    if @package.update_attributes(params[:package])
       redirect_to packages_path(@package), :notice => "Package updated successfully"
     else
       render :action => 'edit', :notice => "Package wasn't updated"

@@ -2,7 +2,8 @@ class Package < ActiveRecord::Base
   
   belongs_to :user
 
-  validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors, :accepted, :confirmed
+  validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors
+  validates_numericality_of :accepted, :confirmed, :equal_to => 1
   
   attr_accessor :accepted, :confirmed
   accepts_nested_attributes_for :user, :allow_destroy => true
