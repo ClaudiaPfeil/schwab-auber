@@ -4,12 +4,12 @@
     <%= content.input :category %>
     <%= content.input :title %>
     <%= content.input :subtitle %>
-    <%= content.input :article, :input_html => {:cols => 40, :rows => 5} %>
+    <%= content.input :article, :input_html => {:cols => 40, :rows => 5} %><br>
     <%= content.input :image_file_name  %>
     <%= content.input :link %>
     <%= content.input :link_name %>
-    <%= content.input :image, :as => :file %>
-    <%= content.input :published %>
+    <p><%= content.input :image, :as => :file %></p>
+    <p><%= content.input :published, :as => :boolean %></p>
   <% end %>
 
   <%= content.buttons %>

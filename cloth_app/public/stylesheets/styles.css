@@ -196,8 +196,10 @@ ol {
   
 }
 
-input {
+label > input {
   float: right;
+}
+input {
   line-height: 1.5;
 }
 
@@ -207,7 +209,6 @@ input#remember_me {
 }
 
 textarea {
-  float: right;
   margin-righ: 0em;
   line-height: 1;
 }
@@ -224,20 +225,12 @@ li.file.optional {
   list-style-type: none;
 }
 
-li.file.optional > label {
-  margin-left: 14em;
-}
-
 li.file.optional > input {
   padding-right: 7em;
 }
 
 li.content_image_input.file.optional > label {
   text-align: left;
-}
-
-li.commit > input {
-  margin-right: 30em;
 }
 
 select {
@@ -257,6 +250,11 @@ li#package_sex_input.check_boxes.optional > fieldset > ol {
 
 li#package_sex_input.check_boxes.optional > fieldset > ol > li > label > input {
   float: none;
+}
+
+li.commit > input {
+  float: right;
+  margin-right: 18em;
 }
 
 input#search_key {
