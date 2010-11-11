@@ -2,7 +2,7 @@
 
   <%= package.inputs I18n.t('package') do  %>
     <p><%= package.input :name  %></p>
-    <p><%= package.input :sex, :as => :check_boxes, :collection => {"Junge" => 1, "Mädchen" => 2}%></p>
+    <p><%= package.input :sex, :as => :radio, :collection => [["Junge", false],["Mädchen", true]] %></p>
     <p><%= package.input :size %></p>
     <p><%= package.input :next_size %></p>
     <p><%= package.input :age %></p>
@@ -16,9 +16,11 @@
   <% end %>
 
   <%= package.inputs link_to I18n.t('rules'), '#', :rel => "test", :class => 'simpledialog' do %>
-    <%= package.input :accepted, :as => :boolean, :hint => I18n.t('hint_accepted') %>
-    <%= package.input :confirmed, :as => :boolean, :hint => I18n.t('hint_confirmed') %>
+    <%= package.input :accepted, :as => :radio, :hint => I18n.t('hint_accepted') %>
+    <%= package.input :confirmed, :as => :radio, :hint => I18n.t('hint_confirmed') %>
   <% end %>
+
+  <%= package.input :user_id, :value => current_user.id, :as => :hidden %>
 
   <%= package.buttons %>
 

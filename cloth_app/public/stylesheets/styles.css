@@ -196,9 +196,20 @@ ol {
   
 }
 
-label > input {
+li#package_confirmed_input > fieldset > ol {
   float: right;
+  margin-left: 250px;
 }
+
+li#package_accepted_input > fieldset > ol  {
+  float: right;
+  margin-left: 250px;
+}
+
+li.accepted_false {
+  display: table-cell;
+}
+
 input {
   line-height: 1.5;
 }
@@ -239,16 +250,21 @@ select {
 
 radio.optional { list-style-type: none;}
 
-li#package_sex_input.check_boxes.optional > fieldset {
+li.optional > fieldset {
   padding: 0;
   margin: 0;
 }
 
-li#package_sex_input.check_boxes.optional > fieldset > ol {
+li.optional > fieldset > ol {
   margin-left: 240px;
 }
 
-li#package_sex_input.check_boxes.optional > fieldset > ol > li > label > input {
+li.optional > fieldset > ol > li {
+  font-style: normal;
+  display: block;
+}
+
+li.optional > fieldset > ol > li > label > input {
   float: none;
 }
 
@@ -257,7 +273,7 @@ li.commit > input {
   margin-right: 18em;
 }
 
-li.commit > input#package_submit.create {
+li.commit > input#package_submit {
   float: right;
   margin-right: 35em;
 }

@@ -1,12 +1,15 @@
 class Package < ActiveRecord::Base
   belongs_to :user
+  has_one :order
 
   validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors, :accepted, :confirmed
-  before_filter :confirmed?, :action => [:create, :update]
-  before_filter :accepted?, :action => [:create, :update]
-  before_filter :enough_clothes?, :action => [:create, :update]
+  before_save do
+    confirmed?
+    accepted?
+    enough_clothes?
+  end
 
-  attr_accessor :previewed
+  attr_accessor :previewed, :confirmed, :accepted
 
   scope :size => lambda  { |search_key|
                            where(' order_status = :order_status

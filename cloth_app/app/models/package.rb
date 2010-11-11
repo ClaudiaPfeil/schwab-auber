@@ -4,12 +4,6 @@ class Package < ActiveRecord::Base
 
   validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors, :accepted, :confirmed
   
-  before_save do
-    enough_clothes?
-    has_accepted_rules?
-    has_confirmed_rules?
-  end
-  
   attr_accessor :accepted, :confirmed
   accepts_nested_attributes_for :user, :allow_destroy => true
 
@@ -29,19 +23,5 @@ class Package < ActiveRecord::Base
   def has_user?
     true unless self.user.nil?
   end
-
-  private
-
-    def has_confirmed_rules?
-      true if confirmed == true
-    end
-
-    def has_accepted_rules?
-      true if accepted == true
-    end
-
-    def enough_clothes?
-      true if amount_clothes.to_i > 9
-    end
   
 end
