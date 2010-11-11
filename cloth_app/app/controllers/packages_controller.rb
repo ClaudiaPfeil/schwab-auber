@@ -3,8 +3,6 @@ class PackagesController < ApplicationController
   
   before_filter :init_package, :action => [:show, :edit, :update, :destroy]
   before_filter :init_content, :action => [:index, :show, :edit, :update]
-  #before_filter :login_required
-  #load_and_authorize_resource
 
   def index
     @packages = Package.where(:user_id => current_user.id) if current_user
@@ -49,7 +47,7 @@ class PackagesController < ApplicationController
     search_type, search_key = params[:search_type], params[:search_key]
     if search_type == 'sex'
       if search_key == 'Junge'
-        search_key = 2
+        search_key = 0
       elsif search_key == 'Mädchen'
         search_key = 1
       end
