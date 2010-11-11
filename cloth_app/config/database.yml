@@ -1,0 +1,21 @@
+development: &db
+ adapter: mysql
+ encoding: utf8
+ pool: 5
+ timeout:  5000
+ database: cloth_app_dev
+ username: ronaldpfeil
+ password: trockenbau-ronaldpfeil
+  
+
+test:
+  <<: *db
+  database: home_app_test
+  
+
+production:
+  <<: *db
+  database: db_13811513n4
+  username: user13811513n4
+  password: cleecommunications
+  host:     zeta.railshoster.de
