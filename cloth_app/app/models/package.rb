@@ -4,7 +4,8 @@ class Package < ActiveRecord::Base
 
   validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors
   validates_numericality_of :accepted, :confirmed, :equal_to => 1
-  
+  validates_numericality_of :amount_clothes, :greater_than => 9
+
   attr_accessor :accepted, :confirmed
   accepts_nested_attributes_for :user, :allow_destroy => true
 
