@@ -245,7 +245,7 @@ li#package_sex_input.check_boxes.optional > fieldset {
 }
 
 li#package_sex_input.check_boxes.optional > fieldset > ol {
-  margin-left: 200px;
+  margin-left: 240px;
 }
 
 li#package_sex_input.check_boxes.optional > fieldset > ol > li > label > input {
@@ -255,6 +255,11 @@ li#package_sex_input.check_boxes.optional > fieldset > ol > li > label > input {
 li.commit > input {
   float: right;
   margin-right: 18em;
+}
+
+li.commit > input#package_submit.create {
+  float: right;
+  margin-right: 35em;
 }
 
 input#search_key {

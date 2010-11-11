@@ -79,7 +79,7 @@ caption {background:#eee;}
 .bottom {margin-bottom:0;padding-bottom:0;}
 
 /* forms.css */
-label {font-weight:bold;width: 200px;vertical-align: top;}
+label {font-weight:bold;width: 250px;vertical-align: top;}
 fieldset {padding:0 1.4em 1.4em 1.4em;margin:0 0 1.5em 0;border:none;}
 legend {font-weight:bold;;margin-top:-0.2em;margin-bottom:1em;}
 fieldset, #IE8#HACK {padding-top:1.4em;}
