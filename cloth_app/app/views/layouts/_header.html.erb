@@ -29,10 +29,10 @@
     <%= link_to 'home', root_path %>
     <%= link_to '. packages',  packages_path%>
     <%= link_to '. search',  search_packages_path%>
-    <%= link_to ". impressum ", impressums_path  %>
+    <%#= link_to ". impressum ", impressums_path  %>
     <% if current_user %>
 
-      <%= link_to '. profiles', profiles_path%>
+      <%#= link_to '. profiles', profiles_path%>
 
       <%  if (can? :manage, Content) || (can? :publish, Content) %>
         <%= link_to '. content', contents_path %>
