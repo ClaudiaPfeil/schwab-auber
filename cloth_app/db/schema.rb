@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110125517) do
+ActiveRecord::Schema.define(:version => 20101112130448) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,22 @@ ActiveRecord::Schema.define(:version => 20101110125517) do
     t.boolean  "published"
   end
 
+  create_table "orders", :force => true do |t|
+    t.string   "order_number"
+    t.string   "package_number"
+    t.integer  "user_id"
+    t.integer  "package_id"
+    t.integer  "evaluation"
+    t.text     "eva_notice"
+    t.date     "eva_date_created_at"
+    t.date     "eva_date_updated_at"
+    t.text     "notice"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "bill_number"
+    t.integer  "received",            :limit => 1
+  end
+
   create_table "packages", :force => true do |t|
     t.string   "name"
     t.integer  "size"
@@ -48,6 +64,7 @@ ActiveRecord::Schema.define(:version => 20101110125517) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
+    t.string   "serial_number"
   end
 
   create_table "users", :force => true do |t|

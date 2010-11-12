@@ -10,11 +10,13 @@ ClothApp::Application.routes.draw do
   resources :profiles
   resources :packages do
       get :search, :on => :collection
+      get :order, :on => :member
   end
   resources :contacts
   resources :searches
   resources :helps
   resources :impressums
+  resources :orders
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout

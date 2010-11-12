@@ -1,0 +1,11 @@
+<div class=".span-2 .last">
+  <% Model = locals[:record].class.to_s.camelize %>
+
+  <% if can? :update, Model %>
+    <%= link_to  "Edit", edit_Model_path(menu), :id => 'edit'%>
+  <% end %>
+  <% end %>
+  <% if can? :destroy, Model %>
+    <%= link_to "Destroy", menu, :confirm => 'Möchten sie den #{I18n.t(menu)} wirklich löschen?' , :method => 'delete' %>
+  <%end%>
+</div>

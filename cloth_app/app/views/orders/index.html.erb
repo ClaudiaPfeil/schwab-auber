@@ -1,0 +1,23 @@
+<%= I18n.t("orders") %>
+
+<p align="right">
+  <% if can? :create, Order %>
+    <%= link_to "New", new_order_path %>
+  <%end%>
+</p>
+
+<div class="tr">
+  <% @orders.columns.each do |column| %>
+    <div class=".span-2"><b><%=  I18n.t(column)%></b> </div>
+  <% end %>
+</div>
+
+<% @orders.each do |order| %>
+  <div class="tr">
+  <% @orders.columns.each do |column| %>
+    <div class="td"><%= order.column%> </div>
+  <% end %>
+  <%#= render '/layouts/submenue', :menue => order %>
+  </div>
+<% end %>
+

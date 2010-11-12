@@ -16,6 +16,10 @@ class Package < ActiveRecord::Base
     where(sql, :search_key => "%#{search_key}%").default_ordered
   }
 
+  before_save do
+    set_serial_number
+  end
+
   SearchTypes  = %w(name sex size label)
 
   def destroyable?
@@ -25,5 +29,11 @@ class Package < ActiveRecord::Base
   def has_user?
     true unless self.user.nil?
   end
+
+  private
+
+    def set_serial_number
+      self.serial_number = CPUtils::NumberGenerator.alphanumeric('kk', 6)
+    end
   
 end

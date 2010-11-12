@@ -23,7 +23,10 @@
     <div class="td.span-2"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
     <div class="td .span-2 .last">
       <% if can? :show, Package %>
-        <%= link_to "Detail", package_path(package) %>
+        <%= link_to I18n.t("detail"), package_path(package) %>
+      <% end %>
+      <% if can? :create, Order %>
+        <%= link_to I18n.t("order"), order_package_path(package) %>
       <% end %>
     </div>
     

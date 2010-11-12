@@ -1,9 +1,8 @@
 class PackagesController < ApplicationController
   include Cms
   
-  before_filter :init_package, :action => [:show, :edit, :update, :destroy]
-  before_filter :init_content, :action => [:index, :show, :edit, :update]
-  before_filter :authenticate
+  before_filter :init_package, :action => [:show, :edit, :update, :destroy, :order]
+  before_filter :init_content, :action => [:index, :show, :edit, :update, :order]
 
   def index
     @packages = Package.where(:user_id => current_user.id) if current_user
@@ -11,7 +10,7 @@ class PackagesController < ApplicationController
   end
 
   def show
-    #redirect_to package_path(@package)
+    
   end
 
   def new
@@ -22,9 +21,9 @@ class PackagesController < ApplicationController
     @package = Package.new(params[:package])
     
     if @package.save
-      redirect_to packages_path(@package), :notice => "Package created successfully"
+      redirect_to packages_path(@package), :notice => :package_created
     else
-      render :action => 'new', :notice => "Package wasn't created"
+      render :action => 'new', :notice => :package_not_created
     end
     
   end
@@ -33,9 +32,9 @@ class PackagesController < ApplicationController
 
   def update
     if @package.update_attributes(params[:package])
-      redirect_to packages_path(@package), :notice => "Package updated successfully"
+      redirect_to packages_path(@package), :notice => :package_updated
     else
-      render :action => 'edit', :notice => "Package wasn't updated"
+      render :action => 'edit', :notice => :package_not_updated#
     end
   end
 
@@ -54,6 +53,12 @@ class PackagesController < ApplicationController
       end
     end
     @packages = Package.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
+  end
+
+  def order
+    #create order
+    orders = OrdersController.new
+    orders.create
   end
 
   private
