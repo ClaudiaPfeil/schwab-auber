@@ -4,22 +4,29 @@
 
 <% unless @packages.nil? %>
 <div class="tr">
-  <div class="td"><b><%= I18n.t("name")%></b> </div>
-  <div class="td"><b><%= I18n.t("sex")%></b> </div>
-  <div class="td"><b><%= I18n.t("size")%></b> </div>
-  <div class="td"><b><%= I18n.t("label")%></b> </div>
-  <div class="td"><b><%= I18n.t("amount")%></b> </div>
-  <div class="td"><b><%= I18n.t("description")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("name")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("sex")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("size")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("label")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("amount")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("description")%></b> </div>
+  <div class="td .span-2 .last">&nbsp;</div>
 </div>
 
 <% @packages.each do |package| %>
   <div class="tr">
-    <div class="td"><%= package.name%> </div>
-    <div class="td"><%= package.sex ? I18n.t("girl") : I18n.t("boy")%> </div>
-    <div class="td"><%= package.size%> </div>
-    <div class="td"><%= package.label%> </div>
-    <div class="td"><%= package.amount_clothes%> </div>
-    <div class="td"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
+    <div class="td .span-2"><%= package.name%> </div>
+    <div class="td .span-2"><%= package.sex ? I18n.t("girl") : I18n.t("boy")%> </div>
+    <div class="td .span-2"><%= package.size%> </div>
+    <div class="td .span-2"><%= package.label%> </div>
+    <div class="td .span-2"><%= package.amount_clothes%> </div>
+    <div class="td.span-2"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
+    <div class="td .span-2 .last">
+      <% if can? :show, Package %>
+        <%= link_to "Detail", package_path(package) %>
+      <% end %>
+    </div>
+    
   </div>
 <% end %>
 

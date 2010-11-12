@@ -3,6 +3,7 @@ class PackagesController < ApplicationController
   
   before_filter :init_package, :action => [:show, :edit, :update, :destroy]
   before_filter :init_content, :action => [:index, :show, :edit, :update]
+  before_filter :authenticate
 
   def index
     @packages = Package.where(:user_id => current_user.id) if current_user
@@ -10,7 +11,7 @@ class PackagesController < ApplicationController
   end
 
   def show
-    redirect_to packages_path(@package)
+    #redirect_to package_path(@package)
   end
 
   def new

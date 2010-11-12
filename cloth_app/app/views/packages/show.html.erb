@@ -1,26 +1,26 @@
-<%= "Package" %>
+<%= semantic_form_for @package do |package| %>
 
-<div class="tr">
-  <div class="td"><b><%= "Name"%></b> </div>
-  <div class="td"><b><%= "Sex"%></b> </div>
-  <div class="td"><b><%= "Size"%></b> </div>
-  <div class="td"><b><%= "Amount"%></b> </div>
-  <div class="td"><b><%= "Description"%></b> </div>
-</div>
+  <%= package.inputs I18n.t('package') do  %>
+    <p><%= package.input :name, :input_html => {:readonly => true}  %></p>
+    <p><%= package.input :sex, :as => :radio, :collection => [["Junge", false],["Mädchen", true]],
+                               :input_html => {:readonly => true}
+        %></p>
+    <p><%= package.input :size, :input_html => {:readonly => true} %></p>
+    <p><%= package.input :next_size, :input_html => {:readonly => true} %></p>
+    <p><%= package.input :age, :input_html => {:readonly => true} %></p>
+    <p><%= package.input :saison, :input_html => {:readonly => true} %></p>
+    <%= package.input :kind, :hint => I18n.t('hint_kind'),
+                             :input_html => {:readonly => true}
+        %><br><br>
+    <p><%= package.input :amount_clothes, :hint => I18n.t('hint_amount_clothes'),
+                                          :input_html => {:readonly => true}
+        %></p>
+    <p><%= package.input :label, :input_html => {:readonly => true} %></p>
+    <p><%= package.input :amount_labels, :input_html => {:readonly => true} %></p>
+    <p><%= package.input :colors, :hint => I18n.t('hint_colors'),
+                                  :input_html => {:readonly => true}
+        %></p>
+    <p><%= package.input :notice, :input_html => {:readonly => true}%></p>
+  <% end %>
 
-<div class="tr">
-  <div class="td"><%= package.name%> </div>
-  <div class="td"><%= package.sex%> </div>
-  <div class="td"><%= package.size%> </div>
-  <div class="td"><%= package.amount%> </div>
-  <div class="td"><%= description%> </div>
-
-  <% if can? :confirm && package.confirm.nil?, package %>
-    <div class="td"><%= link_to "Confirm", package, :confirm => 'Do you like to confirm the rules?', :method => :create %> </div>
-    <div class="td"><%= link_to "Cancel", package, :confirm => 'Do you like to cancel?', :method => :index %> </div>
-  <%end%>
-    
-</div>
-
-
-
+<% end %>
