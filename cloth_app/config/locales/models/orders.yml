@@ -1,0 +1,18 @@
+de:
+  order:  Kleiderpaket bestellen
+  orders: Bestellungen
+  bill_number: Rechnungs-Nr.
+  order_number: Bestell-Nr.
+  package_number: Paket-Nr.
+  created_at: Bestellt am
+  updated_at: Erhalten am
+  received: angekommen?
+  evaluation: Bewertung
+  evaluation_notice: Hinweis
+  eva_date_created_at: Bewertung erstellt am
+  eva_date_updated_at: Bewertung aktualisiert am
+  notice: Bemerkung
+  id: Nummer
+  user_id: Nutzer
+  package_id: Kleiderpaket-Nr.
+  eva_notice: Hinweis zur Bewertung

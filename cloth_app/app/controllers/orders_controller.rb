@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
+  include Cms
   before_filter :init_order, :actions => [:show, :edit, :update, :destroy]
-  before_filter :init_content, :actions => [:index, :show]
+  #before_filter :init_content, :actions => [:index, :show]
 
   def index
     @orders = Order.where(:user_id => current_user.id) if current_user
@@ -18,7 +19,8 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new()
     if @order.save
-      redirect_to search_package_path, :notice => :order_created
+      #redirect_to search_packages_path, :notice => :order_created
+      render :action => 'search', :controller => 'packages', :notice => :order_created
     else
       render :action => 'new'
     end

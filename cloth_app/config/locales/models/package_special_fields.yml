@@ -1,8 +1,0 @@
-de:
-  package:
-    search_types:
-      label:  Marke
-      name: Bezeichnung Kleidungspaket
-      sex:  Junge oder Mädchen?
-      amount: Anzahl der Kleidungsstücke
-      saison: Jahreszeit

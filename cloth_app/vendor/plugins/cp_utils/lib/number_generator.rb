@@ -1,4 +1,4 @@
-class CPUtils::NumberGenerator
+class NumberGenerator
 
   def self.alphanumeric(options = {})
     prefix = options[:prefix].to_s

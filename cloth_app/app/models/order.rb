@@ -1,12 +1,12 @@
 class Order < ActiveRecord::Base
-  include NumberGenerator
   belongs_to :user
   belongs_to :package
+
+  validates_uniqueness_of :order_number, :bill_number, :on => :save
 
   before_save do
     create_order_number
     create_bill_number
-    package.serial_number.blank? ? create_package_number : self.package_number = package.serial_number
   end
 
   def is_destroyable?
@@ -19,12 +19,8 @@ class Order < ActiveRecord::Base
       self.order_number = NumberGenerator.timebased
     end
 
-    def create_package_number
-      self.package_number = NumberGenerator.timebased
-    end
-
-    def bill_number
-      self.bill_number = CPUtils::NumberGenerator.timebased
+    def create_bill_number
+      self.bill_number = NumberGenerator.timebased
     end
   
 end

@@ -7,15 +7,17 @@
 </p>
 
 <div class="tr">
-  <% @orders.columns.each do |column| %>
-    <div class=".span-2"><b><%=  I18n.t(column)%></b> </div>
-  <% end %>
+  <%# @orders.each do |order| %>
+    <% Order.column_names.to_a.each do |column| %>
+      <div class="td .span-2"><b><%=  I18n.t(column)%></b> </div>
+    <% end %>
+  <%# end %>
 </div>
 
 <% @orders.each do |order| %>
   <div class="tr">
-  <% @orders.columns.each do |column| %>
-    <div class="td"><%= order.column%> </div>
+  <% Order.columns.each do |name| %>  
+    <div class="td"><%= order.name%> </div>
   <% end %>
   <%#= render '/layouts/submenue', :menue => order %>
   </div>

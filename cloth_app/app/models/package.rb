@@ -33,7 +33,7 @@ class Package < ActiveRecord::Base
   private
 
     def set_serial_number
-      self.serial_number = CPUtils::NumberGenerator.alphanumeric('kk', 6)
+      self.serial_number = CpUtils::NumberGenerator.alphanumeric('kk', 6)
     end
   
 end

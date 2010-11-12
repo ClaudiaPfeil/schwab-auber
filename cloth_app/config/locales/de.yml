@@ -8,37 +8,7 @@ de:
   amount: Anzahl Kleidungsstücke
   description:  Beschreibung
   name: Kleidungspaket
-  boy: Junge
-  girl: Mädchen
-  hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
-  show_packages: Kleidungspakete
-  package: Kleidungspaket
-  rules: Regeln
-  hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
-  hint_colors: 'Die drei überwiegenden Farben des Kleiderpakets, z.B.: rot-grün-blau.'
-  hint_accepted:  Ich habe die Regeln akzeptiert.
-  hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
-  hint_sex: Sind die Kleidungsstücke von einem Jungen?
-  hint_password_confirmation: Bitte bestätigen sie ihr Password!
-  search_packages: Suche nach Kleidungspaketen
-  label: Marke
-  subject_signup:  "KidsKarton Konto Aktivierung"
-  signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
-  signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
-  subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
-  message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
-  detail: Details
-  order:  Kleiderpaket bestellen
-  orders:
-    order_created: Bestellung erfolgreich erstellt
-    order_updated: Bestellung erfolgreich aktualisiert
-    order_not_created:  Bestellung wurde nicht erstellt
-    order_not_updated:  Bestellung wurde nicht aktualisiert   
   packages:
-    package_created: Kleiderpaket erfolgreich eingestellt
-    package_not_created: Kleiderpaket wurde nicht erstellt
-    package_updated: Kleiderpaket erfolgreich aktualisiert
-    package_not_updated:  Kleiderpaket wurde nicht aktualisiert
     search_types:
       name: Bezeichnung Kleidungspaket
       size: Kleidergröße
@@ -46,11 +16,11 @@ de:
       sex:  Junge oder Mädchen?
       label:  Marke
   mailers/user_mailer:
-      subject_signup:  "KidsKarton Konto Aktivierung"
-      signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
-      signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
-      subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
-      message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
+    subject_signup:  "KidsKarton Konto Aktivierung"
+    signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
+    signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
+    subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
+    message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
   date:
     formats:
       default: "%d.%m.%Y"
