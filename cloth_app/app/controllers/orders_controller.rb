@@ -21,16 +21,21 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new()
+    @order = Order.new(params[:order])
+
     package = Package.find_by_id(params[:order][:package_id])
     @order.package_number = package.serial_number unless package.serial_number.nil?
-    @order.package_id = params[:order][:package_id]
-    @order.user_id = params[:order][:user_id]
-    if @order.save
-      redirect_to order_path(@order), :notice => I18n.t(:order_created)
+    
+    if @order.check_change_principle == true
+      if @order.save
+        redirect_to order_path(@order), :notice => I18n.t(:order_created)
+      else
+        render :action => 'new', :notice => I18n.t(:order_not_created)
+      end
     else
-      render :action => 'new', :notice => I18n.t(:order_not_created)
+      render :action => 'new', :notice => I18n.t(:equal_change_principle)
     end
+    
   end
 
   def edit; end
@@ -45,6 +50,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy if @order.is_destroyable?
+    @order.package.update_attribute(:state, 0)
     redirect_to orders_path, :notice => :order_deleted#'Order successfully deleted'
   end
 

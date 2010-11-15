@@ -17,7 +17,7 @@ class Package < ActiveRecord::Base
   }
 
   before_save do
-    set_serial_number
+    set_serial_number if self.serial_number.nil? 
   end
 
   SearchTypes  = %w(name sex size label)
@@ -33,7 +33,7 @@ class Package < ActiveRecord::Base
   private
 
     def set_serial_number
-      self.serial_number = NumberGenerator.alphanumeric({:prefix => "kk-", :length => 8})
+      self.order.package_number.nil? ? self.serial_number = NumberGenerator.alphanumeric({:prefix => "kk-", :length => 8}) : self.serial_number = self.order.package_number
     end
   
 end

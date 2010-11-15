@@ -10,6 +10,7 @@
   <div class="td .span-2"><b><%= I18n.t("label")%></b> </div>
   <div class="td .span-2"><b><%= I18n.t("amount")%></b> </div>
   <div class="td .span-2"><b><%= I18n.t("description")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("state")%></b> </div>
   <div class="td .span-2 .last">&nbsp;</div>
 </div>
 
@@ -21,11 +22,12 @@
     <div class="td .span-2"><%= package.label%> </div>
     <div class="td .span-2"><%= package.amount_clothes%> </div>
     <div class="td.span-2"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
+    <div class="td .span-2"><%= package.state == 0 ? I18n.t(:available) : I18n.t(:ordered) %> </div>
     <div class="td .span-2 .last">
       <% if can? :show, Package %>
         <%= link_to I18n.t(:detail), package_path(package) %>
       <% end %>
-      <% if can? :create, Order %>
+      <% if (can? :create, Order) && package.state == 0 %>
         <%= link_to I18n.t(:order), order_package_path(package) %>
       <% end %>
     </div>

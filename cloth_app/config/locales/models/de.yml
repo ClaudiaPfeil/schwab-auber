@@ -64,6 +64,8 @@ de:
         eva_date_updated_at: Bewertung aktualisiert am
         notice: Bemerkung
         eva_notice: Hinweis zur Bewertung
+        user_id: Kunde
+        package_id: Kleiderpaket
       packages:
         search_types:
           name: Bezeichnung Kleidungspaket

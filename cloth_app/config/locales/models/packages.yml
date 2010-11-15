@@ -29,6 +29,9 @@ de:
   edit: Editieren
   destroy: Entfernen
   confirm_destroy: Möchten sie das Kleiderpaket wirklich löschen?
+  state: Status
+  available: Verfügbar
+  ordered: Bereits vergriffen
   packages:
    search_types:
      name: Bezeichnung Kleidungspaket

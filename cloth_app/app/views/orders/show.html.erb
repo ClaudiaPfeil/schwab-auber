@@ -6,15 +6,15 @@
     <p><%= order.input :package_number, :input_html => {:readonly => true} %></p>
     <p><%= order.input :bill_number, :input_html => {:readonly => true} %></p>
     <p><%= order.input :received, :as => :boolean, :input_html => {:readonly => true} %></p>
-    <p><%= order.input :created_at, :input_html => {:readonly => true} %></p>
-    <p><%= order.input :updated_at, :input_html => {:readonly => true}%></p>
+    <p><%= order.input :created_at, :input_html => {:readonly => true}, :as => :datepicker %></p>
+    <p><%= order.input :updated_at, :input_html => {:readonly => true}, :as => :datepicker%></p>
     <p><%= order.input :notice, :input_html => {:readonly => true}%></p>
 
     <%= order.inputs I18n.t(:evaluation) do %>
       <p><%= order.input :evaluation, :input_html => {:readonly => true} %></p>
       <p><%= order.input :eva_notice, :input_html => {:readonly => true} %></p>
-      <p><%= order.input :eva_date_created_at, :input_html => {:readonly => true} %></p>
-      <p><%= order.input :eva_date_updated_at, :input_html => {:readonly => true} %></p>
+      <p><%= order.input :eva_date_created_at, :as => :datepicker, :input_html => {:readonly => true} %></p>
+      <p><%= order.input :eva_date_updated_at, :as => :datepicker, :input_html => {:readonly => true} %></p>
     <% end %>
 
   <% end %>

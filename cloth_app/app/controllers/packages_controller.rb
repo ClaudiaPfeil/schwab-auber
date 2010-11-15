@@ -62,11 +62,17 @@ class PackagesController < ApplicationController
     order.package_number = package.serial_number
     order.package_id = package.id
     order.user_id = current_user.id
-    if order.save
-      render :action => 'search', :notice => :order_created
+    
+    if order.check_change_principle == true
+      if order.save
+        render :action => 'search', :notice => :order_created
+      else
+        render :action => 'search', :notice => :order_not_created
+      end
     else
-      render :action => 'search', :notice => :order_not_created
+      render :action => 'new', :notice => I18n.t(:equal_change_principle)
     end
+    
   end
 
   private

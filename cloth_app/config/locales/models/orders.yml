@@ -14,7 +14,7 @@ de:
   notice: Bemerkung
   id: Nummer
   user_id: Nutzer
-  package_id: Kleiderpaket-Nr.
+  package_id: Kleiderpaket
   eva_notice: Hinweis zur Bewertung
   confirm_order: Möchten sie die Bestellung wirklich stornieren?
   delete: Stornieren
