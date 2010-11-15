@@ -4,13 +4,17 @@ class OrdersController < ApplicationController
   #before_filter :init_content, :actions => [:index, :show]
 
   def index
-    @orders = Order.where(:user_id => current_user.id) if current_user
-    @orders = @orders.to_a unless @orders.nil?
+    if current_user.is? :admin
+      @orders = Order.all
+      @orders = @orders.to_a unless @orders.nil?
+    else
+      @orders = Order.where(:user_id => current_user.id) if current_user
+      @orders = @orders.to_a unless @orders.nil?
+    end
+    
   end
 
-  def show
-    redirect_to show_orders_path(@order)
-  end
+  def show; end
 
   def new
     @order = Order.new()
@@ -18,11 +22,14 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new()
+    package = Package.find_by_id(params[:order][:package_id])
+    @order.package_id = params[:order][:package_id]
+    @order.package_number = package.serial_number
+    @order.user_id = current_user.id
     if @order.save
-      #redirect_to search_packages_path, :notice => :order_created
-      render :action => 'search', :controller => 'packages', :notice => :order_created
+      redirect_to order_path(@order), :notice => I18n.t(:order_created)
     else
-      render :action => 'new'
+      false
     end
   end
 
@@ -37,7 +44,7 @@ class OrdersController < ApplicationController
   end
 
   def destroy
-    @order.destroy if @order.destroyable?
+    @order.destroy if @order.is_destroyable?
     redirect_to orders_path, :notice => :order_deleted#'Order successfully deleted'
   end
 

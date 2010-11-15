@@ -1,5 +1,5 @@
 de:
-  order:  Kleiderpaket bestellen
+  order:  Bestellen
   orders: Bestellungen
   bill_number: Rechnungs-Nr.
   order_number: Bestell-Nr.
@@ -16,3 +16,5 @@ de:
   user_id: Nutzer
   package_id: Kleiderpaket-Nr.
   eva_notice: Hinweis zur Bewertung
+  confirm_order: Möchten sie die Bestellung wirklich stornieren?
+  delete: Stornieren

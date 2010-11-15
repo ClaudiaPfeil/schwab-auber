@@ -25,10 +25,10 @@
       <div class="td"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
       <div class="td">
         <% if can? :update, package %>
-         <%= link_to  "Edit", edit_package_path(package)%>
+         <%= link_to  I18n.t("edit"), edit_package_path(package)%>
         <% end %>
         <% if can? :destroy, package %>
-          <%= link_to "Destroy", package, :confirm => 'Möchten sie das Packet wirklich löschen?', :method => :delete %>
+          <%= link_to I18n.t("destroy"), package, :confirm => I18n.t(:confirm_destroy), :method => :delete %>
         <%end%>
       </div>
     </div>

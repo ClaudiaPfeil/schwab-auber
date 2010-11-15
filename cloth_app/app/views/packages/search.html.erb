@@ -16,17 +16,17 @@
 <% @packages.each do |package| %>
   <div class="tr">
     <div class="td .span-2"><%= package.name%> </div>
-    <div class="td .span-2"><%= package.sex ? I18n.t("girl") : I18n.t("boy")%> </div>
+    <div class="td .span-2"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
     <div class="td .span-2"><%= package.size%> </div>
     <div class="td .span-2"><%= package.label%> </div>
     <div class="td .span-2"><%= package.amount_clothes%> </div>
     <div class="td.span-2"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
     <div class="td .span-2 .last">
       <% if can? :show, Package %>
-        <%= link_to I18n.t("detail"), package_path(package) %>
+        <%= link_to I18n.t(:detail), package_path(package) %>
       <% end %>
       <% if can? :create, Order %>
-        <%= link_to I18n.t("order"), order_package_path(package) %>
+        <%= link_to I18n.t(:order), order_package_path(package) %>
       <% end %>
     </div>
     

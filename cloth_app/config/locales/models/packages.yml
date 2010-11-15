@@ -1,36 +1,40 @@
 de:
- packages:
+  search_packages: Suche nach Kleidungspaketen
+  show_packages: Anzeige Kleidungspaket
+  package: Kleidungspaket
+  boy: Junge
+  girl: Mädchen
+  hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
+  show_packages: Kleidungspakete
+  package: Kleidungspaket
+  rules: Regeln
+  hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
+  hint_colors: 'Die drei überwiegenden Farben des Kleiderpakets, z.B.: rot-grün-blau.'
+  hint_accepted:  Ich habe die Regeln akzeptiert.
+  hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
+  hint_sex: Sind die Kleidungsstücke von einem Jungen?
+  hint_password_confirmation: Bitte bestätigen sie ihr Password!
+  label: Marke
+  subject_signup:  "KidsKarton Konto Aktivierung"
+  signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
+  signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
+  subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
+  message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
+  detail: Details
+  packages: Kleiderpakete
+  package_created: Kleiderpaket erfolgreich eingestellt
+  package_not_created: Kleiderpaket wurde nicht erstellt
+  package_updated: Kleiderpaket erfolgreich aktualisiert
+  package_not_updated:  Kleiderpaket wurde nicht aktualisiert
+  edit: Editieren
+  destroy: Entfernen
+  confirm_destroy: Möchten sie das Kleiderpaket wirklich löschen?
+  packages:
    search_types:
      name: Bezeichnung Kleidungspaket
      size: Kleidergröße
      amount: Anzahl Kleidungsstücken
      sex:  Junge oder Mädchen?
      label:  Marke
- search_packages: Suche nach Kleidungspaketen
- show_packages: Anzeige Kleidungspaket
- package: Kleidungspaket
- boy: Junge
- girl: Mädchen
- hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
- show_packages: Kleidungspakete
- package: Kleidungspaket
- rules: Regeln
- hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
- hint_colors: 'Die drei überwiegenden Farben des Kleiderpakets, z.B.: rot-grün-blau.'
- hint_accepted:  Ich habe die Regeln akzeptiert.
- hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
- hint_sex: Sind die Kleidungsstücke von einem Jungen?
- hint_password_confirmation: Bitte bestätigen sie ihr Password!
- label: Marke
- subject_signup:  "KidsKarton Konto Aktivierung"
- signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
- signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
- subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
- message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
- detail: Details
- packages: Kleiderpakete
- package_created: Kleiderpaket erfolgreich eingestellt
- package_not_created: Kleiderpaket wurde nicht erstellt
- package_updated: Kleiderpaket erfolgreich aktualisiert
- package_not_updated:  Kleiderpaket wurde nicht aktualisiert
+   
   

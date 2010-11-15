@@ -57,8 +57,16 @@ class PackagesController < ApplicationController
 
   def order
     #create order
-    orders = OrdersController.new
-    orders.create
+    order = Order.new()
+    package = Package.find_by_id(params[:id])
+    order.package_number = package.serial_number
+    order.package_id = package.id
+    order.user_id = current_user.id
+    if order.save
+      render :action => 'search', :notice => :order_created
+    else
+      render :action => 'search', :notice => :order_not_created
+    end
   end
 
   private
