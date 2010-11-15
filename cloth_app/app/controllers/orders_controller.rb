@@ -23,13 +23,13 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new()
     package = Package.find_by_id(params[:order][:package_id])
+    @order.package_number = package.serial_number unless package.serial_number.nil?
     @order.package_id = params[:order][:package_id]
-    @order.package_number = package.serial_number
-    @order.user_id = current_user.id
+    @order.user_id = params[:order][:user_id]
     if @order.save
       redirect_to order_path(@order), :notice => I18n.t(:order_created)
     else
-      false
+      render :action => 'new', :notice => I18n.t(:order_not_created)
     end
   end
 
@@ -56,7 +56,11 @@ class OrdersController < ApplicationController
   private
 
     def init_order
-      init_current_object { @order = Order.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+      if current_user.is? :admin
+        init_current_object { @order = Order.find_by_id(params[:id]) } unless current_user.nil?
+      else
+        init_current_object { @order = Order.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+      end
     end
 
     def init_content
