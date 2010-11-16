@@ -2,7 +2,6 @@ class PackagesController < ApplicationController
   include Cms
   
   before_filter :init_package, :action => [:show, :edit, :update, :destroy, :order]
-  before_filter :init_content, :action => [:index, :show, :edit, :update, :order]
 
   def index
     @packages = Package.where(:user_id => current_user.id) if current_user
@@ -79,10 +78,6 @@ class PackagesController < ApplicationController
 
     def init_package
       init_current_object { @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
-    end
-
-    def init_content
-      @contents = get_content("Package")
     end
 
     def init_current_object
