@@ -1,5 +1,7 @@
 <%= semantic_form_for @package do |package| %>
 
+  <%=  get_notices %>
+
   <%= package.inputs I18n.t('package') do  %>
     <p><%= package.input :name  %></p>
     <p><%= package.input :sex, :as => :radio, :collection => [["Junge", false],["Mädchen", true]] %></p>

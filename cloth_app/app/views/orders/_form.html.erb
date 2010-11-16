@@ -1,14 +1,27 @@
 <%= semantic_form_for @order do |order|  %>
 
-  <% if params[:notice] %>
-    <div class="notice">
-        <%= params[:notice] %>
-    </div>
-  <% end %>
+  <%=  get_notices %>
 
   <%= order.inputs I18n.t(:order) do  %>
-    <p><%= order.input :package_id, :as => :select, :collection => Package.where(:state => 0).order("name ASC")%> </p>
-    <p><%= order.input :user_id, :as => :select, :collection => User.all(:order => "last_name ASC") %></p>
+    <% if @order.new_record? %>
+      <p><%= order.input :package_id, :as => :select, 
+                                      :collection => Package.where(:state => 0).order("name ASC"),
+                                      :include_blank => false
+          %> </p>
+      <p><%= order.input :user_id, :as => :select, 
+                                   :collection => User.all(:order => "last_name ASC"),
+                                   :include_blank => false
+         %></p>
+    <% else %>
+      <p><%= order.input :package_id, :as => :select,
+                                      :collection => [@order.package.name => @order.package.id],
+                                      :include_blank => false
+         %></p>
+      <p><%= order.input :user_id, :as => :select,
+                                   :collection => [(@order.user.first_name + " " + @order.user.last_name) => @order.user_id],
+                                   :include_blank => false
+         %></p>
+    <% end %>
     <p><%= order.input :order_number, :input_html => {:readonly => true}  %></p>
     <p><%= order.input :package_number, :input_html => {:readonly => true} %></p>
     <p><%= order.input :bill_number, :input_html => {:readonly => true} %></p>

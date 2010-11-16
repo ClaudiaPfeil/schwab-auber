@@ -1,5 +1,5 @@
 <%= I18n.t("contents") %>
-
+<%=  get_notices %>
 <p align="right">
   <% if can? :create, Content %>
     <%= link_to I18n.t(:new), new_content_path %>

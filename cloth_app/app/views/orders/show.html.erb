@@ -1,5 +1,7 @@
 <%= semantic_form_for @order do |order|  %>
 
+  <%=  get_notices %>
+
   <%= order.inputs I18n.t(:order) do  %>
     <p><%= order.input :package_id, :as => :select, :collection => Package.all(:order => "name ASC"), :input_html => {:readonly => true}%> </p>
     <p><%= order.input :order_number, :input_html => {:readonly => true}  %></p>
