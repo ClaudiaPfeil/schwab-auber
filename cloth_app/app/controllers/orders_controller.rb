@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   include Cms
 
   before_filter :init_order, :actions => [:show, :edit, :update, :destroy, :show_bill]
-  before_filter :init_content, :actions => [:index, :show, :update, :show_bill]
 
   def index
     if current_user.is? :admin
@@ -68,10 +67,6 @@ class OrdersController < ApplicationController
       else
         init_current_object { @order = Order.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
       end
-    end
-
-    def init_content
-      init_current_object { @contents = get_content("Order")}
     end
 
     def init_current_object
