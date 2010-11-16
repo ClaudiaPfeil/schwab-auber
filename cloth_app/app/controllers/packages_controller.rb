@@ -82,7 +82,7 @@ class PackagesController < ApplicationController
     end
 
     def init_content
-      init_current_object { @contents = get_content("Package")}
+      @contents = get_content("Package")
     end
 
     def init_current_object
