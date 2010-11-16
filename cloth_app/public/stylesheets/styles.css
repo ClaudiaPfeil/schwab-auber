@@ -7,8 +7,8 @@ body {
 }
 A:link { text-decoration: none; color: #FFFF00; margin: 0; padding: 0; }
 A:visited { text-decoration: none; color: #FFFF00; margin: 0; padding: 0; }
-A:hover { text-decoration: underline; color: #FFFF00; margin: 0; padding: 0; }
-A:active { text-decoration: underline; color: #CCCC99; margin: 0; padding: 0; }
+A:hover { text-decoration: none; color: #FFFF00; margin: 0; padding: 0; }
+A:active { text-decoration: none; color: #CCCC99; margin: 0; padding: 0; }
 
 h1 {  font-size: 14pt;  color: #336699; font-style: italic; }
 
@@ -84,7 +84,6 @@ div.tr {
   display: table-row;
   margin: 0;
   padding: 0;
-  width: 575px;
 }
 
 div.tr_titles {
@@ -150,7 +149,6 @@ div.content {
 div.td {
   display: table-cell;
   valign: top;
-  width: 250px;
   padding: 0.5em;
   text-align: left;
   vertical-align: top;

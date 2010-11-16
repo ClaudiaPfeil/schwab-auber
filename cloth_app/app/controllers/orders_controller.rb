@@ -1,7 +1,8 @@
 class OrdersController < ApplicationController
   include Cms
-  before_filter :init_order, :actions => [:show, :edit, :update, :destroy]
-  #before_filter :init_content, :actions => [:index, :show]
+
+  before_filter :init_order, :actions => [:show, :edit, :update, :destroy, :show_bill]
+  before_filter :init_content, :actions => [:index, :show, :update, :show_bill]
 
   def index
     if current_user.is? :admin
@@ -70,7 +71,7 @@ class OrdersController < ApplicationController
     end
 
     def init_content
-      init_current_object { @contents = get_content("Orders")}
+      init_current_object { @contents = get_content("Order")}
     end
 
     def init_current_object

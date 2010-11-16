@@ -1,0 +1,36 @@
+<%# Rechnung%>
+<div class="tr">
+  <div class="prepend-1 td span-19">
+    <ol>
+      <li><h1>Rechnung</h1></li>
+      <li><br><br><p>Bitte geben sie bei der Überweisung die Rechnungsnummer mit an.</p></li>
+    </ol>  
+    <br><br>
+  </div>
+</div>
+
+<div class="tr">
+  <div class="prepend-1 td span-18 no_abstand">
+    <ol class="border">
+      <li class="border"><h2><b><%= I18n.t(:description)  %></b></h2></li>
+      <li class="border"><%= @bill.package.name %>,<%= @bill.package_number%></li>
+      <li class="border"><%= I18n.t(:price_net) %></li>
+      <li class="border"><%= I18n.t(:price_post) %></li>
+      <li class="border"><%= I18n.t(:mwst) %></li>
+      <li class="border"><%= I18n.t(:price_brut) %></li>
+    </ol>
+  </div>
+
+  <div class="span-3 td no_abstand closer">
+    <ol class="no_border_left ">
+      <li class="no_border_left "><h2><b><%= I18n.t(:amount) %></b></h2></li>
+      <li class="no_border_left ">&nbsp;</li>
+      <li class="no_border_left ">&nbsp;<%# Netto-Preis%></li>
+      <li class="no_border_left ">&nbsp;<%# Versandgebühren%></li>
+      <li class="no_border_left ">&nbsp;<%# MwSt%></li>
+      <li class="no_border_left ">&nbsp;<%# Brutto-Preis %></li>
+    </ol>
+  </div>
+</div>
+
+<br><br><br><br>

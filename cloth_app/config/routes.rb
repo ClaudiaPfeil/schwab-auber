@@ -17,6 +17,7 @@ ClothApp::Application.routes.draw do
   resources :helps
   resources :impressums
   resources :orders
+  resources :bills
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -24,7 +25,6 @@ ClothApp::Application.routes.draw do
   match 'activate/:activation_code' => 'users#activate', :as => :activate, :activation_code => nil
   match 'landing_page' => 'landing_pages#show', :as => :landing_page
   match ':controller/:action/:preview'
-  match 'packages/terms_and_conditions' => 'packages#terms_and_conditions', :as => :terms_and_conditions
  
   resources :users do
     member do

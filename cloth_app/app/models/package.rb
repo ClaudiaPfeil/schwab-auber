@@ -1,6 +1,7 @@
 class Package < ActiveRecord::Base
   
   belongs_to :user
+  has_one :order
 
   validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors
   validates_numericality_of :accepted, :confirmed, :equal_to => 1

@@ -1,5 +1,5 @@
 <div class="tr">
-  <div class="td_image"><%= image_tag( "/images/sonne.gif", :width => "41", :height => "38", :alt => "") %></div>
+  <div class="td_image"><%#= image_tag( "/images/sonne.gif", :width => "41", :height => "38", :alt => "") %></div>
 </div>
 
 <div class="tr">
@@ -26,24 +26,24 @@
 <div class="subnavi">
   <!--||| Der erste Punkt zeigt den Seitenbereich an und wird nicht verlinkt. Die Sublinks = das Untermenü hier anpassen. |||-->
   <span class="sub">
-    <%= link_to 'home', root_path %>
-    <%= link_to '. packages',  packages_path%>
-    <%= link_to '. search',  search_packages_path%>
-    <%#= link_to ". impressum ", impressums_path  %>
+    <%= link_to I18n.t(:home), root_path %>
+    <%= link_to I18n.t(:menue_package),  packages_path%>
+    <%= link_to I18n.t(:search),  search_packages_path%>
+    <%#= link_to I18n.t(:impressum), impressums_path  %>
     <% if current_user %>
 
-      <%#= link_to '. profiles', profiles_path%>
+      <%#= link_to I18n.t(:menue_profile), profiles_path%>
 
       <%  if (can? :manage, Content) || (can? :publish, Content) %>
-        <%= link_to '. content', contents_path %>
-        <%= link_to '. landing_page', landing_page_path %>
+        <%= link_to I18n.t(:content), contents_path %>
+        <%= link_to I18n.t(:landingpage), landing_page_path %>
       <%  end %>
 
       <% if can? :manage, Order %>
-        <%= link_to '. order', orders_path %>
+        <%= link_to I18n.t(:menue_order), orders_path %>
       <% end %>
 
-      <%= link_to '. logout', logout_path%>
+      <%= link_to I18n.t(:logout), logout_path%>
 
     <% end %>
     <br>

@@ -2,8 +2,8 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :package
   
-  #validates_uniqueness_of :order_number, :bill_number, :package_number, :package_id
-  #validates_presence_of :package_id, :user_id
+  validates_uniqueness_of :order_number, :bill_number, :package_number, :package_id
+  validates_presence_of :package_id, :user_id
 
   before_save do
     create_order_number
@@ -48,5 +48,4 @@ class Order < ActiveRecord::Base
       self.package.update_attribute(:state, 1)
     end
 
-  
 end

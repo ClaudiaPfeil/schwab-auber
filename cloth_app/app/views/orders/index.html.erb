@@ -22,11 +22,14 @@
   <div class="tr">
     <div class=".first">&nbsp;</div>
     <% result.each do |name| %>
-      <div class="td .span-2"><%=  (name == 'created_at' || name == 'eva_date_updated_at')? formatted_date_of_order(order.attributes[name.to_s]) :  order.attributes[name.to_s]  %></div>
+      <div class="td .span-2"><%=  (name.to_s == 'created_at' || name.to_s == 'eva_date_updated_at')? formatted_date_of_order(order.attributes[name.to_s]) :  order.attributes[name.to_s]  %></div>
     <% end %>
     <div class=".last">
       <% if can? :update, Order %>
         <%= link_to I18n.t(:edit), edit_order_path(order) %>
+      <%end%>
+      <% if can? :bill, Order %>
+        <%= link_to I18n.t(:bill), bill_path(order) %>
       <%end%>
       <% if can? :delete, Order %>
         <%= link_to I18n.t(:delete), order, :confirm => I18n.t(:confirm_order) , :method => 'delete' %>

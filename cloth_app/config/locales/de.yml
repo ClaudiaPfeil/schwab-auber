@@ -8,13 +8,15 @@ de:
   amount: Anzahl Kleidungsstücke
   description:  Beschreibung
   name: Kleidungspaket
-  packages:
-    search_types:
-      name: Bezeichnung Kleidungspaket
-      size: Kleidergröße
-      amount: Anzahl Kleidungsstücken
-      sex:  Junge oder Mädchen?
-      label:  Marke
+  home: '. start'
+  menue_package: '. kleidungspakete'
+  search: '. suche'
+  impressum: '. impressum'
+  menue_profile: '. profil'
+  content: '. texte & bilder'
+  landingpage: '. landungs seite'
+  menue_order: '. bestellungen'
+  logout: '. abmelden'
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"

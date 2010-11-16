@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   set_table_name 'users'
   
   has_many :packages
+  has_many :orders
 
   validates :login, :presence   => true,
                     :uniqueness => true,

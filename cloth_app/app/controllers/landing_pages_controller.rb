@@ -7,7 +7,7 @@ class LandingPagesController < ApplicationController
   end
 
   def show
-    @contents = get_content("Landing_Page")
+    @contents = get_content("LandingPage")
   end
  
 end

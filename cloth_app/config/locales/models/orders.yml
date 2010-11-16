@@ -18,3 +18,10 @@ de:
   eva_notice: Hinweis zur Bewertung
   confirm_order: Möchten sie die Bestellung wirklich stornieren?
   delete: Stornieren
+  bill: Rechnung
+  amount: Betrag
+  description: Bezeichnung
+  price_net: Netto-Preis
+  price_brut: Brutto-Preis
+  mwst: 19% MwSt
+  price_post: Versandgebühren

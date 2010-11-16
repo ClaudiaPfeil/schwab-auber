@@ -3,7 +3,7 @@ de:
     models:
       content: Inhalt
       package: Kleiderpaket
-      user: Kunde
+      user: Nutzer
       order: Bestellung
     attributes:
       content:
@@ -16,6 +16,7 @@ de:
         image_file_name:  Name des Bildes
         published:  Veröffentlichen
         category: Kategorie
+        back: Zurück
       package:
         name: Paketbezeichnung
         sex:  Junge oder Mädchen?
@@ -64,7 +65,7 @@ de:
         eva_date_updated_at: Bewertung aktualisiert am
         notice: Bemerkung
         eva_notice: Hinweis zur Bewertung
-        user_id: Kunde
+        user_id: Nutzer
         package_id: Kleiderpaket
       packages:
         search_types:
