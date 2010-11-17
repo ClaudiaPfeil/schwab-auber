@@ -23,9 +23,9 @@ class Order < ActiveRecord::Base
 
   # jeder, der ein Paket eingestellt hat, darf ein Paket bestellen
   def check_change_principle
-    user_has_packages? ? true : false
+    user_has_packages? || user_first_order? ? true : false
   end
-
+  
   protected
 
     def create_order_number
@@ -33,7 +33,8 @@ class Order < ActiveRecord::Base
     end
 
     def create_bill_number
-      self.bill_number = NumberGenerator.timebased
+      #Rechnungsnummern sind fortlaufend
+      self.bill_number = '%s-%s' % [Date.today.strftime("%Y%m%d"), OrderBillNumber.create_number]
     end
 
     def create_package_number
@@ -42,6 +43,10 @@ class Order < ActiveRecord::Base
 
     def user_has_packages?
       self.user.packages.count > Order.where(:user_id => self.user_id).count ? true : false
+    end
+
+    def user_first_order?
+      Order.where(:user_id => self.user_id).count < 1 ? true : false
     end
 
     def update_state_of_package

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101115143515) do
+ActiveRecord::Schema.define(:version => 20101117142135) do
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -32,11 +32,17 @@ ActiveRecord::Schema.define(:version => 20101115143515) do
     t.boolean  "published"
   end
 
+  create_table "order_bill_numbers", :force => true do |t|
+    t.integer  "number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "orders", :force => true do |t|
-    t.string   "order_number"
-    t.string   "package_number"
-    t.integer  "user_id"
-    t.integer  "package_id"
+    t.string   "order_number",                     :null => false
+    t.string   "package_number",                   :null => false
+    t.integer  "user_id",                          :null => false
+    t.integer  "package_id",                       :null => false
     t.integer  "evaluation"
     t.text     "eva_notice"
     t.date     "eva_date_created_at"
@@ -44,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20101115143515) do
     t.text     "notice"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "bill_number"
+    t.string   "bill_number",                      :null => false
     t.integer  "received",            :limit => 1
   end
 

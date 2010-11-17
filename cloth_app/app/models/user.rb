@@ -69,6 +69,10 @@ class User < ActiveRecord::Base
     role.include?(this_role.to_s) unless role.nil?
   end
 
+  def name
+    last_name + ", " + first_name
+  end
+
   protected
     
   def make_activation_code

@@ -4,7 +4,7 @@
 
 <p align="right">
   <% if can? :create, Order %>
-    <%= link_to "New", new_order_path %>
+    <%= link_to I18n.t(:new), new_order_path %>
   <%end%>
 </p>
 

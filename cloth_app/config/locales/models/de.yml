@@ -67,6 +67,7 @@ de:
         eva_notice: Hinweis zur Bewertung
         user_id: Nutzer
         package_id: Kleiderpaket
+        back: Zurück
       packages:
         search_types:
           name: Bezeichnung Kleidungspaket
