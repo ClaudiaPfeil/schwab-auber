@@ -1,4 +1,5 @@
 class Package < ActiveRecord::Base
+  include Cms
   
   belongs_to :user
   has_one :order
@@ -29,6 +30,10 @@ class Package < ActiveRecord::Base
 
   def has_user?
     true unless self.user.nil?
+  end
+
+  def get_rules
+    get_content("Package")
   end
 
   private
