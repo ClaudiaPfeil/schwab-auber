@@ -14,6 +14,7 @@ class PackagesController < ApplicationController
 
   def new
     @package = Package.new()
+    @contents = get_content("Package")
   end
 
   def create
@@ -27,7 +28,9 @@ class PackagesController < ApplicationController
     
   end
 
-  def edit; end
+  def edit
+    @contents = get_content("Package")
+  end
 
   def update
     if @package.update_attributes(params[:package])
