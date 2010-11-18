@@ -5,7 +5,21 @@ de:
       package: Kleiderpaket
       user: Nutzer
       order: Bestellung
+      address: Anschrift
     attributes:
+      address:
+        back: Zurück
+        receiver: Empfänger (Vor- und Nachname)
+        receiver_additional: Zusatz (c/o)
+        street_and_number: Straße und Hausnummer
+        postcode: Postleitzahl
+        town: Stadt
+        land: Land
+        address_created: Anschrift wurde erfolgreich gespeichert!
+        address_not_created: Anschrift wurde nicht gespeichert!
+        address_updated: Anschrift wurde erfolgreich aktualisiert!
+        address_not_updated: Anschrift wurde nicht aktualisiert!
+        address_destroyed: Anschrift wurde erfolgreich gelöscht!
       content:
         title: Titel
         subtitle: Untertitel

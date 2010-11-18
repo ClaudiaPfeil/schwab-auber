@@ -1,0 +1,44 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<h1><%= I18n.t(:addresses) %></h1>
+
+<%=  get_notices %>
+
+<p align="right">
+  <% if can? :create, Address %>
+    <%= link_to I18n.t(:new), new_address_path %>
+  <%end%>
+</p>
+
+<% tmp = [:receiver, :receiver_additional, :street_and_number, :postcode, :town, :land] %>
+<% address_cols = Address.column_names.to_a%>
+<% result = tmp - address_cols%>
+
+<div class="tr">
+  <div class=".first">&nbsp;</div>
+  <% result.each do |column| %>
+    <div class="td .span-2"><b><%=  I18n.t(column)%></b> </div>
+  <% end %>
+  <div class=".last">&nbsp;</div>
+</div>
+
+<% @addresses.each do |address| %>
+  <div class="tr">
+    <div class=".first">&nbsp;</div>
+    <% result.each do |name| %>
+      <div class="td .span-2"><%=  address.attributes[name.to_s]  %></div>
+    <% end %>
+
+    <div class=".last">
+      <% if can? :update, Address %>
+        <%= link_to I18n.t(:edit), edit_address_path(address) %>
+      <%end%>
+      <% if can? :delete, Address %>
+        <%= link_to I18n.t(:delete), address, :confirm => I18n.t(:confirm_address) , :method => 'delete' %>
+      <%end%>
+    </div>
+  </div>
+<% end %>

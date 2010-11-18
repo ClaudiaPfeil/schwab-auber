@@ -26,11 +26,16 @@ class Ability
       can :destroy, Order if (user.is? :premium) || (user.is? :admin)
       can :search,  Order if (user.is? :premium) || (user.is? :admin)
 
-#      can :read,    Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
-#      can :create,  Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
-#      can :update,  Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
-#      can :destroy, Profile if (user.is? :admin)
-#      can :search,  Profile if (user.is? :admin)
+      can :read,    Address if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :create,  Address if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :update,  Address if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :destroy, Address if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+
+      can :read,    Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :create,  Profile if (user.is? :admin)
+      can :update,  Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :destroy, Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :search,  Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
 
 
 

@@ -1,0 +1,18 @@
+de:
+  address: Anschrift
+  addresses: Anschriften
+  receiver: Empfänger (Vor- und Nachname)
+  receiver_additional: Zusatz (c/o)
+  street_and_number: Straße und Hausnummer
+  postcode: Postleitzahl
+  town: Stadt
+  land: Land
+  new: Hinzufügen
+  edit: Ändern
+  delete: Entfernen
+  confirm_address: Möchten sie die Anschrift wirklich löschen?
+  delete: Löschen
+  kind:
+    billing: Rechnungsanschrift
+    deliver: Lieferanschrift
+    catch: Abholanschrift

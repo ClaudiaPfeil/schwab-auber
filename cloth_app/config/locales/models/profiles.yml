@@ -1,0 +1,13 @@
+de:
+  profile: Profil
+  profiles: Profile
+  back: Zurück
+  new: Erstellen
+  edit: Editieren
+  delete: Löschen
+  profile_created: Das Profil wurde erfolgreich erstellt.
+  profile_not_created: Das Profil wurde nicht erstellt!
+  profile_updated: Das Profil wurde erfolgreich aktualisiert.
+  profile_not_updated: Das Profil wurde nicht aktualisiert.
+  profile_deleted: Das Profil wurde erfolgreich gelöscht!
+  delete: Möchten sie das Profil wirklich löschen?

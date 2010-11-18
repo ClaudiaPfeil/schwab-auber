@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117142135) do
+ActiveRecord::Schema.define(:version => 20101118195600) do
+
+  create_table "addresses", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "receiver"
+    t.string   "receiver_additonal"
+    t.string   "street_and_number"
+    t.string   "postcode"
+    t.string   "town"
+    t.string   "land"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "kind",               :limit => 1
+  end
 
   create_table "categories", :force => true do |t|
     t.string   "name"
@@ -74,6 +87,20 @@ ActiveRecord::Schema.define(:version => 20101117142135) do
     t.integer  "state",          :limit => 1, :default => 0
   end
 
+  create_table "settings", :force => true do |t|
+    t.boolean  "sex"
+    t.boolean  "name"
+    t.boolean  "first_name"
+    t.boolean  "last_name"
+    t.boolean  "address"
+    t.boolean  "first_letter_of_first_name"
+    t.boolean  "first_letter_of_last_name"
+    t.boolean  "date_of_birth"
+    t.boolean  "telephone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
     t.string   "name",                      :limit => 100, :default => ""
@@ -92,9 +119,8 @@ ActiveRecord::Schema.define(:version => 20101117142135) do
     t.integer  "roles_mask"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "street_and_number"
-    t.string   "postcode"
-    t.string   "town"
+    t.date     "date_of_birth"
+    t.string   "telephone"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

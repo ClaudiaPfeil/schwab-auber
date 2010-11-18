@@ -1,0 +1,37 @@
+<%= I18n.t(:profiles) %>
+
+<%=  get_notices %>
+
+<p align="right">
+  <% if can? :create, Profile %>
+    <%= link_to I18n.t(:new), new_profile_path %>
+  <%end%>
+</p>
+
+<div class="tr">
+  <div class=".first">&nbsp;</div>
+  <% ListView.get_table_columns(Profile, [:sex, :name, :address, :membership, :telephone]).each do |column| %>
+    <div class="td .span-2"><b><%=  I18n.t(column)%></b> </div>
+  <% end %>
+  <div class=".last">&nbsp;</div>
+</div>
+
+<% @orders.each do |order| %>
+  <div class="tr">
+    <div class=".first">&nbsp;</div>
+    <% ListView.get_entries(Profile, [:sex, :name, :address, :membership, :telephone]).each do |name| %>
+      <div class="td span-2"><%= name  %></div>
+    <% end %>
+
+    <div class="last">
+      <% if can? :update, Profile %>
+        <%= link_to I18n.t(:edit), edit_profile_path(order) %>
+      <%end%>
+      <% if can? :delete, Profile %>
+        <%= link_to I18n.t(:delete), profile, :confirm => I18n.t(:confirm_profile) , :method => 'delete' %>
+      <%end%>
+    </div>
+  </div>
+<% end %>
+
+

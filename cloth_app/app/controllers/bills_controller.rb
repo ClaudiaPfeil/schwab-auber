@@ -30,7 +30,7 @@ class BillsController < ApplicationController
     end
 
     def init_current_object
-      @object = yield
+      @current_object = yield
     end
   
 end

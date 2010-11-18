@@ -1,0 +1,13 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%= semantic_form_for @address do |address|%>
+
+  <%= address.inputs %>
+  <%= address.buttons %>
+
+<% end %>
+
+<%= link_to I18n.t(:back), addresses_path %>

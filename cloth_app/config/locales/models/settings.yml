@@ -1,0 +1,12 @@
+de:
+  setting: Einstellung
+  settings: Einstellungen
+  sex: Geschlecht veröffentlichen?
+  name: Namen (Vor- und Zuname) veröffentlichen?
+  first_name: Vornamen veröffentlichen?
+  last_name: Zunamen veröffentlichen?
+  address: Anschrift veröffentlichen?
+  first_letter_of_first_name: erster Buchstabe des Vornamens und kompletter Nachname veröffentlichen?
+  first_letter_of_last_name: Vorname und erster Buchstabe des Nachnamens veröffentlichen?
+  date_of_birth: Geburtsdatum veröffentlichen?
+  telephone:  Telefon-Nummer veröffentlichen?

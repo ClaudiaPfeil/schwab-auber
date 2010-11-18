@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   
   has_many :packages
   has_many :orders
+  has_many :addresses
 
   validates :login, :presence   => true,
                     :uniqueness => true,
@@ -24,7 +25,18 @@ class User < ActiveRecord::Base
                     :format     => { :with => Authentication.email_regex, :message => Authentication.bad_email_message },
                     :length     => { :within => 6..100 }
 
-  validates_presence_of :first_name, :last_name, :street_and_number, :postcode, :town
+  validates_presence_of :first_name, :last_name
+
+  scope :default_ordered, order('created_at DESC')
+
+  scope :search_by_attributes, lambda { |search_key, *attribute_names|
+    sql = [attribute_names].flatten.map { |a| '%s LIKE :search_key' % a }.join(' OR ')
+    where(sql, :search_key => "%#{search_key}%").default_ordered
+  }
+
+  before_save do
+    set_user_number if self.user_number.nil?
+  end
 
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
@@ -73,12 +85,19 @@ class User < ActiveRecord::Base
     last_name + ", " + first_name
   end
 
-  protected
-    
-  def make_activation_code
-        self.deleted_at = nil
-        self.activation_code = self.class.make_token
+  def is_destroyable?
+    true
   end
 
+  protected
+    
+    def make_activation_code
+          self.deleted_at = nil
+          self.activation_code = self.class.make_token
+    end
+
+    def set_user_number
+      self.user_number.nil? ? self.user_number = NumberGenerator.alphanumeric({:prefix => self.last_name.first.capitalize + self.first_name.first.capitalize  + "- ", :length => 6}) : self.serial_number = self.order.package_number
+    end
 
 end
