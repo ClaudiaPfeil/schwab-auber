@@ -6,6 +6,7 @@ de:
       user: Nutzer
       order: Bestellung
       address: Anschrift
+      profile: Profil
     attributes:
       address:
         back: Zurück
@@ -89,6 +90,10 @@ de:
           amount: Anzahl Kleidungsstücken
           sex:  Junge oder Mädchen?
           label:  Marke
+      profile:
+        date_of_birth: Geburtsdatum
+        activated_at: Aktiviert am
+        updated_at: Aktualisiert am
         
         
 

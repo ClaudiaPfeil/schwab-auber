@@ -2,10 +2,14 @@
 # and open the template in the editor.
 
 class Profile < User
+  belongs_to :setting
+  belongs_to :user
 
-  has_many :settings
+  accepts_nested_attributes_for :user, :setting, :addresses, :allow_destroy => true
 
-  accepts_nested_attributes_for :user, :settings, :addresses, :allow_destroy => true
+  def settings
+    self.setting
+  end
 
   
 end

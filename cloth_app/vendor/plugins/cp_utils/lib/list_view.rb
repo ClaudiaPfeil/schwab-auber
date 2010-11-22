@@ -3,22 +3,22 @@
 
 class ListView
 
-  def get_table_columns(object, collection)
+  def self.get_table_columns(object, collection)
     tmp = collection
-    table_cols = object.class.column_names.to_a
+    table_cols = object.column_names.to_a
     tmp - table_cols
   end
 
-  def get_entries(object, collection)
+  def self.get_entries(model, object, collection)
     entries = []
-    table_columns = get_table_columns(object, collection)
+    table_columns = get_table_columns(model, collection)
 
     object.each do |entry|
       table_columns.each do |name|
-        entries.push(entry.attributes[name.to_s])
+        entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(entry.attributes[name.to_s])
       end
     end
-
+    
     entries
     
   end

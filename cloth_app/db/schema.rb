@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118195600) do
+ActiveRecord::Schema.define(:version => 20101119101636) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -90,15 +90,12 @@ ActiveRecord::Schema.define(:version => 20101118195600) do
   create_table "settings", :force => true do |t|
     t.boolean  "sex"
     t.boolean  "name"
-    t.boolean  "first_name"
-    t.boolean  "last_name"
     t.boolean  "address"
-    t.boolean  "first_letter_of_first_name"
-    t.boolean  "first_letter_of_last_name"
     t.boolean  "date_of_birth"
     t.boolean  "telephone"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|
@@ -121,6 +118,8 @@ ActiveRecord::Schema.define(:version => 20101118195600) do
     t.string   "last_name"
     t.date     "date_of_birth"
     t.string   "telephone"
+    t.string   "user_number"
+    t.boolean  "sex"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

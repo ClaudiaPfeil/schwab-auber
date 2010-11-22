@@ -1,7 +1,8 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
-class ProfilesController
+class ProfilesController < ApplicationController
+  
   before_filter :init_profile, :action => [:show, :edit, :update, :destroy]
 
   def index

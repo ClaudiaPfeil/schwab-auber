@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :packages
   has_many :orders
   has_many :addresses
+  has_one :setting
 
   validates :login, :presence   => true,
                     :uniqueness => true,
@@ -97,7 +98,7 @@ class User < ActiveRecord::Base
     end
 
     def set_user_number
-      self.user_number.nil? ? self.user_number = NumberGenerator.alphanumeric({:prefix => self.last_name.first.capitalize + self.first_name.first.capitalize  + "- ", :length => 6}) : self.serial_number = self.order.package_number
+      self.user_number.nil? ? self.user_number = NumberGenerator.alphanumeric({:prefix => self.last_name.first.capitalize + self.first_name.first.capitalize  + "- ", :length => 6}) : self.user_number = self.user_number
     end
 
 end

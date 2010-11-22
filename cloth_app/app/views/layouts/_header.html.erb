@@ -5,11 +5,11 @@
 <div class="tr">
 
   <%= link_to image_tag("/images/menue_home.gif", :width => '200', :height => '60', :alt => 'Home' ), root_path%>
-  <%# if can? :update, Profile %>
-    <%#= link_to image_tag("/images/menue_profile.gif", :width => '134', :height => '60', :alt => 'Profile' ), profiles_path%>
-  <%# else %>
+  <% if can? :read, Profile %>
+    <%= link_to image_tag("/images/menue_profile.gif", :width => '134', :height => '60', :alt => 'Profile' ), profiles_path%>
+  <% else %>
     <%= image_tag("/images/menue_profile.gif", :width => '134', :height => '60', :alt => 'KidsKarton')  %>
-  <%#end%>
+  <% end %>
   <% if can? :update, Package %>
     <%= link_to image_tag("/images/menue_pakete.gif", :width => '134', :height => '60', :alt => 'Pakete' ), packages_path%>
   <% else %>

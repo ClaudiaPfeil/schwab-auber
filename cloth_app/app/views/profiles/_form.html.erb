@@ -1,6 +1,36 @@
 <%= semantic_form_for @profile do |profile| %>
+  <% unless @profile.new_record? %>
 
-  <%= profile.inputs %>
-  <%= profile.buttons %>
+    <%= profile.inputs I18n.t(:reset_password) do  %>
+      <%= profile.input :password, :as => :password  %>
+      <%= profile.input :password_confirmation, :as => :password %>
+    <% end %>
+
+    
+
+    <%= profile.inputs I18n.t(:base_data) do %>
+      <%= profile.input :last_name %>
+      <%= profile.input :first_name %>
+      <%= profile.input :sex, :as => :radio, :collection => [["weiblich", 0],["männlich", 1]] %>
+      <%= profile.input :date_of_birth, :as => :datepicker %>
+      <%= profile.input :telephone %>
+      <%= profile.input :user_number, :input_html => {:readonly => true} %>
+      <%= profile.input :activated_at, :as => :datepicker %>
+      <%= profile.input :updated_at, :as => :datepicker %>
+    <% end %>
+
+    <%= profile.inputs I18n.t(:settings) do %>
+      <% profile.semantic_fields_for :setting do |setting| %>
+        <%= setting.inputs %>
+      <% end %>
+    <% end %>
+
+    <%= profile.buttons %>
+
+  <% else %>
+
+  <% end %>
 
 <% end %>
+
+<p align="center"><%= link_to I18n.t(:back), profiles_path %></p>
