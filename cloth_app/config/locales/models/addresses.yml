@@ -1,18 +1,21 @@
 de:
   address: Anschrift
   addresses: Anschriften
+  address_created: Anschrift wurde erfolgreich gespeichert!
+  address_not_created: Anschrift wurde nicht gespeichert!
+  address_updated: Anschrift wurde erfolgreich aktualisiert!
+  address_not_updated: Anschrift wurde nicht aktualisiert!
+  address_destroyed: Anschrift wurde erfolgreich gelöscht!
+  address_created: Anschrift wurde erfolgreich gespeichert!
+  address_not_created: Anschrift wurde nicht gespeichert!
+  address_updated: Anschrift wurde erfolgreich aktualisiert!
+  address_not_updated: Anschrift wurde nicht aktualisiert!
+  address_destroyed: Anschrift wurde erfolgreich gelöscht!
+  delete: Löschen
   receiver: Empfänger (Vor- und Nachname)
   receiver_additional: Zusatz (c/o)
   street_and_number: Straße und Hausnummer
   postcode: Postleitzahl
   town: Stadt
   land: Land
-  new: Hinzufügen
-  edit: Ändern
-  delete: Entfernen
-  confirm_address: Möchten sie die Anschrift wirklich löschen?
-  delete: Löschen
-  kind:
-    billing: Rechnungsanschrift
-    deliver: Lieferanschrift
-    catch: Abholanschrift
+  kind: Art

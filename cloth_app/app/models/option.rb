@@ -8,8 +8,8 @@
 #* Angabe des Geburtsdatums
 #* Angabe einer Telefon-Nummer
 
-class Setting < ActiveRecord::Base
+class Option < ActiveRecord::Base
   
-  has_many :users
+  has_one :user
   
 end

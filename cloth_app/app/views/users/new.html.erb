@@ -7,12 +7,6 @@
     <% @user.password = @user.password_confirmation = nil %>
 
     <%= semantic_form_for @user do |user| %>
-
-      <%= user.input :first_name%>
-      <%= user.input :last_name%>
-      <%= user.input :street_and_number %>
-      <%= user.input :postcode%>
-      <%= user.input :town %>
       <%= user.input :login %>
       <%= user.input :email%>
       <%= user.input :password, :as => :password%>

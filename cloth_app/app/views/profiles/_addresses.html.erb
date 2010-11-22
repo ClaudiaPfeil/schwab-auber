@@ -1,0 +1,11 @@
+<%= profile.inputs I18n.t(:address) do %>
+  <% profile.semantic_fields_for :address do |address| %>
+    <%= address.input :receiver %>
+    <%= address.input :receiver_additional %>
+    <%= address.input :street_and_number %>
+    <%= address.input :postcode %>
+    <%= address.input :town %>
+    <%= address.input :land %>
+    <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
+  <% end %>
+<% end %>

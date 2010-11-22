@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :packages
   has_many :orders
   has_many :addresses
-  has_one :setting
+  has_one  :option
 
   validates :login, :presence   => true,
                     :uniqueness => true,
@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
                     :format     => { :with => Authentication.email_regex, :message => Authentication.bad_email_message },
                     :length     => { :within => 6..100 }
 
-  validates_presence_of :first_name, :last_name
 
   scope :default_ordered, order('created_at DESC')
 
@@ -42,7 +41,8 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :first_name, :last_name, :street_and_number, :postcode, :town
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, :first_name, :option_attributes, :tag_names
+  accepts_nested_attributes_for :addresses, :option
 
   # users roles
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0 "} }
@@ -83,7 +83,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    last_name + ", " + first_name
+    first_name + " " + last_name 
   end
 
   def is_destroyable?

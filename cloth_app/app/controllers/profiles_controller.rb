@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   before_filter :init_profile, :action => [:show, :edit, :update, :destroy]
 
   def index
-    @profiles = User.all
+     current_user.is? :admin ? @profiles = User.all : @profiles = User.where(:state  => "active ")
   end
 
   def show
@@ -26,13 +26,7 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def update
-    if @profile.update_attributes(params[:profile])
-      redirect_to profiles_path, :notice => I18n.t(:profile_updated)
-    else
-      render :action => 'edit', :notice => I18n.t(:profile_not_updated)
-    end
-  end
+  def update; end
 
   def destroy
     @profile.destroy if @profile.is_destroyable?

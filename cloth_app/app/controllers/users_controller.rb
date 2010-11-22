@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
+  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :update]
 
   # render new.rhtml
   def new
@@ -47,12 +47,34 @@ class UsersController < ApplicationController
 
   def destroy
     @user.delete!
-    redirect_to users_path
+    redirect_to profiles_path
   end
 
   def purge
     @user.destroy
     redirect_to users_path
+  end
+
+  def update
+    user = params[:user].slice!
+    puts params.inspect
+#    setting = user[:settings].slice!
+#    setting["user_id"] = params[:id]
+#
+#    if @user.setting.nil?
+#      settings = Setting.find_by_user_id(params[:id])
+#      if settings
+#        settings.update_attributes(setting)
+#      else
+#        Setting.new(setting).save
+#      end
+#    end
+    
+    if @user.update_attributes(user)
+      redirect_to profiles_path, :notice => I18n.t(:profile_updated)
+    else
+      render :action => 'edit', :notice => I18n.t(:profile_not_updated)
+    end
   end
   
   # There's no page here to update or destroy a user.  If you add those, be

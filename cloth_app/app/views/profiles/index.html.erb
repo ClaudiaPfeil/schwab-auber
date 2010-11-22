@@ -9,22 +9,32 @@
 </p>
 
 <div class="tr">
-  <div class="first">&nbsp;</div>
-  <% ListView.get_table_columns(Profile, [:name, :email, :sex, :name, :address, :membership, :telephone]).each do |column| %>
-    <div class="td span-2"><b><%=  I18n.t(column)%></b> </div>
+  <div class="td first">&nbsp;</div>
+  <% table_cols = ListView.get_table_columns(User, [:name, :sex, :email, :telephone, :membership])%>
+  <% table_cols.each do |column| %>
+    <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
   <% end %>
-  <div class="last">&nbsp;</div>
+  <div class="td last">&nbsp;</div>
 </div>
 
 <% @profiles.each do |profile| %>
   <div class="tr">
-    <div class="first">&nbsp;</div>
+    <div class="td first">&nbsp;</div>
 
-    <% ListView.get_entries(Profile, @profiles, [:name, :email, :sex, :name, :address, :membership, :telephone]).each do |name| %>
-        <div class="td span-2"><%= name unless name.blank? %></div>
+    <% table_cols.each do |name| %>
+
+      <div class="td span-4">
+        <% if name.to_s == "name" %> 
+          <%= profile.name  %>
+        <% elsif name.to_s == "sex" %>
+          <%= profile.sex == true ? "männlich" : "weiblich" %>
+        <% else %>
+          <%= profile.attributes[name.to_s] %>
+        <% end %>
+      </div>
     <% end %>
-
-    <div class="last">
+    
+    <div class="td last">
       <% if can? :update, Profile %>
         <%= link_to I18n.t(:edit), edit_profile_path(profile) %>
       <%end%>

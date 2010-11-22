@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101119101636) do
+ActiveRecord::Schema.define(:version => 20101122151721) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -43,6 +43,20 @@ ActiveRecord::Schema.define(:version => 20101119101636) do
     t.integer  "category_id"
     t.string   "link_name"
     t.boolean  "published"
+  end
+
+  create_table "options", :force => true do |t|
+    t.boolean  "sex"
+    t.boolean  "name"
+    t.boolean  "address"
+    t.boolean  "date_of_birth"
+    t.boolean  "telephone"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id",                    :null => false
+    t.boolean  "first_letter_of_first_name"
+    t.boolean  "first_letter_of_last_name"
+    t.boolean  "first_name"
   end
 
   create_table "order_bill_numbers", :force => true do |t|
@@ -85,17 +99,6 @@ ActiveRecord::Schema.define(:version => 20101119101636) do
     t.integer  "user_id"
     t.string   "serial_number"
     t.integer  "state",          :limit => 1, :default => 0
-  end
-
-  create_table "settings", :force => true do |t|
-    t.boolean  "sex"
-    t.boolean  "name"
-    t.boolean  "address"
-    t.boolean  "date_of_birth"
-    t.boolean  "telephone"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

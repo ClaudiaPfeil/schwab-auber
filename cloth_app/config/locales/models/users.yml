@@ -1,0 +1,8 @@
+de:
+  name: Vor- und Zuname
+  email: E-Mail
+  sex: Geschlecht
+  telephone: Telefon
+  membership: Mitgliedschaft
+  user_number: Kundennummer
+  date_of_birth: Geburtsdatum
