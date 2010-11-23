@@ -7,6 +7,7 @@ de:
       order: Bestellung
       address: Anschrift
       profile: Profil
+      options:  Einstellungen
     attributes:
       address:
         back: Zurück
@@ -67,6 +68,8 @@ de:
         sex: Geschlecht
         telephone: Telefon
         user_number: Kundennummer
+        start_holidays: Beginn Urlaub
+        end_holidays: Ende Urlaub
       order:
         bill_number: Rechnungs-Nr.
         order_number: Bestell-Nr.
@@ -90,7 +93,15 @@ de:
           amount: Anzahl Kleidungsstücken
           sex:  Junge oder Mädchen?
           label:  Marke
-        
+      option:
+        sex: Geschlecht
+        name: Vor- und Zuname
+        first_name: nur Vorname
+        first_letter_of_first_name: Erster Buchstabe des Vornamens und kompletter Nachname
+        first_letter_of_last_name: Erster Buchstabe des Nachnamens und kompletter Vorname
+        address: Anschrift
+        date_of_birth: Geburtsdatum
+        telephone:  Telefonnummer
         
 
 
