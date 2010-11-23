@@ -1,11 +1,21 @@
-<%= profile.inputs I18n.t(:address) do %>
-  <% profile.semantic_fields_for :address do |address| %>
-    <%= address.input :receiver %>
-    <%= address.input :receiver_additional %>
-    <%= address.input :street_and_number %>
-    <%= address.input :postcode %>
-    <%= address.input :town %>
-    <%= address.input :land %>
-    <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
+<%
+# Titel:  Anschriften Verwaltung,dh. Hinzufügen von neuen Anschriften und
+#         Anzeige aller Anschriften des Nutzers
+# Autor:  Claudia Pfeil
+# Datum:  23.11.10
+%>
+
+<h3><%= I18n.t(:profiles_addresses)%> </h3>
+<p align="right">
+  <% if can? :create, Address %>
+    <%= link_to I18n.t(:new_address), new_address_path %>
+  <%end%>
+</p>
+
+<% if @profile.addresses.count.to_i == 0  %>
+    <%= render "form_address" %>
+<% else %>
+  <% @profile.addresses.each do |address| %>
+    <%= render "form_address" %>
   <% end %>
 <% end %>

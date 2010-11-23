@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101122151721) do
+ActiveRecord::Schema.define(:version => 20101123103320) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -123,6 +123,8 @@ ActiveRecord::Schema.define(:version => 20101122151721) do
     t.string   "telephone"
     t.string   "user_number"
     t.boolean  "sex"
+    t.date     "start_holidays"
+    t.date     "end_holidays"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

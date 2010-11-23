@@ -55,26 +55,21 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  # Aktualisieren des Nutzer-Profils wie Passwort, Name, E-Mail usw.
   def update
     user = params[:user].slice!
-    puts params.inspect
-#    setting = user[:settings].slice!
-#    setting["user_id"] = params[:id]
-#
-#    if @user.setting.nil?
-#      settings = Setting.find_by_user_id(params[:id])
-#      if settings
-#        settings.update_attributes(setting)
-#      else
-#        Setting.new(setting).save
-#      end
-#    end
     
     if @user.update_attributes(user)
       redirect_to profiles_path, :notice => I18n.t(:profile_updated)
     else
       render :action => 'edit', :notice => I18n.t(:profile_not_updated)
     end
+  end
+
+  # Suche nach Nutzerprofilen z.B. nach Bewertungen oder eingestellten Paketen
+  def search
+    search_type, search_key = params[:search_type], params[:search_key]
+    @profiles = User.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
   end
   
   # There's no page here to update or destroy a user.  If you add those, be

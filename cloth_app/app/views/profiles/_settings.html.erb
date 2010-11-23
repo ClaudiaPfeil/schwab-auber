@@ -1,4 +1,4 @@
-<%= profile.inputs I18n.t(:settings) do %>
+<%= profile.inputs "<h4>" +I18n.t(:settings)+ "</h4>" do %>
   <%= profile.semantic_fields_for :option do |setting| %>
     <%= setting.input :sex, :as => :boolean %>
     <%= setting.input :name, :as => :boolean %>

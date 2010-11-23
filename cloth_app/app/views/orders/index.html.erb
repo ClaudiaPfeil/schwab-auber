@@ -24,7 +24,7 @@
   <div class="tr">
     <div class=".first">&nbsp;</div>
     <% result.each do |name| %>
-      <div class="td .span-2"><%=  (name.to_s == 'created_at' || name.to_s == 'eva_date_updated_at')? formatted_date_of_order(order.attributes[name.to_s]) :  order.attributes[name.to_s]  %></div>
+      <div class="td .span-2"><%=  (name.to_s == 'created_at' || name.to_s == 'eva_date_updated_at')? formatted_date(order.attributes[name.to_s]) :  order.attributes[name.to_s]  %></div>
     <% end %>
     <div class=".last">
       <% if can? :update, Order %>

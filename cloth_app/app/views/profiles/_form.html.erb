@@ -1,13 +1,10 @@
-<%= semantic_form_for @profile do |profile| %>
-
-  <%= render "user", :profile => profile %>
-
-  <%#= render "addresses", :profile => profile  %>
-
-  <%= render "settings", :profile => profile %>
-
-  <%= profile.buttons %>
-
+<%= render "addresses"  %>
+</hr>
+<% unless @profile.new_record? %>
+  <%= render "history", :profile => @profile %>
 <% end %>
+</hr>
+
+<%= render "profile", :@profile => @profile %>
 
 <p align="center"><%= link_to I18n.t(:back), profiles_path %></p>

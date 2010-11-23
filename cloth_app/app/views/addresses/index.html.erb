@@ -13,7 +13,7 @@
   <%end%>
 </p>
 
-<% tmp = [:receiver, :receiver_additional, :street_and_number, :postcode, :town, :land] %>
+<% tmp = [:receiver, :receiver_additional, :street_and_number, :town, :land, :kind] %>
 <% address_cols = Address.column_names.to_a%>
 <% result = tmp - address_cols%>
 

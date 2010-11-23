@@ -1,0 +1,38 @@
+<%#
+# Suche nach Profilen z.B. für Bewertungen
+# Author: Claudia Pfeil
+# Date: 23.11.10
+%>
+
+<%= render "search_form" %>
+
+<div class="tr">
+  <div class="td first">&nbsp;</div>
+  <% table_cols = ListView.get_table_columns(User, [:name, :sex, :email, :telephone, :membership])%>
+  <% table_cols.each do |column| %>
+    <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
+  <% end %>
+  <div class="td last">&nbsp;</div>
+</div>
+
+<% @profiles.each do |profile| %>
+
+  <div class="tr">
+    <div class="td first">&nbsp;</div>
+
+    <% table_cols.each do |name| %>
+
+      <div class="td span-4">
+        <% if name.to_s == "name" %>
+          <%= profile.name  %>
+        <% elsif name.to_s == "sex" %>
+          <%= profile.sex == true ? "männlich" : "weiblich" %>
+        <% else %>
+          <%= profile.attributes[name.to_s] %>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
+
+<% end %>

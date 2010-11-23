@@ -9,9 +9,7 @@ class ProfilesController < ApplicationController
      current_user.is? :admin ? @profiles = User.all : @profiles = User.where(:state  => "active ")
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
     @profile = User.new()
@@ -36,6 +34,12 @@ class ProfilesController < ApplicationController
   def search
     search_type, search_key = params[:search_type], params[:search_key]
     @profiles = User.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
+  end
+
+  def history
+    @packages = self.user.packages
+    @orders   = self.user.orders
+    
   end
 
   private

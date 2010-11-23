@@ -15,4 +15,11 @@ de:
   profile_not_updated: Das Profil wurde nicht aktualisiert.
   profile_deleted: Das Profil wurde erfolgreich gelöscht!
   confirm_profile: Möchten sie das Profil wirklich löschen?
+  new_address: Neue Anschrift
+  history:  Bestell- & Einstell-Historie
+  profile_packages:  Eingestellte Kleiderpakete
+  profiles_orders:  Bestellte Kleiderpakete
+  amount_clothes: Anz. Kleidungsstücke
+  profiles_addresses: Eigene (Liefer- & Rechnungs-) Anschriften
+  profiles_title: Persönliches Profil
   

@@ -7,7 +7,9 @@ ClothApp::Application.routes.draw do
       get :publish, :on => :member
   end
   resources :categories
-  resources :profiles
+  resources :profiles do
+    get :search, :on => :collection
+  end
   resources :packages do
       get :search, :on => :collection
       get :order, :on => :member
@@ -33,6 +35,8 @@ ClothApp::Application.routes.draw do
       put :unsuspend
       delete :purge
     end
+
+    get :search, :on => :collection
   end
 
   resource :session, :only => [:new, :create, :destroy]

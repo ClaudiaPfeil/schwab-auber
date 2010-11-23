@@ -1,9 +1,9 @@
-<%= profile.inputs I18n.t(:reset_password) do  %>
+<%= profile.inputs "<h4>" +I18n.t(:reset_password)+ "</h4>" do  %>
     <%= profile.input :password, :as => :password  %>
     <%= profile.input :password_confirmation, :as => :password %>
   <% end %>
 
-<%= profile.inputs I18n.t(:base_data) do %>
+<%= profile.inputs "<h4>" +I18n.t(:base_data)+ "</h4>" do %>
   <%= profile.input :last_name %>
   <%= profile.input :first_name %>
   <%= profile.input :sex, :as => :radio, :collection => [["weiblich", false],["männlich", true]] %>

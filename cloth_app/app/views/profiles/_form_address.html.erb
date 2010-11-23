@@ -1,0 +1,15 @@
+<%= semantic_form_for @profile do |profile| %>
+  <%= profile.semantic_fields_for :addresses do |address| %>
+
+    <%= address.input :receiver %>
+    <%= address.input :receiver_additional %>
+    <%= address.input :street_and_number %>
+    <%= address.input :postcode %>
+    <%= address.input :town %>
+    <%= address.input :land %>
+    <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
+
+    <%= address.buttons %>
+
+  <% end %>
+<% end %>

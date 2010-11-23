@@ -1,0 +1,18 @@
+<%#
+# Title:  Profil-Formular
+# Autor:  Claudia Pfeil
+# Datum:  23.11.10
+%>
+
+<h3><%= I18n.t(:profiles_title)%> </h3>
+
+<%= semantic_form_for @profile do |profile| %>
+
+  <%= render "user", :profile => profile %>
+
+  <%= render "settings", :profile => profile %>
+
+
+  <%= profile.buttons %>
+
+<% end %>

@@ -1,0 +1,12 @@
+<%
+# Titel:  Template für die Bestell-History des Kunden
+# Author: Claudia Pfeil
+# Datum:  23.11.10
+%>
+<h3><%= I18n.t(:history) %></h3>
+
+<%= render "packages_history", :profile => profile %>
+
+</hr>
+
+<%= render "orders_history", :profile => profile %>

@@ -1,0 +1,34 @@
+<%#
+# Titel:  Bestell-Historie der Pakete
+# Autor:  Claudia Pfeil
+# Datum:  23.11.10
+%>
+
+<h4><%= I18n.t(:profiles_orders) %></h4>
+
+<div class="tr">
+  <div class="td first">&nbsp;</div>
+  <% orders_cols = ListView.get_table_columns(Order, [:evaluation, :eva_notice, :received, :created_at])%>
+  <% orders_cols.each do |column| %>
+    <div class="td span-4"><b><%=  I18n.t(column)%></b> </div>
+  <% end %>
+  <div class="td last">&nbsp;</div>
+</div>
+
+<% profile.orders.each do |profile| %>
+
+  <div class="tr">
+    <div class="td first">&nbsp;</div>
+
+    <% orders_cols.each do |name| %>
+
+      <div class="td span-4">
+        <% if name.to_s == "created_at" %>
+          <%= formatted_date(profile.attributes[name.to_s]) %>
+        <% else %>
+          <%= profile.attributes[name.to_s] %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
