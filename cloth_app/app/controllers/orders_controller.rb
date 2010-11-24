@@ -21,12 +21,15 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(params[:order])
+    @order = Order.new()
 
-    package = Package.find_by_id(params[:order][:package_id])
-    @order.package_number = package.serial_number unless package.serial_number.nil?
+    package = Package.find_by_id(params[:id])
+    @order.package_number = package.serial_number
+    @order.package_id = package.id
+    @order.user_id = current_user.id
+
+    if @order.check_change_principle == true && @order.check_holidays == true
     
-    if @order.check_change_principle == true
       if @order.save
         redirect_to order_path(@order), :notice => I18n.t(:order_created)
       else

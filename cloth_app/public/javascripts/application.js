@@ -13,6 +13,11 @@ $(document).ready(function () {
   $('.simpledialog').simpleDialog();
 });
 
+$(document).ready(function(){
+  $('input.ui-datepicker').datepicker();
+});
+
+
 //
 
 //$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));

@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, :first_name, :option_attributes, :tag_names
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, :first_name, :option_attributes, :start_holidays, :end_holidays, :cartons, :tag_names
   accepts_nested_attributes_for :addresses, :option
 
   # users roles
@@ -92,6 +92,9 @@ class User < ActiveRecord::Base
     true
   end
 
+  def count_down
+    self.update_attribute(:cartons, 4)
+  end
   protected
     
     def make_activation_code

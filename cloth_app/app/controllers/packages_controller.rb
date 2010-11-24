@@ -54,22 +54,22 @@ class PackagesController < ApplicationController
 
   def order
     #create order
-    order = Order.new()
     package = Package.find_by_id(params[:id])
-    order.package_number = package.serial_number
-    order.package_id = package.id
-    order.user_id = current_user.id
-    
-    if order.check_change_principle == true
-      if order.save
+    if Order.new.check_change_principle == true && Order.new.check_holidays == true
+
+      if Order.create(:package_number => package.serial_number,
+                    :package_id     => package.id,
+                    :user_id        => current_user.id)
+        # count down cartons
+        package.user.count_down
         render :action => 'search', :notice => :order_created
       else
         render :action => 'search', :notice => :order_not_created
       end
     else
-      render :action => 'new', :notice => I18n.t(:equal_change_principle)
+      render :action => 'search', :notice => I18n.t(:check_failed)
     end
-    
+  
   end
 
   private

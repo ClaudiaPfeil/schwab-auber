@@ -3,11 +3,12 @@ class Order < ActiveRecord::Base
   belongs_to :package
   
   validates_uniqueness_of :order_number, :bill_number, :package_number, :package_id
+  
   validates_presence_of :package_id, :user_id
-
+  
   before_save do
-    create_order_number
-    create_bill_number
+    create_order_number if order_number.nil? || order_number.blank?
+    create_bill_number  if bill_number.nil? || bill_number.blank?
     create_package_number if package_number.blank? || package_number.nil?
   end
 
@@ -24,6 +25,14 @@ class Order < ActiveRecord::Base
   # jeder, der ein Paket eingestellt hat, darf ein Paket bestellen
   def check_change_principle
     user_has_packages? || user_first_order? ? true : false
+  end
+
+  # ein Kleiderpaket darf während der Abwesenheit wegen Urlaub nicht bestellt werden
+  # da es dann zu Verzögerungen bei der Lieferung kommen würde
+  def check_holidays
+    start    = self.package.user.start_holidays
+    last_day = self.package.user.end_holidays
+    Date.today.between?(start, last_day) ? false : true
   end
   
   protected
