@@ -3,7 +3,7 @@
 
 class ProfilesController < ApplicationController
   
-  before_filter :init_profile, :action => [:show, :edit, :update, :destroy]
+  before_filter :init_profile, :action => [:show, :edit, :update, :destroy, :order_cartons]
 
   def index
      current_user.is? :admin ? @profiles = User.all : @profiles = User.where(:state  => "active ")
@@ -39,7 +39,12 @@ class ProfilesController < ApplicationController
   def history
     @packages = self.user.packages
     @orders   = self.user.orders
-    
+  end
+
+  # Neue Versandkartonage anfordern
+  def order_cartons
+    UserMailer.new.order_cartons(@profile.user)
+    redirect_to profile_path(@profile)
   end
 
   private

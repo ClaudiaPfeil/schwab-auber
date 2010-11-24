@@ -14,5 +14,6 @@
   <%= profile.input :activated_at, :as => :datepicker %>
   <%= profile.input :start_holidays, :as => :datepicker %>
   <%= profile.input :end_holidays, :as => :datepicker %>
+  <%= profile.input :cartons, :input_html => {:readonly => true} %>
   <%= profile.input :updated_at, :as => :datepicker %>
 <% end %>

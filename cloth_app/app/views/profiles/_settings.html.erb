@@ -8,5 +8,10 @@
     <%= setting.input :address, :as => :boolean %>
     <%= setting.input :date_of_birth, :as => :boolean %>
     <%= setting.input :telephone, :as => :boolean %>
+    <%= setting.input :cartons,
+                      :as => :select,
+                      :collection => ["0","1", "2", "3", "4"],
+                      :include_blank => false
+                    %>
   <% end %>
 <% end %>

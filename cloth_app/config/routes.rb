@@ -9,6 +9,7 @@ ClothApp::Application.routes.draw do
   resources :categories
   resources :profiles do
     get :search, :on => :collection
+    get :order_cartons, :on => :member
   end
   resources :packages do
       get :search, :on => :collection

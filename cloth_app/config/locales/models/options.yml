@@ -9,3 +9,4 @@ de:
   first_name: nur Vorname veröffentlichen?
   date_of_birth: Geburtsdatum veröffentlichen?
   telephone:  Telefon-Nummer veröffentlichen?
+  cartons: Benachrichtigt werden bei mind. {count} Versand-Kartonagen

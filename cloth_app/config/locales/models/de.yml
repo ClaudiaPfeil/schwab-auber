@@ -102,6 +102,7 @@ de:
         address: Anschrift
         date_of_birth: Geburtsdatum
         telephone:  Telefonnummer
+        cartons: Benachrichtigt werden bei mind. {{count}} Versand-Kartonagen
         
 
 

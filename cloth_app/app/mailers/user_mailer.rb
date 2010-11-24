@@ -11,12 +11,25 @@ class UserMailer < ActionMailer::Base
     @subject    += I18n.t('subject_activation')
     @url  = "http://#{SITE_URL}/"
   end
+
+  def order_cartons(user)
+    setup_admin_email(user)
+    @subject    += I18n.t(:order_more_cartons)
+  end
   
   protected
 
   def setup_email(user)
     @recipients  = "#{user.email}"
-    @from        = "ADMINEMAIL"
+    @from        = "KidsKarton.de"
+    @subject     = "[#{SITE_URL}] "
+    @sent_on     = Time.now
+    @user = user
+  end
+
+  def setup_admin_email(user)
+    @recipients  = "info@kidskarton.de"
+    @from        = "#{user.email}"
     @subject     = "[#{SITE_URL}] "
     @sent_on     = Time.now
     @user = user

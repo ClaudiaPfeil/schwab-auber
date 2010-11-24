@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101124122250) do
+ActiveRecord::Schema.define(:version => 20101124151206) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20101124122250) do
     t.boolean  "first_letter_of_first_name"
     t.boolean  "first_letter_of_last_name"
     t.boolean  "first_name"
+    t.integer  "cartons"
   end
 
   create_table "order_bill_numbers", :force => true do |t|
