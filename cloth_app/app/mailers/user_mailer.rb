@@ -14,7 +14,8 @@ class UserMailer < ActionMailer::Base
 
   def order_cartons(user)
     setup_admin_email(user)
-    @subject    += I18n.t(:order_more_cartons)
+    @subject    += user.first_name + " " + user.last_name + I18n.t('user_order_cartons')
+    
   end
   
   protected
@@ -28,7 +29,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def setup_admin_email(user)
-    @recipients  = "info@kidskarton.de"
+    @recipients  = "info@claudia-pfeil.com"#"info@kidskarton.de"
     @from        = "#{user.email}"
     @subject     = "[#{SITE_URL}] "
     @sent_on     = Time.now

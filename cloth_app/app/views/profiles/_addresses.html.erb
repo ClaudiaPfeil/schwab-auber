@@ -8,14 +8,13 @@
 <h3><%= I18n.t(:profiles_addresses)%> </h3>
 <p align="right">
   <% if can? :create, Address %>
-    <%= link_to I18n.t(:new_address), new_address_path %>
+    <%= link_to I18n.t(:new_address), :controller => :addresses, :action => :new, :user_id => @profile.id %>
   <%end%>
 </p>
 
-<% if @profile.addresses.count.to_i == 0  %>
-    <%= render "form_address" %>
+<% if @profile.addresses.count.to_i > 0  %>
+  <%= render "all_addresses", :@profile => @profile %>
 <% else %>
-  <% @profile.addresses.each do |address| %>
-    <%= render "form_address" %>
-  <% end %>
+<p><%=h I18n.t(:add_address) %></p>
+  <%= render "form_address", :profile => @profile %>
 <% end %>

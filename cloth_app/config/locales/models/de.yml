@@ -16,6 +16,14 @@ de:
         address_updated: Anschrift wurde erfolgreich aktualisiert!
         address_not_updated: Anschrift wurde nicht aktualisiert!
         address_destroyed: Anschrift wurde erfolgreich gelöscht!
+        receiver: Empfänger (Vor- und Nachname)
+        receiver_additional: Zusatz (c/o)
+        street_and_number: Straße und Hausnummer
+        postcode: Postleitzahl
+        town: Stadt
+        land: Land
+        kind: Art
+        confirm_address: Möchten sie die Anschrift wirklich löschen?
       content:
         title: Titel
         subtitle: Untertitel
@@ -102,7 +110,8 @@ de:
         address: Anschrift
         date_of_birth: Geburtsdatum
         telephone:  Telefonnummer
-        cartons: Benachrichtigt werden bei mind. {{count}} Versand-Kartonagen
+        cartons: Benachrichtigt werden bei mind. Versand-Kartonagen
+      
         
 
 

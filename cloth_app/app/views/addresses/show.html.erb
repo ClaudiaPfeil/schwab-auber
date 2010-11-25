@@ -1,5 +1,11 @@
-<%= semantic_form_for Address.new do |address| %>
- 
+<%#
+# Titel:  Anzeige der Anschrift
+# Autor:  Claudia Pfeil
+# Datum:  25.11.2010
+%>
+
+<%= semantic_form_for @address do |address|%>
+
   <%= address.input :receiver %>
   <%= address.input :receiver_additional %>
   <%= address.input :street_and_number %>
@@ -7,7 +13,7 @@
   <%= address.input :town %>
   <%= address.input :land %>
   <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
-  <%= address.input :user_id, :value => profile.id, :as => :hidden %>
-  <%= address.buttons %>
 
 <% end %>
+
+<%= link_to I18n.t(:back), addresses_path %>

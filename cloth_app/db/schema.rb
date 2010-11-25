@@ -10,19 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101124151206) do
+ActiveRecord::Schema.define(:version => 20101125101357) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
     t.string   "receiver"
-    t.string   "receiver_additonal"
+    t.string   "receiver_additional"
     t.string   "street_and_number"
     t.string   "postcode"
     t.string   "town"
     t.string   "land"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "kind",               :limit => 1
+    t.integer  "kind",                :limit => 1
   end
 
   create_table "categories", :force => true do |t|

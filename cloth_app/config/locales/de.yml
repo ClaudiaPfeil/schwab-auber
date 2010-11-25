@@ -17,12 +17,24 @@ de:
   landingpage: '. landungs seite'
   menue_order: '. bestellungen'
   logout: '. abmelden'
+  user_order_cartons: hat eben eine neue Kartonagen-Lieferung angefordert
+  name: Name
+  add_address:  Es wurden noch keine Anschriften hinterlegt. Bitte fügen sie eine Anschrift hinzu!
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
     signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
     subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
-    message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
+    message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:" 
+    addresses:  Anschriften
+    receiver: Empfänger
+    receiver_additional:  Zusatz
+    street_and_number:  Straße und Hausnummer
+    postcode: Postleitzahl
+    town: Stadt
+    land: Land
+    kind: Art
+
   date:
     formats:
       default: "%d.%m.%Y"

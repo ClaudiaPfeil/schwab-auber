@@ -43,8 +43,8 @@ class ProfilesController < ApplicationController
 
   # Neue Versandkartonage anfordern
   def order_cartons
-    UserMailer.new.order_cartons(@profile.user)
-    redirect_to profile_path(@profile)
+    UserMailer.order_cartons(@profile).deliver
+    redirect_to edit_profile_path(@profile)
   end
 
   private

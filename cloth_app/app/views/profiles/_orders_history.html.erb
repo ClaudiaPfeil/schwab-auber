@@ -8,9 +8,9 @@
 
 <div class="tr">
   <div class="td first">&nbsp;</div>
-  <% orders_cols = ListView.get_table_columns(Order, [:evaluation, :eva_notice, :received, :created_at])%>
+  <% orders_cols = ListView.get_table_columns(Order, [:order_number, :evaluation, :eva_notice, :received, :created_at])%>
   <% orders_cols.each do |column| %>
-    <div class="td span-4"><b><%=  I18n.t(column)%></b> </div>
+    <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
   <% end %>
   <div class="td last">&nbsp;</div>
 </div>
@@ -22,7 +22,7 @@
 
     <% orders_cols.each do |name| %>
 
-      <div class="td span-4">
+      <div class="td span-3">
         <% if name.to_s == "created_at" %>
           <%= formatted_date(profile.attributes[name.to_s]) %>
         <% else %>

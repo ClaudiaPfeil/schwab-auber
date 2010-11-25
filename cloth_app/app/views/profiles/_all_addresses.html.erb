@@ -3,17 +3,17 @@
 # and open the template in the editor.
 %>
 
-<h1><%= I18n.t(:addresses) %></h1>
+
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<h4><%= I18n.t(:addresses) %></h4>
 
 <%=  get_notices %>
 
-<p align="right">
-  <% if can? :create, Address %>
-    <%= link_to I18n.t(:new), new_address_path %>
-  <%end%>
-</p>
-
-<% tmp = [:receiver, :receiver_additional, :street_and_number, :town, :land, :kind] %>
+<% tmp = [:receiver, :street_and_number, :town, :land, :kind] %>
 <% address_cols = Address.column_names.to_a%>
 <% result = tmp - address_cols%>
 
@@ -25,13 +25,13 @@
   <div class=".last">&nbsp;</div>
 </div>
 
-<% @addresses.each do |address| %>
+<% @profile.addresses.each do |address| %>
   <div class="tr">
     <div class=".first">&nbsp;</div>
     <% result.each do |name| %>
       <div class="td .span-2">
         <% if name.to_s == "kind" %>
-          <%= address.attributes[name.to_s] == false ? "Lieferanschrift" : "Rechnungsanschrift" %>
+          <%= address.attributes[name.to_s] == 0 ? "Lieferanschrift" : "Rechnungsanschrift" %>
         <% else %>
           <%=  address.attributes[name.to_s]  %>
         <% end %>
@@ -49,3 +49,4 @@
     </div>
   </div>
 <% end %>
+

@@ -1,0 +1,20 @@
+<%#
+# Titel:  E-Mail Template für Kartonagen-Lieferung
+# Autor:  Claudia Pfeil
+# Datum:  25.11.2010
+%>
+
+<%=h I18n.t(:addresses) %>
+<%=h @user.first_name %> <%=h @user.last_name%>
+<% debugger %>
+<%= @user.addresses.each do |address| %>
+
+    <%=h address.receiver %>
+    <%=h address.receiver_additional %>
+    <%=h address.street_and_number %>
+    <%=h address.postcode %>
+    <%=h address.town %>
+    <%=h address.land %>
+    <%=h address.kind == 0 ? "Lieferanschrift": "Rechnungsanschrift" %>
+
+<% end %>

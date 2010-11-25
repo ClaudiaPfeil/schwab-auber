@@ -6,14 +6,15 @@
 <%= semantic_form_for @address do |address|%>
 
   <%= address.input :receiver %>
-  <%#= address.input :receiver_additional %>
+  <%= address.input :receiver_additional %>
   <%= address.input :street_and_number %>
   <%= address.input :postcode %>
   <%= address.input :town %>
   <%= address.input :land %>
   <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
+  <%= address.input :user_id, :value => (params[:user_id]? params[:user_id] : current_user.id), :as => :hidden %>
   <%= address.buttons %>
 
 <% end %>
 
-<%= link_to I18n.t(:back), addresses_path %>
+<%= link_to I18n.t(:back), edit_profile_path(User.find_by_id(@address.user_id)) %>

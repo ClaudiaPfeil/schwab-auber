@@ -17,7 +17,8 @@ class AddressesController < ApplicationController
   def create
     @address = Address.new(params[:address])
     if @address.save
-      redirect_to show_address_path(@address), :notice => I18n.t(:address_created)
+      profile = User.find_by_id(@address.user_id)
+      redirect_to edit_profile_path(profile), :notice => I18n.t(:address_created)
     else
       render :action => 'new', :notice => I18n.t(:address_not_created)
     end
@@ -35,13 +36,14 @@ class AddressesController < ApplicationController
 
   def destroy
     @address.destroy if @address.is_destroyable?
-    redirect_to addresses_path, :notice => I18n.t(:address_deleted)
+    profile = User.find_by_id(@address.user_id)
+    redirect_to edit_profile_path(profile), :notice => I18n.t(:address_deleted)
   end
 
   private
 
     def init_address
-      init_current_object { @address = Address.find_by_id_and_user_id(params[:id], current_user.id) }
+      init_current_object { @address = Address.find_by_id(params[:id]) }
     end
 
     def init_current_object
