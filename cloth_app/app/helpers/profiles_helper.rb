@@ -31,5 +31,22 @@ module ProfilesHelper
   def more_cartons?(profile)
     profile.cartons <= profile.option.cartons ?   link_to(I18n.t(:order_more_cartons), order_cartons_profile_path(profile)) : ""
   end
+
+  def get_settings(profile)
+    result  = []
+    profile.option.each do |s|
+      if s == true
+        if s.to_s == "first_letter_of_first_name" || s.to_s == "first_name"
+          result << profile.first_name
+        elsif s.to_s == "first_letter_of_last_name"
+          result  << profile.last_name
+        else
+          result  << profile.attributes[s.to_s]
+        end
+      end
+    end
+      
+    result
+  end
   
 end

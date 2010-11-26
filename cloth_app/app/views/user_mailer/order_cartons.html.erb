@@ -6,7 +6,6 @@
 
 <%=h I18n.t(:addresses) %>
 <%=h @user.first_name %> <%=h @user.last_name%>
-<% debugger %>
 <%= @user.addresses.each do |address| %>
 
     <%=h address.receiver %>

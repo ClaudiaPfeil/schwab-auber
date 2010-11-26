@@ -15,7 +15,12 @@ class UserMailer < ActionMailer::Base
   def order_cartons(user)
     setup_admin_email(user)
     @subject    += user.first_name + " " + user.last_name + I18n.t('user_order_cartons')
-    
+  end
+
+  def cancel_info(user)
+    setup_admin_email(user)
+    @subject  +=  user.first_name + " " + user.last_name
+    @subject  +=  user.is_premium? ? I18n.t('user_canceled_membership')  : I18n.t('user_canceled_membership_to') + formatted_date(user.membership_ends) + I18n.t('user_canceled')
   end
   
   protected

@@ -10,7 +10,14 @@
   <div class="td first">&nbsp;</div>
   <% packages_cols = ListView.get_table_columns(Package, [:name, :kind, :amount_clothes, :state, :created_at])%>
   <% packages_cols.each do |column| %>
-    <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
+    <div class="td span-3">
+      <b>
+        <% if column.to_s == "name" %>
+          <%= I18n.t(:package_name) %>
+        <% else %>
+          <%=  I18n.t(column)%>
+        <% end %>
+      </b> </div>
   <% end %>
   <div class="td last">&nbsp;</div>
 </div>

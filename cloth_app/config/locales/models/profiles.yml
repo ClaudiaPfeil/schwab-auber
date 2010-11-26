@@ -24,5 +24,7 @@ de:
   profiles_title: Persönliches Profil
   infos:  Neuigkeiten
   order_more_cartons: Ihre Versandkartonagen-Vorrat neigt sich dem Ende, bestellen sie gleich heute eine neue Lieferung!
-  
+  name: Bezeichnung
+  package_name: Bezeichnung
+  cartons:  Versandkartonagen
   

@@ -9,5 +9,9 @@ class WelcomeController < ApplicationController
     flash.keep # Will persist all flash values. You can also use a key to keep only that value: flash.keep(:notice)
     redirect_to welcome_url
   end
+
+  def membership
+    @user = User.find_by_id(current_user.id)
+  end
   
 end

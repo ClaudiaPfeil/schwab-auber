@@ -8,6 +8,7 @@ de:
       address: Anschrift
       profile: Profil
       options:  Einstellungen
+      price:  Preis
     attributes:
       address:
         back: Zurück
@@ -57,6 +58,17 @@ de:
         confirmed: Bestätigen
         hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
         true: Junge
+      price:
+        three_months:  3 Monate Paket Premium
+        six_months:  6 Monate-Paket Premium
+        twelve_months: 12 Monate-Paket Premium
+        handling: Handling-Gebühr
+        shipping: Versandkosten
+        kind: Art der Mitgliedschaft
+        premium:  Premium
+        base:  Basis
+        price:  Preis
+        prices: Preise
       user:
         role: Nutzerrolle
         role_mask: Gruppe der Rollen
@@ -78,6 +90,13 @@ de:
         user_number: Kundennummer
         start_holidays: Beginn Urlaub
         end_holidays: Ende Urlaub
+        cartons:  Versandkartonagen
+        membership: Mitgliedschaft
+        hint_membership:  Die Basis Mitgliedschaft ist kostenlos und wird automatisch bei der Registrierung gesetzt.
+        basis:  Basis
+        premium:  Premium
+        continue_membership:  Mitgliedschaft nach Ablauf automatisch verlängern?
+        premium_period: Monatspakete Premium
       order:
         bill_number: Rechnungs-Nr.
         order_number: Bestell-Nr.

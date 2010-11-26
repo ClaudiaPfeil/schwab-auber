@@ -27,8 +27,18 @@ class ProfilesController < ApplicationController
   def update; end
 
   def destroy
-    @profile.destroy if @profile.is_destroyable?
-    redirect_to profiles_path, :notice => I18n.t(:profile_destroyed)
+    unless @profile.is_premium?
+      @profile.destroy if @profile.is_destroyable?
+      @profile.packages.each do |package|
+        package.destroy if package.is_destroyable?
+      end
+      UserMailer.cancel_info(@profile).deliver
+      redirect_to profiles_path, :notice => I18n.t(:profile_destroyed)
+    else
+      # Premium Account erst nach Ablauf der Mitgliedschaft löschen
+      # die Kleiderpakete auch erst nach Ablauf der Mitgliedschaft löschen
+    end
+    
   end
 
   def search

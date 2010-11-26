@@ -10,7 +10,7 @@
 
 <div class="tr">
   <div class="td first">&nbsp;</div>
-  <% table_cols = ListView.get_table_columns(User, [:name, :sex, :email, :telephone, :membership])%>
+  <% current_user.is? :admin ? table_cols = ListView.get_table_columns(User, [:name, :sex, :telephone, :membership]) : table_cols = ListView.get_table_columns(User, get_settings(@profile))%>
   <% table_cols.each do |column| %>
     <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
   <% end %>
@@ -23,11 +23,17 @@
 
     <% table_cols.each do |name| %>
 
-      <div class="td span-4">
+      <div class="td span-3">
         <% if name.to_s == "name" %> 
           <%= profile.name  %>
         <% elsif name.to_s == "sex" %>
           <%= profile.sex == true ? "männlich" : "weiblich" %>
+        <% elsif profile.option.first_letter_of_first_name == true && !(current_user.is? :admin) %>
+          <%= profile.first_name.first + " " + profile.last_name %>
+        <% elsif profile.option.first_letter_of_last_name == true && !(current_user.is? :admin) %>
+          <%= profile.first_name + " " + profile.last_name.first %>
+        <% elsif name.to_s == "membership" %>
+          <%= profile.membership == true ? I18n.t(:premium) : I18n.t(:base) %>
         <% else %>
           <%= profile.attributes[name.to_s] %>
         <% end %>

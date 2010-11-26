@@ -25,7 +25,10 @@ de:
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
     signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
     subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
-    message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:" 
+    message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
+    user_canceled_membership: hat seine Mitgliedschaft gekündigt
+    user_canceled_membership_to: hat seine Mitgliedschaft zum
+    user_canceled:  gekündigt
     addresses:  Anschriften
     receiver: Empfänger
     receiver_additional:  Zusatz
@@ -34,7 +37,8 @@ de:
     town: Stadt
     land: Land
     kind: Art
-
+    membership: "Der Kunde hatte folgende Mitgliedschaft: "
+    membership_ends: "und diese endet am "
   date:
     formats:
       default: "%d.%m.%Y"

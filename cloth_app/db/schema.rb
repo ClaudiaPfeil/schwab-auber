@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101125101357) do
+ActiveRecord::Schema.define(:version => 20101126131318) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -102,6 +102,17 @@ ActiveRecord::Schema.define(:version => 20101125101357) do
     t.integer  "state",          :limit => 1, :default => 0
   end
 
+  create_table "prices", :force => true do |t|
+    t.float    "shipping",      :default => 11.0
+    t.float    "handling",      :default => 1.2
+    t.boolean  "kind"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "three_months",  :default => 9.9
+    t.float    "six_months",    :default => 15.9
+    t.float    "twelve_months", :default => 29.9
+  end
+
   create_table "users", :force => true do |t|
     t.string   "login",                     :limit => 40
     t.string   "name",                      :limit => 100, :default => ""
@@ -127,6 +138,11 @@ ActiveRecord::Schema.define(:version => 20101125101357) do
     t.date     "start_holidays"
     t.date     "end_holidays"
     t.integer  "cartons",                                  :default => 5
+    t.date     "premium_period"
+    t.boolean  "continue_membership"
+    t.boolean  "membership",                               :default => false
+    t.date     "membership_starts"
+    t.date     "membership_ends"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

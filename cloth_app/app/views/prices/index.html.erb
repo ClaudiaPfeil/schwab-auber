@@ -1,0 +1,50 @@
+<%#
+# Titel:  Listenansicht aller Preise
+# Autor:  Claudia Pfeil
+# Datum:  26.11.2010
+%>
+
+<%= I18n.t(:prices) %>
+
+<%=  get_notices %>
+
+<p align="right">
+  <% if can? :create, Price %>
+    <%= link_to I18n.t(:new), new_price_path %>
+  <%end%>
+</p>
+
+<div class="tr">
+  <div class="td first">&nbsp;</div>
+  <% table_cols = ListView.get_table_columns(Price, [:shipping, :handling, :three_months, :six_months, :twelve_months, :kind])%>
+  <% table_cols.each do |column| %>
+    <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
+  <% end %>
+  <div class="td last">&nbsp;</div>
+</div>
+
+<% @prices.each do |price| %>
+  <div class="tr">
+    <div class="td first">&nbsp;</div>
+
+    <% table_cols.each do |name| %>
+
+      <div class="td span-3">
+          <%= price.attributes[name.to_s] %>
+      </div>
+    <% end %>
+
+    <div class="td last">
+      <% if can? :update, Price %>
+        <%= link_to I18n.t(:edit), edit_price_path(price) %>
+      <%end%>
+      <% if can? :delete, Price %>
+        <%= link_to I18n.t(:delete), price, :confirm => I18n.t(:confirm_price) , :method => 'delete' %>
+      <%end%>
+    </div>
+  </div>
+<% end  %>
+
+
+
+

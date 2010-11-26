@@ -1,0 +1,35 @@
+<%#
+# Titel:  Mitgliedschaft auswählen
+# Autor:  Claudia Pfeil
+# Datum:  25.11.2010
+%>
+
+<%#*Formular soll an User#edit geschickt werden%>
+<%= semantic_form_for @user do |user| %>
+
+  <%= user.input :membership, :as => :radio,
+                 :collection => {"Basis" => false, "Premium" => true},
+                 :hint  => :hint_membership
+  %>
+
+  <%= user.input  :premium_period, :as => :select,
+                  :collection => { "3 Monate" => 0, "6 Monate" => 1, "12 Monate" => 2},
+                  :include_blank => false,
+                  :as => :hidden
+  %>
+
+  <%= user.input  :continue_membership, :as => :radio,
+                  :collection =>  {"automatisch" => true, "manuell" => false},
+                  :as =>  :hidden
+  %>
+
+  <%= user.input  :membership_starts, :as => :hidden,
+                  :value => Date.today
+  %>
+
+  <%= user.buttons do %>
+    <%= user.commit_button "Mitgliedschaft wählen" %>
+  <% end %>
+
+
+<% end %>

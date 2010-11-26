@@ -1,0 +1,9 @@
+<%#
+# Titel:  E-Mail Template für Kündigungs-Benachrichtigung
+# Autor:  Claudia Pfeil
+# Datum:  25.11.2010
+%>
+
+<%=h @user.first_name + " " + @user.last_name %><%=h I18n.t('user_canceled_membership') %>
+<%=h I18n.t('membership') %> <%=h @user.membership == 0 ? "Basis" : "Premium" %>
+<%=h I18n.t('membership_ends') %><%=h date_formatted(@user.membership_ends) %>
