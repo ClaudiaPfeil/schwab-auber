@@ -37,6 +37,12 @@ class Ability
       can :destroy, Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
       can :search,  Profile if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
 
+      can :read,    Price if (user.is? :admin)
+      can :create,  Price if (user.is? :admin)
+      can :update,  Price if (user.is? :admin)
+      can :destroy, Price if (user.is? :admin)
+      can :search,  Price if (user.is? :admin)
+
 
 
 #      can :update, Content do |content|

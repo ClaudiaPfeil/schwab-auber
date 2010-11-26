@@ -26,13 +26,8 @@
 <div class="subnavi">
   <!--||| Der erste Punkt zeigt den Seitenbereich an und wird nicht verlinkt. Die Sublinks = das Untermenü hier anpassen. |||-->
   <span class="sub">
-    <%= link_to I18n.t(:home), root_path %>
-    <%= link_to I18n.t(:menue_package),  packages_path%>
-    <%= link_to I18n.t(:search),  search_packages_path%>
     <%#= link_to I18n.t(:impressum), impressums_path  %>
     <% if current_user %>
-
-      <%#= link_to I18n.t(:menue_profile), profiles_path%>
 
       <%  if (can? :manage, Content) || (can? :publish, Content) %>
         <%= link_to I18n.t(:content), contents_path %>
@@ -41,6 +36,10 @@
 
       <% if can? :manage, Order %>
         <%= link_to I18n.t(:menue_order), orders_path %>
+      <% end %>
+
+      <% if can? :manage, Price %>
+        <%= link_to I18n.t(:menue_price), prices_path %>
       <% end %>
 
       <%= link_to I18n.t(:logout), logout_path%>

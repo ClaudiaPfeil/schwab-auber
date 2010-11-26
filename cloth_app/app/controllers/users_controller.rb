@@ -58,7 +58,9 @@ class UsersController < ApplicationController
   # Aktualisieren des Nutzer-Profils wie Passwort, Name, E-Mail usw.
   def update
     user = params[:user].slice!
-    
+    if user[:membership] == true
+      user[:role] << "premium"
+    end
     if @user.update_attributes(user)
       redirect_to profiles_path, :notice => I18n.t(:profile_updated)
     else

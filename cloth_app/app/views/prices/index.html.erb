@@ -30,14 +30,18 @@
     <% table_cols.each do |name| %>
 
       <div class="td span-3">
-          <%= price.attributes[name.to_s] %>
+          <% if name.to_s == "kind" %>
+            <%= price.kind == true ? I18n.t(:premium) : I18n.t(:base) %>
+          <% else %>
+            <%= price.attributes[name.to_s] %>
+          <% end %>
       </div>
     <% end %>
 
     <div class="td last">
       <% if can? :update, Price %>
         <%= link_to I18n.t(:edit), edit_price_path(price) %>
-      <%end%>
+      <%end%><br>
       <% if can? :delete, Price %>
         <%= link_to I18n.t(:delete), price, :confirm => I18n.t(:confirm_price) , :method => 'delete' %>
       <%end%>
