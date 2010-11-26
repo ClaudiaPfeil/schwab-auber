@@ -32,6 +32,7 @@ de:
   state: Status
   available: Verfügbar
   ordered: Bereits vergriffen
+  created_at: Eingestellt am
   packages:
    search_types:
      name: Bezeichnung Kleidungspaket
