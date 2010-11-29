@@ -17,6 +17,7 @@ de:
   landingpage: '. landungs seite'
   menue_order: '. bestellungen'
   menue_price: '. preise'
+  menue_category: '. kategorien'
   logout: '. abmelden'
   user_order_cartons: hat eben eine neue Kartonagen-Lieferung angefordert
   name: Name

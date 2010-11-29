@@ -48,5 +48,21 @@ module ProfilesHelper
       
     result
   end
+
+  def create_list_view(profile, name)
+    if name.to_s == "name"
+      profile.name
+    elsif name.to_s == "sex"
+      profile.sex == true ? "männlich" : "weiblich"
+    elsif !profile.option.first_letter_of_first_name.nil? && profile.option.first_letter_of_first_name == true && !(current_user.is? :admin)
+      profile.first_name.first + " " + profile.last_name
+    elsif !profile.option.first_letter_of_last_name.nil? && profile.option.first_letter_of_last_name == true && !(current_user.is? :admin)
+      profile.first_name + " " + profile.last_name.first
+    elsif name.to_s == "membership"
+      profile.membership == true ? I18n.t(:premium) : I18n.t(:base)
+    else 
+       profile.attributes[name.to_s]
+    end
+  end
   
 end

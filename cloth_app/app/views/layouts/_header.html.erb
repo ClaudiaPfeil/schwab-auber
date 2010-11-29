@@ -1,6 +1,3 @@
-<div class="tr">
-  <div class="td_image"><%#= image_tag( "/images/sonne.gif", :width => "41", :height => "38", :alt => "") %></div>
-</div>
 
 <div class="tr">
 
@@ -23,29 +20,4 @@
 
 </div>
 
-<div class="subnavi">
-  <!--||| Der erste Punkt zeigt den Seitenbereich an und wird nicht verlinkt. Die Sublinks = das Untermenü hier anpassen. |||-->
-  <span class="sub">
-    <%#= link_to I18n.t(:impressum), impressums_path  %>
-    <% if current_user %>
 
-      <%  if (can? :manage, Content) || (can? :publish, Content) %>
-        <%= link_to I18n.t(:content), contents_path %>
-        <%= link_to I18n.t(:landingpage), landing_page_path %>
-      <%  end %>
-
-      <% if can? :manage, Order %>
-        <%= link_to I18n.t(:menue_order), orders_path %>
-      <% end %>
-
-      <% if can? :manage, Price %>
-        <%= link_to I18n.t(:menue_price), prices_path %>
-      <% end %>
-
-      <%= link_to I18n.t(:logout), logout_path%>
-
-    <% end %>
-    <br>
-  </span>
-
-</div>

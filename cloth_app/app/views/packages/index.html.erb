@@ -1,6 +1,6 @@
-<h2><%= I18n.t("show_packages") %></h2>
+<h1><%= I18n.t("show_packages") %></h1>
 <%=  get_notices %>
-<p>
+<p align="right">
   <% if can? :create, Package %>
     <%= link_to "New", new_package_path %>
   <%end%>

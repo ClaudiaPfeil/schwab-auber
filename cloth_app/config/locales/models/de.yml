@@ -9,6 +9,8 @@ de:
       profile: Profil
       options:  Einstellungen
       price:  Preis
+      category: Kategorie
+      categories: Kategorien
     attributes:
       address:
         back: Zurück

@@ -1,19 +1,32 @@
-<%= "Category" %>
+<h1><%= I18n.t(:categories) %></h1>
 <%=  get_notices %>
 <p align="right">
  <%= link_to "New", new_category_path %>
 </p>
 
-<div class="tr_next">
-  <div class="td"><b><%= "Name"%></b> </div>
-  <div class="td"><b><%= "Description"%></b> </div>
+<div class="tr span-22">
+  <div class="td span-6"><b><%= I18n.t(:name_cat) %></b> </div>
+  <div class="td span-10"><b><%= I18n.t(:description_cat) %></b> </div>
+  <div class="td span-4">&nbsp;</div>
 </div>
+
+
+
 
 <% @categories.each do |category| %>
 
-  <div class="tr_next">
-    <div class="td"><%= category.name%> </div>
-    <div class="td"><%= category.description%> </div>
+  <div class="tr span-22">
+    <div class="td span-6"><%= category.name%></div>
+    <div class="td span-10"><%= category.description%></div>
+
+    <div class="td last span-4">
+      <% if can? :update, Category %>
+        <%= link_to I18n.t(:edit), edit_category_path(category) %>
+      <%end%>
+      <% if can? :delete, Category %>
+        <%= link_to I18n.t(:delete), category, :confirm => I18n.t(:confirm_category) , :method => 'delete' %>
+      <%end%>
+    </div>
   </div>
 
 <% end %>

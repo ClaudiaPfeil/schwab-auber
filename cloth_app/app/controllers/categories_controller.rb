@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   before_filter :init_category, :action => {:edit, :update, :destroy, :show}
   before_filter :login_required
-  load_and_authorize_resource :nested => :contents
+  #load_and_authorize_resource :through => :contents
   
 
   def index
