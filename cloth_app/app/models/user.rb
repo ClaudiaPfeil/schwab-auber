@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
   end
 
   def name
-    first_name + " " + last_name 
+    first_name + " " + last_name unless first_name.nil? || last_name.nil?
   end
 
   def is_destroyable?
