@@ -29,7 +29,7 @@ module ProfilesHelper
   end
 
   def more_cartons?(profile)
-    profile.cartons <= profile.option.cartons ?   link_to(I18n.t(:order_more_cartons), order_cartons_profile_path(profile)) : ""
+    profile.user.cartons <= profile.option.cartons ?   link_to(I18n.t(:order_more_cartons), order_cartons_profile_path(profile)) : ""
   end
 
   def get_settings(profile)

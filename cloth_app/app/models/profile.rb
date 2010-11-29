@@ -10,9 +10,5 @@ class Profile < ActiveRecord::Base
   #attr_accessible :option_attributes
 
   SearchTypes = %w(name evaluation)
-
-  def cartons
-    self.user.cartons
-  end
   
 end
