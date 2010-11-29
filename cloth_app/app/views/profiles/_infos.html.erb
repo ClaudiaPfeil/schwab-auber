@@ -5,7 +5,7 @@
 %>
 <div class="notice">
   <h3><%= I18n.t(:infos)%> </h3>
-    <p><%= more_cartons?(profile)%></p>
-    <p><%= cartons_konto(profile) %></p>
+    <p><%= more_cartons?(profile) if profile.cartons %></p>
+    <p><%= cartons_konto(profile) if profiel.cartons %></p>
 </div>
 
