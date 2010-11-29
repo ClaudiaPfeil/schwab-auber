@@ -24,7 +24,7 @@
     <% table_cols.each do |name| %>
 
       <div class="td span-4">
-       <%= create_list_view(profile, name) if profile %>
+       <%= create_list_view(profile, name) if profile.option %>
       </div>
     <% end %>
     
