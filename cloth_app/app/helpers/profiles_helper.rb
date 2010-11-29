@@ -3,6 +3,7 @@
 # Datum:  24.11.2010
 
 module ProfilesHelper
+  include CanCan
 
   def outstanding_packages(profile)
     p = profile.packages.count
@@ -32,9 +33,9 @@ module ProfilesHelper
     profile.cartons <= profile.option.cartons ?   link_to(I18n.t(:order_more_cartons), order_cartons_profile_path(profile)) : ""
   end
 
-  def get_settings(profile)
+  def get_settings(option)
     result  = []
-    profile.option.each do |s|
+    option.each do |s|
       if s == true
         if s.to_s == "first_letter_of_first_name" || s.to_s == "first_name"
           result << profile.first_name
@@ -54,15 +55,21 @@ module ProfilesHelper
       profile.name
     elsif name.to_s == "sex"
       profile.sex == true ? "männlich" : "weiblich"
-    elsif profile.option.first_letter_of_first_name == true && !(current_user.is? :admin)
-      profile.first_name.first + " " + profile.last_name
-    elsif profile.option.first_letter_of_last_name == true && !(current_user.is? :admin)
-      profile.first_name + " " + profile.last_name.first
+    elsif !profile.option.nil?
+      if profile.option.first_letter_of_first_name == true && !(current_user.is? :admin)
+        profile.first_name.first + " " + profile.last_name
+      elsif profile.option.first_letter_of_last_name == true && !(current_user.is? :admin)
+        profile.first_name + " " + profile.last_name.first
+      end
     elsif name.to_s == "membership"
       profile.membership == true ? I18n.t(:premium) : I18n.t(:base)
     else 
        profile.attributes[name.to_s]
     end
+  end
+
+  def get_table_cols(current_user, option)
+    (current_user.is? :admin) ? ListView.get_table_columns(User, [:name, :sex, :telephone, :membership]) : ListView.get_table_columns(User, get_settings(option))
   end
   
 end

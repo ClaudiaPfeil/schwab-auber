@@ -1,0 +1,29 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% @profiles.each do |profile| %>
+
+  <div class='tr span-22'>
+    <div class='td first'>&nbsp;</div>
+
+    <%  @table_cols.each do |name| %>
+      <div class='td span-4'><%= create_list_view(profile, name)%> </div>
+    <% end %>
+
+    <div class='td last span-2'>
+      <% if can? :update, Profile %>
+        <%=  link_to I18n.t(:edit), edit_profile_path(profile) %>
+      <% end %>
+
+      <% if can? :delete, Profile %>
+        <%=  link_to I18n.t(:delete), profile, :confirm => I18n.t(:confirm_profile) , :method => 'delete' %>
+      <% end %>
+
+      </div>
+
+  </div>
+
+
+<% end %>

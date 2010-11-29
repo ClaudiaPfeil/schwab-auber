@@ -6,7 +6,7 @@ class ProfilesController < ApplicationController
   before_filter :init_profile, :action => [:show, :edit, :update, :destroy, :order_cartons]
 
   def index
-     current_user.is? :admin ? @profiles = User.all : @profiles = User.where(:state  => "active ")
+     current_user.is? :admin ? @profiles = User.all : @profiles = User.find_by_id(:id => params[:user][:id])
   end
 
   def show; end
