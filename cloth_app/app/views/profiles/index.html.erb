@@ -10,7 +10,7 @@
 
 <div class="tr span-22">
   <div class="td first">&nbsp;</div>
-  <% current_user.option.nil? ?  result = "Wählen sie zunächst ihre Einstellungen aus: " : @table_cols = get_table_cols(current_user) %>
+  <% current_user.option.nil? && !(current_user.is? :admin) ?  result = "Wählen sie zunächst ihre Einstellungen aus: " : @table_cols = get_table_cols(current_user) %>
   <% if @table_cols %>
     <% @table_cols.each do |column| %>
       <div class="td span-4"><b><%=  I18n.t(column)%></b> </div>
