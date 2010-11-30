@@ -23,6 +23,7 @@ ClothApp::Application.routes.draw do
   resources :bills
   resources :addresses
   resources :prices
+  resources :options
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout

@@ -61,7 +61,13 @@ class UsersController < ApplicationController
     if user[:membership] == true
       user[:role] << "premium"
     end
+
     if @user.update_attributes(user)
+      if @user.option.nil?
+        option = params[:option]
+        option[:user_id] = params[:id].to_i
+        Option.create(option)
+      end
       redirect_to profiles_path, :notice => I18n.t(:profile_updated)
     else
       render :action => 'edit', :notice => I18n.t(:profile_not_updated)

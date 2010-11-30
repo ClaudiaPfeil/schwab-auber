@@ -33,43 +33,41 @@ module ProfilesHelper
     profile.cartons <= profile.option.cartons ?   link_to(I18n.t(:order_more_cartons), order_cartons_profile_path(profile)) : ""
   end
 
-  def get_settings(option)
+  # Methode: get_settings
+  # Beschreibung: gibt die Profil-Einstellungen des Nutzers als Array zurück
+  def get_settings(profile)
     result  = []
-    option.each do |s|
-      if s == true
-        if s.to_s == "first_letter_of_first_name" || s.to_s == "first_name"
-          result << profile.first_name
-        elsif s.to_s == "first_letter_of_last_name"
-          result  << profile.last_name
-        else
-          result  << profile.attributes[s.to_s]
-        end
+
+    profile.option.attribute_names.each do |s|
+      if profile.option.attributes[s.to_s] == true
+        result  << s.to_s
       end
     end
-      
+    
     result
   end
 
   def create_list_view(profile, name)
+    result = ""
     if name.to_s == "name"
-      profile.name
+      result = profile.name
     elsif name.to_s == "sex"
-      profile.sex == true ? "männlich" : "weiblich"
-    elsif !profile.option.nil?
-      if profile.option.first_letter_of_first_name == true && !(current_user.is? :admin)
-        profile.first_name.first + " " + profile.last_name
-      elsif profile.option.first_letter_of_last_name == true && !(current_user.is? :admin)
-        profile.first_name + " " + profile.last_name.first
-      end
+      profile.sex == true ? result = "männlich" : result = "weiblich"
+    elsif name.to_s == "first_letter_of_first_name" && !(current_user.is? :admin)
+      result = profile.first_name.first + " " + profile.last_name
+    elsif name.to_s == "first_letter_of_last_name" && !(current_user.is? :admin)
+      result = profile.first_name + " " + profile.last_name.first
     elsif name.to_s == "membership"
-      profile.membership == true ? I18n.t(:premium) : I18n.t(:base)
+      profile.membership == true ? result = I18n.t(:premium) : result = I18n.t(:base)
     else 
-       profile.attributes[name.to_s]
+      result = profile.attributes[name.to_s]
     end
+
+    result
   end
 
-  def get_table_cols(current_user, option)
-    (current_user.is? :admin) ? ListView.get_table_columns(User, [:name, :sex, :telephone, :membership]) : ListView.get_table_columns(User, get_settings(option))
+  def get_table_cols(current_user)
+    (current_user.is? :admin) ? ListView.get_table_columns(User, [:name, :sex, :telephone, :membership]) : get_settings(current_user)
   end
   
 end

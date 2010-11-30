@@ -1,17 +1,42 @@
 <%= profile.inputs "<h4>" +I18n.t(:settings)+ "</h4>" do %>
-  <%= profile.semantic_fields_for :option do |setting| %>
-    <%= setting.input :sex, :as => :boolean %>
-    <%= setting.input :name, :as => :boolean %>
-    <%= setting.input :first_name, :as => :boolean %>
-    <%= setting.input :first_letter_of_first_name, :as => :boolean %>
-    <%= setting.input :first_letter_of_last_name, :as => :boolean %>
-    <%= setting.input :address, :as => :boolean %>
-    <%= setting.input :date_of_birth, :as => :boolean %>
-    <%= setting.input :telephone, :as => :boolean %>
-    <%= setting.input :cartons,
-                      :as => :select,
-                      :collection => ["0","1", "2", "3", "4"],
-                      :include_blank => false
-                    %>
+
+  <% unless @profile.option.nil? %>
+    <%= profile.semantic_fields_for :option do |setting| %>
+
+      <%= setting.input :sex, :as => :boolean %>
+      <%= setting.input :name, :as => :boolean %>
+      <%= setting.input :first_name, :as => :boolean %>
+      <%= setting.input :first_letter_of_first_name, :as => :boolean %>
+      <%= setting.input :first_letter_of_last_name, :as => :boolean %>
+      <%= setting.input :address, :as => :boolean %>
+      <%= setting.input :date_of_birth, :as => :boolean %>
+      <%= setting.input :telephone, :as => :boolean %>
+      <%= setting.input :cartons,
+                        :as => :select,
+                        :collection => ["0","1", "2", "3", "4"],
+                        :include_blank => false
+                      %>
+
+    <% end %>
+  <% else %>
+
+    <%= semantic_form_for Option.new() do |setting| %>
+      <%= setting.input :sex, :as => :boolean %>
+        <%= setting.input :name, :as => :boolean %>
+        <%= setting.input :first_name, :as => :boolean %>
+        <%= setting.input :first_letter_of_first_name, :as => :boolean %>
+        <%= setting.input :first_letter_of_last_name, :as => :boolean %>
+        <%= setting.input :address, :as => :boolean %>
+        <%= setting.input :date_of_birth, :as => :boolean %>
+        <%= setting.input :telephone, :as => :boolean %>
+        <%= setting.input :cartons,
+                          :as => :select,
+                          :collection => ["0","1", "2", "3", "4"],
+                          :include_blank => false
+                        %>
+
+    <% end %>
   <% end %>
+
+      
 <% end %>
