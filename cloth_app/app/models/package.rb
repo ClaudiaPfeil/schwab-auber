@@ -23,7 +23,7 @@ class Package < ActiveRecord::Base
   end
 
   SearchTypes  = %w(name sex size label)
-
+  
   def destroyable?
     true
   end
@@ -36,10 +36,14 @@ class Package < ActiveRecord::Base
     get_content("Package")
   end
 
+  def get_contents(title)
+    get_content(title).first.article.split(" ")
+  end
+
   private
 
     def set_serial_number
-      self.order.package_number.nil? ? self.serial_number = NumberGenerator.alphanumeric({:prefix => "kk-", :length => 8}) : self.serial_number = self.order.package_number
+      self.order.nil? ? self.serial_number = NumberGenerator.alphanumeric({:prefix => "kk-", :length => 8}) : self.serial_number = self.order.package_number
     end
   
 end

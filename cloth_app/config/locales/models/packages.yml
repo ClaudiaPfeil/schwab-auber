@@ -2,8 +2,6 @@ de:
   search_packages: Suche nach Kleidungspaketen
   show_packages: Anzeige Kleidungspaket
   package: Kleidungspaket
-  boy: Junge
-  girl: Mädchen
   hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
   show_packages: Kleidungspakete
   package: Kleidungspaket
@@ -33,6 +31,10 @@ de:
   available: Verfügbar
   ordered: Bereits vergriffen
   created_at: Eingestellt am
+  spring: Frühling
+  sommer: Sommer
+  autum:  Herbst
+  winter: Winter
   packages:
    search_types:
      name: Bezeichnung Kleidungspaket
@@ -40,5 +42,5 @@ de:
      amount: Anzahl Kleidungsstücken
      sex:  Junge oder Mädchen?
      label:  Marke
-   
+  
   

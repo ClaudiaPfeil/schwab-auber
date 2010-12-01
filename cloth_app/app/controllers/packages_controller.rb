@@ -16,7 +16,7 @@ class PackagesController < ApplicationController
 
   def create
     @package = Package.new(params[:package])
-    
+
     if @package.save
       redirect_to packages_path(@package), :notice => :package_created
     else

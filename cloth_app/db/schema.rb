@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101126131318) do
+ActiveRecord::Schema.define(:version => 20101201100907) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -100,6 +100,12 @@ ActiveRecord::Schema.define(:version => 20101126131318) do
     t.integer  "user_id"
     t.string   "serial_number"
     t.integer  "state",          :limit => 1, :default => 0
+    t.string   "shirts"
+    t.string   "blouses"
+    t.string   "jackets"
+    t.string   "jeans"
+    t.string   "dresses"
+    t.string   "basics"
   end
 
   create_table "prices", :force => true do |t|

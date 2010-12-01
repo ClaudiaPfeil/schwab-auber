@@ -1,6 +1,6 @@
 <%= semantic_form_for @content,:html => {:multipart => true} do |content| %>
   <%=  get_notices %>
-  <%= content.inputs 'Content' do %>
+  <%= content.inputs "<h2>"+ I18n.t(:content_details) + "</h2>" do %>
     <%= content.input :category %>
     <%= content.input :title %>
     <%= content.input :subtitle %>
@@ -15,3 +15,4 @@
   <%= content.buttons %>
 
 <% end %>
+<p align="center"><%= link_to I18n.t(:back), contents_path %></p>

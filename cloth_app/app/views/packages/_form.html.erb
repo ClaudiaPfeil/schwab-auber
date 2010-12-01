@@ -2,18 +2,109 @@
 
   <%=  get_notices %>
 
-  <%= package.inputs I18n.t('package') do  %>
-    <p><%= package.input :name  %></p>
-    <p><%= package.input :sex, :as => :radio, :collection => [["Junge", false],["Mädchen", true]] %></p>
-    <p><%= package.input :size %></p>
-    <p><%= package.input :next_size %></p>
-    <p><%= package.input :age %></p>
-    <p><%= package.input :saison %></p>
-    <%= package.input :kind, :hint => I18n.t('hint_kind') %><br><br>
-    <p><%= package.input :amount_clothes, :hint => I18n.t('hint_amount_clothes') %></p>
-    <p><%= package.input :label %></p>
-    <p><%= package.input :amount_labels %></p>
-    <p><%= package.input :colors, :hint => I18n.t('hint_colors') %></p>
+  <%= package.inputs "<h2> #{I18n.t(:package)}</h2>" do  %>
+    <%= package.input :name  %>
+    <p><%= package.input :sex, :as => :radio, :collection => [[:boy, false],[:girl, true]] %></p>
+    <%# debugger %>
+    <p><%= package.input :size,
+                         :as => :select,
+                         :collection  =>  @package.get_contents("Size"),
+                         :include_blank =>  false
+        %></p>
+    <p><%= package.input :next_size,
+                         :as  =>  :select,
+                         :collection  =>  @package.get_contents("Size"),
+                         :include_blank =>  false
+        %></p>
+    <p><%= package.input :age,
+                         :as  =>  :select,
+                         :collection  =>  @package.get_contents("Age"),
+                         :include_blank =>  false
+        %></p>
+
+    <p><%= package.input :saison,
+                         :as => :select,
+                         :collection =>  @package.get_contents("Saison"),
+                         :include_blank =>  false,
+                         :input_html  => {:multiple  =>  true}
+       %></p>
+
+    <%= package.input :kind,
+                      :hint => I18n.t('hint_kind'),
+                      :as =>  :select,
+                      :collection => @package.get_contents("Kind"),
+                      :include_blank  => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %>
+
+    <%= package.input :shirts,
+                      :as => :select,
+                      :collection => @package.get_contents("Shirts"),
+                      :include_blank  => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %>
+
+    <%= package.input :blouses,
+                      :as => :select,
+                      :collection => @package.get_contents("Blouses"),
+                      :include_blank  => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %>
+
+    <%= package.input :jackets,
+                      :as => :select,
+                      :collection =>  @package.get_contents("Jackets"),
+                      :include_blank  => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %>
+
+    <%= package.input :jeans,
+                      :as =>  :select,
+                      :collection =>  @package.get_contents("Jeans"),
+                      :include_blank  => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %>
+
+    <%= package.input :dresses,
+                      :as =>  :select,
+                      :collection =>  @package.get_contents("Dresses"),
+                      :include_blank  => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %>
+
+    <%= package.input :basics,
+                      :as =>  :select,
+                      :collection =>  @package.get_contents("Basics"),
+                      :include_blank  => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %>
+
+    <p>
+    <%= package.input :amount_clothes, :hint => I18n.t('hint_amount_clothes'),
+                      :as => :select,
+                      :collection  =>  @package.get_contents("Amount"),
+                      :include_blank => false
+    %></p>
+
+    <p>
+    <%= package.input :label,
+                      :as => :select,
+                      :collection  => @package.get_contents("Label"),
+                      :include_blank => false,
+                      :input_html  => {:multiple  =>  true, :size => 3}
+    %></p>
+    
+    <p><%= package.input :amount_labels,
+                         :as => :select,
+                         :collection  => @package.get_contents("Amount"),
+                         :include_blank => false
+    %></p>
+    <p><%= package.input :colors, :hint => I18n.t('hint_colors'),
+                         :as => :select,
+                         :collection  => @package.get_contents("Colors"),
+                         :include_blank =>  false,
+                         :input_html  => {:multiple  =>  true, :size => 3}
+    %></p>
     <p><%= package.input :notice%></p>
   <% end %>
 
@@ -31,4 +122,6 @@
 <div id="test" style="display: none">
   <%= render '/contents/cms/site', :@contents => @package.get_rules %>
 </div>
+
+<p align="center"><%= link_to I18n.t(:back), packages_path %></p>
 
