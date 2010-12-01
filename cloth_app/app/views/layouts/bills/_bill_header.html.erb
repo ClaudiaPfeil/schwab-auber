@@ -7,13 +7,14 @@
 </div>
 <br><br><br><br>
 <div class="tr">
-
+<% address = get_address %>
   <div class="prepend-1 span-14 td">
     <ol>
-      <li><%= @bill.user.first_name  %>, <%= @bill.user.last_name%> </li>
-      <li><%= @bill.user.street_and_number%> </li>
-      <li><%= @bill.user.postcode%> </li>
-      <li><%= @bill.user.town %> </li>
+      <li><%= address ? address.receiver : " " %> </li>
+      <li><%= address ? address.co_receiver : " " %></li>
+      <li><%= address ? address.street_and_number : " "%> </li>
+      <li><%= address ? address.postcode : " " %> </li>
+      <li><%= address ? address.town  : " "%> </li>
     </ol>
   </div>
 
