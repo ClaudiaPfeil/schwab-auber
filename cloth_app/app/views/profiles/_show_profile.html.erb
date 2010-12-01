@@ -1,0 +1,11 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+<div class="tr span-22">
+  <%  @table_cols.each do |name| %>
+    <div class='td span-3'><%= create_list_view(@profile, name)%> </div>
+  <% end %>
+</div>
+
+

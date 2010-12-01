@@ -1,4 +1,9 @@
 de:
+  boy:  Junge
+  girl: Mädchen
+  sex:  Junge oder Mädchen?
+  name_package: Bezeichnung
+  description:  Notiz
   search_packages: Suche nach Kleidungspaketen
   show_packages: Anzeige Kleidungspaket
   package: Kleidungspaket

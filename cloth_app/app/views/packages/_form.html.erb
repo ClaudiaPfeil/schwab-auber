@@ -5,7 +5,6 @@
   <%= package.inputs "<h2> #{I18n.t(:package)}</h2>" do  %>
     <%= package.input :name  %>
     <p><%= package.input :sex, :as => :radio, :collection => [[:boy, false],[:girl, true]] %></p>
-    <%# debugger %>
     <p><%= package.input :size,
                          :as => :select,
                          :collection  =>  @package.get_contents("Size"),

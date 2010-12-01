@@ -146,10 +146,10 @@ de:
         received: angekommen?
         evaluation: Bewertung
         evaluation_notice: Hinweis
-        eva_date_created_at: Bewertung erstellt am
-        eva_date_updated_at: Bewertung aktualisiert am
+        eva_date_created_at: Bewertung vom
+        eva_date_updated_at: aktualisiert am
         notice: Bemerkung
-        eva_notice: Hinweis zur Bewertung
+        eva_notice: Notiz
         user_id: Nutzer
         package_id: Kleiderpaket
         back: Zurück

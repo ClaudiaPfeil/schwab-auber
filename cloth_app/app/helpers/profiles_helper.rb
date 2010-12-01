@@ -47,20 +47,20 @@ module ProfilesHelper
     result
   end
 
-  def create_list_view(profile, name)
+  def create_list_view(object, name)
     result = ""
     if name.to_s == "name"
-      result = profile.name
+      result = object.name
     elsif name.to_s == "sex"
-      profile.sex == true ? result = "männlich" : result = "weiblich"
+      object.sex == true ? result = "männlich" : result = "weiblich"
     elsif name.to_s == "first_letter_of_first_name" && !(current_user.is? :admin)
-      result = profile.first_name.first + " " + profile.last_name
+      result = object.first_name.first + " " + object.last_name
     elsif name.to_s == "first_letter_of_last_name" && !(current_user.is? :admin)
-      result = profile.first_name + " " + profile.last_name.first
+      result = object.first_name + " " + object.last_name.first
     elsif name.to_s == "membership"
-      profile.membership == true ? result = I18n.t(:premium) : result = I18n.t(:base)
-    else 
-      result = profile.attributes[name.to_s]
+      object.membership == true ? result = I18n.t(:premium) : result = I18n.t(:base)
+    else
+      result = object.attributes[name.to_s]
     end
 
     result
@@ -68,6 +68,10 @@ module ProfilesHelper
 
   def get_table_cols(current_user)
     (current_user.is? :admin) ? ListView.get_table_columns(User, [:name, :sex, :telephone, :membership]) : get_settings(current_user)
+  end
+
+  def get_table_order
+    ListView.get_table_columns(Order, [:evaluation, :eva_notice, :eva_created_at])
   end
   
 end

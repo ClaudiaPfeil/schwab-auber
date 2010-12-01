@@ -4,7 +4,7 @@
 
 <% unless @packages.nil? %>
 <div class="tr">
-  <div class="td .span-2"><b><%= I18n.t("name")%></b> </div>
+  <div class="td .span-2"><b><%= I18n.t("name_package")%></b> </div>
   <div class="td .span-2"><b><%= I18n.t("sex")%></b> </div>
   <div class="td .span-2"><b><%= I18n.t("size")%></b> </div>
   <div class="td .span-2"><b><%= I18n.t("label")%></b> </div>
@@ -29,6 +29,9 @@
       <% end %>
       <% if (can? :create, Order) && package.state == 0 %>
         <%= link_to I18n.t(:order), order_package_path(package) %>
+      <% end %>
+      <% if can? :read, Profile %>
+        <%= link_to I18n.t(:profile), profile_path(package.user) %>
       <% end %>
     </div>
     
