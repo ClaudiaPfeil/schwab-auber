@@ -4,6 +4,7 @@ de:
   sex:  Junge oder Mädchen?
   new_package:  Erstellen
   name_package: Bezeichnung
+  amount_clothes: Anzahl Kleider
   description:  Notiz
   search_packages: Suche nach Kleidungspaketen
   show_packages: Anzeige Kleidungspaket
@@ -45,7 +46,7 @@ de:
    search_types:
      name: Bezeichnung Kleidungspaket
      size: Kleidergröße
-     amount: Anzahl Kleidungsstücken
+     amount: Anzahl Kleidungsstücke
      sex:  Junge oder Mädchen?
      label:  Marke
   

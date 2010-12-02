@@ -15,27 +15,29 @@
 </div>
 
 <% @packages.each do |package| %>
-  <div class="tr">
-    <div class="td .span-2"><%= package.name%> </div>
-    <div class="td .span-2"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
-    <div class="td .span-2"><%= package.size%> </div>
-    <div class="td .span-2"><%= package.label%> </div>
-    <div class="td .span-2"><%= package.amount_clothes%> </div>
-    <div class="td.span-2"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
-    <div class="td .span-2"><%= package.state == 0 ? I18n.t(:available) : I18n.t(:ordered) %> </div>
-    <div class="td .span-2 .last">
-      <% if can? :show, Package %>
-        <%= link_to I18n.t(:detail), package_path(package) %>
-      <% end %>
-      <% if (can? :create, Order) && package.state == 0 %>
-        <%= link_to I18n.t(:order), order_package_path(package) %>
-      <% end %>
-      <% if can? :read, Profile %>
-        <%= link_to I18n.t(:profile), profile_path(package.user) %>
-      <% end %>
+  <% if check_24h(package) %>
+    <div class="tr">
+      <div class="td .span-2"><%= package.name%> </div>
+      <div class="td .span-2"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
+      <div class="td .span-2"><%= package.size%> </div>
+      <div class="td .span-2"><%= package.label%> </div>
+      <div class="td .span-2"><%= package.amount_clothes%> </div>
+      <div class="td.span-2"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
+      <div class="td .span-2"><%= package.state == 0 ? I18n.t(:available) : I18n.t(:ordered) %> </div>
+      <div class="td .span-2 .last">
+        <% if can? :show, Package %>
+          <%= link_to I18n.t(:detail), package_path(package) %>
+        <% end %>
+        <% if (can? :create, Order) && package.state == 0 %>
+          <%= link_to I18n.t(:order), order_package_path(package) %>
+        <% end %>
+        <% if can? :read, Profile %>
+          <%= link_to I18n.t(:profile), profile_path(package.user) %>
+        <% end %>
+      </div>
+
     </div>
-    
-  </div>
+  <% end %>
 <% end %>
 
 <% end %>

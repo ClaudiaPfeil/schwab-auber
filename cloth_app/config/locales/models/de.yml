@@ -61,8 +61,7 @@ de:
         hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
         true: Junge
         name: Bezeichnung
-        sex:  Junge oder Mädchen?
-        amount: Menge Kleidungsstücke
+        amount: Anzahl Kleidungsstücke
         shirts: Shirts & Tops
         blouses: Blusen & Hemden
         jackets:  Jacken
