@@ -2,6 +2,7 @@ de:
   boy:  Junge
   girl: Mädchen
   sex:  Junge oder Mädchen?
+  new_package:  Erstellen
   name_package: Bezeichnung
   description:  Notiz
   search_packages: Suche nach Kleidungspaketen

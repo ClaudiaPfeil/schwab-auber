@@ -2,7 +2,7 @@
 <%=  get_notices %>
 <p align="right">
   <% if can? :create, Package %>
-    <%= link_to "New", new_package_path %>
+    <%= link_to I18n.t(:new_package), new_package_path %>
   <%end%>
 </p>
 
