@@ -38,17 +38,26 @@ $(document).ready(function() {
 /################################################################################################*/
 
 $(document).ready(function(){
+  // standardmäßig Periode und Verlängerung nicht anzeigen
   $('#user_continue_membership_input').hide();
   $('#user_premium_period_input').hide();
-})
 
-$(document).ready(function(){
+  // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist
   $('#user_membership_true').click(function (){
     $('#user_continue_membership_input').show();
   })
 
   $('#user_membership_true').click(function (){
     $('#user_premium_period_input').show();
+  })
+
+  // Verstecken, wenn Basis Mitgliedschaft angeklickt ist
+  $('#user_membership_false').click(function (){
+    $('#user_continue_membership_input').hide();
+  })
+
+  $('#user_membership_false').click(function (){
+    $('#user_premium_period_input').hide();
   })
 })
 
