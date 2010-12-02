@@ -37,7 +37,7 @@ class Package < ActiveRecord::Base
   end
 
   def get_contents(title)
-    get_content(title).first.article.split(" ")
+    get_content(title).first.article.split(" ") if get_content(title)
   end
 
   private

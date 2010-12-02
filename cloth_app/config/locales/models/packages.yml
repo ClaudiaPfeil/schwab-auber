@@ -8,7 +8,7 @@ de:
   show_packages: Anzeige Kleidungspaket
   package: Kleidungspaket
   hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
-  show_packages: Kleidungspakete
+  show_packages: Kleiderpakete
   package: Kleidungspaket
   rules: Regeln
   hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
