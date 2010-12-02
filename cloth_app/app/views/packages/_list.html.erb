@@ -1,0 +1,44 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<p align="right">
+  <% if can? :create, Package %>
+    <%= link_to I18n.t(:new_package), new_package_path %>
+  <%end%>
+</p>
+
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-4"><b><%= I18n.t(:name_package)%></b> </div>
+  <div class="td span-3"><b><%= I18n.t(:sex)%></b> </div>
+  <div class="td span-2"><b><%= I18n.t(:size)%></b> </div>
+  <div class="td span-2"><b><%= I18n.t(:amount_clothes)%></b> </div>
+  <div class="td span-5"><b><%= I18n.t(:description)%></b> </div>
+  <div class="td last">&nbsp;</div>
+</div>
+
+<% unless @packages.nil? %>
+  <% @packages.each do |package| %>
+
+    <div class="tr span-22">
+      <div class="td first">&nbsp;</div>
+      <div class="td span-4"><%= package.name%> </div>
+      <div class="td span-3"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
+      <div class="td span-2"><%= package.size%> </div>
+      <div class="td span-2"><%= package.amount_clothes%> </div>
+      <div class="td span-5"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
+      <div class="td last">
+        <% if can? :update, package %>
+         <%= link_to  I18n.t("edit"), edit_package_path(package)%>
+        <% end %><br>
+        <% if can? :destroy, package %>
+          <%= link_to I18n.t("destroy"), package, :confirm => I18n.t(:confirm_destroy), :method => :delete %>
+        <%end%>
+      </div>
+    </div>
+
+  <% end %>
+<% end %>
+

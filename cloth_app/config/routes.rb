@@ -14,6 +14,7 @@ ClothApp::Application.routes.draw do
   resources :packages do
       get :search, :on => :collection
       get :order, :on => :member
+      get :show_24, :on => :collection
   end
   resources :contacts
   resources :searches

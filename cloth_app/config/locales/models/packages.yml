@@ -8,6 +8,7 @@ de:
   description:  Notiz
   search_packages: Suche nach Kleidungspaketen
   show_packages: Anzeige Kleidungspaket
+  show_packages_24: Alle Kleiderpakete der letzten 24h
   package: Kleidungspaket
   hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
   show_packages: Kleiderpakete
@@ -42,6 +43,7 @@ de:
   sommer: Sommer
   autum:  Herbst
   winter: Winter
+  show_24:  Alle Kleiderpakete der letzten 24h
   packages:
    search_types:
      name: Bezeichnung Kleidungspaket

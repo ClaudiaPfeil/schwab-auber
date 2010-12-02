@@ -9,6 +9,11 @@ class PackagesController < ApplicationController
   def show
     
   end
+  
+  # Anzeige aller Pakete, die in den vergangenen 24 Stunden eingestellt wurden
+  def show_24
+    @packages = Package.where(:created_at => "BETWEEN CURDATE() AND DATE_SUB(CURDATE(), CURDATE + 24*60*60) ")
+  end
 
   def new
     @package = Package.new()

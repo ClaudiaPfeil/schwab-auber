@@ -18,4 +18,10 @@ module PackagesHelper
     end
   end
 
+  def show_24
+    if (current_user.is? :premium) || (current_user.is? :admin)
+      link_to I18n.t(:show_24), show_24_packages_path
+    end
+  end
+
 end
