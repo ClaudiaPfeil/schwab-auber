@@ -14,13 +14,11 @@
 
   <%= user.input  :premium_period, :as => :select,
                   :collection => { "3 Monate" => 0, "6 Monate" => 1, "12 Monate" => 2},
-                  :include_blank => false,
-                  :as => :hidden
+                  :include_blank => false
   %>
 
   <%= user.input  :continue_membership, :as => :radio,
-                  :collection =>  {"automatisch" => true, "manuell" => false},
-                  :as =>  :hidden
+                  :collection =>  {"automatisch" => true, "manuell" => false}
   %>
 
   <%= user.input  :membership_starts, :as => :hidden,

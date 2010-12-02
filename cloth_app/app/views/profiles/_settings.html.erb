@@ -1,4 +1,4 @@
-<%= profile.inputs "<h4>" +I18n.t(:settings)+ "</h4>" do %>
+<%= link_to :rel =>'#' %><%= profile.inputs "<h4>" +I18n.t(:settings)+ "</h4>" do %>
 
   <% unless @profile.option.nil? %>
     <%= profile.semantic_fields_for :option do |setting| %>

@@ -21,23 +21,27 @@
     <div class="td"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>
     <div class="td"><%= content.link%> </div>
     <div class="td">
+      
       <% if can? :update, Content %>
         <%= link_to  I18n.t(:edit), edit_content_path(content), :id => 'edit'%>
       <% end %>
+
       <% if can? :read, Content %>
         <% unless content.category.name == 'Welcome' %>
-          <%= link_to I18n.t(:preview),create_path(content.category.name.downcase), :popup => true, :id => 'preview' %>
+          <%= link_to I18n.t(:preview),create_path(content.category.name.downcase), :id => 'preview', :class => 'simpledialog' %>
+        <% else %>
+          <%= link_to I18n.t(:preview),root_path(:preview => true), :id => 'preview', :class => 'simpledialog' %>
         <% end %>
-        <% if content.category.name == 'Welcome' %>
-          <%= link_to I18n.t(:preview), root_path(:preview => true), :popup => true, :id => 'preview' %>
-        <% end %>
-      <%end%>
+     <%end%>
+
       <% if can? :publish, Content %>
         <%= link_to I18n.t(:publish), publish_content_path(content), :id => 'publish' %>
       <%end%>
+
       <% if can? :destroy, Content %>
         <%= link_to I18n.t(:destroy), content, :confirm => 'Möchten sie den Inhalt wirklich löschen?' , :method => 'delete' %>
       <%end%>
+
     </div>
   </div>
 
