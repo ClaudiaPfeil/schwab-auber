@@ -143,7 +143,11 @@ class User < ActiveRecord::Base
 
     return score, max, max_eva
   end
-  
+
+  def premium_is_destroyable?
+    self.membership_ends < Date.today ? true : false
+  end
+
   protected
     
     def make_activation_code

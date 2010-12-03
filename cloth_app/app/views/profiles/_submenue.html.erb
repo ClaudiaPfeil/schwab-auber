@@ -12,7 +12,7 @@
     <%=  link_to I18n.t(:edit), edit_profile_path(profile) %>
   <% end %>
 
-  <% if can? :delete, Profile %>
+  <% if can? :destroy, Profile %>
     <%=  link_to I18n.t(:delete), profile, :confirm => I18n.t(:confirm_profile) , :method => 'delete' %>
   <% end %>
 

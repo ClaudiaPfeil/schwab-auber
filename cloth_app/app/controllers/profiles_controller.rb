@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
 
   def index
     user = User.find_by_id(current_user.id)
-    (user.is? :admin)? @profiles = User.all : @profiles = user
+    (user.is? :admin)? @profiles = User.all : @profile = user
   end
 
   def show; end
@@ -30,14 +30,17 @@ class ProfilesController < ApplicationController
   def destroy
     unless @profile.is_premium?
       @profile.destroy if @profile.is_destroyable?
-      @profile.packages.each do |package|
-        package.destroy if package.is_destroyable?
-      end
-      UserMailer.cancel_info(@profile).deliver
-      redirect_to profiles_path, :notice => I18n.t(:profile_destroyed)
+      destroy_packages
     else
       # Premium Account erst nach Ablauf der Mitgliedschaft löschen
       # die Kleiderpakete auch erst nach Ablauf der Mitgliedschaft löschen
+      if @profile.premium_is_destroyable?
+        @profile.destroy 
+        destroy_packages
+      else
+        # ToDo: Speichern des Lösch-Auftrages in einem cronjob, der nach Ende der Mitgliedschaft ausgeführt wird
+      end
+
     end
     
   end
@@ -66,5 +69,13 @@ class ProfilesController < ApplicationController
 
     def init_current_object
       @current_object = yield
+    end
+
+    def destroy_packages
+      @profile.packages.each do |package|
+        package.destroy if package.is_destroyable?
+      end
+      UserMailer.cancel_info(@profile).deliver
+      redirect_to profiles_path, :notice => I18n.t(:profile_destroyed)
     end
 end
