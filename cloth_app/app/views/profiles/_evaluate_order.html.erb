@@ -1,0 +1,19 @@
+<%#
+# Titel:  Bewerten der Bestellung
+# Autor:  Claudia Pfeil
+# Datum:  02.12.10
+%>
+
+<%= semantic_form_for @order do |o| %>
+
+  <%= o.input :evaluation, 
+              :as => :select,
+              :collection  =>  Order::Evaluation,
+              :include_blank => false
+  %>
+
+  <%= o.input :eva_notice %>
+
+  <%= o.buttons %>
+
+<% end %>

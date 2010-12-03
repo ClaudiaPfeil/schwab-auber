@@ -25,20 +25,6 @@
 
 <%= render :partial => "show_profile"  if @table_cols%>
 
-<div class="tr span-22">
-  <div class="td first">&nbsp;</div>
-  <%@profile.orders.nil? && !(current_user.is? :admin) ? result = "Das Mitglied hat noch keine Bewertungen erhalten" : @table_cols = get_table_order%>
-  <% if @table_cols %>
-
-    <% @table_cols.each do |column| %>
-      <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
-    <% end %>
-
-  <% else %>
-    <%= result %>
-  <% end %>
-  <div class="td last">&nbsp;</div>
-</div>
 
 <%= render :partial => "show_eva"  if @table_cols%>
 

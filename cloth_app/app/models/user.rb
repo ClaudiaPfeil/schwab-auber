@@ -99,6 +99,51 @@ class User < ActiveRecord::Base
   def count_down
     self.update_attribute(:cartons, 4)
   end
+
+  def calc_score(user_id)
+    evas = self.orders.where(:user_id => user_id)
+    result = {
+      :very_good => 0,
+      :good  => 0,
+      :ok  => 0,
+      :bad => 0,
+      :very_bad => 0
+    }
+
+    number_evas = 0
+
+    evas.each do |e|
+      number_evas += 1
+      case e.evaluation
+      when  "very_good"
+        result[:very_good] += 1
+      when "good"
+        result[:good] += 1
+      when "ok"
+        result[:ok] += 1
+      when "bad"
+        result[:bad] += 1
+      when "very_bad"
+        result[:very_bad] += 1
+      else
+        number_evas -= 1
+      end
+    end
+
+    max = number_evas.to_i * 5
+    very_good = result[:very_good] * 5
+    good  = result[:good] * 4
+    ok  = result[:ok] * 3
+    bad = result[:ok] * 2
+    very_bad = result[:very_bad] * 1
+
+    max_eva = very_good + good + ok + bad + very_bad
+
+    score = max_eva / 100 * max
+
+    return score, max, max_eva
+  end
+  
   protected
     
     def make_activation_code

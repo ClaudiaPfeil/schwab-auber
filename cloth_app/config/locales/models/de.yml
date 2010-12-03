@@ -152,6 +152,12 @@ de:
         user_id: Nutzer
         package_id: Kleiderpaket
         back: Zurück
+        order_evaluation:
+        very_good:  Ausgezeichnet
+        good: Sehr gut
+        ok: Gut
+        bad:  Befriedigend
+        very_bad: Mangelhaft
       packages:
         search_types:
           name: Bezeichnung Kleidungspaket

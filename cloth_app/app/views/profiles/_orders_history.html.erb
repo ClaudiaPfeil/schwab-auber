@@ -29,6 +29,21 @@
           <%= profile.attributes[name.to_s] %>
         <% end %>
       </div>
+
     <% end %>
+
+    <div class="td last">
+      <% if can? :evaluate, Order %>
+        <%= link_to I18n.t(:evaluate_order), '#', :rel => "eva_form", :class => "simpledialog" %>
+      <% end %>
+    </div>
+    
   </div>
+
+  <div class="tr span-22" id="eva_form" style="display: none">
+    <%= render "evaluate_order", :@order => profile %>
+  </div>
+
 <% end %>
+
+

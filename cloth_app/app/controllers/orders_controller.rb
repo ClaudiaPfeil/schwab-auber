@@ -45,7 +45,11 @@ class OrdersController < ApplicationController
 
   def update
     if @order.update_attributes(params[:order])
-      redirect_to orders_path, :notice => :order_updated#'Order successfully updated'
+      if (current_user.is? :admin)
+        redirect_to orders_path, :notice => :order_updated
+      else
+        redirect_to profile_path(@order.user), :notice => :order_updated
+      end
     else
       render :action => 'edit'
     end

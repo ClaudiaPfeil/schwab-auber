@@ -17,7 +17,10 @@ class Order < ActiveRecord::Base
   end
 
   accepts_nested_attributes_for :user, :package, :allow_destroy => true
-  
+  attr_reader :very_good, :good, :ok, :bad, :very_bad
+
+  Evaluation  = %w(very_good good ok  bad very_bad)
+
   def is_destroyable?
     true
   end

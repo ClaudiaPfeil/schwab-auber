@@ -2,21 +2,47 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 %>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <%@profile.orders.nil? && !(current_user.is? :admin) ? result = "Das Mitglied hat noch keine Bewertungen erhalten" : @table_cols = get_table_order%>
+  <% if @table_cols %>
+
+    <% @table_cols.each do |column| %>
+      <div class="td span-6"><b><%=  I18n.t(column)%></b> </div>
+    <% end %>
+
+  <% else %>
+    <%= result %>
+  <% end %>
+  <div class="td last">&nbsp;</div>
+</div>
 
 <% if @profile.orders.count > 1  %>
+
   <% @profile.orders.each do |order| %>
+
     <% model = Order.find_by_id(order.id) %>
     <div class="tr span-22">
       <%  @table_cols.each do |name| %>
-        <div class='td span-3'><%= model.attributes[name.to_s]%> </div>
+        <div class='td span-6'><%= model.attributes[name.to_s]%> </div>
       <% end %>
     </div>
   <% end %>
 
 <% else %>
+
   <div class="tr span-22">
     <%  @table_cols.each do |name| %>
-      <div class='td span-3'><%= Order.find_by_id(@profile.orders.first.id).attributes[name.to_s] %> </div>
+      <div class='td span-6'><%= Order.find_by_id(@profile.orders.first.id).attributes[name.to_s] %> </div>
     <% end %>
   </div>
+
 <% end %>
+
+<%#*Anzeige des Punktestands%>
+<% score, max, max_eva = @profile.calc_score(@profile.id) %>
+<div class="tr span-22">
+  <div class="td span-6"><b>Score :</b> &nbsp;<%= score if score%></div>
+  <div class="td span-6"><b>Maximale mögliche Punkte:</b>&nbsp;<%= max if max%> </div>
+  <div class="td span-6"><b>Maximal erreichte Punkte:</b>&nbsp;<%= max_eva if max_eva%></div>
+</div>
