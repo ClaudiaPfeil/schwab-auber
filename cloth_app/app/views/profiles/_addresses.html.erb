@@ -10,7 +10,7 @@
   <div class="td span-10"><h3><%= I18n.t(:profiles_addresses)%> </h3></div>
   <div class="td span-10"><p align="right">
     <% if can? :create, Address %>
-        <%= link_to I18n.t(:new_address), :controller => :addresses, :action => :new, :user_id => @profile.id %>
+        <%= link_to I18n.t(:new_address), '#', :rel => 'new_address', :class => 'simpledialog', :id => @profile.id %>
     <%end%>
     </p>
   </div>
@@ -25,9 +25,11 @@
       <%= render "all_addresses", :@profile => @profile %>
     <% else %>
       <p><%=h I18n.t(:add_address) %></p>
-        <%= render "form_address", :profile => @profile %>
     <% end %>
   </div>
   <div class="td last">&nbsp;</div>
 </div>
 
+<div id="new_address" style="display: none">
+  <%= render "/addresses/form" %>
+</div>

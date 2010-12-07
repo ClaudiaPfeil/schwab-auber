@@ -2,9 +2,20 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 %>
-<div class="tr span-22">
+
+<% @address ? @address : @address = Address.new(:user_id => params[:id])  %>
+
+<div class="tr span-16">
   <div class="td first">&nbsp;</div>
-  <div class="td span-22">
+  <div class="td span-16"><h3><%= @address.new_record? ? I18n.t(:new_address) : I18n.t(:edit_address)%></h3></div>
+  <div class="td last">&nbsp;</div>
+</div>
+
+<br>
+
+<div class="tr span-16">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-16">
     <%= semantic_form_for @address do |address|%>
 
       <%= address.input :receiver %>
@@ -22,6 +33,3 @@
   <div class="td last">&nbsp;</div>
 <% end %>
 </div>
-
-
-<p align="center"><%= link_to I18n.t(:back), edit_profile_path(User.find_by_id(@address.user_id)), :id => @address.user_id %></p>

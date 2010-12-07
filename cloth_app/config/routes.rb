@@ -6,19 +6,29 @@ ClothApp::Application.routes.draw do
   resources :contents do
       get :publish, :on => :member
   end
-  
-  resources :categories
-
-  resources :profiles do
-    get :search, :on => :collection
-    get :order_cartons, :on => :member
-  end
 
   resources :packages do
       get :search, :on => :collection
       get :order, :on => :member
       get :show_24, :on => :collection
   end
+
+  resources :profiles do
+    get :search, :on => :collection
+    get :order_cartons, :on => :member
+  end
+
+  resources :users do
+    member do
+      put :suspend
+      put :unsuspend
+      delete :purge
+    end
+
+    get :search, :on => :collection
+  end
+  
+  resources :categories
   resources :contacts
   resources :searches
   resources :helps
@@ -29,6 +39,8 @@ ClothApp::Application.routes.draw do
   resources :prices
   resources :options
 
+  resource :session, :only => [:new, :create, :destroy]
+
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -38,18 +50,8 @@ ClothApp::Application.routes.draw do
   match ':controller/:action/:preview'
   match 'membership' => 'welcome#membership', :as => :membership
   match 'profiles/invite_friend' => 'profiles#invite_friend', :as => 'invite_friend'
- 
-  resources :users do
-    member do
-      put :suspend
-      put :unsuspend
-      delete :purge
-    end
 
-    get :search, :on => :collection
-  end
-
-  resource :session, :only => [:new, :create, :destroy]
+  
 
 
   # Sample of regular route:
