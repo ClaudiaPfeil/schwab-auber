@@ -3,10 +3,16 @@
 # Author: Claudia Pfeil
 # Datum:  23.11.10
 %>
-<h3><%= I18n.t(:history) %></h3>
+<div class="tr span-22">
 
-<%= render "packages_history", :profile => profile %>
+  <div class="td first">&nbsp;</div>
+  <div class="td span-22">
+    <h3><%= I18n.t(:history) %></h3>
+    <%= render "packages_history", :profile => profile %>
+    </hr>
+    <%= render "orders_history", :profile => profile %>
+  </div>
+  <div class="td last">&nbsp;</div>  
+  
+</div>
 
-</hr>
-
-<%= render "orders_history", :profile => profile %>

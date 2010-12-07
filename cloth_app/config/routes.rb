@@ -6,11 +6,14 @@ ClothApp::Application.routes.draw do
   resources :contents do
       get :publish, :on => :member
   end
+  
   resources :categories
+
   resources :profiles do
     get :search, :on => :collection
     get :order_cartons, :on => :member
   end
+
   resources :packages do
       get :search, :on => :collection
       get :order, :on => :member
@@ -26,6 +29,7 @@ ClothApp::Application.routes.draw do
   resources :prices
   resources :options
 
+
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
   match 'signup' => 'users#new', :as => :signup
@@ -33,6 +37,7 @@ ClothApp::Application.routes.draw do
   match 'landing_page' => 'landing_pages#show', :as => :landing_page
   match ':controller/:action/:preview'
   match 'membership' => 'welcome#membership', :as => :membership
+  match 'profiles/invite_friend' => 'profiles#invite_friend', :as => 'invite_friend'
  
   resources :users do
     member do

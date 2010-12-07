@@ -48,4 +48,5 @@ ClothApp::Application.configure do
   config.active_support.deprecation = :notify
 
   SITE_URL  = "user13811513-2.zeta.railshoster.de/"
+  LANDING_URL = "user13811513-2.zeta.railshoster.de/landing_page/"
 end

@@ -1,0 +1,13 @@
+<%#
+# Titel:  Kunden werben Kunden E-Mail
+# Auto:   Claudia Pfeil
+# Datum:  06.12.10
+%>
+
+<%=h I18n.t('greeting') %>  <%=h @friend[:friends_first_name] + " " + @friend[:friends_last_name] %>
+
+<%=h @user.first_name + " " + @user.last_name %> <%= I18n.t('reference_message') %>
+
+<%=h @url %>
+
+<%h I18n.t('reference_goodbye') %>

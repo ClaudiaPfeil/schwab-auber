@@ -6,8 +6,8 @@ class ProfilesController < ApplicationController
   before_filter :init_profile, :action => [:show, :edit, :update, :destroy, :order_cartons]
 
   def index
-    user = User.find_by_id(current_user.id)
-    (user.is? :admin)? @profiles = User.all : @profile = user
+    user = User.find_by_id(current_user.id) if current_user
+    (user.is? :admin)? @profiles = User.all : @profile = user if user
   end
 
   def show; end
@@ -24,6 +24,8 @@ class ProfilesController < ApplicationController
       render :action => 'new', :notice => I18n.t(:profile_not_created)
     end
   end
+
+  def edit; end
 
   def update; end
 
@@ -59,6 +61,16 @@ class ProfilesController < ApplicationController
   def order_cartons
     UserMailer.order_cartons(@profile).deliver
     redirect_to edit_profile_path(@profile)
+  end
+
+  # Kunden werben Kunden
+  # eine Einladungs-E-Mail wird an Freunden gesendet, wie eine Empfehlung
+  def invite_friend
+    friend = params[:invite_friend]
+    profile = User.find_by_id(friend[:user_id])
+
+    UserMailer.send_invitation(friend, profile).deliver
+    redirect_to profile_path(profile)
   end
 
   private

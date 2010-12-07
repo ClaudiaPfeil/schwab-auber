@@ -1,0 +1,25 @@
+Feature:  codebreaker get users
+
+As a registered user I can email invitations to my friends
+As a unregistered user I can land on the landingpage and get an account
+As an admin I can see which user has advert other users by a cookie
+
+Scenario: send invitation-emails
+Given user invitation
+When user write email
+Then I should see "E-Mail invitation"
+
+Scenario: click on invitation link
+Given user invitation link
+When user receives invitation email
+Then I should see "Welcome to KidsKarton.de"
+
+Scenario: lead by invitation link
+Given user click on landingpage
+When  user clickes on invitation link
+Then I should see "Sign-up to KidsKarton.de"
+
+Scenario: see trackings
+Given created tracking
+When  created lead
+Then I should see "Trackings"

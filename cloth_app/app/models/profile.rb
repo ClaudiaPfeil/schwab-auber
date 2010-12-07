@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
   has_many :addresses
 
   accepts_nested_attributes_for :user, :option, :addresses, :allow_destroy => true
-  #attr_accessible :option_attributes
+  attr_accessor :friends_first_name, :friends_last_name, :friends_email
 
   SearchTypes = %w(name evaluation)
   

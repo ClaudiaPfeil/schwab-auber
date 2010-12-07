@@ -42,6 +42,7 @@ class User < ActiveRecord::Base
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, :first_name, :option_attributes, :start_holidays, :end_holidays, :cartons, :membership, :membership_starts, :membership_ends,  :premium_period, :tag_names
+  attr_accessor   :friends_first_name, :friends_last_name, :friends_email, :tag_names
   accepts_nested_attributes_for :addresses, :option
 
   # users roles

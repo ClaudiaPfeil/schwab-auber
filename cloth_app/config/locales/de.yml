@@ -40,7 +40,7 @@ de:
     land: Land
     kind: Art
     membership: "Der Kunde hatte folgende Mitgliedschaft: "
-    membership_ends: "und diese endet am "
+    membership_ends: "und diese endet am "   
   date:
     formats:
       default: "%d.%m.%Y"

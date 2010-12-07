@@ -2,19 +2,26 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 %>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-22">
+    <%= semantic_form_for @address do |address|%>
 
-<%= semantic_form_for @address do |address|%>
+      <%= address.input :receiver %>
+      <%= address.input :receiver_additional %>
+      <%= address.input :street_and_number %>
+      <%= address.input :postcode %>
+      <%= address.input :town %>
+      <%= address.input :land %>
+      <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
+      <%= address.input :user_id, :value => (params[:user_id]? params[:user_id] : current_user.id), :as => :hidden %>
 
-  <%= address.input :receiver %>
-  <%= address.input :receiver_additional %>
-  <%= address.input :street_and_number %>
-  <%= address.input :postcode %>
-  <%= address.input :town %>
-  <%= address.input :land %>
-  <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
-  <%= address.input :user_id, :value => (params[:user_id]? params[:user_id] : current_user.id), :as => :hidden %>
-  <%= address.buttons %>
+    <%= address.buttons %>
 
+  </div>
+  <div class="td last">&nbsp;</div>
 <% end %>
+</div>
 
-<%= link_to I18n.t(:back), edit_profile_path(User.find_by_id(@address.user_id)) %>
+
+<p align="center"><%= link_to I18n.t(:back), edit_profile_path(User.find_by_id(@address.user_id)), :id => @address.user_id %></p>

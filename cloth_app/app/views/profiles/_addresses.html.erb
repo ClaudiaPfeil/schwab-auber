@@ -4,17 +4,30 @@
 # Autor:  Claudia Pfeil
 # Datum:  23.11.10
 %>
+<div class="tr span-22">
 
-<h3><%= I18n.t(:profiles_addresses)%> </h3>
-<p align="right">
-  <% if can? :create, Address %>
-    <%= link_to I18n.t(:new_address), :controller => :addresses, :action => :new, :user_id => @profile.id %>
-  <%end%>
-</p>
+  <div class="td first">&nbsp;</div>
+  <div class="td span-10"><h3><%= I18n.t(:profiles_addresses)%> </h3></div>
+  <div class="td span-10"><p align="right">
+    <% if can? :create, Address %>
+        <%= link_to I18n.t(:new_address), :controller => :addresses, :action => :new, :user_id => @profile.id %>
+    <%end%>
+    </p>
+  </div>
+      
+  <div class="td last">&nbsp;</div>
+</div>
 
-<% if @profile.addresses.count.to_i > 0  %>
-  <%= render "all_addresses", :@profile => @profile %>
-<% else %>
-<p><%=h I18n.t(:add_address) %></p>
-  <%= render "form_address", :profile => @profile %>
-<% end %>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-22">
+    <% if @profile.addresses.count.to_i > 0  %>
+      <%= render "all_addresses", :@profile => @profile %>
+    <% else %>
+      <p><%=h I18n.t(:add_address) %></p>
+        <%= render "form_address", :profile => @profile %>
+    <% end %>
+  </div>
+  <div class="td last">&nbsp;</div>
+</div>
+

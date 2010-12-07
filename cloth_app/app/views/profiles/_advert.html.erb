@@ -1,0 +1,37 @@
+<%#
+# Titel:  Kunden werben Kunden
+# Autor:  Claudia Pfeil
+# Datum:  06.12.10
+%>
+<div class="tr span-22">
+  
+  <div class="td first">&nbsp;</div>
+  <div class="td span-10">
+    <h3><%= I18n.t(:invite_friends) %></h3>
+  </div>
+  <div class="td span-10">
+    <p  align="right">
+      <%= link_to I18n.t(:advert_customer), '#', :rel => 'advert_form', :class => 'simpledialog' %>
+    </p>
+  </div>
+  <div class="td last">&nbsp;</div>
+  
+</div>
+
+<div id="advert_form" style="display: none">
+
+  <%= form_for :invite_friend, :url => {:controller => :profiles, :action => :invite_friend} do |pro| %>
+
+    <h3><%=  I18n.t(:invite_friend) %></h3>
+  
+    <%= pro.label I18n.t(:friends_first_name) %><%= pro.text_field :friends_first_name %><br>
+    <%= pro.label I18n.t(:friends_last_name) %><%= pro.text_field :friends_last_name %><br>
+    <%= pro.label I18n.t(:friends_email) %><%= pro.text_field :friends_email %><br>
+    <%= pro.hidden_field :user_id, :value => @profile.id, :as => :hidden %>
+
+    <%= pro.submit I18n.t(:send_invitation) %><br>
+
+  <% end %>
+
+</div>
+
