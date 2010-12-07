@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       # Prüfen, ob Neukunde ein geworbener Kunde ist?
       if cookies[:invited]
         create_lead(@user)
+        set_premium_first_month(@user)
       end
       redirect_back_or_default('/', :notice => "Thanks for signing up!  We're sending you an email with your activation code.")
     else
@@ -102,6 +103,10 @@ class UsersController < ApplicationController
     }
     
     Lead.create(lead)
+  end
+
+  def set_premium_first_month(user)
+    user.update_attributes(:membership => 1, :membership_starts => Date.today, :membership_ends => 1.months.from_now)
   end
 
 end
