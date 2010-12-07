@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
+      # Prüfen, ob Neukunde ein geworbener Kunde ist?
+      if cookies[:invited]
+        create_lead(@user)
+      end
       redirect_back_or_default('/', :notice => "Thanks for signing up!  We're sending you an email with your activation code.")
     else
       flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
@@ -88,6 +92,16 @@ class UsersController < ApplicationController
 
   def find_user
     @user = User.find(params[:id])
+  end
+
+  def create_lead(user)
+    lead = {  :cookie_key => cookies[:invited].split("cookie_key").second.split("remote_ip").first,
+              :new_user_id => user.id,
+              :user_id => cookies[:invited].split("user_id").second.split("cookie_key").first,
+              :remote_ip => cookies[:invited].split("remote_ip").second.split("clicker_key").first
+    }
+    
+    Lead.create(lead)
   end
 
 end

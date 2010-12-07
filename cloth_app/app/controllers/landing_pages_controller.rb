@@ -13,7 +13,6 @@ class LandingPagesController < ApplicationController
       user_id = params[:id]
       # breef if cookie exist? otherwise set cookie with user_id
       if cookies[:invited]
-        
         cookie_key = cookies[:invited].split("cookie_key").second.split("remote_ip").first
         click = Click.find_by_user_id_and_cookie_key(user_id, cookie_key)
         click.update_attribute(:number, click.number + 1)
