@@ -157,7 +157,7 @@ class User < ActiveRecord::Base
     end
 
     def set_user_number
-      self.user_number.nil? ? self.user_number = NumberGenerator.alphanumeric({:prefix => "KK- ", :length => 6}) : self.user_number = self.user_number
+      self.user_number.nil? ? self.user_number = NumberGenerator.alphanumeric({:prefix => "KK-", :length => 9}) : self.user_number = self.user_number
     end
 
 end

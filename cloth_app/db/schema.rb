@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101201100907) do
+ActiveRecord::Schema.define(:version => 20101207123415) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(:version => 20101201100907) do
     t.datetime "updated_at"
   end
 
+  create_table "clicks", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "clicker_key"
+    t.string   "cookie_key"
+    t.string   "remote_ip"
+    t.date     "cookie_expires_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "number"
+  end
+
   create_table "contents", :force => true do |t|
     t.string   "title"
     t.string   "subtitle"
@@ -43,6 +54,15 @@ ActiveRecord::Schema.define(:version => 20101201100907) do
     t.integer  "category_id"
     t.string   "link_name"
     t.boolean  "published"
+  end
+
+  create_table "leads", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "cookie_key"
+    t.string   "remote_ip"
+    t.integer  "new_user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "options", :force => true do |t|
@@ -71,7 +91,7 @@ ActiveRecord::Schema.define(:version => 20101201100907) do
     t.string   "package_number",                   :null => false
     t.integer  "user_id",                          :null => false
     t.integer  "package_id",                       :null => false
-    t.integer  "evaluation"
+    t.string   "evaluation"
     t.text     "eva_notice"
     t.date     "eva_date_created_at"
     t.date     "eva_date_updated_at"

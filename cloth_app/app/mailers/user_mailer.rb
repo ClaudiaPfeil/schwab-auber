@@ -26,7 +26,7 @@ class UserMailer < ActionMailer::Base
   def send_invitation(friend, user)
     setup_friend_email(friend, user)
     @subject    += I18n.t('subject_invitation')
-    @url  = "http://#{LANDING_URL}/?id=#{user.id}"
+    @url  = "http://#{LANDING_URL}?id=#{user.id}"
     @friend =  friend
   end
   
