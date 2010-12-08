@@ -1,7 +1,7 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
-class ClicksController
+class ClicksController < ApplicationController
   before_filter :init_click, :action => [:edit, :show, :update, :destroy]
 
   def index

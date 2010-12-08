@@ -1,7 +1,7 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
-class LeadsController
+class LeadsController < ApplicationController
   before_filter :init_lead, :action => [:show, :edit, :update, :destroy]
 
   def index
