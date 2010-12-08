@@ -2,7 +2,7 @@
 # and open the template in the editor.
 
 class LeadsController
-  before_filter :init_lead, :on => [:show, :edit, :update, :destroy]
+  before_filter :init_lead, :action => [:show, :edit, :update, :destroy]
 
   def index
 
@@ -31,10 +31,10 @@ class LeadsController
   private
 
     def init_lead
-      current_object { @lead = Lead.find_by_user_id(params[:id])  }
+      init_current_object { @lead = Lead.find_by_user_id(params[:id])  }
     end
 
-    def current_object
+    def init_current_object
       @current_object = yield
     end
 end

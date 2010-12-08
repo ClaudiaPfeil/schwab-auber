@@ -2,7 +2,7 @@
 # and open the template in the editor.
 
 class ClicksController
-  before_filter :init_click, :on => [:edit, :show, :update, :destroy]
+  before_filter :init_click, :action => [:edit, :show, :update, :destroy]
 
   def index
 
@@ -35,10 +35,10 @@ class ClicksController
   private
 
     def init_click
-      current_object { @click = Click.find_by_user_id(params[:id])}
+      init_current_object { @click = Click.find_by_user_id(params[:id])}
     end
 
-    def current_object
+    def init_current_object
       @current_object =  yield
     end
 end
