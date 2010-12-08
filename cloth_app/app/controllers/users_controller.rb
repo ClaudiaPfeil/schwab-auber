@@ -65,6 +65,15 @@ class UsersController < ApplicationController
     user = params[:user].slice!
     if user[:membership] == true
       user[:role] << "premium"
+      period = 0
+      if user[:premium_period] == 0
+        period = 3.months.from_now
+      elsif user[:premium_period] == 1
+        period = 6.months.from_now
+      elsif user[:premium_period] == 2
+        period = 1.years.from_now
+      end
+      user[:membership_ends] = period
     end
 
     if @user.update_attributes(user)
