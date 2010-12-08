@@ -23,7 +23,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new()
 
-    package = Package.find_by_id(params[:id])
+    package = Package.find_by_id(params[:id].slice!)
     @order.package_number = package.serial_number
     @order.package_id = package.id
     @order.user_id = current_user.id
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
   def edit; end
 
   def update
-    if @order.update_attributes(params[:order])
+    if @order.update_attributes(params[:order].slice!)
       if (current_user.is? :admin)
         redirect_to orders_path, :notice => :order_updated
       else
@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
   end
 
   def search
-    search_type, search_key = params[:search_type], params[:search_key]
+    search_type, search_key = params[:search_type].slice!, params[:search_key].slice!
     @packages = Package.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
   end
 
@@ -70,9 +70,9 @@ class OrdersController < ApplicationController
 
     def init_order
       if current_user.is? :admin
-        init_current_object { @order = Order.find_by_id(params[:id]) } unless current_user.nil?
+        init_current_object { @order = Order.find_by_id(params[:id].slice!) } unless current_user.nil?
       else
-        init_current_object { @order = Order.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+        init_current_object { @order = Order.find_by_id_and_user_id(params[:id].slice!, current_user.id)} unless current_user.nil?
       end
     end
 

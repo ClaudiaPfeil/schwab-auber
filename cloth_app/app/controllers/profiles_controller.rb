@@ -17,7 +17,7 @@ class ProfilesController < ApplicationController
   end
 
   def create
-    @profile = User.new(params[:profile])
+    @profile = User.new(params[:profile].slice!)
     if @profile.save
       redirect_to profiles_path, :notice => I18n.t(:profile_created)
     else
@@ -48,7 +48,7 @@ class ProfilesController < ApplicationController
   end
 
   def search
-    search_type, search_key = params[:search_type], params[:search_key]
+    search_type, search_key = params[:search_type].slice!, params[:search_key].slice!
     @profiles = User.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
   end
 

@@ -10,7 +10,7 @@ class LandingPagesController < ApplicationController
   # Beschreibung: Tracking der Clicks durch gesetztes Cookie  & Zuordnung zu dem einladenden Kunden falls vorhanden
   def show
     if params[:id]
-      user_id = params[:id]
+      user_id = params[:id].slice!
       # breef if cookie exist? otherwise set cookie with user_id
       if cookies[:invited]
         cookie_key = cookies[:invited].split("cookie_key").second.split("remote_ip").first

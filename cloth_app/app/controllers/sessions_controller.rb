@@ -11,14 +11,14 @@ class SessionsController < ApplicationController
 
   def create
     logout_keeping_session!
-    user = User.authenticate(params[:login], params[:password])
+    user = User.authenticate(params[:login].slice!, params[:password].slice!)
     if user
       # Protects against session fixation attacks, causes request forgery
       # protection if user resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset_session
       self.current_user = user
-      new_cookie_flag = (params[:remember_me] == "1")
+      new_cookie_flag = (params[:remember_me].slice! == "1")
       handle_remember_cookie! new_cookie_flag
       current_user.is_premium? ? (redirect_to search_packages_path, :notice => "Login successfully done") : (redirect_to membership_path, :notice => "Login successfully done")
       #redirect_back_or_default('/', :notice => "Logged in successfully")
@@ -38,8 +38,8 @@ class SessionsController < ApplicationController
 protected
   # Track failed login attempts
   def note_failed_signin
-    flash.now[:error] = "Couldn't log you in as '#{params[:login]}'"
-    logger.warn "Failed login for '#{params[:login]}' from #{request.remote_ip} at #{Time.now.utc}"
+    flash.now[:error] = "Couldn't log you in as '#{params[:login].slice!}'"
+    logger.warn "Failed login for '#{params[:login].slice!}' from #{request.remote_ip} at #{Time.now.utc}"
   end
 
 

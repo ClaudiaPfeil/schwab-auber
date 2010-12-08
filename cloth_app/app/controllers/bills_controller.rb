@@ -26,7 +26,7 @@ class BillsController < ApplicationController
   private
 
     def init_bill
-      init_current_object { @bill = Order.find_by_id(params[:id]) }
+      init_current_object { @bill = Order.find_by_id(params[:id].slice!) }
     end
 
     def init_current_object

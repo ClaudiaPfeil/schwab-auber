@@ -16,7 +16,7 @@ class PricesController < ApplicationController
   end
 
   def create
-    @price  = Price.new(params[:price])
+    @price  = Price.new(params[:price].slice!)
     if @price.save
       redirect_to prices_path, :notice  =>  :price_created
     else
@@ -27,7 +27,7 @@ class PricesController < ApplicationController
   def edit; end
 
   def update
-    if @price.update_attributes(params[:price])
+    if @price.update_attributes(params[:price].slice!)
       redirect_to prices_path, :notice  =>  :price_updated
     else
       render  :action =>  'edit', :notice =>  :price_not_updated
@@ -41,7 +41,7 @@ class PricesController < ApplicationController
 
   private
     def init_price
-      init_current_object { @price  = Price.find_by_id(params[:id])}
+      init_current_object { @price  = Price.find_by_id(params[:id].slice!)}
     end
 
     def init_current_object

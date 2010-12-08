@@ -18,7 +18,7 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = Content.new(params[:content])
+    @content = Content.new(params[:content].slice!)
     if @content.save
       redirect_to edit_content_path(@content), :notice => "Content successfully created"
     else
@@ -29,7 +29,7 @@ class ContentsController < ApplicationController
   def edit; end
 
   def update
-    if @content.update_attributes(params[:content])
+    if @content.update_attributes(params[:content].slice!)
       redirect_to edit_content_path(@content), :notice => "Content successfully updated"
     else
       render :action => 'edit'

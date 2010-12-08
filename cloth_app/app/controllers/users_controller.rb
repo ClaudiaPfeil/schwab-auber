@@ -10,7 +10,7 @@ class UsersController < ApplicationController
  
   def create
     logout_keeping_session!
-    @user = User.new(params[:user])
+    @user = User.new(params[:user].slice!)
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     end
 
     if @user.update_attributes(user)
-      if @user.option.nil?
+      if @user.option.nil? && !user[:option].nil?
         option = params[:option]
         option[:user_id] = params[:id].to_i
         Option.create(option)

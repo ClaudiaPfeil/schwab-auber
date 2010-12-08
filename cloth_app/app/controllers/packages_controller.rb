@@ -20,7 +20,7 @@ class PackagesController < ApplicationController
   end
 
   def create
-    @package = Package.new(params[:package])
+    @package = Package.new(params[:package].slice!)
 
     if @package.save
       redirect_to packages_path(@package), :notice => :package_created
@@ -33,7 +33,7 @@ class PackagesController < ApplicationController
   def edit; end
 
   def update
-    if @package.update_attributes(params[:package])
+    if @package.update_attributes(params[:package].slice!)
       redirect_to packages_path(@package), :notice => :package_updated
     else
       render :action => 'edit', :notice => :package_not_updated#
@@ -46,7 +46,7 @@ class PackagesController < ApplicationController
   end
 
   def search
-    search_type, search_key = params[:search_type], params[:search_key]
+    search_type, search_key = params[:search_type].slice!, params[:search_key].slice!
     if search_type == 'sex'
       if search_key == 'Junge'
         search_key = 0
@@ -59,7 +59,7 @@ class PackagesController < ApplicationController
 
   def order
     #create order
-    package = Package.find_by_id(params[:id])
+    package = Package.find_by_id(params[:id].slice!)
     if Order.new.check_change_principle == true && Order.new.check_holidays == true
 
       if Order.create(:package_number => package.serial_number,
@@ -80,7 +80,7 @@ class PackagesController < ApplicationController
   private
 
     def init_package
-      init_current_object { @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+      init_current_object { @package = Package.find_by_id_and_user_id(params[:id].slice!, current_user.id)} unless current_user.nil?
     end
 
     def init_current_object

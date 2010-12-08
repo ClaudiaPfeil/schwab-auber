@@ -40,7 +40,7 @@ class AdminController < ApplicationController
   private
 
     def init_admin
-      current_object { @admin = Admin.find_by_id(params[:id])}
+      current_object { @admin = Admin.find_by_id(params[:id].slice!)}
     end
 
     def current_object
