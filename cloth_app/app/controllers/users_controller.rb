@@ -10,7 +10,7 @@ class UsersController < ApplicationController
  
   def create
     logout_keeping_session!
-    @user = User.new(params[:user].slice!)
+    @user = User.new(params[:user])
     @user.register! if @user && @user.valid?
     success = @user && @user.valid?
     if success && @user.errors.empty?
@@ -62,7 +62,7 @@ class UsersController < ApplicationController
 
   # Aktualisieren des Nutzer-Profils wie Passwort, Name, E-Mail usw.
   def update
-    user = params[:user].slice!
+    user = params[:user]
     if user[:membership] == true
       user[:role] << "premium"
       period = 0

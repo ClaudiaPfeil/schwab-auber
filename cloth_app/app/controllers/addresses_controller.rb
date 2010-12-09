@@ -15,7 +15,7 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.new(params[:address].slice!)
+    @address = Address.new(params[:address])
     if @address.save
       profile = User.find_by_id(@address.user_id)
       redirect_to edit_profile_path(profile), :notice => I18n.t(:address_created)
@@ -27,7 +27,7 @@ class AddressesController < ApplicationController
   def edit; end
 
   def update
-    if @address.update_attributes(params[:address].slice!)
+    if @address.update_attributes(params[:address])
       redirect_to show_address_path(@address), :notice => I18n.t(:address_updated)
     else
       render :action => 'edit', :notice => I18n.t(:address_not_updated)
@@ -43,7 +43,7 @@ class AddressesController < ApplicationController
   private
 
     def init_address
-      init_current_object { @address = Address.find_by_id(params[:id].slice!) }
+      init_current_object { @address = Address.find_by_id(params[:id]) }
     end
 
     def init_current_object

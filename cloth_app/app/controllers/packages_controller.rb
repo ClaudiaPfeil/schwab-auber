@@ -20,7 +20,7 @@ class PackagesController < ApplicationController
   end
 
   def create
-    @package = Package.new(params[:package].slice!)
+    @package = Package.new(params[:package])
 
     if @package.save
       redirect_to packages_path(@package), :notice => :package_created
@@ -33,7 +33,7 @@ class PackagesController < ApplicationController
   def edit; end
 
   def update
-    if @package.update_attributes(params[:package].slice!)
+    if @package.update_attributes(params[:package])
       redirect_to packages_path(@package), :notice => :package_updated
     else
       render :action => 'edit', :notice => :package_not_updated#
@@ -48,9 +48,9 @@ class PackagesController < ApplicationController
   def search
     search_type, search_key = params[:search_type], params[:search_key]
     if search_type == 'sex'
-      if search_key == 'Junge'
+      if search_key =~ /[^jJ-uU-nN-gG-eE]/
         search_key = 0
-      elsif search_key == 'Mädchen'
+      elsif search_key =~ /[^mM-aA-eE-dD-cC-hH-eE-nN]/
         search_key = 1
       end
     end
@@ -59,7 +59,7 @@ class PackagesController < ApplicationController
 
   def order
     #create order
-    package = Package.find_by_id(params[:id].slice!)
+    package = Package.find_by_id(params[:id])
     if Order.new.check_change_principle == true && Order.new.check_holidays == true
 
       if Order.create(:package_number => package.serial_number,
