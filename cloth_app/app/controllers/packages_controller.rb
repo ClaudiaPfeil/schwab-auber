@@ -48,9 +48,9 @@ class PackagesController < ApplicationController
   def search
     search_type, search_key = params[:search_type], params[:search_key]
     if search_type == 'sex'
-      if search_key =~ /[^jJ-uU-nN-gG-eE]/
+      if search_key =~ /^(j|J)(u|U)(n|N)(g|G)/
         search_key = 0
-      elsif search_key =~ /[^mM-aA-eE-dD-cC-hH-eE-nN]/
+      elsif search_key =~ /^(m|M)(a|A)(e|E)(d|D)(c|C)(h|H)(e|E)(n|N)/
         search_key = 1
       end
     end
@@ -59,14 +59,14 @@ class PackagesController < ApplicationController
 
   def order
     #create order
-    package = Package.find_by_id(params[:id])
-    if Order.new.check_change_principle == true && Order.new.check_holidays == true
+    order = Order.new(:package_number => @package.serial_number,
+                      :package_id     => @package.id,
+                      :user_id        => current_user.id)
+    if order.check_change_principle == true && order.check_holidays == true
 
-      if Order.create(:package_number => package.serial_number,
-                    :package_id     => package.id,
-                    :user_id        => current_user.id)
+      if order.save
         # count down cartons
-        package.user.count_down
+        @package.user.count_down
         render :action => 'search', :notice => :order_created
       else
         render :action => 'search', :notice => :order_not_created

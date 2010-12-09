@@ -1,31 +1,39 @@
-<h1><%= I18n.t(:contents) %></h1>
-<%=  get_notices %>
-<p align="right">
-  <% if can? :create, Content %>
-    <%= link_to I18n.t(:new), new_content_path %>
-  <%end%>
-</p>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-21">
+    <h1><%= I18n.t(:contents) %></h1>
+    <%=  get_notices %>
+    <p align="right">
+      <% if can? :create, Content %>
+        <%= link_to I18n.t(:new_content), new_content_path %>
+      <%end%>
+    </p>
+  </div>
+<div class="td last">&nbsp;</div>
+</div>
 
-<div class="tr">
-  <div class="td"><b><%=  I18n.t('title')%></b> </div>
-  <div class="td"><b><%= I18n.t('subtitle')%></b> </div>
-  <div class="td"><b><%= I18n.t('article')%></b> </div>
-  <div class="td"><b><%= I18n.t('link')%></b> </div>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-4"><b><%=  I18n.t('title')%></b> </div>
+  <div class="td span-4"><b><%= I18n.t('subtitle')%></b> </div>
+  <div class="td span-4"><b><%= I18n.t('article')%></b> </div>
+  <div class="td span-4"><b><%= I18n.t('link')%></b> </div>
+  <div class="td last">&nbsp;</div>
 </div>
 
 <% @contents.each do |content| %>
     
-  <div class="tr">
-    <div class="td"><%= content.title%> </div>
-    <div class="td"><%= content.subtitle%> </div>
-    <div class="td"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>
-    <div class="td"><%= content.link%> </div>
-    <div class="td">
+  <div class="tr span-22">
+    <div class="td span-4"><%= content.title%> </div>
+    <div class="td span-4"><%= content.subtitle%> </div>
+    <div class="td span-4"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>
+    <div class="td span-4"><%= content.link%> </div>
+    <div class="td last">
       
       <% if can? :update, Content %>
         <%= link_to  I18n.t(:edit), edit_content_path(content), :id => 'edit'%>
       <% end %>
-
+      <br>
       <% if can? :read, Content %>
         <% unless content.category.name == 'Welcome' %>
           <%= link_to I18n.t(:preview),create_path(content.category.name.downcase), :id => 'preview', :class => 'simpledialog' %>
@@ -33,11 +41,11 @@
           <%= link_to I18n.t(:preview),root_path(:preview => true), :id => 'preview', :class => 'simpledialog' %>
         <% end %>
      <%end%>
-
+      <br>
       <% if can? :publish, Content %>
         <%= link_to I18n.t(:publish), publish_content_path(content), :id => 'publish' %>
       <%end%>
-
+      <br>
       <% if can? :destroy, Content %>
         <%= link_to I18n.t(:destroy), content, :confirm => 'Möchten sie den Inhalt wirklich löschen?' , :method => 'delete' %>
       <%end%>

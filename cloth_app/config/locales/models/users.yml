@@ -12,3 +12,5 @@ de:
   friends_first_name: Vorname
   friends_last_name:  Nachname
   friends_email:  E-Mail
+  yes:  Ja
+  no: Nein
