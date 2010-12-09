@@ -1,4 +1,5 @@
 class Order < ActiveRecord::Base
+  include Cms
   belongs_to :user
   belongs_to :package
   
@@ -17,9 +18,8 @@ class Order < ActiveRecord::Base
   end
 
   accepts_nested_attributes_for :user, :package, :allow_destroy => true
-  attr_reader :very_good, :good, :ok, :bad, :very_bad
+  #attr_reader :very_good, :good, :ok, :bad, :very_bad
 
-  Evaluation  = %w(very_good good ok  bad very_bad)
 
   def is_destroyable?
     true
@@ -36,6 +36,10 @@ class Order < ActiveRecord::Base
     start    = self.package.user.start_holidays
     last_day = self.package.user.end_holidays
     Date.today.between?(start, last_day) ? false : true
+  end
+
+  def get_contents(category)
+    get_content(category).first.article.split(" ") if get_content(category)
   end
   
   protected
