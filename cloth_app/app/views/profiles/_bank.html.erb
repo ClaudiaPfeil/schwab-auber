@@ -1,0 +1,21 @@
+<%#
+# Titel:  Bankverbindung
+# Autor:  Claudia Pfeil
+# Datum:  09.12.2010
+%>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-21"><h3><%= I18n.t(:bank_detail) %></h3>
+    <p align="right"><%= @profile.bank_detail.nil? ? new_bank : edit_bank  %></p>
+  </div>
+  <div class="td last">&nbsp;</div>
+</div>
+
+<div id="bank" style="display: none;">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-15">
+    <%= render "/bank_details/form" , :@bank_detail => (@profile.bank_detail.nil? ? BankDetail.new(:user_id => @profile.id) : @profile.bank_detail ) %>
+  </div>
+  <div class="td last">&nbsp;</div>
+</div>
+

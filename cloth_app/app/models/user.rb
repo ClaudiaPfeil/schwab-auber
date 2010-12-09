@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :addresses
   has_one  :option
+  has_one :bank_detail
 
   validates :login, :presence   => true,
                     :uniqueness => true,
@@ -43,7 +44,7 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, :first_name, :option_attributes, :start_holidays, :end_holidays, :cartons, :membership, :membership_starts, :membership_ends,  :premium_period, :tag_names
   attr_accessor   :friends_first_name, :friends_last_name, :friends_email, :tag_names
-  accepts_nested_attributes_for :addresses, :option
+  accepts_nested_attributes_for :addresses, :option, :bank_detail
 
   # users roles
   scope :with_role, lambda { |role| {:conditions => "roles_mask & #{2**ROLES.index(role.to_s)} > 0 "} }

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101207123415) do
+ActiveRecord::Schema.define(:version => 20101209091750) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -23,6 +23,18 @@ ActiveRecord::Schema.define(:version => 20101207123415) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "kind",                :limit => 1
+  end
+
+  create_table "bank_details", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "bank_code"
+    t.integer  "account_number"
+    t.integer  "balance"
+    t.boolean  "prepayment_confirmed"
+    t.boolean  "kind"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", :force => true do |t|

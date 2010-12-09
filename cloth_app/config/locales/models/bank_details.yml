@@ -1,0 +1,18 @@
+de:
+  name: Name des Kreditinstituts
+  bank_code:  Bankleitzahl
+  account_number: Kontonummer
+  balance:  Kontostand
+  prepayment_confirmed: Bestätigung der Vorauskasse
+  kind:
+    prepayment: Vorauskasse
+    paypal: Paypal
+    master_visa_card: Master/Visa - Card
+  bank_detail_created:  Bankverbindung gespeichert!
+  bank_detail_created_failed: Bankverbindung nicht gespeichert!
+  bank_detail_updated:  Bankverbindung erfolgreich aktualisiert!
+  bank_detail_updated_failed: Bankverbindung nicht aktualisiert!
+  band_detail_deleted:  Bankverbindung kann nicht gelöscht werden!
+  bank_detail:  Bankverbindung
+  new_bank: Hinzufügen
+  edit_bank:  Aktualisieren

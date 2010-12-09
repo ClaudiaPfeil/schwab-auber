@@ -1,0 +1,22 @@
+<%#
+# Titel:  Bankverbindung
+# Autor:  Claudia Pfeil
+# Datum:  09.12.2010
+%>
+
+<h3><%= I18n.t(:bank_detail) %></h3>
+<%= semantic_form_for @bank_detail do |bank| %>
+
+  <%= bank.input  :name %>
+  <%= bank.input  :bank_code %>
+  <%= bank.input  :account_number %>
+  <%= bank.input  :balance %>
+  <%= bank.input  :prepayment_confirmed %>
+  <%= bank.input  :kind, :as => :radio,
+                  :collection =>  {:prepayment => 1, :paypal => 2, :master_visa_card  =>  3},
+                  :first_blank => false
+  %>
+  <%= bank.input  :user_id, :as => :hidden, :value => ( params[:id] ? params[:id] : current_user.id ) %>
+  <%= bank.buttons %>
+
+<% end %>

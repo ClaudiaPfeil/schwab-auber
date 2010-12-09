@@ -73,5 +73,12 @@ module ProfilesHelper
   def get_table_order
     ListView.get_table_columns(Order, [:evaluation, :eva_notice, :eva_created_at])
   end
-  
+
+  def new_bank
+    link_to I18n.t(:new_bank), '#', :rel => "bank", :class => 'simpledialog'
+  end
+
+  def update_bank
+    link_to I18n.t(:update_bank), '#', :rel => "bank", :class => 'simpledialog'
+  end
 end

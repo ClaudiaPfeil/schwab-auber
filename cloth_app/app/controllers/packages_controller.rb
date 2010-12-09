@@ -12,7 +12,7 @@ class PackagesController < ApplicationController
   
   # Anzeige aller Pakete, die in den vergangenen 24 Stunden eingestellt wurden
   def show_24
-    @packages = Package.where(:created_at => "BETWEEN CURDATE() AND DATE_SUB(CURDATE(), CURDATE + 24*60*60) ")
+    @packages = Package.where(:created_at => "BETWEEN #{Date.today} AND DATE_SUB(#{Date.today}, #{Date.today - 24.hours}) ")
   end
 
   def new
@@ -46,7 +46,7 @@ class PackagesController < ApplicationController
   end
 
   def search
-    search_type, search_key = params[:search_type].slice!, params[:search_key].slice!
+    search_type, search_key = params[:search_type], params[:search_key]
     if search_type == 'sex'
       if search_key == 'Junge'
         search_key = 0
@@ -80,7 +80,7 @@ class PackagesController < ApplicationController
   private
 
     def init_package
-      init_current_object { @package = Package.find_by_id_and_user_id(params[:id].slice!, current_user.id)} unless current_user.nil?
+      init_current_object { @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
     end
 
     def init_current_object

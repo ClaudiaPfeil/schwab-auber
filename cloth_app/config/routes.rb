@@ -38,6 +38,7 @@ ClothApp::Application.routes.draw do
   resources :addresses
   resources :prices
   resources :options
+  resources :bank_details
 
   resource :session, :only => [:new, :create, :destroy]
 

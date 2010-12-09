@@ -13,8 +13,7 @@ module PackagesHelper
       true
     else
       created = package.created_at
-      tag = created + 24*60*60
-      created < tag  ? true : false
+      created < created + 24.hours ? true : false
     end
   end
 
