@@ -1,0 +1,16 @@
+<%#
+# Titel:  Vorauskasse
+# Beschreibung: Anzeige der KidsKarton-Bankverbindung wenn Vorauskasse gewählt
+# Autor:  Claudia Pfeil
+# Datum:  10.12.2010
+%>
+
+<div id="prepayment" style="display: none" >
+  <% @bank_detail.get_contents("BankDetails").each do |bank| %>
+
+    <h3><%= bank.title  %></h3><br>
+    <%= bank.subtitle %><br>
+    <%= format_article(bank.article) %>
+    
+  <% end %>
+</div>

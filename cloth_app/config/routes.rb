@@ -2,7 +2,11 @@ ClothApp::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
   root :to => "welcome#home"
-  
+
+  resources :bank_details do
+    get :payment_method, :on => :member
+  end
+
   resources :contents do
       get :publish, :on => :member
   end
@@ -38,7 +42,7 @@ ClothApp::Application.routes.draw do
   resources :addresses
   resources :prices
   resources :options
-  resources :bank_details
+  
 
   resource :session, :only => [:new, :create, :destroy]
 

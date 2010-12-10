@@ -1,8 +1,10 @@
-<h1><%= I18n.t(:categories) %></h1>
-<%=  get_notices %>
-<p align="right">
- <%= link_to I18n.t(:new_category), new_category_path %>
-</p>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-18"><h1><%= I18n.t(:categories) %></h1><br><%=  get_notices %></div>
+  <div class="td last">
+    <br><%= link_to I18n.t(:new_category), new_category_path %>
+  </div>
+</div>
 
 <div class="tr span-22">
   <div class="td span-6"><b><%= I18n.t(:name_cat) %></b> </div>
@@ -21,7 +23,7 @@
 
     <div class="td last span-4">
       <% if can? :update, Category %>
-        <%= link_to I18n.t(:edit), edit_category_path(category) %>
+        <%= link_to I18n.t(:edit), edit_category_path(category) %><br>
       <%end%>
       <% if can? :delete, Category %>
         <%= link_to I18n.t(:delete), category, :confirm => I18n.t(:confirm_category) , :method => 'delete' %>

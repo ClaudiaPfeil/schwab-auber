@@ -42,6 +42,16 @@ class BankDetailsController < ApplicationController
     redirect_to bank_details_path, :notice  => I18n.t(:bank_detail_deleted)
   end
 
+  def payment_method
+    package = Package.find_by_id(params[:id])
+    @bank_detail = BankDetail.new(params[:bank_detail])
+
+    if @bank_detail.save
+      redirect_to profile_path(package.order.user), :notice => I18n.t(:payment_created)
+    end
+    
+  end
+
   private
     def init_bank_detail
       init_current_object { @bank_detail  = BankDetail.find_by_id(params[:id])}

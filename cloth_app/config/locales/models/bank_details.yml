@@ -4,10 +4,9 @@ de:
   account_number: Kontonummer
   balance:  Kontostand
   prepayment_confirmed: Bestätigung der Vorauskasse
-  kind:
-    prepayment: Vorauskasse
-    paypal: Paypal
-    master_visa_card: Master/Visa - Card
+  prepayment: Vorauskasse
+  paypal: Paypal
+  master_visa_card: Master/Visa - Card
   bank_detail_created:  Bankverbindung gespeichert!
   bank_detail_created_failed: Bankverbindung nicht gespeichert!
   bank_detail_updated:  Bankverbindung erfolgreich aktualisiert!
@@ -16,3 +15,5 @@ de:
   bank_detail:  Bankverbindung
   new_bank: Hinzufügen
   edit_bank:  Aktualisieren
+  payments: Bezahlung
+  payment_created:  Zahlung erfolgt!

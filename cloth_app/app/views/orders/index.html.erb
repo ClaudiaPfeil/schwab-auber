@@ -1,37 +1,37 @@
-<h1><%= I18n.t(:orders) %></h1>
-
-<%=  get_notices %>
-
-<p align="right">
-  <% if can? :create, Order %>
-    <%= link_to I18n.t(:new), new_order_path %>
-  <%end%>
-</p>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-18"><h1><%= I18n.t(:orders) %></h1><br><%=  get_notices %></div>
+  <div class="td last"><br>
+    <% if can? :create, Order %>
+      <%= link_to I18n.t(:new), new_order_path %>
+    <%end%>
+  </div>
+</div>
 
 <% tmp = [:order_number, :package_number, :received, :evaluation, :eva_date_updated_at, :created_at] %>
 <% order_cols = Order.column_names.to_a%>
 <% result = tmp - order_cols%>
 
-<div class="tr">
-  <div class=".first">&nbsp;</div>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
   <% result.each do |column| %>
-    <div class="td .span-2"><b><%=  I18n.t(column)%></b> </div>
+    <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
   <% end %>
-  <div class=".last">&nbsp;</div>
+  <div class="td last">&nbsp;</div>
 </div>
 
 <% @orders.each do |order| %>
-  <div class="tr">
-    <div class=".first">&nbsp;</div>
+  <div class="tr span-22">
+    <div class="td first">&nbsp;</div>
     <% result.each do |name| %>
-      <div class="td .span-2"><%=  (name.to_s == 'created_at' || name.to_s == 'eva_date_updated_at')? formatted_date(order.attributes[name.to_s]) :  order.attributes[name.to_s]  %></div>
+      <div class="td span-3"><%=  (name.to_s == 'created_at' || name.to_s == 'eva_date_updated_at')? formatted_date(order.attributes[name.to_s]) :  order.attributes[name.to_s]  %></div>
     <% end %>
-    <div class=".last">
+    <div class="td last">
       <% if can? :update, Order %>
-        <%= link_to I18n.t(:edit), edit_order_path(order) %>
+        <%= link_to I18n.t(:edit), edit_order_path(order) %><br>
       <%end%>
       <% if can? :bill, Order %>
-        <%= link_to I18n.t(:bill), bill_path(order) %>
+        <%= link_to I18n.t(:bill), bill_path(order) %><br>
       <%end%>
       <% if can? :delete, Order %>
         <%= link_to I18n.t(:delete), order, :confirm => I18n.t(:confirm_order) , :method => 'delete' %>

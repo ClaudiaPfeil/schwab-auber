@@ -3,12 +3,6 @@
 # and open the template in the editor.
 %>
 
-<p align="right">
-  <% if can? :create, Package %>
-    <%= link_to I18n.t(:new_package), new_package_path %>
-  <%end%>
-</p>
-
 <div class="tr span-22">
   <div class="td first">&nbsp;</div>
   <div class="td span-4"><b><%= I18n.t(:name_package)%></b> </div>

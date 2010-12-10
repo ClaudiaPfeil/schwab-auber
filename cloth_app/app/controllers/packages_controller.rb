@@ -63,11 +63,10 @@ class PackagesController < ApplicationController
                       :package_id     => @package.id,
                       :user_id        => current_user.id)
     if order.check_change_principle == true && order.check_holidays == true
-
-      if order.save
+      if Order.create
         # count down cartons
         @package.user.count_down
-        render :action => 'search', :notice => :order_created
+        redirect_to payment_method_bank_detail_path(@package), :notice => :order_created
       else
         render :action => 'search', :notice => :order_not_created
       end

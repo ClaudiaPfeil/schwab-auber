@@ -40,8 +40,8 @@
 
     <div class="td last">
       <% if can? :update, Price %>
-        <%= link_to I18n.t(:edit), edit_price_path(price) %>
-      <%end%><br>
+        <%= link_to I18n.t(:edit), edit_price_path(price) %><br>
+      <%end%>
       <% if can? :delete, Price %>
         <%= link_to I18n.t(:delete), price, :confirm => I18n.t(:confirm_price) , :method => 'delete' %>
       <%end%>

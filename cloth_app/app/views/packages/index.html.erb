@@ -1,6 +1,17 @@
-<h1><%= I18n.t("show_packages") %></h1>
-<%=  get_notices %>
-<% if can? :show, Package %>
-  <p align="right"><%= link_to I18n.t(:show_24), show_24_packages_path %></p>
-<%end%>
+<div class="tr span-22">
+  <div class="td first">&nbsp;</div>
+  <div class="td span-14"><h1><%= I18n.t("show_packages") %></h1><br><%=  get_notices %></div>
+  <div class="td last"><br>
+    <% if can? :show, Package %>
+      <%= link_to I18n.t(:show_24), show_24_packages_path %><br>
+    <%end%>
+
+    <% if can? :create, Package %>
+      <%= link_to I18n.t(:new_package), new_package_path %>
+    <%end%>
+  </div>
+</div>
+
+
+
 <%= render "list" %>

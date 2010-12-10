@@ -12,30 +12,15 @@
   <%= render '/layouts/set_meta_tags'%>
 </head>
 <body>
+  
   <div class="container">
     <div class="span-22">
       <%= render "/layouts/header" %>
       <%= render "/layouts/subnavi" %>
 	  </div>
-   
-    <div class="span-4">
-      <%#*Left sidebar%>
-    </div>
 
     <div class="span-22 background">
-      <%#*<div class="content">%>
-        <br>
-        <p align="justify">
-          <span class="text">
-           <%= yield %>
-          </span>
-        </p>
-        <br>
-      <%#*</div>%>
-    </div>
-
-    <div class="span-4 last">
-      <%#*Right sidebar%>
+     <%= yield %>
     </div>
 
     <div class="span-22">

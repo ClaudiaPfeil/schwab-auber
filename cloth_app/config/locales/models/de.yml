@@ -28,6 +28,14 @@ de:
         land: Land
         kind: Art
         confirm_address: Möchten sie die Anschrift wirklich löschen?
+      bank_detail:
+        kind: 'Wählen Sie eine Zahlungsart aus:'
+        paypal: Paypal
+        prepayment: Vorauskasse
+        master_visa_card: Master/Visa -Card
+      category:
+        name: Name
+        description:  Beschreibung
       content:
         title: Titel
         subtitle: Untertitel
