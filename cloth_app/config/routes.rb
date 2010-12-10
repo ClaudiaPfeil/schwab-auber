@@ -31,17 +31,19 @@ ClothApp::Application.routes.draw do
 
     get :search, :on => :collection
   end
-  
+
+  resources :addresses
+  resources :bills
   resources :categories
   resources :contacts
-  resources :searches
   resources :helps
   resources :impressums
   resources :orders
-  resources :bills
-  resources :addresses
-  resources :prices
   resources :options
+  resources :payments
+  resources :prices
+  resources :searches
+  
   
 
   resource :session, :only => [:new, :create, :destroy]

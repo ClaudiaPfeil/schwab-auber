@@ -3,13 +3,14 @@
 # Autor:  Claudia Pfeil
 # Datum:  10.12.2010
 %>
-<% @bank_detail = BankDetail.new %>
-<%= semantic_form_for @bank_detail do |bank| %>
+
+<%= semantic_form_for Payment.new do |bank| %>
 
   <%= bank.input  :kind, :as => :radio,
                   :collection =>  {I18n.t(:prepayment) => 1, I18n.t(:paypal) => 2, I18n.t(:master_visa_card)  =>  3},
                   :first_blank => false
   %>
+  <%= bank.input :package_id, :as => :hidden, :value => params[:id] %>
 
   <%= bank.buttons  %>
 

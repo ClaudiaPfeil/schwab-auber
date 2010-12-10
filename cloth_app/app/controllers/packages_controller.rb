@@ -59,11 +59,19 @@ class PackagesController < ApplicationController
 
   def order
     #create order
-    order = Order.new(:package_number => @package.serial_number,
+    @order = Order.new(:package_number => @package.serial_number,
                       :package_id     => @package.id,
-                      :user_id        => current_user.id)
-    if order.check_change_principle == true && order.check_holidays == true
-      if Order.create
+                      :user_id        => current_user.id
+                    )
+
+    @order.bill_number = @order.get_bill_number
+    @order.order_number  = @order.get_order_number
+    @order.package.accepted = 1
+    @order.package.confirmed = 1
+
+    if @order.check_change_principle == true && @order.check_holidays == true
+      
+      if @order.save
         # count down cartons
         @package.user.count_down
         redirect_to payment_method_bank_detail_path(@package), :notice => :order_created

@@ -1,12 +1,13 @@
 class Order < ActiveRecord::Base
   include Cms
+  
   belongs_to :user
   belongs_to :package
+  belongs_to :payment
   
-  validates_uniqueness_of :order_number, :bill_number, :package_number, :package_id
-  
+  validates_uniqueness_of :order_number, :bill_number, :scope => [:package_id]
   validates_presence_of :package_id, :user_id
-  
+
   before_save do
     create_order_number if order_number.nil? || order_number.blank?
     create_bill_number  if bill_number.nil? || bill_number.blank?
@@ -17,9 +18,7 @@ class Order < ActiveRecord::Base
     update_state_of_package
   end
 
-  accepts_nested_attributes_for :user, :package, :allow_destroy => true
-  #attr_reader :very_good, :good, :ok, :bad, :very_bad
-
+  accepts_nested_attributes_for :user, :package, :payment, :allow_destroy => true
 
   def is_destroyable?
     true
@@ -41,8 +40,16 @@ class Order < ActiveRecord::Base
   def get_contents(category)
     get_content(category).first.article.split(" ") if get_content(category)
   end
+
+  def get_order_number
+    create_order_number
+  end
+
+  def get_bill_number
+    create_bill_number
+  end
   
-  protected
+  private
 
     def create_order_number
       self.order_number = NumberGenerator.timebased
@@ -66,7 +73,8 @@ class Order < ActiveRecord::Base
     end
 
     def update_state_of_package
-      self.package.update_attribute(:state, 1)
+      self.package.state = 1
+      self.package.save
     end
 
 end

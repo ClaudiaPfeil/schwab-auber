@@ -43,13 +43,7 @@ class BankDetailsController < ApplicationController
   end
 
   def payment_method
-    package = Package.find_by_id(params[:id])
-    @bank_detail = BankDetail.new(params[:bank_detail])
-
-    if @bank_detail.save
-      redirect_to profile_path(package.order.user), :notice => I18n.t(:payment_created)
-    end
-    
+    @bank_detail = BankDetail.new()
   end
 
   private
