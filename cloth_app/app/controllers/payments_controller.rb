@@ -2,7 +2,7 @@
 # and open the template in the editor.
 
 class PaymentsController < ApplicationController
-  before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy]
+  before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
 
   def index
     (current_user && !(current_user.is? :admin) ) ? @payments = Payment.where(:user_id => current_user.id) : @payments = Payment.all
@@ -39,6 +39,9 @@ class PaymentsController < ApplicationController
   end
 
   def update
+    if params[:payment][:email] && params[:payment][:message]
+      UserMailer.remember_prepayment(params[:payment], User.find_by_id(params[:payment][:user_id])).deliver
+    end
     if @payment.update_attributes(params[:payment])
       redirect_to payments_path, :notice => I18n.t(:payment_updated)
     else
@@ -49,6 +52,18 @@ class PaymentsController < ApplicationController
   def destroy
     @payment.destroy if @payment.is_destroyable?
     redirect_to payments_path, :notice => I18n.t(:payment_destroyed)
+  end
+
+  def confirm_prepayment
+    if @payment.update_attribute(:prepayment_confirmed, true)
+      redirect_to payments_path, :notice => I18n.t(:prepayment_confirmed)
+    else
+      render :action => "index", :notice => I18n.t(:prepayment_not_confirmed)
+    end
+  end
+
+  def all_unconfirmed
+    @payments = Payment.where(:prepayment_confirmed => false).joins("INNER JOIN users on users.id = payments.user_id and users.membership = 1")
   end
 
   private

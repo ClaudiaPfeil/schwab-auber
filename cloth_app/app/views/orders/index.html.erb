@@ -34,7 +34,7 @@
         <%= link_to I18n.t(:bill), bill_path(order) %><br>
       <%end%>
       <% if can? :delete, Order %>
-        <%= link_to I18n.t(:delete), order, :confirm => I18n.t(:confirm_order) , :method => 'delete' %>
+        <%= link_to I18n.t(:delete_order), order, :confirm => I18n.t(:confirm_order) , :method => 'delete' %>
       <%end%>
     </div>
   </div>

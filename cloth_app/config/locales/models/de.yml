@@ -12,6 +12,7 @@ de:
       category: Kategorie
       categories: Kategorien
       bank_detail:  Bankverbindung
+      payment:  Bezahlung
     attributes:
       address:
         back: Zurück
@@ -28,11 +29,6 @@ de:
         land: Land
         kind: Art
         confirm_address: Möchten sie die Anschrift wirklich löschen?
-      bank_detail:
-        kind: 'Wählen Sie eine Zahlungsart aus:'
-        paypal: Paypal
-        prepayment: Vorauskasse
-        master_visa_card: Master/Visa -Card
       category:
         name: Name
         description:  Beschreibung
@@ -106,6 +102,13 @@ de:
         sleeping_bags:  Schlafsäcke
         boy: Junge
         girl: Mädchen
+      payment:
+        kind: 'Wählen Sie eine Zahlungsart aus:'
+        paypal: Paypal
+        prepayment: Vorauskasse
+        master_visa_card: Master/Visa -Card
+        email:  E-Mail
+        message:  Nachricht
       price:
         three_months:  3 Monate Paket Premium
         six_months:  6 Monate-Paket Premium

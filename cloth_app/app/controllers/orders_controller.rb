@@ -46,9 +46,9 @@ class OrdersController < ApplicationController
   def update
     if @order.update_attributes(params[:order])
       if (current_user.is? :admin)
-        redirect_to orders_path, :notice => :order_updated
+        redirect_to orders_path, :notice => I18n.t(:order_updated)
       else
-        redirect_to profile_path(@order.user), :notice => :order_updated
+        redirect_to profile_path(@order.user), :notice => I18n.t(:order_not_updated)
       end
     else
       render :action => 'edit'
@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
   def destroy
     @order.destroy if @order.is_destroyable?
     @order.package.update_attribute(:state, 0)
-    redirect_to orders_path, :notice => :order_deleted#'Order successfully deleted'
+    redirect_to orders_path, :notice => I18n.t(:order_deleted)
   end
 
   def search

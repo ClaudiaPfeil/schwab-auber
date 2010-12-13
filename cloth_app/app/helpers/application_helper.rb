@@ -70,4 +70,36 @@ module ApplicationHelper
     @content
   end
   
+  def create_table_header(cols)
+    @content = content_tag(:div, '', :class => "tr span-22")
+    @content << content_tag(:div, '', :class => "td first")
+    cols.each do |col|
+      @content << content_tag(:b, I18n.t(col.to_s), :class => "td span-4")
+    end
+    @content << content_tag(:div, '', :class => "td last")
+    @content << content_tag(:br, '')
+    @content
+  end
+
+  def create_list_table(rows, model)
+    
+    rows.each do |row|
+      @content = content_tag(:div, '', :class => "tr span-22")
+      @content << content_tag(:div, '', :class => "td first")
+      
+      cols = ListView.get_entries(model, row, [:full_name, :serial_number, :kind, :created_at], {:full_name => :user, :serial_number => :package})
+      if cols
+        cols.each do |col|
+          @content << content_tag(:div, col.to_s, :class => "td span-4")
+        end
+      end
+      @content << content_tag(:div, '', :class => "td last")
+      
+    end
+    
+    @content << content_tag(:br, '')
+    @content
+
+  end
+  
 end

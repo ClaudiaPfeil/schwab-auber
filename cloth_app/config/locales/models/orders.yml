@@ -17,7 +17,7 @@ de:
   package_id: Kleiderpaket
   eva_notice: Hinweis zur Bewertung
   confirm_order: Möchten sie die Bestellung wirklich stornieren?
-  delete: Stornieren
+  delete_order: Stornieren
   bill: Rechnung
   amount: Betrag
   description: Bezeichnung
@@ -29,5 +29,11 @@ de:
   back: Zurück
   yes:  Ja
   no: Nein
-  
+  order_deleted:  Bestellung wurde erfolgreich storniert!
+  order_not_deleted:  Bestellung konnte nicht storniert werden!
+  order_updated:  Bestellung erfolgreich aktualisiert!
+  order_not_updated:  Bestellung konnten nicht aktualisiert werden!
+  equal_change_principle: Bestellung nicht aufgenommen! Entweder wird das Tauschprinzip nicht eingehalten oder der Versender ist im Urlaub!
+  order_created:  Bestellung erfolgreich aufgenommen!
+  order_not_created:  Bestellung nicht aufgenommen!
 

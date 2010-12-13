@@ -272,7 +272,7 @@ li.optional > fieldset > ol > li > label > input {
 
 li.commit > input {
   float: right;
-  margin-right: 35em;
+  margin-right: 12em;
 }
 
 li.commit > input#package_submit {

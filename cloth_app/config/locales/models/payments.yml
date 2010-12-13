@@ -1,0 +1,26 @@
+de:
+  kind: 'Bitte wählen sie eine Zahlungsmethode aus:'
+  payments: Bezahlungen
+  payment_destroyed:  Bezahlung kann nicht gelöscht werden!
+  payment_updated:  Bezahlung erfolgreich aktualisiert!
+  payment_not_updated:  Bezahlung nicht aktualisiert!
+  payment_created:  Bezahlung erfolgreich erstellt!
+  payment_not_created:  Bezahlung nicht erstellt!
+  user: Kunde
+  kind_payment: Zahlungsweise
+  created_at: Vom
+  package:  Kleiderpaket-Nr.
+  first_name: Vorname
+  last_name:  Nachname
+  confirm_prepayment: Zahlungseingang bestätigen
+  prepayment_confirmed: Zahlungseingang erfolgreich bestätigt!
+  prepayment_not_confirmed: Zahlungseingang nicht bestätigt!
+  all_unconfirmed:  Alle unbestätigten Vorauskassen
+  all_confirmed:  Es sind keine offenen Zahlungseingänge der Premium-Mitglieder mit Vorauskasse vorhanden.
+  remember: E-Mail Erinnerung
+  remember_email: Premium an Vorauskasse erinnern
+  email:  E-Mail
+  message:  Nachricht
+  send_email: E-Mail senden
+  subject_remember_prepayment:  Zahlungserinnerung Vorauskasse für ihre Premium-Mitgliedschaft
+

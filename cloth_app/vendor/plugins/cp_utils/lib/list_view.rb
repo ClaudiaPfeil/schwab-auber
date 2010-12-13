@@ -9,18 +9,41 @@ class ListView
     tmp - table_cols
   end
 
-  def self.get_entries(model, object, collection)
+  def self.get_entries(model, entry, collection, options = nil)
     entries = []
     table_columns = get_table_columns(model, collection)
+    
+    table_columns.each do |name|
+      if options
+        
+        options.each do |key, value|
+          if key.to_s == name.to_s
+            relation = (value.to_s.camelize.constantize).find_by_id(entry.attributes[value.to_s + "_id"])
+            relation.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(relation.attributes[name.to_s])
+          end
+        end
 
-    object.each do |entry|
-      table_columns.each do |name|
-        entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(entry.attributes[name.to_s])
+        if name.to_s == "created_at" || name.to_s == "updated_at"
+          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(self.formatted_date(entry.attributes[name.to_s]))
+        elsif entry.attributes[name.to_s]
+          entries.push(entry.attributes[name.to_s])
+        end
+      else
+        if name.to_s == "created_at" || name.to_s == "updated_at"
+          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(self.formatted_date(entry.attributes[name.to_s]))
+        else
+          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(entry.attributes[name.to_s])
+        end
       end
+
     end
     
     entries
     
+  end
+
+  def self.formatted_date(date)
+    date.strftime("%d.%m.%Y") unless date.nil?
   end
 
 end

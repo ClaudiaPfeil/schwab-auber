@@ -23,6 +23,10 @@
         <%= link_to I18n.t(:menue_order), orders_path %>
       <% end %>
 
+      <% if can? :manage, Payment %>
+        <%= link_to I18n.t(:menue_payment), payments_path %>
+      <% end %>
+
       <% if can? :manage, Price %>
         <%= link_to I18n.t(:menue_price), prices_path %>
       <% end %>

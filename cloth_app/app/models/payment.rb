@@ -6,6 +6,8 @@ class Payment < ActiveRecord::Base
   belongs_to :package
   belongs_to :order
 
+  attr_accessor :email, :message
+
   def is_destroyable?
     false
   end

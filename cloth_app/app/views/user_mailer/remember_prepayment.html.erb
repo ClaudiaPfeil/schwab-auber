@@ -1,0 +1,15 @@
+<%#
+# Titel:  Zahlungserinnerung für Vorauskasse bei Premium Mitgliedschaft
+# Datum:  13.12.2010
+# Autor:  Claudia Pfeil
+%>
+
+<%=h @message %>
+
+<%=h @bank.first.title %>
+
+<% bank, bank_conto, account_number = format_article(@bank.first.article) %>
+<%=h I18n.t(:bank) %><%=h bank %>
+<%=h I18n.t(:bank_conto) %><%=h bank_conto %>
+<%=h I18n.t(:account_number) %><%=h account_number %>
+

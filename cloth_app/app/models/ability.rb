@@ -38,6 +38,12 @@ class Ability
       can :show,    Package if (user.is? :premium) || (user.is? :admin)
       can :search,  Package if (user.is? :guest) || (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
 
+      can :read,    Payment if (user.is? :admin)
+      can :create,  Payment if (user.is? :admin)
+      can :update,  Payment if (user.is? :admin)
+      can :destroy, Payment if (user.is? :admin)
+      can :search,  Payment if (user.is? :admin)
+
       can :read,    Price if (user.is? :admin)
       can :create,  Price if (user.is? :admin)
       can :update,  Price if (user.is? :admin)

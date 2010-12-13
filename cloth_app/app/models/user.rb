@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :addresses
   has_one  :option
-  has_one :bank_detail
-  has_one :payment
+  has_one  :bank_detail
+  has_one  :payment
 
   validates :login, :presence   => true,
                     :uniqueness => true,
@@ -150,7 +150,7 @@ class User < ActiveRecord::Base
   def premium_is_destroyable?
     self.membership_ends < Date.today ? true : false
   end
-
+  
   protected
     
     def make_activation_code

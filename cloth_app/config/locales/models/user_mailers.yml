@@ -5,3 +5,6 @@ de:
 
                       Ihr KidsKarton-Team'
   subject_invitation: Empfehlung zu KidsKarton.de
+  bank:         'Kreditinstitut: '
+  bank_conto:   'Blz :                     '
+  bank_account: 'Konto-Nr. :        '

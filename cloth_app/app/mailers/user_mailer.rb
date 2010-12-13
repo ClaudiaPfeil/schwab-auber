@@ -1,4 +1,5 @@
 class UserMailer < ActionMailer::Base
+  include Cms
 
   def signup_notification(user)
     setup_email(user.reload)
@@ -29,6 +30,13 @@ class UserMailer < ActionMailer::Base
     @url  = "http://#{LANDING_URL}?id=#{user.id}"
     @friend =  friend
   end
+
+  def remember_prepayment(payment, user)
+    setup_remember_prepayment(user, payment)
+    @subject  += I18n.t('subject_remember_prepayment')
+    @message  = payment[:message]
+    @bank = get_content("BankDetails")
+  end
   
   protected
 
@@ -54,6 +62,14 @@ class UserMailer < ActionMailer::Base
     @subject     = "[#{SITE_URL}] "
     @sent_on     = Time.now
     @user = user
+  end
+
+  def setup_remember_prepayment(user, payment)
+    @recipients  = user.email || payment[:email]
+    @from        = "KidsKarton.de"
+    @subject     = "[#{SITE_URL}] "
+    @sent_on     = Time.now
+    @user        = user
   end
 
 end

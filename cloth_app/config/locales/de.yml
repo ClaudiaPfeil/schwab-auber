@@ -13,6 +13,7 @@ de:
   search: '. suche'
   impressum: '. impressum'
   menue_profile: '. profil'
+  menue_payment: '. zahlungen'
   content: '. texte & bilder'
   landingpage: '. landungs seite'
   menue_order: '. bestellungen'
@@ -27,6 +28,7 @@ de:
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
     signup_activation: "Klicken sie auf diesen Link, um ihr Konto zu aktivieren:"
     subject_activation: "Ihr KidsKarton Konto wurde bestätigt"
+    subject_remember_prepayment:  Zahlungserinnerung Vorauskasse für ihre Premium-Mitgliedschaft
     message_activation: "Klicken sie auf den Link, um sich auf KidsKarton anzumelden:"
     user_canceled_membership: hat seine Mitgliedschaft gekündigt
     user_canceled_membership_to: hat seine Mitgliedschaft zum

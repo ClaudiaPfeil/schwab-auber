@@ -51,7 +51,7 @@ $(document).ready(function(){
     $('#user_premium_period_input').show();
   })
 
-   $('#bank_detail_kind_1').click(function (){
+   $('#payment_kind_1').click(function (){
     $('#prepayment').show();
   })
 

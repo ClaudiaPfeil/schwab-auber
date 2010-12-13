@@ -17,6 +17,11 @@ ClothApp::Application.routes.draw do
       get :show_24, :on => :collection
   end
 
+  resources :payments do
+    get :confirm_prepayment, :on => :member
+    get :all_unconfirmed, :on => :collection
+  end
+
   resources :profiles do
     get :search, :on => :collection
     get :order_cartons, :on => :member
@@ -40,7 +45,6 @@ ClothApp::Application.routes.draw do
   resources :impressums
   resources :orders
   resources :options
-  resources :payments
   resources :prices
   resources :searches
   
