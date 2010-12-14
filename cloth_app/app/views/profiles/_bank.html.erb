@@ -5,9 +5,8 @@
 %>
 <div class="tr span-22">
   <div class="td first">&nbsp;</div>
-  <div class="td span-21"><h3><%= I18n.t(:bank_detail) %></h3>
-    <p align="right"><%= @profile.bank_detail.nil? ? new_bank : edit_bank  %></p>
-  </div>
+  <div class="td span-17"><h3><%= I18n.t(:bank_detail) %></h3></div>
+  <div class="td span-3"><%= @profile.bank_detail.nil? ? new_bank : edit_bank  %> </div>
   <div class="td last">&nbsp;</div>
 </div>
 

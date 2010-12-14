@@ -10,8 +10,6 @@
   <%= bank.input  :name %>
   <%= bank.input  :bank_code %>
   <%= bank.input  :account_number %>
-  <%= bank.input  :balance %>
-  <%= bank.input  :prepayment_confirmed %>
   <%= bank.input  :kind, :as => :radio,
                   :collection =>  {:prepayment => 1, :paypal => 2, :master_visa_card  =>  3},
                   :first_blank => false

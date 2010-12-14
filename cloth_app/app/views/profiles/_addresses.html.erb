@@ -7,8 +7,8 @@
 <div class="tr span-22">
 
   <div class="td first">&nbsp;</div>
-  <div class="td span-10"><h3><%= I18n.t(:profiles_addresses)%> </h3></div>
-  <div class="td span-10"><p align="right">
+  <div class="td span-17"><h3><%= I18n.t(:profiles_addresses)%> </h3></div>
+  <div class="td span-3"><p align="right">
     <% if can? :create, Address %>
         <%= link_to I18n.t(:new_address), '#', :rel => 'new_address', :class => 'simpledialog', :id => @profile.id %>
     <%end%>
