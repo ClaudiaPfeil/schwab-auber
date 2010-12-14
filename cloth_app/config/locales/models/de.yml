@@ -66,42 +66,8 @@ de:
         hint_confirmed: Ich bestätige die Regeln und akzeptiere diese.
         true: Junge
         name: Bezeichnung
-        amount: Anzahl Kleidungsstücke
-        shirts: Shirts & Tops
-        blouses: Blusen & Hemden
-        jackets:  Jacken
-        jeans:  Hosen & Jeans
-        skirts: Kleider & Röcke
+        amount: Anzahl Kleider
         basics: Erstausstattung
-        tops: Tops
-        t-shirts: T-Shirts
-        polos:  Polo-Shirts
-        longsleeves:  Langarm-Shirt
-        fleeces:  Fleece Shirt
-        pullovers:  Pullover
-        blouse: Blusen
-        tunics: Tuniken
-        fleece: Fleece Jacke
-        sweater:  Sweatjacke
-        jersey:  Strickjacke
-        vest: Weste
-        snow: Schneejacke
-        pants:  Hosen
-        jeans:  Jeans
-        overalls: Latzhose
-        rain_pants: Regenhose
-        snow_pants: Schneehose
-        bermudas: Bermudas
-        leggins:  Leggins
-        shorts: Shorts
-        sweat_pants:  Sweat Hose
-        dresses:  Kleider
-        bodies: Bodies
-        romper_suits: Strampler
-        pyjamas:  Schlafanzüge
-        sleeping_bags:  Schlafsäcke
-        boy: Junge
-        girl: Mädchen
       payment:
         kind: 'Wählen Sie eine Zahlungsart aus:'
         paypal: Paypal

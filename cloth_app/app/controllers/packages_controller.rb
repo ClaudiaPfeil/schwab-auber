@@ -2,7 +2,8 @@ class PackagesController < ApplicationController
   before_filter :init_package, :action => [:show, :edit, :update, :destroy, :order]
 
   def index
-    @packages = Package.where(:user_id => current_user.id) if current_user
+    (current_user.is? :admin)? @packages = Package.all : @packages = Package.where(:user_id => current_user.id) if current_user
+    #debugger
     @packages = @packages.to_a unless @packages.nil?
   end
 
