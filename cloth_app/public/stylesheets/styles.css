@@ -1,3 +1,9 @@
+@page {
+  @bottom-center {
+    content: counter(page);
+  }
+}
+
 body {
   background-color: #336699;
   font-size: 11px;

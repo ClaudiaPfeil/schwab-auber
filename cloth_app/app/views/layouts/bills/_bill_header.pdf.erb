@@ -1,0 +1,40 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%# Kontaktadresse Nutzer, Kundennummer, Bestellnummer, Bestelldatum, Paketnummer, Rechnungsnummer %>
+
+<div class="tr">
+  <div class="prepend-18 span-5">
+    <%# Logo%>
+  </div>
+</div>
+<br><br><br><br>
+<div class="tr">
+<% address = get_address %>
+  <div class="prepend-1 span-14 td">
+    <ol>
+      <li><%= address ? address.receiver : " " %> </li>
+      <li><%= address ? address.co_receiver : " " %></li>
+      <li><%= address ? address.street_and_number : " "%> </li>
+      <li><%= address ? address.postcode : " " %> </li>
+      <li><%= address ? address.town  : " "%> </li>
+    </ol>
+  </div>
+
+  <div class="span-7 td last">
+    <ol>
+      <li>Rechnungsdatum:   <%= formatted_date(Date.today)%> </li>
+      <li>Rechnungsnummer:  <%= @bill.bill_number  %></li>
+      <li>Bestelldatum:     <%= formatted_date(@bill.created_at)  %></li>
+      <li>Bestellnummer:    <%= @bill.bill_number  %></li>
+      <li><%# Kundennummer %></li>
+    </ol>
+  </div>
+
+</div>
+<br></br><br><br><br><br>
+
+
+

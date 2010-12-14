@@ -12,7 +12,7 @@ de:
   package: Kleidungspaket
   hint_amount_clothes:  In einem Kleidungspaket sollten mindestens 10 Kleidungsstücke vorhanden sein.
   show_packages: Kleiderpakete
-  package: Kleidungspaket
+  form_package: Kleiderpaket
   rules: Regeln
   hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
   hint_colors: 'Die drei überwiegenden Farben des Kleiderpakets, z.B.: rot-grün-blau.'
@@ -39,10 +39,6 @@ de:
   available: Verfügbar
   ordered: Bereits vergriffen
   created_at: Eingestellt am
-  spring: Frühling
-  sommer: Sommer
-  autum:  Herbst
-  winter: Winter
   show_24:  Alle Kleiderpakete der letzten 24h
   packages:
    search_types:
@@ -53,5 +49,55 @@ de:
      label:  Marke
   yes:  Ja
   no: Nein
-  
-  
+  spring: Frühling
+  sommer: Sommer
+  autum:  Herbst
+  winter: Winter
+  shirts: Shirts & Tops
+  blouses: Blusen & Hemden
+  jackets: Jacken
+  jeans: Hosen & Jeans
+  skirts: Kleider & Röcke
+  basics: Erstausstattung
+  tops: Tops
+  t-shirts: T-Shirts
+  polos: Polo-Shirts
+  longsleeves: Langarm-Shirt
+  fleeces: Fleece-Shirt
+  pullovers: Pullover
+  blouse: Blusen
+  shirts: Hemden
+  tunics: Tuniken
+  fleece: Fleece Jacke
+  sweater: Sweatjacke
+  jersey: Strickjacke
+  snow: Schneejacke
+  vest: Weste
+  pants: Hosen
+  jeans: Jeans
+  overalls: Latzhose
+  rain_paints: Regenhosen
+  snow_paints: Schneehose
+  bermudas: Bermudas
+  leggins: Leggins
+  shorts: Shorts
+  sweat_pants: Sweat-Hose
+  trunks: Sporthose
+  tracksuit: Trainingsanzug
+  skirts: Röcke
+  dresses:  Kleider
+  bodies: Bodies
+  romper_suits: Strampler
+  pyjamas: Schlafanzüge
+  sleeping_bags: Schlafsäcke
+  red:  Rot
+  green: Grün
+  blue: Blau
+  yellow: Gelb
+  orange: Orange
+  white: Weiß
+  black:  Schwarz
+  brown:  Braun
+
+              		
+

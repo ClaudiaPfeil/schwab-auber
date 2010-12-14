@@ -1,4 +1,5 @@
 class BillsController < ApplicationController
+  require 'princely'
   before_filter :init_bill, :on => [:show, :new, :edit, :destroy, :search]
 
   layout 'bills/bill'
@@ -7,7 +8,15 @@ class BillsController < ApplicationController
     @bills = Order.all
   end
 
-  def show; end
+  def show
+    respond_to do |format|
+      format.html
+
+      format.pdf do
+        render :pdf => "Rechnung", :stylesheets => ["blueprint/print", "blueprint/src/grid"], :layout => "bills/bill"#:stylesheets => ["styles", "blueprint/screen"], :layout => "bills/bill"
+      end
+    end
+  end
 
   def new; end
 

@@ -1,3 +1,8 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
 <%# Template für die Rechnungen%>
 <!DOCTYPE html>
 <html>
@@ -10,17 +15,17 @@
   <![endif]-->
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
-  <%= render '/layouts/set_meta_tags'%>
+  <%#= render '/layouts/set_meta_tags'%>
 </head>
 <body>
   <div class="container">
-    
+
     <div class="span-23">
       <%= render "/layouts/bills/bill_header" %>
 	  </div>
 
     <div class="span-23 ">
-      <%= yield %>     
+      <%= yield %>
     </div>
 
     <div class="span-23">
@@ -31,4 +36,5 @@
 
 </body>
 </html>
+
 
