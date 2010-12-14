@@ -44,6 +44,7 @@ de:
         category: Kategorie
         back: Zurück
       package:
+        dresses:  Kleider
         name: Paketbezeichnung
         sex:  Junge oder Mädchen?
         hint_sex: Sind die Kleidungsstücke von einem Jungen?

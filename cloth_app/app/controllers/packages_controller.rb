@@ -3,7 +3,6 @@ class PackagesController < ApplicationController
 
   def index
     (current_user.is? :admin)? @packages = Package.all : @packages = Package.where(:user_id => current_user.id) if current_user
-    #debugger
     @packages = @packages.to_a unless @packages.nil?
   end
 
@@ -61,9 +60,9 @@ class PackagesController < ApplicationController
   def order
     #create order
     @order = Order.new(:package_number => @package.serial_number,
-                      :package_id     => @package.id,
-                      :user_id        => current_user.id
-                    )
+                       :package_id     => @package.id,
+                       :user_id        => current_user.id
+                      )
 
     @order.bill_number = @order.get_bill_number
     @order.order_number  = @order.get_order_number
@@ -88,7 +87,7 @@ class PackagesController < ApplicationController
   private
 
     def init_package
-      init_current_object { @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+      init_current_object { (current_user.is? :admin)? @package = Package.find_by_id(params[:id]) : @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
     end
 
     def init_current_object
