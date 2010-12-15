@@ -73,6 +73,47 @@ class ProfilesController < ApplicationController
     redirect_to profile_path(profile)
   end
 
+  # Historie aller Profile exportieren als CSV
+  def export_histories
+    @profiles = User.all if current_user.is? :admin
+    if @profiles
+      path = 'export/'
+      name = 'alle_profile_historien.csv'
+      File.new(path + name, "w").path
+      input = ""
+
+      @profiles.each do |profi|
+        File.open(path+name, "w") do |histories|
+
+          packages = profi.packages
+          orders = profi.orders
+          
+          unless packages.blank?
+            input << "Pakete-Historie," + "\n"
+            input << "Paket-Nr., Erstellt am, Anzahl Kleider, Geschlecht, Beschreibung, Labels," + "\n"
+            packages.each do |package|
+              input << "#{package.serial_number},#{formatted_date(package.created_at)},#{package.amount_clothes},#{package.sex == true ? "Mädchen" : "Junge"},#{package.notice.gsub(",", " ")},#{package.label.gsub(",", " ").gsub("--", " ")}," + "\n"
+            end
+          end
+          
+          unless orders.blank?
+            input << "\n"+ "Bestell-Historie," + "\n"
+            input << "Bestell-Nr., Bestellt am, Bewerted am , Bewertung, Angekommen?," + "\n"
+            orders.each do |order|
+              input << "#{order.order_number},#{formatted_date(order.created_at)}, #{formatted_date(order.eva_date_created_at)}, #{I18n.t(order.evaluation.to_sym)}, #{order.received == true ? "Nein" : "Ja"}" + "\n"
+            end
+
+            input << "\n"
+          end
+          
+          histories.write(input) if input
+        end
+      end
+      send_file(path+name) 
+    end
+
+  end
+
   private
 
     def init_profile
@@ -89,5 +130,9 @@ class ProfilesController < ApplicationController
       end
       UserMailer.cancel_info(@profile).deliver
       redirect_to profiles_path, :notice => I18n.t(:profile_destroyed)
+    end
+
+    def formatted_date(date)
+      date.strftime("%d.%m.%Y") unless date.nil?
     end
 end

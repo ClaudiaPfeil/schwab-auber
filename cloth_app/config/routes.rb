@@ -25,6 +25,7 @@ ClothApp::Application.routes.draw do
   resources :profiles do
     get :search, :on => :collection
     get :order_cartons, :on => :member
+    get :export_histories, :on => :collection
   end
 
   resources :users do
@@ -60,6 +61,7 @@ ClothApp::Application.routes.draw do
   match 'landing_page' => 'landing_pages#show', :as => :landing_page
   match ':controller/:action/:preview'
   match 'membership' => 'welcome#membership', :as => :membership
+  match 'dashboard' => 'welcome#dashboard', :as => :dashboard
   match 'profiles/invite_friend' => 'profiles#invite_friend', :as => 'invite_friend'
 
   

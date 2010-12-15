@@ -13,5 +13,11 @@ class WelcomeController < ApplicationController
   def membership
     @user = User.find_by_id(current_user.id)
   end
+
+  # Methode: dashboard
+  # Beschreibung: export aller Profile-Historien
+  def dashboard
+
+  end
   
 end

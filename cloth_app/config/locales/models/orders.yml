@@ -36,4 +36,8 @@ de:
   equal_change_principle: Bestellung nicht aufgenommen! Entweder wird das Tauschprinzip nicht eingehalten oder der Versender ist im Urlaub!
   order_created:  Bestellung erfolgreich aufgenommen!
   order_not_created:  Bestellung nicht aufgenommen!
+  good: sehr gut
+  ok: gut
+  bad: befriedigend
+  very_bad: ungenügend
 
