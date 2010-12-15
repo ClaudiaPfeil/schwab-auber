@@ -27,6 +27,10 @@ de:
   export_histories:  Alle Profile Historien
   export_cartons: Alle Kartonagen-Bestellungen
   export: Exportieren
+  show_cartons_orders:  Kartonagen Nachbestellungen
+  ordered_cartons:  Kartonagen bestellt
+  confirmed_delivery: Lieferung bestätigt
+  confirm_delivery: Lieferung bestätigen
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"

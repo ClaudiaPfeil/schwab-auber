@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :update, :invite_friend]
+  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :update, :invite_friend, :confirm_delivery]
 
   # render new.rhtml
   def new
@@ -92,6 +92,11 @@ class UsersController < ApplicationController
   def search
     search_type, search_key = params[:search_type], params[:search_key]
     @profiles = User.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
+  end
+
+  def confirm_delivery
+    @user.update_attribute(:confirmed_delivery, 1)
+    redirect_to dashboard_path
   end
   
   # There's no page here to update or destroy a user.  If you add those, be

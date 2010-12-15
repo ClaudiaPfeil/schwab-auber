@@ -27,6 +27,7 @@ ClothApp::Application.routes.draw do
     get :order_cartons, :on => :member
     get :export_histories, :on => :collection
     get :export_cartons, :on => :collection
+    get :all_cartons_orders, :on => :collection
   end
 
   resources :users do
@@ -34,6 +35,7 @@ ClothApp::Application.routes.draw do
       put :suspend
       put :unsuspend
       delete :purge
+      get :confirm_delivery
     end
 
     get :search, :on => :collection

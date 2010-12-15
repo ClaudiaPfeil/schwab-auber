@@ -8,3 +8,13 @@
 <%=  create_header2_with_link(I18n.t(:export_histories), (link_to I18n.t(:export), export_histories_profiles_path), Profile, :manage) %>
 
 <%=  create_header2_with_link(I18n.t(:export_cartons), (link_to I18n.t(:export), export_cartons_profiles_path), Profile, :manage) %>
+
+<%= create_link((link_to I18n.t(:show_cartons_orders), '#', :rel => 'all_ordered_cartons', :class => 'simpledialog right'), Profile, :manage) %>
+
+<div id="all_ordered_cartons" style="display: none">
+  
+  <%= create_table_header(ListView.get_table_columns(User, [:first_name, :last_name, :ordered_cartons, :confirmed_delivery])) %>
+  <% get_all_cartons_orders.each do |row| %>
+    <%= create_table_list_view_with_link((link_to I18n.t(:confirm_delivery), confirm_delivery_user_path(row)), User, :manage, ListView.get_entries(User, row, [:first_name, :last_name, :ordered_cartons, :confirmed_delivery])) %>
+  <% end %>
+</div>

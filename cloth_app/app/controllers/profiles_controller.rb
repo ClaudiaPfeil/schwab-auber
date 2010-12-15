@@ -61,7 +61,7 @@ class ProfilesController < ApplicationController
   def order_cartons
     UserMailer.order_cartons(@profile).deliver
     # speichern in der DB zur Anzeige im Dashboard
-    @profile.update_attribute(:ordered_cartons, 0)
+    @profile.update_attribute(:ordered_cartons, 1)
     redirect_to edit_profile_path(@profile)
   end
 

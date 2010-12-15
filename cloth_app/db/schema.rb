@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101215135901) do
+ActiveRecord::Schema.define(:version => 20101215143829) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -190,7 +190,8 @@ ActiveRecord::Schema.define(:version => 20101215135901) do
     t.boolean  "membership",                               :default => false
     t.date     "membership_starts"
     t.date     "membership_ends"
-    t.boolean  "ordered_cartons",                          :default => true
+    t.boolean  "ordered_cartons",                          :default => false
+    t.boolean  "confirmed_delivery",                       :default => false
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true
