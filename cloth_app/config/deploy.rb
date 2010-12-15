@@ -54,6 +54,13 @@ role :app, "zeta.railshoster.de"
 role :web, "zeta.railshoster.de"
 role :db,  "zeta.railshoster.de", :primary => true
 
+if !branch.nil? && branch == "current"
+   set :branch, $1 if `git branch` =~ /\* (\S+)\s/m
+elsif !branch.nil?
+   set :branch, branch
+else   # add more as needed
+   set :branch, "master"
+end
 
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ##
