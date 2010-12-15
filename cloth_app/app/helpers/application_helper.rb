@@ -44,6 +44,24 @@ module ApplicationHelper
     @content
   end
 
+  def create_header2_with_link(titel, link, model, method)
+    content = content_tag(:h2, titel)
+    content_next = content_tag(:br, '')
+
+    @content  = content_tag(:div, '', :class => "tr span-22")
+    @content  << content_tag(:div, '', :class => "td first")
+    @content  << content_tag(:div, content, :class => "td span-16")
+
+    if can? method, model
+      content_next << link
+      @content  << content_tag(:div, content_next, :class => "td span-4")
+    end
+
+    @content  << content_tag(:div, '', :class => "td last")
+    @content  << content_tag(:br, '')
+    @content
+  end
+
   def create_header_with_form(titel, form)
     content = render :partial => form
 

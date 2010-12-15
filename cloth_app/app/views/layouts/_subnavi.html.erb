@@ -6,9 +6,13 @@
 
 <div class="subnavi">
   <!--||| Der erste Punkt zeigt den Seitenbereich an und wird nicht verlinkt. Die Sublinks = das Untermenü hier anpassen. |||-->
-  <span class="sub">
+  <span class="sub span-22">
     <%#= link_to I18n.t(:impressum), impressums_path  %>
     <% if current_user %>
+
+      <% if can? :manage, Profile %>
+        <%= link_to I18n.t(:menue_dashboard), dashboard_path %>
+      <% end %>
 
       <% if can? :manage, Category %>
         <%= link_to I18n.t(:menue_category), categories_path %>

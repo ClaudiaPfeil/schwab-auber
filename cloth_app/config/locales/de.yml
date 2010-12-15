@@ -19,11 +19,13 @@ de:
   menue_order: '. bestellungen'
   menue_price: '. preise'
   menue_category: '. kategorien'
+  menue_dashboard: '. dashboard'
   logout: '. abmelden'
   user_order_cartons: hat eben eine neue Kartonagen-Lieferung angefordert
   name: Name
   add_address:  Es wurden noch keine Anschriften hinterlegt. Bitte fügen sie eine Anschrift hinzu!
-  export_histories:  Alle Profile Historien 
+  export_histories:  Alle Profile Historien
+  export_cartons: Alle Kartonagen-Bestellungen
   export: Exportieren
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"

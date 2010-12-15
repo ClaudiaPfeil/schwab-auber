@@ -60,6 +60,8 @@ class ProfilesController < ApplicationController
   # Neue Versandkartonage anfordern
   def order_cartons
     UserMailer.order_cartons(@profile).deliver
+    # speichern in der DB zur Anzeige im Dashboard
+    @profile.update_attribute(:ordered_cartons, 0)
     redirect_to edit_profile_path(@profile)
   end
 
@@ -112,6 +114,36 @@ class ProfilesController < ApplicationController
       send_file(path+name) 
     end
 
+  end
+
+  def export_cartons
+    @profiles = User.where(:ordered_cartons => 1).to_a if current_user.is? :admin
+    if @profiles
+      path = 'export/'
+      name = 'alle_cartonagen_bestellungen.csv'
+      File.new(path + name, "w").path
+      input = ""
+
+      @profiles.each do |profi|
+        addresses = profi.addresses
+        File.open(path+name, "w") do |cartons|
+
+          unless addresses.blank?
+            input << "\n"+ "Kartonagen-Bestellungen," + "\n"
+            input << "Vorname und Nachname, Empfänger, Zusatz, Straße und Hausnummer, Postleitzahl, Stadt, Land, Lieferanschrift," + "\n"
+
+            addresses.each do |address|
+              input << "#{profi.first_name + ' ' + profi.last_name}, #{address.receiver}, #{address.receiver_additional}, #{address.street_and_number}, #{address.postcode}, #{address.town}, #{address.land}, #{address.kind == true ? "nein" : "ja"}," + "\n"
+            end
+
+            input << "\n"
+          end
+
+          cartons.write(input) if input
+        end
+      end
+      send_file(path+name)
+    end
   end
 
   private
