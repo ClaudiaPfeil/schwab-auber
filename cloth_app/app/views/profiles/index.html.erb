@@ -1,6 +1,6 @@
 <div class="tr span-22">
   <div class="td first">&nbsp;</div>
-  <div class="td span-18"><h1><%= I18n.t(:profiles) %></h1><br><%=  get_notices %></div>
+  <div class="td span-18"><h1><%= (current_user.is? :admin)? I18n.t(:profiles) : I18n.t(:profile) %></h1><br><%=  get_notices %></div>
   <div class="td last"><br>
     <% if can? :create, Profile %>
       <%= link_to I18n.t(:new_profile), new_profile_path %>
@@ -10,7 +10,7 @@
 
 <div class="tr span-22">
   <div class="td first">&nbsp;</div>
-  <% current_user.option.nil? && !(current_user.is? :admin) ?  result = "Wählen sie zunächst ihre Einstellungen aus: " : @table_cols = get_table_cols(current_user) %>
+  <% current_user.option.nil? && !(current_user.is? :admin) ?  result = I18n.t(:choose_settings) : @table_cols = get_table_cols(current_user) %>
   <% if @table_cols %>
     <% @table_cols.each do |column| %>
       <div class="td span-4"><b><%=  I18n.t(column)%></b> </div>

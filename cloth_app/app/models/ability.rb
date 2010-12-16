@@ -26,7 +26,7 @@ class Ability
       can :destroy, Content if (user.is? :admin) || (user.is? :publisher)
 
       can :read,    Order if (user.is? :premium) || (user.is? :admin)
-      can :create,  Order if (user.is? :premium) || (user.is? :admin)
+      can :create,  Order if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
       can :update,  Order if (user.is? :premium) || (user.is? :admin)
       can :destroy, Order if (user.is? :premium) || (user.is? :admin)
       can :search,  Order if (user.is? :premium) || (user.is? :admin)
