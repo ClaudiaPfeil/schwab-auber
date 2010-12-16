@@ -1,0 +1,44 @@
+<%#
+# Titel:          Upgrade Premium/ Downgrade Basis
+# Beschreibung:   Registrierter Nutzer hat die Wahl zwischen einer Basis oder einer Premium Mitgliedschaft
+                  Bei der Premium Mitgliedschaft kann er die Dauer (3, 6 oder 13 Monate) wählen sowie die Verlängerung (automatisch oder manuell) nach Ablauf
+# Autor:          Claudia Pfeil
+# Datum:          16.12.2010
+%>
+
+<%= semantic_form_for @user do |user| %>
+  <% if upgrade %>
+    <%= user.input :membership, :as => :radio,
+               :collection => {"Premium" => true},
+               :input_html => {:selected => true},
+               :hint  => :hint_membership
+    %>
+    <div class="tr span-22" style="display: none"><p>&nbsp;</p>
+    </div>
+
+  <% else %>
+    <%= user.input :membership, :as => :radio,
+                 :collection => {"Basis" => false, "Premium" => true},
+                 :hint  => :hint_membership
+    %>
+  <% end %>
+
+  <%= user.input  :premium_period, :as => :select,
+                  :collection => { "3 Monate" => 0, "6 Monate" => 1, "12 Monate" => 2},
+                  :include_blank => false
+  %>
+
+  <%= user.input  :continue_membership, :as => :radio,
+                  :collection =>  {"automatisch" => true, "manuell" => false}
+  %>
+
+  <%= user.input  :membership_starts, :as => :hidden,
+                  :value => Date.today
+  %>
+
+  <%= user.buttons do %>
+    <%= user.commit_button "Mitgliedschaft wählen" %>
+  <% end %>
+
+
+<% end %>

@@ -133,6 +133,52 @@ module ApplicationHelper
 
   end
 
+  def create_list_table_with_ar(ar, titles)
+    @content = content_tag(:div, '', :class => "tr span-22")
+    @content << content_tag(:div, '', :class => "td first")
+    
+    titles.each do |title|
+      
+      if title.to_s == "created_at"
+        entry = formatted_date(ar.first.attributes[title.to_s])
+      else
+        entry = ar.first.attributes[title.to_s]
+      end
+      #debugger
+      @content << content_tag(:div, entry , :class => "td span-4")
+      
+    end
+     
+    @content << content_tag(:div, '', :class => "td last")
+    @content << content_tag(:br, '')
+    @content
+
+  end
+
+  def create_list_table_with_hash(ar, titles)
+    @content = content_tag(:div, '', :class => "tr span-22")
+    @content << content_tag(:div, '', :class => "td first")
+   
+    titles.each do |title|
+      if title.to_s == "created_at"
+        entry = formatted_date(ar.first[1].attributes[title.to_s])
+      elsif title.to_s == "amount"
+        entry = ar.first[0]
+      elsif title.to_s == "membership"
+        ar.first[1].attributes[title.to_s] == 1 ? entry = "Premium" : entry = "Basis"
+      else
+        entry = ar.first[1].attributes[title.to_s]
+      end
+      
+      @content << content_tag(:div, entry , :class => "td span-4")
+    end
+
+    @content << content_tag(:div, '', :class => "td last")
+    @content << content_tag(:br, '')
+    @content
+
+  end
+
   def create_table_list_view(cols)
 
     @content = content_tag(:div, '', :class => "tr span-22")

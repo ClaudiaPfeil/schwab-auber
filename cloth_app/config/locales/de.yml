@@ -32,6 +32,12 @@ de:
   confirmed_delivery: Lieferung bestätigt
   confirm_delivery: Lieferung bestätigen
   upgrade_premium:  Upgrade Mitgliedschaft
+  best_eva: Nach bester Bewertung
+  show_best_eva:  Ansehen
+  most_sent:  Nach meist verschickten Paketen
+  show_most_sent: Ansehen
+  most_labels:  Nach meisten Marken
+  show_most_labels: Ansehen
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
