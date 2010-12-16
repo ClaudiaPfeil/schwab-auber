@@ -18,6 +18,20 @@ $(document).ready(function () {
   });
 });
 
+//  Dialog-Fenster mit Click-Event für das Upgrade der Mitgliedschaft
+$(document).ready(function () {
+  $('.upgrade').simpleDialog({
+    show: "blind",
+		hide: "explode",
+    open: function(){
+      // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist 
+      $('#user_continue_membership_input').show();
+      $('#user_premium_period_input').show();
+    },
+    height: 400
+  });
+});
+
 //  Kalender für Auswahl des Datums z.B. für Urlaubs-Einstellung
 $(document).ready(function(){
   $('input.ui-datepicker').datepicker();
@@ -51,10 +65,6 @@ $(document).ready(function(){
     $('#user_premium_period_input').show();
   })
 
-   $('#payment_kind_1').click(function (){
-    $('#prepayment').show();
-  })
-
   // Verstecken, wenn Basis Mitgliedschaft angeklickt ist
   $('#user_membership_false').click(function (){
     $('#user_continue_membership_input').hide();
@@ -62,6 +72,20 @@ $(document).ready(function(){
 
   $('#user_membership_false').click(function (){
     $('#user_premium_period_input').hide();
+  })
+  
+  // Bankverbindung anzeigen, wenn Vorauskasse als Zahlungsmethode ausgewählt ist
+  $('#payment_kind_1').click(function (){
+    $('#prepayment').show();
+  })
+
+  // Bankverbindung verstecken, wenn nicht Vorauskasse als Zahlungsmethode ausgewählt ist
+  $('#payment_kind_2').click(function (){
+    $('#prepayment').hide();
+  })
+
+  $('#payment_kind_3').click(function (){
+    $('#prepayment').hide();
   })
 })
 

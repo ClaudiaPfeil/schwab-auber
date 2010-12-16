@@ -8,5 +8,21 @@
 
 <%= create_header(I18n.t(:payments)) %>
 
+<%#*Upgrade auf Premium-Mitgliedschaft anbieten%>
+<% if current_user.is? :registered %>
+  <%= link_to I18n.t(:upgrade_premium), '#', :rel => 'premium', :class => 'upgrade' %>
+<% end %>
+
 <%= create_div_with_form("payment", "prepayment") %>
 
+
+
+<div id="premium" style="display: none">
+  
+  <div class="tr span-22">
+    <div class="td first">&nbsp;</div>
+    <div class="td spna-21"><%= render "/welcome/choose_membership", :@user => current_user, :upgrade => true %></div>
+    <div class="td last">&nbsp;</div>
+  </div>
+  
+</div>

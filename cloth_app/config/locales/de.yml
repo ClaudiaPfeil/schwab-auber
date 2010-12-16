@@ -31,6 +31,7 @@ de:
   ordered_cartons:  Kartonagen bestellt
   confirmed_delivery: Lieferung bestätigt
   confirm_delivery: Lieferung bestätigen
+  upgrade_premium:  Upgrade Mitgliedschaft
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
