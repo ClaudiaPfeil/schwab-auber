@@ -5,7 +5,7 @@
     <%= content.article %>
   </p>
   <p>
-    <%= link_to "#{content.link_name}", content.link %>
+    <%= link_to "#{content.link_name}", content.link if content.link %>
   </p>
   <p>
     <% if content.image_file_name.length > 1 %>
