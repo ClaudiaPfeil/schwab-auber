@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
                     :format     => { :with => Authentication.email_regex, :message => Authentication.bad_email_message },
                     :length     => { :within => 6..100 }
 
-  validates_numericality_of :accepted, :equal_to => 1, :message => :agbs_not_accepted
+  validates_numericality_of :accepted, :equal_to => 1, :on => :create, :message => :agbs_not_accepted
 
 
   scope :default_ordered, order('created_at DESC')

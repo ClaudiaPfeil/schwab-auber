@@ -69,10 +69,11 @@ class PackagesController < ApplicationController
     @order.order_number  = @order.get_order_number
     @order.package.accepted = 1
     @order.package.confirmed = 1
+    @order.package.user.accepted = 1
 
     if @order.check_change_principle == true && @order.check_holidays == true
       
-      if @order.save
+      if @order.save!
         # count down cartons
         @package.user.count_down
         redirect_to payment_method_bank_detail_path(@package), :notice => :order_created

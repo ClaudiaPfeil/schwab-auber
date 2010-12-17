@@ -38,6 +38,11 @@ de:
   show_most_sent: Ansehen
   most_labels:  Nach meisten Marken
   show_most_labels: Ansehen
+  very_good:  ausgezeichnet
+  good: sehr gut
+  ok: in Ordnung
+  bad:  mangelhaft
+  very_bad: unbefriedigend
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
