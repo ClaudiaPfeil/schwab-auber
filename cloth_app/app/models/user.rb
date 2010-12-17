@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   include Authorization::StatefulRoles
+  include Cms
   set_table_name 'users'
   
   has_many :packages
@@ -28,6 +29,8 @@ class User < ActiveRecord::Base
                     :format     => { :with => Authentication.email_regex, :message => Authentication.bad_email_message },
                     :length     => { :within => 6..100 }
 
+  validates_numericality_of :accepted, :equal_to => 1, :message => :agbs_not_accepted
+
 
   scope :default_ordered, order('created_at DESC')
 
@@ -43,8 +46,9 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, :first_name, :option_attributes, :start_holidays, :end_holidays, :cartons, :membership, :membership_starts, :membership_ends,  :premium_period, :tag_names
-  attr_accessor   :friends_first_name, :friends_last_name, :friends_email, :tag_names
+  attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, 
+                  :first_name, :option_attributes, :start_holidays, :end_holidays, :cartons, :membership, :membership_starts, :membership_ends,  :premium_period, :tag_names
+  attr_accessor   :friends_first_name, :friends_last_name, :friends_email, :accepted, :tag_names
   accepts_nested_attributes_for :addresses, :option, :bank_detail
 
   # users roles
@@ -149,6 +153,10 @@ class User < ActiveRecord::Base
 
   def premium_is_destroyable?
     self.membership_ends < Date.today ? true : false
+  end
+
+  def get_agbs
+    get_content("Agbs")
   end
   
   protected

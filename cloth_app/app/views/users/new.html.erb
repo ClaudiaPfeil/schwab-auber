@@ -1,6 +1,6 @@
 <div class="tr">
 
-  <div class="span-15 prepend-1 last">
+  <div class="span-22 prepend-1 last">
     <h1>Registrieren als neues Mitglied</h1>
     <h2>und Kleidertauschen</h2>
 
@@ -13,13 +13,21 @@
       <%= user.input :password_confirmation, :as => :password, :hint => 'Bestätigen sie ihr Password' %>
       <%= user.input :role, :value => 'registered', :as => :hidden %>
 
+      <%= user.inputs link_to I18n.t(:accept_agbs), '#', :rel => 'agbs', :class => 'simpledialog' do %>
+        <%= user.input :accepted, :as => :boolean%>
+      <% end %>
+
       <%= user.buttons do %>
-        <%= user.commit_button "Registrieren" %>
+        <%= user.commit_button I18n.t(:register) %>
       <% end %>
 
     <% end %>
 
   </div>
+</div>
+
+<div id="agbs" style="display: none">
+  <%= render '/contents/cms/site', :@contents => @user.get_agbs %>
 </div>
 
 

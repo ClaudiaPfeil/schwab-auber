@@ -198,6 +198,7 @@ de:
         wrong_length: "hat die falsche Länge (muss genau {{count}} Zeichen haben)"
         taken: "ist bereits vergeben"
         not_a_number: "ist keine Zahl"
+        agbs_not_accepted: "AGB's nicht akzeptiert"
         greater_than: "muss größer als {{count}} sein"
         greater_than_or_equal_to: "muss größer oder gleich {{count}} sein"
         equal_to: "muss ausgewählt sein"

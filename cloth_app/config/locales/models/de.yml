@@ -88,6 +88,7 @@ de:
         price:  Preis
         prices: Preise
       user:
+        accepted: Akzeptieren
         role: Nutzerrolle
         role_mask: Gruppe der Rollen
         login:  Login Name

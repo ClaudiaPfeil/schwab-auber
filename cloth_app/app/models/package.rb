@@ -5,9 +5,8 @@ class Package < ActiveRecord::Base
   has_one :order
   has_one :payment
 
-  validates_presence_of :saison, :kind, :amount_clothes, :label, :amount_labels, :colors
+  validates_presence_of :saison, :kind, :amount_clothes, :colors
   validates_numericality_of :accepted, :confirmed, :equal_to => 1
-  validates_numericality_of :amount_clothes, :greater_than => 9
   validates_uniqueness_of :serial_number
 
   attr_accessor :accepted, :confirmed

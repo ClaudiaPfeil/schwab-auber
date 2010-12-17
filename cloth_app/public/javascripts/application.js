@@ -95,6 +95,16 @@ $(document).ready(function(){
     next_size = next_size + 2
     $("#package_next_size").val(next_size)
   })
+
+  $('#package_amount_clothes').click(function () {
+    var amount = parseInt(document.getElementById('package_amount_clothes').value)
+
+    if (amount < 10) {
+      alert("Ist die Box wirklich voll?");
+    }
+
+  })
+  
 })
 
 //$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));
