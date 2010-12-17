@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
     user ||= User.new # guest user
-
+    
     if user.is? :admin
       can :manage, :all
     else
@@ -31,11 +31,11 @@ class Ability
       can :destroy, Order if (user.is? :premium) || (user.is? :admin)
       can :search,  Order if (user.is? :premium) || (user.is? :admin)
 
-      can :read,    Package 
+      can :read,    Package if (user.is? :premium) || (user.is? :admin)
       can :create,  Package if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
       can :update,  Package if (user.is? :registered) || (user.is? :premium) || (user.is? :admin) 
       can :destroy, Package if (user.is? :admin)
-      can :show,    Package if (user.is? :premium) || (user.is? :admin)
+      #can :show,    Package if (user.is? :premium) || (user.is? :admin) // liefert immer true
       can :search,  Package if (user.is? :guest) || (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
 
       can :read,    Payment if (user.is? :admin)

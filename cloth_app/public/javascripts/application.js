@@ -55,6 +55,7 @@ $(document).ready(function(){
   // standardmäßig Periode und Verlängerung nicht anzeigen
   $('#user_continue_membership_input').hide();
   $('#user_premium_period_input').hide();
+  $('#package_next_size_input').hide();
 
   // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist
   $('#user_membership_true').click(function (){
@@ -86,6 +87,13 @@ $(document).ready(function(){
 
   $('#payment_kind_3').click(function (){
     $('#prepayment').hide();
+  })
+
+  $('#package_size').click(function (){
+    $('#package_next_size_input').show();
+    var next_size = parseInt(document.getElementById('package_size').value)
+    next_size = next_size + 2
+    $("#package_next_size").val(next_size)
   })
 })
 
