@@ -1,15 +1,15 @@
 module ApplicationHelper
 
   def get_notices
-
+    result = ''
     if params[:notice]
-     result = "<div class='notice'>"
-     params[:notice].each do |notice|
-          result = + notice.to_s
-     end
-    result = + "</div>"
-    result
-   end
+      params[:notice].each do |notice|
+          result += notice.to_s
+      end
+    elsif flash[:warning] || flash[:notice] || flash[:error]
+      flash[:warning] ? result += flash[:warning].to_s : ( flash[:notice] ? result += flash[:notice].to_s : result += flash[:error].to_s)
+    end
+    @content = content_tag(:div, result, :class => 'notice')
   end
 
   def formatted_date(date)

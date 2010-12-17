@@ -155,6 +155,17 @@ class User < ActiveRecord::Base
     self.membership_ends < Date.today ? true : false
   end
 
+  def destroy_premiums
+    premiums = self.where(:membership => 1, :membership_ends => Date.today, :canceled => 1 )
+    premiums.each do |prem|
+      packages = prem.packages
+      packages.each do |package|
+        package.destroy
+      end
+      prem.destroy
+    end
+  end
+
   def get_agbs
     get_content("Agbs")
   end

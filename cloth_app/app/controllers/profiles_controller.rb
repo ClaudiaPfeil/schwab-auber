@@ -40,7 +40,8 @@ class ProfilesController < ApplicationController
         @profile.destroy 
         destroy_packages
       else
-        # ToDo: Speichern des Lösch-Auftrages in einem cronjob, der nach Ende der Mitgliedschaft ausgeführt wird
+        # ToDo: Speichern der Kündigung der Mitgliedschaft
+        @profile.udpate_attribute(:canceled, 1)
       end
 
     end
