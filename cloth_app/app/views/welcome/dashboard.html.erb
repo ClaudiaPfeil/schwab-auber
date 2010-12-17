@@ -19,24 +19,4 @@
   <% end %>
 </div>
 
-<%#*Nach bester Bewertung%>
-<%= create_header2_with_link(I18n.t(:best_eva), (link_to I18n.t(:show_best_eva), '#', :rel => 'best_eva', :class => 'simpledialog'), Order, :manage) %>
-
-<div id="best_eva" style="display: none">
-  <%= create_table_header([:order_number, :package_number, :amount_clothes, :bill_number, :created_at]) %>
-  <%= create_list_table_with_ar(get_best_evaluated_orders , [:order_number, :package_number, :amount_clothes, :bill_number, :created_at]) if get_best_evaluated_orders%>
-</div>
-
-<%#*Nach meist verschickten Paketen%>
-<%= create_header2_with_link(I18n.t(:most_sent), (link_to I18n.t(:show_most_sent), '#', :rel => 'most_sent', :class => 'simpledialog'), User, :manage) %>
-<div id="most_sent" style="display: none">
-  <%= create_table_header([:amount, :first_name, :last_name, :membership, :created_at]) %>
-  <%= create_list_table_with_hash(get_most_send_packages , [:amount, :first_name, :last_name, :membership, :created_at]) if get_most_send_packages %>
-</div>
-
-<%#*Nach Top-Marken%>
-<%= create_header2_with_link(I18n.t(:most_labels), (link_to I18n.t(:show_most_labels), '#', :rel => 'most_labels', :class => 'simpledialog'), User, :manage) %>
-<div id="most_labels" style="display: none">
-  <%= create_table_header([:amount, :first_name, :last_name, :membership, :created_at]) %>
-  <%= create_list_table_with_hash(get_label_packages , [:amount, :first_name, :last_name, :membership, :created_at]) if get_label_packages %>
-</div>
+<%= render "stats" %>
