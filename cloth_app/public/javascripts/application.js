@@ -27,6 +27,8 @@ $(document).ready(function () {
       // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist 
       $('#user_continue_membership_input').show();
       $('#user_premium_period_input').show();
+      $("#user_continue_membership_true").attr("checked", "checked");
+      $("#user_membership_true").attr("checked", "checked");
     },
     height: 400
   });
