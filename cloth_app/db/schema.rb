@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101217151255) do
+ActiveRecord::Schema.define(:version => 20101220101443) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -186,7 +186,7 @@ ActiveRecord::Schema.define(:version => 20101217151255) do
     t.date     "end_holidays"
     t.integer  "cartons",                                  :default => 5
     t.date     "premium_period"
-    t.boolean  "continue_membership"
+    t.boolean  "continue_membership",                      :default => true
     t.boolean  "membership",                               :default => false
     t.date     "membership_starts"
     t.date     "membership_ends"

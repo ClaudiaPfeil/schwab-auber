@@ -60,6 +60,7 @@ $(document).ready(function(){
   // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist
   $('#user_membership_true').click(function (){
     $('#user_continue_membership_input').show();
+    $("#user_continue_membership_true").attr("checked", "checked");
   })
 
   $('#user_membership_true').click(function (){
