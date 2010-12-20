@@ -28,7 +28,44 @@ class PaymentsController < ApplicationController
               }
     @payment = Payment.new(payment)
     if @payment.save
-      redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
+      # send to ogone
+      
+      url = 'https://secure.ogone.com/ncol/test/orderstandard.asp/?' +
+            'PSPID=#{params[:payment][:PSPID]}' +
+            '&ORDERID=#{params[:payment][:ORDERID]}' +
+            '&AMOUNT=#{params[:payment][:CURRENCY]}' +
+            '&LANGUAGE=#{params[:payment][:LANGUAGE]}' +
+            '&EMAIL=#{params[:payment][:EMAIL]}' +
+            '&SHASIGN=#{params[:payment][:SHASIGN]}' +
+            '&TITLE=#{params[:payment][:TITLE]}' +
+            '&BGCOLOR=#{params[:payment][:BGCOLOR]}' +
+            '&TXTCOLOR=#{params[:payment][:TXTCOLOR]}' +
+            '&TBLBGCOLOR=#{params[:payment][:TBLBGCOLOR]}' +
+            '&TBLTXTCOLOR=#{params[:payment][:TBLTXTCOLOR]}' +
+            '&BUTTONBGCOLOR=#{params[:payment][:BUTTONBGCOLOR]}' +
+            '&BUTTONTXTCOLOR=#{params[:payment][:BUTTONTXTCOLOR]}' +
+            '&LOGO=#{params[:payment][:LOGO]}' +
+            '&FONTTYPE=#{params[:payment][:FONTTYPE]}' +
+            '&TP=#{params[:payment][:TP]}' +
+            '&PM=#{params[:payment][:PM]}' +
+            '&BRAND=#{params[:payment][:BRAND]}' +
+            '&WIN3DS=#{params[:payment][:WIN3DS]}' +
+            '&PMLIST=#{params[:payment][:PMLIST]}' +
+            '&PMLISTTYPE=#{params[:payment][:PMLISTTYPE]}' +
+            '&HOMEURL=#{params[:payment][:HOMEURL]}' +
+            '&CATALOGURL=#{params[:payment][:CATALOGURL]}' +
+            '&COMPLUS=#{params[:payment][:COMPLUS]}' +
+            '&PARAMPLUS=#{params[:payment][:PARAMPLUS]}' +
+            '&PARAMVAR=#{params[:payment][:PARAMVAR]}' +
+            '&ACCEPTURL=#{params[:payment][:ACCEPTURL]}' +
+            '&DECLINEURL=#{params[:payment][:DECLINEURL]}' +
+            '&EXCEPTIONURL=#{params[:payment][:EXCEPTIONURL]}' +
+            '&CANCELURL=#{params[:payment][:CANCELURL]}' +
+            '&OPERATION=#{params[:payment][:OPERATION]}' +
+            '&USERID=#{params[:payment][:USERID]}'
+
+      #redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
+      redirect_to url, :notice => I18n.t(:payment_created)
     else
       render :action => "new", :notice => I18n.t(:payment_not_created)
     end
@@ -64,6 +101,10 @@ class PaymentsController < ApplicationController
 
   def all_unconfirmed
     @payments = Payment.where(:prepayment_confirmed => false).joins("INNER JOIN users on users.id = payments.user_id and users.membership = 1")
+  end
+
+  def bill_premiums
+    
   end
 
   private

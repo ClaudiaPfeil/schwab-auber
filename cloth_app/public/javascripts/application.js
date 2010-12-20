@@ -80,11 +80,13 @@ $(document).ready(function(){
     $('#prepayment').show();
   })
 
-  // Bankverbindung verstecken, wenn nicht Vorauskasse als Zahlungsmethode ausgewählt ist
+  // PayPal-Bankverbindung ausgewählt, dann Bankverbindung verstecken
   $('#payment_kind_2').click(function (){
     $('#prepayment').hide();
+
   })
 
+  // Kredit/Visa-Card ausgewählt, dann Bankverbindung verstecken
   $('#payment_kind_3').click(function (){
     $('#prepayment').hide();
   })

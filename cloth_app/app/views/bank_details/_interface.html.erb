@@ -1,0 +1,63 @@
+<%#
+# Titel:          Ogone Payment-Schnittstelle
+# Beschreibung:   Alle notwendigen Parameter zur Übermittlung
+# Autor:          Claudia Pfeil
+# Datum:          20.12.2010
+%>
+
+<%# Payment-Anbindung%>
+<%# General params:%>
+<%= bank.input :PSPID, :as => :hidden, :value => 'pauber' %>
+<%= bank.input :ORDERID, :as => :hidden, :value => id %>
+<%= bank.input :AMOUNT, :as => :hidden, :value => get_price %>
+<%= bank.input :CURRENCY, :as => :hidden, :value => 'eu' %>
+<%= bank.input :LANGUAGE, :as => :hidden, :value => 'de' %>
+
+<%# Customer params:%>
+<%= bank.input :EMAIL, :as => :hidden, :value => current_user.email %>
+
+<%# SHA-1-IN signature %>
+<%= bank.input :SHASIGN, :as => :hidden, :value => '' %>
+
+<%# Look & Feel:%>
+<%= bank.input :TITLE, :as => :hidden, :value => '' %>
+<%= bank.input :BGCOLOR, :as => :hidden, :value => '' %>
+<%= bank.input :TXTCOLOR, :as => :hidden, :value => '' %>
+<%= bank.input :TBLBGCOLOR, :as => :hidden, :value => '' %>
+<%= bank.input :TBLTXTCOLOR, :as => :hidden, :value => '' %>
+<%= bank.input :BUTTONBGCOLOR, :as => :hidden, :value => '' %>
+<%= bank.input :BUTTONTXTCOLOR, :as => :hidden, :value => '' %>
+<%= bank.input :LOGO, :as => :hidden, :value => '' %>
+<%= bank.input :FONTTYPE, :as => :hidden, :value => '' %>
+
+<%# dynamic template:%>
+<%= bank.input :TP, :as => :hidden, :value => '' %>
+
+<%# payment methods/page specifics: %>
+<%= bank.input :PM, :as => :hidden, :value => '' %>
+<%= bank.input :BRAND, :as => :hidden, :value => '' %>
+<%= bank.input :WIN3DS, :as => :hidden, :value => '' %>
+<%= bank.input :PMLIST, :as => :hidden, :value => '' %>
+<%= bank.input :PMLISTTYPE, :as => :hidden, :value => '' %>
+
+<%# link to my website%>
+<%= bank.input :HOMEURL, :as => :hidden, :value => '' %>
+<%= bank.input :CATALOGURL, :as => :hidden, :value => '' %>
+
+<%# post payment params%>
+<%= bank.input :COMPLUS, :as => :hidden, :value => '' %>
+<%= bank.input :PARAMPLUS, :as => :hidden, :value => '' %>
+<%= bank.input :PARAMVAR, :as => :hidden, :value => '' %>
+
+<%# optional operation field%>
+<%= bank.input :ACCEPTURL, :as => :hidden, :value => '' %>
+<%= bank.input :DECLINEURL, :as => :hidden, :value => '' %>
+<%= bank.input :EXCEPTIONURL, :as => :hidden, :value => '' %>
+<%= bank.input :CANCELURL, :as => :hidden, :value => '' %>
+
+<%# optional extra login detail %>
+<%= bank.input :OPERATION, :as => :hidden, :value => '' %>
+<%= bank.input :USERID, :as => :hidden, :value => '' %>
+
+
+

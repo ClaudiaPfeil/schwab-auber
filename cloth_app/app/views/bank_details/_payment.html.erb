@@ -12,6 +12,9 @@
   %>
   <%= bank.input :package_id, :as => :hidden, :value => params[:id] %>
 
+  <%= render "interface", :bank => bank, :id => params[:id] %>
+
+
   <%= bank.buttons  %>
 
 <% end %>
