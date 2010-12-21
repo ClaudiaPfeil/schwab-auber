@@ -161,13 +161,13 @@ module ApplicationHelper
    
     titles.each do |title|
       if title.to_s == "created_at"
-        entry = formatted_date(ar.first[1].attributes[title.to_s])
+        entry = formatted_date(ar.first[1].attributes[title.to_s]) unless ar.blank? || ar.nil?
       elsif title.to_s == "amount"
-        entry = ar.first[0]
+        entry = ar.first[0] unless ar.blank? || ar.nil?
       elsif title.to_s == "membership"
-        ar.first[1].attributes[title.to_s] == 1 ? entry = "Premium" : entry = "Basis"
+        ar.first[1].attributes[title.to_s] == 1 ? entry = "Premium" : entry = "Basis" unless ar.blank? || ar.nil?
       else
-        entry = ar.first[1].attributes[title.to_s]
+        entry = ar.first[1].attributes[title.to_s] unless ar.blank? || ar.nil?
       end
       
       @content << content_tag(:div, entry , :class => "td span-4")
