@@ -78,7 +78,7 @@ class PaymentsController < ApplicationController
     end
 
     def send_to_ogone(params)
-      url = "https://secure.ogone.com/ncol/test/orderstandard.asp/?" +
+      url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
             "PSPID=#{params[:PSPID]}" +
             "&ORDERID=#{params[:ORDERID]}" +
             "&AMOUNT=#{params[:CURRENCY]}" +

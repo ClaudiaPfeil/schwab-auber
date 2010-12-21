@@ -1,5 +1,5 @@
 <%# Rechnung%>
-<div class="tr">
+<div class="tr span-22">
   <div class="prepend-1 td span-19">
     <ol>
       <li><h1>Rechnung</h1></li>
@@ -13,7 +13,7 @@
   <div class="prepend-1 td span-18 no_abstand">
     <ol class="border">
       <li class="border"><h2><b><%= I18n.t(:description)  %></b></h2></li>
-      <li class="border"><%= @bill.package.name %>,<%= @bill.package_number%></li>
+      <li class="border"><%= @bill.package_number%></li>
       <li class="border"><%= I18n.t(:price_net) %></li>
       <li class="border"><%= I18n.t(:price_post) %></li>
       <li class="border"><%= I18n.t(:mwst) %></li>
@@ -25,10 +25,10 @@
     <ol class="no_border_left ">
       <li class="no_border_left "><h2><b><%= I18n.t(:amount) %></b></h2></li>
       <li class="no_border_left ">&nbsp;</li>
-      <li class="no_border_left ">&nbsp;<%# Netto-Preis%></li>
-      <li class="no_border_left ">&nbsp;<%# Versandgebühren%></li>
-      <li class="no_border_left ">&nbsp;<%# MwSt%></li>
-      <li class="no_border_left ">&nbsp;<%# Brutto-Preis %></li>
+      <li class="no_border_left ">&nbsp;<%= get_net_price %></li>
+      <li class="no_border_left ">&nbsp;<%= get_price %></li>
+      <li class="no_border_left ">&nbsp;<%= get_mwst %></li>
+      <li class="no_border_left ">&nbsp;<%= get_price  %></li>
     </ol>
   </div>
 </div>

@@ -224,5 +224,33 @@ module ApplicationHelper
     @content
 
   end
+
+  
+  def get_price
+    price = 0.0
+    user = current_user
+    membership = user.membership
+    prices = Price.find_by_kind(membership)
+
+    if user.is_premium?
+      period = user.period
+      case period
+        when 3  :   price += prices.shipping
+        when 6  :   price += prices.shipping
+        when 12 :   price += prices.shipping - 1.0
+      end
+    else
+      price += prices.shipping.to_f + prices.handling.to_f
+    end
+  end
+
+  def get_mwst
+    brut_price = get_price
+    (brut_price - (brut_price.to_f / 1.19)).round(2)
+  end
+
+  def get_net_price
+    (get_price.to_f / 1.19).round(2)
+  end
   
 end

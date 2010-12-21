@@ -1,7 +1,7 @@
 class Order < ActiveRecord::Base
   include Cms
   
-  has_one :user
+  belongs_to :user
   belongs_to :package
   has_one :payment
   

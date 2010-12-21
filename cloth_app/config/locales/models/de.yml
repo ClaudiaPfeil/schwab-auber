@@ -77,6 +77,7 @@ de:
         master_visa_card: Master/Visa -Card
         email:  E-Mail
         message:  Nachricht
+        download_bill:  Download
       price:
         three_months:  3 Monate Paket Premium
         six_months:  6 Monate-Paket Premium

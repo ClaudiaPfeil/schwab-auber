@@ -13,7 +13,7 @@ class BillsController < ApplicationController
       format.html
 
       format.pdf do
-        render :pdf => "Rechnung", :stylesheets => ["blueprint/print", "blueprint/src/grid"], :layout => "bills/bill"#:stylesheets => ["styles", "blueprint/screen"], :layout => "bills/bill"
+        render :pdf => "Rechnung", :stylesheets => ["pdf", "blueprint/src/grid"], :layout => "bills/bill"
       end
     end
   end

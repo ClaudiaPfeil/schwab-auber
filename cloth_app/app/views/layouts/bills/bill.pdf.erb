@@ -8,14 +8,10 @@
 <html>
 <head>
   <title>KidsKarton -Rechnung</title>
-  <%= stylesheet_link_tag :all %>
-  <%= stylesheet_link_tag 'blueprint/print', 'blueprint/src/grid' %>
+  <%= stylesheet_link_tag 'pdf', 'blueprint/src/grid' %>
   <!--[if lt IE 8]>
     <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
   <![endif]-->
-  <%= javascript_include_tag :defaults %>
-  <%= csrf_meta_tag %>
-  <%#= render '/layouts/set_meta_tags'%>
 </head>
 <body>
   <div class="container">
