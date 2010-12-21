@@ -140,11 +140,11 @@ module ApplicationHelper
     titles.each do |title|
       
       if title.to_s == "created_at"
-        entry = formatted_date(ar.first.attributes[title.to_s])
+        entry = formatted_date(ar.first.attributes[title.to_s]) unless ar.blank?
       else
-        entry = ar.first.attributes[title.to_s]
+        entry = ar.first.attributes[title.to_s] unless ar.blank?
       end
-      #debugger
+      
       @content << content_tag(:div, entry , :class => "td span-4")
       
     end

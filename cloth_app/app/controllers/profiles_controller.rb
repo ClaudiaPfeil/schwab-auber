@@ -95,7 +95,10 @@ class ProfilesController < ApplicationController
             input << "Pakete-Historie," + "\n"
             input << "Paket-Nr., Erstellt am, Anzahl Kleider, Geschlecht, Beschreibung, Labels," + "\n"
             packages.each do |package|
-              input << "#{package.serial_number},#{formatted_date(package.created_at)},#{package.amount_clothes},#{package.sex == true ? "Mädchen" : "Junge"},#{package.notice.gsub(",", " ")},#{package.label.gsub(",", " ").gsub("--", " ")}," + "\n"
+              input << "#{package.serial_number},#{formatted_date(package.created_at)},#{package.amount_clothes},#{package.sex == true ? "Mädchen" : "Junge"},"
+              input << "#{package.notice.gsub(",", " ")}," unless package.notice.nil?
+              input << "#{package.label.gsub(",", " ").gsub("--", " ")}," unless package.label.nil?
+              input << "\n"
             end
           end
           
@@ -103,7 +106,9 @@ class ProfilesController < ApplicationController
             input << "\n"+ "Bestell-Historie," + "\n"
             input << "Bestell-Nr., Bestellt am, Bewerted am , Bewertung, Angekommen?," + "\n"
             orders.each do |order|
-              input << "#{order.order_number},#{formatted_date(order.created_at)}, #{formatted_date(order.eva_date_created_at)}, #{I18n.t(order.evaluation.to_sym)}, #{order.received == true ? "Nein" : "Ja"}" + "\n"
+              input << "#{order.order_number},#{formatted_date(order.created_at)}, #{formatted_date(order.eva_date_created_at)},"
+              input << "#{I18n.t(order.evaluation.to_sym)}," if order.evaluation
+              input << "#{order.received == true ? "Nein" : "Ja"}" + "\n"
             end
 
             input << "\n"
