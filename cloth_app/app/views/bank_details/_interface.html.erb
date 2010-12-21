@@ -41,19 +41,19 @@
 <%= bank.input :PMLISTTYPE, :as => :hidden %>
 
 <%# link to my website%>
-<%= bank.input :HOMEURL, :as => :hidden, :value => 'http://localhost:3000/' %>
-<%= bank.input :CATALOGURL, :as => :hidden, :value => 'http://localhost:3000/search' %>
+<%= bank.input :HOMEURL, :as => :hidden, :value => Payment::HOME_URL %>
+<%= bank.input :CATALOGURL, :as => :hidden, :value => Payment::CATALOG_URL %>
 
 <%# post payment params%>
 <%= bank.input :COMPLUS, :as => :hidden, :value => id %>
-<%= bank.input :PARAMPLUS, :as => :hidden, :value => 'id='+ current_user.id %>
+<%= bank.input :PARAMPLUS, :as => :hidden, :value => 'id='+ current_user.id.to_s %>
 <%#= bank.input :PARAMVAR, :as => :hidden, :value => '' %>
 
 <%# optional operation field%>
-<%= bank.input :ACCEPTURL, :as => :hidden, :value => 'http://localhost:3000/payment/accept' %>
-<%= bank.input :DECLINEURL, :as => :hidden, :value => 'http://localhost:3000/payment/decline' %>
-<%= bank.input :EXCEPTIONURL, :as => :hidden, :value => 'http://localhost:3000/payment/exception' %>
-<%= bank.input :CANCELURL, :as => :hidden, :value => 'http://localhost:3000/payment/cancel' %>
+<%= bank.input :ACCEPTURL, :as => :hidden, :value => Payment::ACCEPT_URL %>
+<%= bank.input :DECLINEURL, :as => :hidden, :value => Payment::DECLINE_URL %>
+<%= bank.input :EXCEPTIONURL, :as => :hidden, :value => Payment::EXCEPTION_URL %>
+<%= bank.input :CANCELURL, :as => :hidden, :value => Payment::CANCEL_URL %>
 
 <%# optional extra login detail %>
 <%= bank.input :OPERATION, :as => :hidden, :value => 'SAL' %>

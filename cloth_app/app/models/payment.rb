@@ -12,6 +12,13 @@ class Payment < ActiveRecord::Base
                 :BRAND, :WIN3DS, :PMLIST, :PMLISTTYPE, :HOMEURL, :CATALOGURL, :COMPLUS, :PARAMPLUS, :PARAMVAR, :ACCEPTURL,
                 :DECLINEURL, :EXCEPTIONURL, :CANCELURL, :OPERATION, :USERID, :ALIAS, :ALIASUSAGE, :ALIASOPERATION
 
+  HOME_URL = 'http://user13811513-2.zeta.railshoster.de/'
+  CATALOG_URL = HOME_URL + 'serach'
+  ACCEPT_URL = HOME_URL + 'accept'
+  DECLINE_URL = HOME_URL + 'decline'
+  EXCEPTION_URL = HOME_URL + 'exception'
+  CANCEL_URL   = HOME_URL + 'cancel'
+
   def is_destroyable?
     false
   end
