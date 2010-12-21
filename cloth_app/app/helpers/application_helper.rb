@@ -9,7 +9,7 @@ module ApplicationHelper
     elsif flash[:warning] || flash[:notice] || flash[:error]
       flash[:warning] ? result += flash[:warning].to_s : ( flash[:notice] ? result += flash[:notice].to_s : result += flash[:error].to_s)
     end
-    @content = content_tag(:div, result, :class => 'notice')
+    @content = content_tag(:div, result, :class => 'notice') unless result.blank?
   end
 
   def formatted_date(date)

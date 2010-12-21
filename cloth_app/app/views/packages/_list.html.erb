@@ -5,7 +5,7 @@
 
 <div class="tr span-22">
   <div class="td first">&nbsp;</div>
-  <div class="td span-4"><b><%= I18n.t(:name_package)%></b> </div>
+  <div class="td span-4"><b><%= I18n.t(:serial_number)%></b> </div>
   <div class="td span-3"><b><%= I18n.t(:sex)%></b> </div>
   <div class="td span-2"><b><%= I18n.t(:size)%></b> </div>
   <div class="td span-2"><b><%= I18n.t(:amount_clothes)%></b> </div>
@@ -18,7 +18,7 @@
 
     <div class="tr span-22">
       <div class="td first">&nbsp;</div>
-      <div class="td span-4"><%= package.name%> </div>
+      <div class="td span-4"><%= package.serial_number%> </div>
       <div class="td span-3"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
       <div class="td span-2"><%= package.size%> </div>
       <div class="td span-2"><%= package.amount_clothes%> </div>
