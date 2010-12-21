@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101220101443) do
+ActiveRecord::Schema.define(:version => 20101220170537) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -193,6 +193,8 @@ ActiveRecord::Schema.define(:version => 20101220101443) do
     t.boolean  "ordered_cartons",                          :default => false
     t.boolean  "confirmed_delivery",                       :default => false
     t.boolean  "canceled",                                 :default => false
+    t.date     "paied"
+    t.integer  "status"
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

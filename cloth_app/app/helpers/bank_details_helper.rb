@@ -15,4 +15,22 @@ module BankDetailsHelper
 
       @content
     end
+
+    def get_price
+      price = 0.0
+      user = current_user
+      membership = user.membership
+      prices = Price.find_by_kind(membership)
+      
+      if user.is_premium?
+        period = user.period
+        case period
+          when 3  :   price += prices.shipping
+          when 6  :   price += prices.shipping
+          when 12 :   price += prices.shipping - 1.0
+        end
+      else
+        price += prices.shipping.to_f + prices.handling.to_f
+      end
+    end
 end

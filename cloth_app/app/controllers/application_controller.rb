@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     redirect_to root_url
   end
 
+  def template
+    
+  end
+
   protected
 
     def authenticate
