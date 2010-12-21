@@ -20,6 +20,10 @@ ClothApp::Application.routes.draw do
   resources :payments do
     get :confirm_prepayment, :on => :member
     get :all_unconfirmed, :on => :collection
+    get :cancel, :on => :member
+    get :accept, :on => :member
+    get :decline, :on => :member
+    get :exception, :on => :member
   end
 
   resources :profiles do
@@ -51,11 +55,7 @@ ClothApp::Application.routes.draw do
   resources :options
   resources :prices
   resources :searches
-  
-  
-
-  resource :session, :only => [:new, :create, :destroy]
-
+  resource  :session, :only => [:new, :create, :destroy]
 
   match 'login' => 'sessions#new', :as => :login
   match 'logout' => 'sessions#destroy', :as => :logout
@@ -66,10 +66,7 @@ ClothApp::Application.routes.draw do
   match 'membership' => 'welcome#membership', :as => :membership
   match 'dashboard' => 'welcome#dashboard', :as => :dashboard
   match 'profiles/invite_friend' => 'profiles#invite_friend', :as => 'invite_friend'
-
   
-
-
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

@@ -1,9 +1,9 @@
 class Order < ActiveRecord::Base
   include Cms
   
-  belongs_to :user
+  has_one :user
   belongs_to :package
-  belongs_to :payment
+  has_one :payment
   
   validates_uniqueness_of :order_number, :bill_number, :scope => [:package_id]
   validates_presence_of :package_id, :user_id

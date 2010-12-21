@@ -90,8 +90,13 @@ $(document).ready(function(){
   })
 
   // Kredit/Visa-Card ausgewählt, dann Bankverbindung verstecken
-  $('#payment_kind_3').click(function (){
-    $('#prepayment').hide();
+  $('#payment_kind_3').click(function (){ 
+    $('#payment_PM_input').show();
+    $('#payment_PM').val("CreditCard");
+    $('#payment_BRAND').val("VISA");
+    $('#payment_WIN3DS').val("POPUP");
+    $('#payment_PMLIST').val("VISA;MasterCard");
+    $('#payment_PMLISTTYPE').val("2");
   })
 
   $('#package_size').click(function (){
