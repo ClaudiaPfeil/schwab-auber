@@ -29,7 +29,11 @@ class PaymentsController < ApplicationController
     @payment = Payment.new(payment)
     if @payment.save
       # Bezahlschnittstelle ogone aufrufen, wenn Paypal oder MasterCard/Visa ausgewählt ist
-      send_to_ogone(params[:payment]) if params[:payment][:kind].to_i == 3 || params[:payment][:kind].to_i == 2
+      if params[:payment][:kind].to_i == 3 || params[:payment][:kind].to_i == 2
+        send_to_ogone(params[:payment])
+      else
+        redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
+      end
     else
       render :action => "new", :notice => I18n.t(:payment_not_created)
     end
@@ -112,7 +116,6 @@ class PaymentsController < ApplicationController
             "&OPERATION=#{params[:OPERATION]}" +
             "&USERID=#{params[:USERID]}"
 
-        #redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
         redirect_to url, :notice => I18n.t(:payment_created)
       end
 
