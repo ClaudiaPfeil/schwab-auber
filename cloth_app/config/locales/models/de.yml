@@ -44,6 +44,7 @@ de:
         category: Kategorie
         back: Zurück
       package:
+        serial_number:  Paket-Nr.
         dresses:  Kleider
         name: Paketbezeichnung
         sex:  Junge oder Mädchen?

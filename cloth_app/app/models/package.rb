@@ -23,7 +23,7 @@ class Package < ActiveRecord::Base
     set_serial_number if self.serial_number.nil? 
   end
 
-  SearchTypes  = %w(name sex size label)
+  SearchTypes  = %w(serial_number sex size label)
   
   def destroyable?
     true

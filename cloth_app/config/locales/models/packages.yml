@@ -42,7 +42,7 @@ de:
   show_24:  Alle Kleiderpakete der letzten 24h
   packages:
    search_types:
-     name: Bezeichnung Kleidungspaket
+     serial_number: Paket-Nr.
      size: Kleidergröße
      amount: Anzahl Kleidungsstücke
      sex:  Junge oder Mädchen?

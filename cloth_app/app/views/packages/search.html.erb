@@ -4,7 +4,7 @@
 <% unless @packages.nil? %>
 
   <div class="tr">
-    <div class="td span-3"><b><%= I18n.t("name_package")%></b> </div>
+    <div class="td span-3"><b><%= I18n.t("serial_number")%></b> </div>
     <div class="td span-2"><b><%= I18n.t("sex")%></b> </div>
     <div class="td span-2"><b><%= I18n.t("size")%></b> </div>
     <div class="td span-2"><b><%= I18n.t("label")%></b> </div>
@@ -17,7 +17,7 @@
   <% @packages.each do |package| %>
     <% if check_24h(package) %>
       <div class="tr">
-        <div class="td span-3"><%= package.name%> </div>
+        <div class="td span-3"><%= package.serial_number %> </div>
         <div class="td span-2"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
         <div class="td span-2"><%= package.size%> </div>
         <div class="td span-2"><%= package.label%> </div>
