@@ -34,7 +34,13 @@ class Order < ActiveRecord::Base
   def check_holidays
     start    = self.package.user.start_holidays
     last_day = self.package.user.end_holidays
-    Date.today.between?(start, last_day) ? false : true
+
+    unless start.nil? || last_day.nil?
+      Date.today.between?(start, last_day) ? false : true
+    else
+      true
+    end
+    
   end
 
   def get_contents(category)
