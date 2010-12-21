@@ -242,6 +242,7 @@ module ApplicationHelper
     else
       price += prices.shipping.to_f + prices.handling.to_f
     end
+    price.to_s.gsub(".","")
   end
 
   def get_mwst

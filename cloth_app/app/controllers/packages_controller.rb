@@ -51,11 +51,12 @@ class PackagesController < ApplicationController
     if search_type == 'sex'
       if search_key =~ /^(j|J)(u|U)(n|N)(g|G)/
         search_key = 0
-      elsif search_key =~ /^(m|M)(a|A)(e|E)(d|D)(c|C)(h|H)(e|E)(n|N)/
+      elsif search_key =~ /^(m|M)(ä|Ä)(d|D)(c|C)(h|H)(e|E)(n|N)/ || search_key =~ /^(m|M)(a|A)(e|E)(d|D)(c|C)(h|H)(e|E)(n|N)/
         search_key = 1
       end
     end
     @packages = Package.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
+    #redirect_to packages_path
   end
 
   def order
