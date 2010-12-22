@@ -1,6 +1,6 @@
-<%= semantic_form_for @package do |package| %>
+<%=  get_notices %>
 
-  <%=  get_notices %>
+<%= semantic_form_for @package do |package| %>
 
   <%= package.inputs "<h2> #{I18n.t(:form_package)}</h2>" do  %>
     <%= package.input :serial_number, :input_html => {:readonly => true}  %>

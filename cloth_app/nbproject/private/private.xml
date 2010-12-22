@@ -3,7 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
             <url>app/views/packages/_form.html.erb</url>
-            <line>108</line>
+            <line>88</line>
         </file>
         <file>
             <url>app/models/package.rb</url>
@@ -11,7 +11,7 @@
         </file>
         <file>
             <url>app/views/packages/index.html.erb</url>
-            <line>18</line>
+            <line>10</line>
         </file>
     </editor-bookmarks>
 </project-private>

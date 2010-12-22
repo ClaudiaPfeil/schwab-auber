@@ -49,7 +49,8 @@ de:
         jackets: Jacken
         jeans: Hosen & Jeans
         serial_number:  Paket-Nr.
-        dresses:  Kleider
+        dresses:  Kleider & Röcke
+        dress: Kleider
         name: Paketbezeichnung
         sex:  Junge oder Mädchen?
         hint_sex: Sind die Kleidungsstücke von einem Jungen?

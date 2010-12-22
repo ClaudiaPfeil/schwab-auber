@@ -8,12 +8,12 @@ module PackagesHelper
 
   # Premium Mitglieder dürfen neu eingestellte Pakete sofort einsehen & bestellen
   # Basis Mitglieder müssen 24 h warten
-  def check_24h(package)
-    if current_user.nil?
-      current_user = User.new(:role => 'guest')
+  def check_24h(package, user = nil)
+    if user.nil?
+      user = User.new(:role => 'guest')
     end
 
-    if (current_user.is? :premium) || (current_user.is? :admin)
+    if (user.is? :premium) || (user.is? :admin)
       true
     else
       created = package.created_at
@@ -21,12 +21,12 @@ module PackagesHelper
     end
   end
 
-  def show_24
-    if current_user.nil? 
-      current_user = User.new(:role => 'guest')
+  def show_24(user = nil)
+    if user.nil? 
+      user = User.new(:role => 'guest')
     end
     
-    if (current_user.is? :premium) || (current_user.is? :admin)
+    if (user.is? :premium) || (user.is? :admin)
       link_to I18n.t(:show_24), show_24_packages_path
     end
     

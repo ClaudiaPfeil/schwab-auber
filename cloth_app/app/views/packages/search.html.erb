@@ -15,7 +15,7 @@
   </div>
 
   <% @packages.each do |package| %>
-    <% if check_24h(package) %>
+    <% if check_24h(package, current_user) %>
       <div class="tr">
         <div class="td span-3"><%= package.serial_number %> </div>
         <div class="td span-2"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
