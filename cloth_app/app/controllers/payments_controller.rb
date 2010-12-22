@@ -85,7 +85,7 @@ class PaymentsController < ApplicationController
       url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
             "PSPID=#{params[:PSPID]}" +
             "&ORDERID=#{params[:ORDERID]}" +
-            "&AMOUNT=#{params[:CURRENCY]}" +
+            "&AMOUNT=#{params[:AMOUNT]}" +
             "&LANGUAGE=#{params[:LANGUAGE]}" +
             "&EMAIL=#{params[:EMAIL]}" +
             "&SHASIGN=#{params[:SHASIGN]}" +
