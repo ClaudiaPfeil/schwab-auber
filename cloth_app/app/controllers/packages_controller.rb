@@ -20,9 +20,9 @@ class PackagesController < ApplicationController
     @package = Package.new()
   end
 
-  def create
-    @package = Package.new(params[:package])
-
+  def create          
+    @package = Package.new(prepare_package(params[:package]))
+    
     if @package.save
       redirect_to packages_path(@package), :notice => I18n.t(:package_created)
     else
@@ -34,7 +34,7 @@ class PackagesController < ApplicationController
   def edit; end
 
   def update
-    if @package.update_attributes(params[:package])
+    if @package.update_attributes(prepare_package(params[:package]))
       redirect_to packages_path(@package), :notice => I18n.t(:package_updated)
     else
       render :action => 'edit', :notice => I18n.t(:package_not_updated)
@@ -99,6 +99,32 @@ class PackagesController < ApplicationController
 
     def init_current_object
       @current_object = yield
+    end
+
+    def prepare_package(package)
+      result = { }
+      result[:serial_number] = package[:serial_number]
+      result[:sex] = package[:sex]
+      result[:notice] = package[:notice]
+      result[:size] = package[:size]
+      result[:next_size] = package[:next_size]
+      result[:amount_clothes] = package[:amount_clothes]
+      result[:age] = package[:age]
+      result[:amount_labels] = package[:amount_labels]
+      result[:confirmed] = package[:confirmed]
+      result[:accepted] = package[:accepted]
+      !package[:kind].nil? ? result[:kind] = package[:kind].collect{ |k| k + "," }.to_s : package[:kind]
+      !package[:shirts].nil? ? result[:shirts] = package[:shirts].collect{ |k| k + "," }.to_s : package[:shirts]
+      !package[:blouses].nil? ? result[:blouses] = package[:blouses].collect{ |k| k + "," }.to_s : package[:blouses]
+      !package[:jeans].nil? ? result[:jeans] = package[:jeans].collect{ |k| k + "," }.to_s : package[:jeans]
+      !package[:jackets].nil? ? result[:jackets] = package[:jackets].collect{ |k| k + "," }.to_s : package[:jackets]
+      !package[:dresses].nil? ? result[:dresses] = package[:dresses].collect{ |k| k + "," }.to_s : package[:dresses]
+      !package[:basics].nil? ? result[:basics] = package[:basics].collect{ |k| k + "," }.to_s : package[:basics]
+      !package[:colors].nil? ? result[:colors] = package[:colors].collect{ |k| k + "," }.to_s : package[:colors]
+      !package[:labels].nil? ? result[:labels] = package[:labels].collect{ |k| k + "," }.to_s : package[:labels]
+      !package[:saison].nil? ? result[:saison] = package[:saison].collect{ |k| k + "," }.to_s : package[:saison]
+
+      result
     end
     
 end
