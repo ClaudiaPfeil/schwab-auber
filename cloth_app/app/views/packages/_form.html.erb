@@ -21,10 +21,10 @@
         %></p>
 
     <p><%= package.input :saison,
-                         :as => :select,
-                         :collection =>  translate(@package.get_contents("Saison")),
-                         :include_blank =>  false,
-                         :input_html  => {:multiple  =>  false, :size => 4}
+                         :as => :check_box,
+                         :collection =>  translate(@package.get_contents("Saison"))#,
+                         #:include_blank =>  false,
+                         #:input_html  => {:multiple  =>  false, :size => 4}
                          
        %></p>
 

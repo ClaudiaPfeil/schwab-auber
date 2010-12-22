@@ -4,6 +4,8 @@
 class PaymentsController < ApplicationController
   before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
 
+  SHA_SIGNATUR = "DAC05298E9DBB5543FE6358D2F85C5954C8488215AB85DD73C04B60EE4D57BFCEA41C49FDE1CF84BA83DBF1E5850353EA1AE93BD3E1930AF907D5856D40D1291"
+
   def index
     (current_user && !(current_user.is? :admin) ) ? @payments = Payment.where(:user_id => current_user.id) : @payments = Payment.all
   end
@@ -89,7 +91,7 @@ class PaymentsController < ApplicationController
             "&CURRENCY=#{params[:CURRENCY]}" +
             "&LANGUAGE=#{params[:LANGUAGE]}" +
             "&EMAIL=#{params[:EMAIL]}" +
-            "&SHASIGN=#{params[:SHASIGN]}" +
+            "&SHASIGN=#{SHA_SIGNATUR}" +
             "&TITLE=#{params[:TITLE]}" +
             "&BGCOLOR=#{params[:BGCOLOR]}" +
             "&TXTCOLOR=#{params[:TXTCOLOR]}" +

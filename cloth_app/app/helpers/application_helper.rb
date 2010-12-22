@@ -88,22 +88,25 @@ module ApplicationHelper
 
   end
 
-  def create_header_with_form_and_link(titel, form, link1, method1, model1, link2 = nil, method2 = nil, model2 = nil)
+  def create_header_with_form_and_link(titel, form, link1, link2 = nil)
     content = content_tag(:div, ' ', :class => "td first")
     
     col1 = content_tag(:h1, titel)
     col1 << content_tag(:br, (render :partial => form))
     content << content_tag(:div, col1, :class => "td span-17")
 
-    if can? method1, model1
+    if link1
       col2 = content_tag(:br, link1, :class => "right")
     end
 
-    if can? method2, model2
+    if link2
       content_next = content_tag(:br, link2, :class => "right")
     end
 
-    content  << content_tag(:div, col2 + content_next, :class => "td last") if col2 && content_next
+    links = col2 if col2
+    links << content_next if content_next
+
+    content  << content_tag(:div, links, :class => "td last") if links
     @content = content_tag(:div, content, :class => "tr span-22")
 
   end
