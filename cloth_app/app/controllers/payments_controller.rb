@@ -109,7 +109,6 @@ class PaymentsController < ApplicationController
             "&CATALOGURL=#{params[:CATALOGURL]}" +
             "&COMPLUS=#{params[:COMPLUS]}" +
             "&PARAMPLUS=#{params[:PARAMPLUS]}" +
-            "&PARAMVAR=#{params[:PARAMVAR]}" +
             "&ACCEPTURL=#{params[:ACCEPTURL]}" +
             "&DECLINEURL=#{params[:DECLINEURL]}" +
             "&EXCEPTIONURL=#{params[:EXCEPTIONURL]}" +
