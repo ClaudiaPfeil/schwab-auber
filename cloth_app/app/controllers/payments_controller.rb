@@ -86,6 +86,7 @@ class PaymentsController < ApplicationController
             "PSPID=#{params[:PSPID]}" +
             "&ORDERID=#{params[:ORDERID]}" +
             "&AMOUNT=#{params[:AMOUNT]}" +
+            "&CURRENCY=#{params[:CURRENCY]}" +
             "&LANGUAGE=#{params[:LANGUAGE]}" +
             "&EMAIL=#{params[:EMAIL]}" +
             "&SHASIGN=#{params[:SHASIGN]}" +
