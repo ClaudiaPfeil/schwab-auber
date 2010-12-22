@@ -57,7 +57,15 @@ $(document).ready(function(){
   // standardmäßig Periode und Verlängerung nicht anzeigen
   $('#user_continue_membership_input').hide();
   $('#user_premium_period_input').hide();
+
+  // Erstellen Kleiderpaket
   $('#package_next_size_input').hide();
+  $('#package_shirts_input').hide();
+  $('#package_blouses_input').hide();
+  $('#package_jackets_input').hide();
+  $('#package_jeans_input').hide();
+  $('#package_dresses_input').hide();
+  $('#package_basics_input').hide();
 
   // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist
   $('#user_membership_true').click(function (){
@@ -113,6 +121,59 @@ $(document).ready(function(){
       alert("Ist die Box wirklich voll?");
     }
 
+  })
+
+  // Erstellen Kleiderpaket
+  $('#package_kind_shirts__tops').click(function () {
+    
+    if($('#package_kind_shirts__tops').attr("checked")){
+      $('#package_shirts_input').slideDown();
+    }
+    else
+    {
+      $('#package_shirts_input').slideUp();
+    }
+  })
+
+   $('#package_kind_blusen__hemden').click(function () {
+     if($('#package_kind_blusen__hemden').attr("checked")){
+       $('#package_blouses_input').slideDown();
+     }else{
+       $('#package_blouses_input').slideUp();
+     }
+    
+  })
+
+  $('#package_kind_jacken').click(function () {
+    if($('#package_kind_jacken').attr("checked")){
+      $('#package_jackets_input').slideDown();
+    }else{
+      $('#package_jackets_input').slideUp();
+    }
+  })
+
+  $('#package_kind_jeans').click(function () {
+    if($('#package_kind_jeans').attr("checked")){
+      $('#package_jeans_input').slideDown();
+    }else{
+      $('#package_jeans_input').slideUp();
+    }
+  })
+
+  $('#package_kind_kleider__röcke').click(function () {
+    if($('#package_kind_kleider__röcke').attr("checked")){
+      $('#package_dresses_input').slideDown();
+    }else{
+      $('#package_dresses_input').slideUp();
+    }
+  })
+
+  $('#package_kind_erstausstattung').click(function () {
+    if($('#package_kind_erstausstattung').attr("checked")){
+      $('#package_basics_input').slideDown();
+    }else{
+      $('#package_basics_input').slideUp();
+    }
   })
   
 })

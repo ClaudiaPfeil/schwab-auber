@@ -21,61 +21,45 @@
         %></p>
 
     <p><%= package.input :saison,
-                         :as => :check_box,
-                         :collection =>  translate(@package.get_contents("Saison"))#,
-                         #:include_blank =>  false,
-                         #:input_html  => {:multiple  =>  false, :size => 4}
+                         :as => :check_boxes,
+                         :collection =>  translate(@package.get_contents("Saison"))
                          
        %></p>
 
     <%= package.input :kind,
                       :hint => I18n.t('hint_kind'),
-                      :as =>  :select,
-                      :collection => translate(@package.get_contents("Kind")),
-                      :include_blank  => false,
-                      :input_html  => {:multiple  =>  true, :size => 3}
+                      :as =>  :check_boxes,
+                      :collection => translate(@package.get_contents("Kind"))
     %>
 
     <%= package.input :shirts,
-                      :as => :select,
-                      :collection => translate(@package.get_contents("Shirts")),
-                      :include_blank  => false,
-                      :input_html  => {:multiple  =>  true, :size => 3}
+                      :as => :check_boxes,
+                      :collection => translate(@package.get_contents("Shirts"))
     %>
 
     <%= package.input :blouses,
-                      :as => :select,
-                      :collection => translate(@package.get_contents("Blouses")),
-                      :include_blank  => false,
-                      :input_html  => {:multiple  =>  true, :size => 3}
+                      :as => :check_boxes,
+                      :collection => translate(@package.get_contents("Blouses"))
     %>
 
     <%= package.input :jackets,
-                      :as => :select,
-                      :collection => translate( @package.get_contents("Jackets")),
-                      :include_blank  => false,
-                      :input_html  => {:multiple  =>  true, :size => 3}
+                      :as => :check_boxes,
+                      :collection => translate( @package.get_contents("Jackets"))
     %>
 
     <%= package.input :jeans,
-                      :as =>  :select,
-                      :collection =>  translate(@package.get_contents("Jeans")),
-                      :include_blank  => false,
-                      :input_html  => {:multiple  =>  true, :size => 3}
+                      :as =>  :check_boxes,
+                      :collection =>  translate(@package.get_contents("Jeans"))
     %>
 
     <%= package.input :dresses,
-                      :as =>  :select,
-                      :collection =>  translate(@package.get_contents("Dresses")),
-                      :include_blank  => false,
-                      :input_html  => {:multiple  =>  true, :size => 3}
+                      :as =>  :check_boxes,
+                      :collection =>  translate(@package.get_contents("Dresses"))
     %>
 
     <%= package.input :basics,
-                      :as =>  :select,
-                      :collection =>  translate(@package.get_contents("Basics")),
-                      :include_blank  => false,
-                      :input_html  => {:multiple  =>  true, :size => 3}
+                      :as =>  :check_boxes,
+                      :collection =>  translate(@package.get_contents("Basics"))
     %>
 
     <p>
@@ -87,22 +71,18 @@
 
     <p>
     <%= package.input :label,
-                      :as => :select,
-                      :collection  => @package.get_contents("Label"),
-                      :include_blank => false
+                      :as => :check_boxes,
+                      :collection  => @package.get_contents("Label")
     %></p>
     
     <p><%= package.input :amount_labels,
                          :as => :select,
                          :collection  => @package.get_contents("Amount"),
-                         :include_blank => false,
-                         :input_html  => {:multiple  =>  false, :size => 3}
+                         :include_blank => false
     %></p>
     <p><%= package.input :colors, :hint => I18n.t('hint_colors'),
-                         :as => :select,
-                         :collection  => translate(@package.get_contents("Colors")),
-                         :include_blank =>  false,
-                         :input_html  => {:multiple  =>  false, :size => 4}
+                         :as => :check_boxes,
+                         :collection  => translate(@package.get_contents("Colors"))
     %></p>
     <p><%= package.input :notice%></p>
   <% end %>
