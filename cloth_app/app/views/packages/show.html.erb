@@ -1,7 +1,6 @@
 <%= semantic_form_for @package do |package| %>
-  <%=  get_notices %>
-  <%= package.inputs I18n.t('package') do  %>
-    <p><%= package.input :name, :input_html => {:readonly => true}  %></p>
+<%= package.inputs "<h2>"+I18n.t('show_package')+ "</h2>" do  %>
+    <p><%= package.input :serial_number, :input_html => {:readonly => true}  %></p>
     <p><%= package.input :sex, :as => :radio, :collection => [["Junge", false],["Mädchen", true]],
                                :input_html => {:readonly => true}
         %></p>
@@ -24,3 +23,5 @@
   <% end %>
 
 <% end %>
+
+<p align="center"><%= link_to I18n.t(:back), packages_path %></p>
