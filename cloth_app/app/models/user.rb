@@ -169,6 +169,36 @@ class User < ActiveRecord::Base
   def get_agbs
     get_content("Agbs")
   end
+
+  def has_delivery_address?
+    addresses = self.addresses
+    if addresses.count > 1
+      addresses.each do |address|
+        address.kind == false ? true : false
+      end
+    else
+      addresses.kind == false ? true : false
+    end
+  end
+
+  def has_bill_address?
+    addresses = self.addresses
+    if addresses.count > 1
+      addresses.each do |address|
+        address.kind == true ? true : false
+      end
+    else
+      addresses.kind == true ? true : false
+    end
+  end
+
+  def is_owner?(package)
+    compare = ""
+    packages.each do |pack|
+      compare << pack.id.to_s
+    end
+    compare.include?(package.id.to_s) ? true : false unless package.nil?
+  end
   
   protected
     

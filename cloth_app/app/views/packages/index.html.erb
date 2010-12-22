@@ -1,19 +1,6 @@
-<div class="tr span-22">
-  <div class="td first">&nbsp;</div>
-  <div class="td span-14"><h1><%= I18n.t("show_packages") %></h1><br><%=  get_notices %></div>
-  <div class="td last"><br>
-  
-    <% if can? :read, Package %>
-      <%= link_to I18n.t(:show_24), show_24_packages_path %><br>
-    <%end%>
 
-    <% if can? :create, Package %>
-      <%= link_to I18n.t(:new_package), new_package_path %>
-    <%end%>
+<%= create_header_with_form_and_link( I18n.t("show_packages"), 'search_form', (link_to I18n.t(:show_24), show_24_packages_path), :read, Package, (link_to I18n.t(:new_package), new_package_path), :create, :Package ) %>
+
+<%=  get_notices %>
       
-  </div>
-</div>
-
-
-<%= create_header_with_form('', 'search_form') %>
 <%= render "list" %>

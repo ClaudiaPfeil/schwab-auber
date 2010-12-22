@@ -16,12 +16,20 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(params[:address])
-    if @address.save
-      profile = User.find_by_id(@address.user_id)
-      redirect_to edit_profile_path(profile), :notice => I18n.t(:address_created)
+    # prüfen, ob Kunde bereits eine Liefer- und Rechnungsanschrift besitzt
+    if check_address == true
+
+      if @address.save
+        profile = User.find_by_id(@address.user_id)
+        redirect_to edit_profile_path(profile), :notice => I18n.t(:address_created)
+      else
+        render :action => 'new', :notice => I18n.t(:address_not_created)
+      end
+
     else
-      render :action => 'new', :notice => I18n.t(:address_not_created)
+      render :action => 'new', :notice => I18n.t(:address_still_exist)
     end
+    
   end
 
   def edit; end
@@ -48,5 +56,10 @@ class AddressesController < ApplicationController
 
     def init_current_object
       @current_object = yield
+    end
+
+    def check_addresses
+      user = User.find_by_id(@address.user_id)
+      user.has_delivery_address? && user.has_bill_address? ? false : true
     end
 end

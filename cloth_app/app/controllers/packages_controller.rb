@@ -2,9 +2,9 @@ class PackagesController < ApplicationController
   before_filter :init_package, :action => [:show, :edit, :update, :destroy]
   before_filter :init_order_package, :action => [:order]
 
+  # Alle Kunden dürfen alle Kleiderpakete sehen, egal ob Basis, Premium oder Gast
   def index
-    (current_user.is? :admin)? @packages = Package.all : @packages = Package.where(:user_id => current_user.id) if current_user
-    @packages = @packages.to_a unless @packages.nil?
+    @packages = Package.all 
   end
 
   def show
@@ -71,7 +71,7 @@ class PackagesController < ApplicationController
     @order.package.accepted = 1
     @order.package.confirmed = 1
     @order.package.user.accepted = 1
-
+    
     if @order.check_change_principle == true && @order.check_holidays == true
       
       if @order.save!
