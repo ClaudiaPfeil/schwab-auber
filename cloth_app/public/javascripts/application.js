@@ -94,7 +94,8 @@ $(document).ready(function(){
   // PayPal-Bankverbindung ausgewählt, dann Bankverbindung verstecken
   $('#payment_kind_2').click(function (){
     $('#prepayment').hide();
-
+    $('#payment_PM').val("PAYPAL");
+    $('#payment_TXTOKEN').val("INIT");
   })
 
   // Kredit/Visa-Card ausgewählt, dann Bankverbindung verstecken

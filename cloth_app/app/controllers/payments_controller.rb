@@ -31,9 +31,12 @@ class PaymentsController < ApplicationController
               }
     @payment = Payment.new(payment)
     if @payment.save
-      # Bezahlschnittstelle ogone aufrufen, wenn Paypal oder MasterCard/Visa ausgewählt ist
-      if params[:payment][:kind].to_i == 3 || params[:payment][:kind].to_i == 2
+      # Bezahlschnittstelle ogone aufrufen, wenn MasterCard/Visa ausgewählt ist
+      if params[:payment][:kind].to_i == 3 
         send_to_ogone(params[:payment])
+      # Bezahlschnittstelle ogone aufrufen, wenn Paypal ausgewählt ist
+      elsif params[:payment][:kind].to_i == 2
+        send_to_ogone_paypal(params[:payment])
       else
         redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
       end
@@ -118,6 +121,21 @@ class PaymentsController < ApplicationController
             "&CANCELURL=#{params[:CANCELURL]}" +
             "&OPERATION=#{params[:OPERATION]}" +
             "&USERID=#{params[:USERID]}"
+
+        redirect_to url, :notice => I18n.t(:payment_created)
+      end
+
+      def send_to_ogone_paypal(params)
+        url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
+              "PSPID=#{params[:PSPID]}" +
+              "&ORDERID=#{params[:ORDERID]}" +
+              "&AMOUNT=#{params[:AMOUNT]}" +
+              "&CURRENCY=#{params[:CURRENCY]}" +
+              "&LANGUAGE=#{params[:LANGUAGE]}" +
+              "&ACCEPTURL=#{params[:ACCEPTURL]}" +
+              "&DECLINEURL=#{params[:DECLINEURL]}" +
+              "&PM=#{params[:PM]}" +
+              "&TXTOKEN=#{params[:TXTOKEN]}"
 
         redirect_to url, :notice => I18n.t(:payment_created)
       end
