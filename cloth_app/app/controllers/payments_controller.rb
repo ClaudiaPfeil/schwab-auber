@@ -5,6 +5,7 @@ class PaymentsController < ApplicationController
   before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
 
   SHA_SIGNATUR = "B7DB33CA21A704FF97ECA72608491AF739DDFE4952932A9AAEE6B1806764D9469FE0980369693A7B65341A08EF9B8B037E482663951CD9608CC3536D4079EB26"
+  PASS_PHRASE = "schwab_und_auber_21"
 
 
   def index
@@ -89,53 +90,53 @@ class PaymentsController < ApplicationController
 
     def send_to_ogone(params)
       url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
-            "PSPID=#{params[:PSPID]}" +
-            "&ORDERID=#{params[:ORDERID]}" +
-            "&AMOUNT=#{params[:AMOUNT]}" +
-            "&CURRENCY=#{params[:CURRENCY]}" +
-            "&LANGUAGE=#{params[:LANGUAGE]}" +
-            "&EMAIL=#{params[:EMAIL]}" +
-            "&SHASIGN=#{SHA_SIGNATUR}" +
-            "&TITLE=#{params[:TITLE]}" +
-            "&BGCOLOR=#{params[:BGCOLOR]}" +
-            "&TXTCOLOR=#{params[:TXTCOLOR]}" +
-            "&TBLBGCOLOR=#{params[:TBLBGCOLOR]}" +
-            "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR]}" +
-            "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR]}" +
-            "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR]}" +
-            "&LOGO=#{params[:LOGO]}" +
-            "&FONTTYPE=#{params[:FONTTYPE]}" +
-            "&TP=#{params[:TP]}" +
-            "&PM=#{params[:PM]}" +
-            "&BRAND=#{params[:BRAND]}" +
-            "&WIN3DS=#{params[:WIN3DS]}" +
-            "&PMLIST=#{params[:PMLIST]}" +
-            "&PMLISTTYPE=#{params[:PMLISTTYPE]}" +
-            "&HOMEURL=#{params[:HOMEURL]}" +
-            "&CATALOGURL=#{params[:CATALOGURL]}" +
-            "&COMPLUS=#{params[:COMPLUS]}" +
-            "&PARAMPLUS=#{params[:PARAMPLUS]}" +
-            "&ACCEPTURL=#{params[:ACCEPTURL]}" +
-            "&DECLINEURL=#{params[:DECLINEURL]}" +
-            "&EXCEPTIONURL=#{params[:EXCEPTIONURL]}" +
-            "&CANCELURL=#{params[:CANCELURL]}" +
-            "&OPERATION=#{params[:OPERATION]}" +
-            "&USERID=#{params[:USERID]}"
+            "PSPID=#{params[:PSPID].to_s+ PASS_PHRASE}" +
+            "&ORDERID=#{params[:ORDERID].to_s+ PASS_PHRASE}" +
+            "&AMOUNT=#{params[:AMOUNT].to_s+ PASS_PHRASE}" +
+            "&CURRENCY=#{params[:CURRENCY].to_s+ PASS_PHRASE}" +
+            "&LANGUAGE=#{params[:LANGUAGE].to_s+ PASS_PHRASE}" +
+            "&EMAIL=#{params[:EMAIL].to_s+ PASS_PHRASE}" +
+            "&SHASIGN=#{SHA_SIGNATUR.to_s+ PASS_PHRASE}" +
+            "&TITLE=#{params[:TITLE].to_s+ PASS_PHRASE}" +
+            "&BGCOLOR=#{params[:BGCOLOR].to_s+ PASS_PHRASE}" +
+            "&TXTCOLOR=#{params[:TXTCOLOR].to_s+ PASS_PHRASE}" +
+            "&TBLBGCOLOR=#{params[:TBLBGCOLOR].to_s+ PASS_PHRASE}" +
+            "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR].to_s+ PASS_PHRASE}" +
+            "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR].to_s+ PASS_PHRASE}" +
+            "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR].to_s+ PASS_PHRASE}" +
+            "&LOGO=#{params[:LOGO].to_s+ PASS_PHRASE}" +
+            "&FONTTYPE=#{params[:FONTTYPE].to_s+ PASS_PHRASE}" +
+            "&TP=#{params[:TP].to_s+ PASS_PHRASE}" +
+            "&PM=#{params[:PM].to_s+ PASS_PHRASE}" +
+            "&BRAND=#{params[:BRAND].to_s+ PASS_PHRASE}" +
+            "&WIN3DS=#{params[:WIN3DS].to_s+ PASS_PHRASE}" +
+            "&PMLIST=#{params[:PMLIST].to_s+ PASS_PHRASE}" +
+            "&PMLISTTYPE=#{params[:PMLISTTYPE].to_s+ PASS_PHRASE}" +
+            "&HOMEURL=#{params[:HOMEURL].to_s+ PASS_PHRASE}" +
+            "&CATALOGURL=#{params[:CATALOGURL].to_s+ PASS_PHRASE}" +
+            "&COMPLUS=#{params[:COMPLUS].to_s+ PASS_PHRASE}" +
+            "&PARAMPLUS=#{params[:PARAMPLUS].to_s+ PASS_PHRASE}" +
+            "&ACCEPTURL=#{params[:ACCEPTURL].to_s+ PASS_PHRASE}" +
+            "&DECLINEURL=#{params[:DECLINEURL].to_s+ PASS_PHRASE}" +
+            "&EXCEPTIONURL=#{params[:EXCEPTIONURL].to_s+ PASS_PHRASE}" +
+            "&CANCELURL=#{params[:CANCELURL].to_s+ PASS_PHRASE}" +
+            "&OPERATION=#{params[:OPERATION].to_s+ PASS_PHRASE}" +
+            "&USERID=#{params[:USERID].to_s+ PASS_PHRASE}"
 
         redirect_to url, :notice => I18n.t(:payment_created)
       end
 
       def send_to_ogone_paypal(params)
         url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
-              "PSPID=#{params[:PSPID]}" +
-              "&ORDERID=#{params[:ORDERID]}" +
-              "&AMOUNT=#{params[:AMOUNT]}" +
-              "&CURRENCY=#{params[:CURRENCY]}" +
-              "&LANGUAGE=#{params[:LANGUAGE]}" +
-              "&ACCEPTURL=#{params[:ACCEPTURL]}" +
-              "&DECLINEURL=#{params[:DECLINEURL]}" +
-              "&PM=#{params[:PM]}" +
-              "&TXTOKEN=#{params[:TXTOKEN]}"
+              "PSPID=#{params[:PSPID].to_s+ PASS_PHRASE}" +
+              "&ORDERID=#{params[:ORDERID].to_s+ PASS_PHRASE}" +
+              "&AMOUNT=#{params[:AMOUNT].to_s+ PASS_PHRASE}" +
+              "&CURRENCY=#{params[:CURRENCY].to_s+ PASS_PHRASE}" +
+              "&LANGUAGE=#{params[:LANGUAGE].to_s+ PASS_PHRASE}" +
+              "&ACCEPTURL=#{params[:ACCEPTURL].to_s+ PASS_PHRASE}" +
+              "&DECLINEURL=#{params[:DECLINEURL].to_s+ PASS_PHRASE}" +
+              "&PM=#{params[:PM].to_s+ PASS_PHRASE}" +
+              "&TXTOKEN=#{params[:TXTOKEN].to_s+ PASS_PHRASE}"
 
         redirect_to url, :notice => I18n.t(:payment_created)
       end
