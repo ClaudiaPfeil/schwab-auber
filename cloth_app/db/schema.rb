@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101220170537) do
+ActiveRecord::Schema.define(:version => 20101223161827) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(:version => 20101220170537) do
     t.integer  "category_id"
     t.string   "link_name"
     t.boolean  "published"
+  end
+
+  create_table "coupons", :force => true do |t|
+    t.string   "code"
+    t.boolean  "used",       :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "leads", :force => true do |t|

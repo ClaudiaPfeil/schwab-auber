@@ -50,6 +50,7 @@ ClothApp::Application.routes.draw do
   resources :bills
   resources :categories
   resources :contacts
+  resources :coupons
   resources :helps
   resources :impressums
   resources :orders
@@ -67,6 +68,7 @@ ClothApp::Application.routes.draw do
   match 'membership' => 'welcome#membership', :as => :membership
   match 'dashboard' => 'welcome#dashboard', :as => :dashboard
   match 'profiles/invite_friend' => 'profiles#invite_friend', :as => 'invite_friend'
+  match 'welcome/import_coupons' => 'welcome#import_coupons', :as => 'import_coupons'
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

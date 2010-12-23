@@ -23,3 +23,9 @@
 
 <%# Anschriften der Nutzer exportieren, die am aktuellen Tag bestellt haben%>
 <%=  create_header2_with_link(I18n.t(:export_addresses), (link_to I18n.t(:export), export_addresses_profiles_path), Profile, :manage) %>
+
+<%# Upload der DHL-Gutschein-Codes%>
+<%= form_tag({:action => :import_coupons, :controller => :welcome}, :multipart => true) do%>
+  <%= file_field :coupons, 'datafile' %>
+  <%= submit_tag "importieren" %>
+<% end %>

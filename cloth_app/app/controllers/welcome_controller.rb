@@ -19,5 +19,23 @@ class WelcomeController < ApplicationController
   def dashboard
 
   end
+
+  def import_coupons
+    # Datei in Verzeichnis Import kopieren
+    post = DataFile.save(params[:coupons])
+    
+    # Datei auslesen und in die Tabelle coupons einlesen
+    data = ''
+    File.open('doc/'+post, "r") do |file|
+      while (line = file.gets)        
+        data += line
+        Coupon.create({:code => data})
+      end
+    end
+    
+    # Datei löschen
+    DataFile.cleanup("doc",post)
+    redirect_to dashboard_path, :notice => "Gutscheine erfolgreich importiert"
+  end
   
 end
