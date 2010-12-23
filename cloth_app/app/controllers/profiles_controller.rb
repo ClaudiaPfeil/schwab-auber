@@ -177,7 +177,7 @@ class ProfilesController < ApplicationController
             recv = rec_address.first.street_and_number.split(" ")
             sender_address = get_delivery_address(sender)
             sender_tmp = sender_address.first.street_and_number.split(" ")
-            input << "#{sender.first_name + ' ' + sender.last_name}, #{sender_address.first.receiver_additional ? sender_address.first.receiver_additional : SEND_NAME2}, #{sender_tmp[0]}, #{sender_tmp[1]}, #{sender_address.first.postcode}, #{sender_address.first.town}, #{SEND_COUNTRY},#{profile.first_name + ' ' + profile.last_name}, #{rec_address.first.receiver_additional ? rec_address.first.receiver_additional : SEND_NAME2},#{recv[0]}, #{recv[1]}, #{rec_address.first.postcode}, #{rec_address.first.town}, #{SEND_COUNTRY}, #{PRODUCT}, #{coupon}\n"
+            input << "#{sender.first_name + ' ' + sender.last_name}, #{sender_address.first.receiver_additional ? sender_address.first.receiver_additional : SEND_NAME2}, #{sender_address.first.street_and_number.gsub(sender_tmp.last,"")}, #{sender_tmp.last}, #{sender_address.first.postcode}, #{sender_address.first.town}, #{SEND_COUNTRY},#{profile.first_name + ' ' + profile.last_name}, #{rec_address.first.receiver_additional ? rec_address.first.receiver_additional : SEND_NAME2},#{rec_address.first.street_and_number.gsub(recv.last,"")}, #{recv.last}, #{rec_address.first.postcode}, #{rec_address.first.town}, #{SEND_COUNTRY}, #{PRODUCT}, #{coupon}\n"
             
             file.write(input) if input
           end
