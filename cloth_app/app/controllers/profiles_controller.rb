@@ -1,9 +1,12 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 
-class ProfilesController < ApplicationController
-  
+class ProfilesController < ApplicationController  
   before_filter :init_profile, :action => [:show, :edit, :update, :destroy, :order_cartons]
+  
+  SEND_NAME2 = "DHL Online Frankierung"
+  SEND_COUNTRY = "DEU"
+  PRODUCT = "PAECK.DEU"
 
   def index
     user = User.find_by_id(current_user.id) if current_user
@@ -152,6 +155,38 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def export_addresses
+    orders = Order.where("orders.created_at like '%#{Date.today}%'")
+    
+    if orders
+      path = 'export/'
+      name = 'alle_anschriften_der_heutigen_bestellungen.csv'
+      File.new(path + name, "w").path
+      input = "\n"+ "SEND_NAME1, SEND_NAME2, SEND_STREET, SEND_HOUSENUMBER, SEND_PLZ, SEND_CITY, SEND_COUNTRY, RECV_NAME1, RECV_NAME2, RECV_STREET, RECV_HOUSENUMBER, RECV_PLZ, RECV_CITY, RECV_COUNTRY, PRODUCT, COUPON" + "\n"
+
+      orders.each do |order|
+        
+        profile = order.user
+        rec_address = get_bill_address(profile)
+        package = order.package
+        sender = package.user
+        coupon = ""
+        
+        unless rec_address.blank?
+          File.open(path+name, "w") do |file|
+            recv = rec_address.first.street_and_number.split(" ")
+            sender_address = get_delivery_address(sender)
+            sender_tmp = sender_address.first.street_and_number.split(" ")
+            input << "#{sender.first_name + ' ' + sender.last_name}, #{sender_address.first.receiver_additional ? sender_address.first.receiver_additional : SEND_NAME2}, #{sender_tmp[0]}, #{sender_tmp[1]}, #{sender_address.first.postcode}, #{sender_address.first.town}, #{SEND_COUNTRY},#{profile.first_name + ' ' + profile.last_name}, #{rec_address.first.receiver_additional ? rec_address.first.receiver_additional : SEND_NAME2},#{recv[0]}, #{recv[1]}, #{rec_address.first.postcode}, #{rec_address.first.town}, #{SEND_COUNTRY}, #{PRODUCT}, #{coupon}\n"
+            
+            file.write(input) if input
+          end
+        end
+      end
+      send_file(path+name)
+    end
+  end
+
   private
 
     def init_profile
@@ -173,4 +208,33 @@ class ProfilesController < ApplicationController
     def formatted_date(date)
       date.strftime("%d.%m.%Y") unless date.nil?
     end
+
+    def get_delivery_address(sender)
+    addresses = sender.addresses unless sender.blank?
+
+    if addresses.count > 1
+      addresses.each do |address|
+        if address.kind == 0
+          return address
+        end
+      end
+    else
+      return addresses
+    end
+  end
+
+  def get_bill_address(receiver)
+    addresses = receiver.addresses unless receiver.blank?
+
+    if addresses.count > 1
+      addresses.each do |address|
+        if address.kind == 1
+          return address
+        end
+      end
+    else
+      return addresses
+    end
+  end
+
 end

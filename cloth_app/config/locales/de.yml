@@ -26,6 +26,7 @@ de:
   add_address:  Es wurden noch keine Anschriften hinterlegt. Bitte fügen sie eine Anschrift hinzu!
   export_histories:  Alle Profile Historien
   export_cartons: Alle Kartonagen-Bestellungen
+  export_addresses: Alle Anschriften der heutigen Bestellungen
   export: Exportieren
   show_cartons_orders:  Kartonagen Nachbestellungen
   ordered_cartons:  Kartonagen bestellt

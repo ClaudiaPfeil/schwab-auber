@@ -31,6 +31,7 @@ ClothApp::Application.routes.draw do
     get :order_cartons, :on => :member
     get :export_histories, :on => :collection
     get :export_cartons, :on => :collection
+    get :export_addresses, :on => :collection
     get :all_cartons_orders, :on => :collection
   end
 

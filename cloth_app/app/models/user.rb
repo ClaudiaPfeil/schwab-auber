@@ -172,12 +172,15 @@ class User < ActiveRecord::Base
 
   def has_delivery_address?
     addresses = self.addresses
+  
     if addresses.count > 1
       addresses.each do |address|
         address.kind == false ? true : false
       end
+    elsif addresses.blank?
+      false
     else
-      addresses.kind == false ? true : false
+      addresses.kind == false ? true : false  
     end
   end
 
@@ -187,6 +190,8 @@ class User < ActiveRecord::Base
       addresses.each do |address|
         address.kind == true ? true : false
       end
+    elsif addresses.blank?
+      false
     else
       addresses.kind == true ? true : false
     end

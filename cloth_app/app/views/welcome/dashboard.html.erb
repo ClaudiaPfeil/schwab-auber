@@ -20,3 +20,6 @@
 </div>
 
 <%= render "stats" %>
+
+<%# Anschriften der Nutzer exportieren, die am aktuellen Tag bestellt haben%>
+<%=  create_header2_with_link(I18n.t(:export_addresses), (link_to I18n.t(:export), export_addresses_profiles_path), Profile, :manage) %>

@@ -58,7 +58,7 @@ class AddressesController < ApplicationController
       @current_object = yield
     end
 
-    def check_addresses
+    def check_address
       user = User.find_by_id(@address.user_id)
       user.has_delivery_address? && user.has_bill_address? ? false : true
     end
