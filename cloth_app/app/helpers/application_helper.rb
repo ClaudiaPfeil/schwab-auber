@@ -248,7 +248,8 @@ module ApplicationHelper
 
   end
 
-  
+#  Methode :      get_price
+#  Beschreibung:  Gibt den Preis für die Bestellung zurück, d.h. Versandgebühren der Mitgliedschaft
   def get_price
     price = 0.0
     user = current_user
@@ -256,11 +257,12 @@ module ApplicationHelper
     prices = Price.find_by_kind(membership)
 
     if user.is_premium?
-      period = user.period
+      period = user.premium_period
       case period
-        when 3  :   price += prices.shipping
-        when 6  :   price += prices.shipping
-        when 12 :   price += prices.shipping - 1.0
+        when true  :   price += prices.shipping
+        when false :   price += prices.shipping
+      else
+        price += prices.shipping - 1.0
       end
     else
       price += prices.shipping.to_f + prices.handling.to_f
@@ -268,11 +270,33 @@ module ApplicationHelper
     price.to_s.gsub(".","")
   end
 
+  #  Methode :      get_membership_price
+  #  Beschreibung:  Gibt den Preis für die Mitgliedschaft zurück, d.h. Versandgebühren der Mitgliedschaft
+  def get_membership_price
+    price = 0.0
+    user = current_user
+    prices = Price.find_by_kind(1)
+    period = user.premium_period
+    
+    case period
+      when true   :   price += prices.three_months
+      when false  :   price += prices.six_months
+    else
+      price += prices.twelve_months
+    end
+
+    price.to_s.gsub(".","")
+  end
+
+#  Methode:       get_mwst
+#  Beschreibung:  Gibt die Mehrwertsteuer für die Rechnung zurück
   def get_mwst
     brut_price = get_price
     (brut_price - (brut_price.to_f / 1.19)).round(2)
   end
 
+#  Methode:       get_net_price
+#  Beschreibung:  Gibt den Netto-Preis zurück
   def get_net_price
     (get_price.to_f / 1.19).round(2)
   end

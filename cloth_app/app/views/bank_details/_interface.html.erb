@@ -9,7 +9,14 @@
 <%# General params:%>
 <%= bank.input :PSPID, :as => :hidden, :value => 'pauber' %>
 <%= bank.input :ORDERID, :as => :hidden, :value => id %>
-<%= bank.input :AMOUNT, :as => :hidden, :value => get_price %>
+
+<% if params[:upgrade] %>
+<%# debugger %>
+  <%= bank.input :AMOUNT, :as => :hidden, :value => get_membership_price %>
+<% else %>
+  <%= bank.input :AMOUNT, :as => :hidden, :value => get_price %>
+<% end %>
+
 <%= bank.input :CURRENCY, :as => :hidden, :value => 'EUR' %>
 <%= bank.input :LANGUAGE, :as => :hidden, :value => 'de-D' %>
 

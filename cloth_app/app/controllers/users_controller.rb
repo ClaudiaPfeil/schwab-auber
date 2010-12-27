@@ -19,9 +19,9 @@ class UsersController < ApplicationController
         create_lead(@user)
         set_premium_first_month(@user)
       end
-      redirect_back_or_default('/', :notice => "Thanks for signing up!  We're sending you an email with your activation code.")
+      redirect_back_or_default('/', :notice => "Vielen Dank für die Anmeldung!  Wir senden ihnen einen Aktivierungs-Code per E-Mail.")
     else
-      flash.now[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash.now[:error]  = "Wir konnten das Konto leider nicht einrichten.  Versuchen sie es noch einmal oder kontaktieren sie unseren Admin."
       render :action => 'new'
     end
   end
@@ -32,11 +32,11 @@ class UsersController < ApplicationController
     case
     when (!params[:activation_code].blank?) && user && !user.active?
       user.activate!
-      redirect_to '/login', :notice => "Signup complete! Please sign in to continue."
+      redirect_to '/login', :notice => "Registrierung vollständig! Bitte melden sie sich an, um fortzufahren."
     when params[:activation_code].blank?
-      redirect_back_or_default('/', :flash => { :error => "The activation code was missing.  Please follow the URL from your email." })
+      redirect_back_or_default('/', :flash => { :error => "Der Aktivierungscode fehlt.  Folgen sie bitte dem Link ihrer E-Mail." })
     else 
-      redirect_back_or_default('/', :flash => { :error  => "We couldn't find a user with that activation code -- check your email? Or maybe you've already activated -- try signing in." })
+      redirect_back_or_default('/', :flash => { :error  => "Wir konnten keinen Nutzer mit diesem Aktivierungscode finden -- kontrollieren sie ihre E-Mail? Oder ihr Nutzerkonto wurde bereits aktiviert -- Versuchen sie sich anzumelden." })
     end
   end
 
@@ -63,26 +63,38 @@ class UsersController < ApplicationController
   # Aktualisieren des Nutzer-Profils wie Passwort, Name, E-Mail usw.
   def update
     user = params[:user]
-    if user[:membership] == true
-      user[:role] << "premium"
-      period = 0
+    
+    if user[:membership] == "true"
+      user[:role] = "premium"
+      period = ''
       if user[:premium_period] == 0
-        period = 3.months.from_now
+        period = 3.months.from_now.to_s
       elsif user[:premium_period] == 1
-        period = 6.months.from_now
+        period = 6.months.from_now.to_s
       elsif user[:premium_period] == 2
-        period = 1.years.from_now
+          period = 1.years.from_now.to_s
       end
       user[:membership_ends] = period
     end
-
+    
     if @user.update_attributes(user)
       if @user.option.nil? && !user[:option].nil?
         option = params[:option]
         option[:user_id] = params[:id].to_i
         Option.create(option)
       end
-      redirect_to profiles_path, :notice => I18n.t(:profile_updated)
+      
+      if user[:membership] == "true"
+        puts user
+        if @user.update_attributes({:role => "premium", :premium_period => user[:premium_period], :membership_ends => period, :membership_starts => Date.today, :membership => true} )
+          redirect_to payment_method_bank_detail_path(@user, :upgrade => true), :notice => I18n.t(:membership_upgraded)
+        else
+          render :action => 'edit', :notice => I18n.t(:membership_not_upgraded)
+        end
+      else
+        redirect_to profiles_path, :notice => I18n.t(:profile_updated)
+      end
+      
     else
       render :action => 'edit', :notice => I18n.t(:profile_not_updated)
     end

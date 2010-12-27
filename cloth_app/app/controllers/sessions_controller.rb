@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      current_user.is_premium? ? (redirect_to search_packages_path, :notice => "Login successfully done") : (redirect_to membership_path, :notice => "Login successfully done")
+      current_user.is_premium? ? (redirect_to search_packages_path, :notice => "Login erfolgreich.") : (redirect_to membership_path, :notice => "Login erfolgreich.")
       #redirect_back_or_default('/', :notice => "Logged in successfully")
     else
       note_failed_signin
@@ -32,7 +32,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_killing_session!
-    redirect_back_or_default('/', :notice => "You have been logged out.")
+    redirect_back_or_default('/', :notice => "Sie wurden erfolgreich ausgeloggt.")
   end
 
 protected

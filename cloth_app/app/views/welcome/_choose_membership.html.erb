@@ -36,6 +36,10 @@
                   :value => Date.today
   %>
 
+  <%= user.input  :membership_ends, :as => :hidden,
+                  :value => Date.today 
+  %>
+
   <%= user.buttons do %>
     <%= user.commit_button "Mitgliedschaft wählen" %>
   <% end %>

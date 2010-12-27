@@ -6,6 +6,7 @@ class BankDetail < ActiveRecord::Base
   include Cms
 
   belongs_to  :user
+  attr_reader :upgrade
                 
 
   def is_destroyable?
