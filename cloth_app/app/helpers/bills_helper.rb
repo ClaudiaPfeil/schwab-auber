@@ -13,7 +13,7 @@ module BillsHelper
         end
       end
     elsif addresses && addresses.count == 1
-      if addresses.kind == true
+      if addresses.first.kind == true
        return addresses
       end
     else

@@ -1,14 +1,12 @@
 <%# Kontaktadresse Nutzer, Kundennummer, Bestellnummer, Bestelldatum, Paketnummer, Rechnungsnummer %>
 
 <div class="tr">
-  <div class="prepend-18 span-5">
-    <%# Logo%>
+  <div class=" span-13 td">
+    <%= image_tag '/images/logo.gif', :height => '100', :width => '150' %>
   </div>
-</div>
-<br><br><br><br>
-<div class="tr">
-<% address = get_address %>
-  <div class="prepend-1 span-14 td">
+
+  <% address = get_address %>
+  <div class="prepend-1 span-4 td">
     <ol>
       <li><%= address ? address.receiver : " " %> </li>
       <li><%= address ? address.co_receiver : " " %></li>
@@ -29,6 +27,6 @@
   </div>
 
 </div>
-<br></br><br><br><br><br>
+<br><br><br><br>
 
 

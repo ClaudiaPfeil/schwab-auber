@@ -291,14 +291,14 @@ module ApplicationHelper
 #  Methode:       get_mwst
 #  Beschreibung:  Gibt die Mehrwertsteuer für die Rechnung zurück
   def get_mwst
-    brut_price = get_price
+    brut_price = get_price.to_f / 100
     (brut_price - (brut_price.to_f / 1.19)).round(2)
   end
 
 #  Methode:       get_net_price
 #  Beschreibung:  Gibt den Netto-Preis zurück
   def get_net_price
-    (get_price.to_f / 1.19).round(2)
+    ((get_price.to_f / 100) / 1.19).round(2)
   end
   
 end
