@@ -16,7 +16,7 @@ class Package < ActiveRecord::Base
 
   scope :search_by_attributes, lambda { |search_key, *attribute_names|
     sql = [attribute_names].flatten.map { |a| '%s LIKE :search_key' % a }.join(' OR ')
-    where(sql, :search_key => "%#{search_key}%").default_ordered
+    where(sql, :search_key => "%#{ search_key }%").default_ordered
   }
 
   before_save do

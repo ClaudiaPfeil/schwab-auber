@@ -47,16 +47,20 @@ class PackagesController < ApplicationController
   end
 
   def search
-    search_type, search_key = params[:search_type], params[:search_key]
-    if search_type == 'sex'
-      if search_key =~ /^(j|J)(u|U)(n|N)(g|G)/
-        search_key = 0
-      elsif search_key =~ /^(m|M)(ä|Ä)(d|D)(c|C)(h|H)(e|E)(n|N)/ || search_key =~ /^(m|M)(a|A)(e|E)(d|D)(c|C)(h|H)(e|E)(n|N)/
-        search_key = 1
+    #search_type, search_key = params[:search_type], params[:search_key]
+    search_type = params[:search_type].split(" ")
+    search_key = params[:search_key].split(" ")
+    
+    if search_type.first.count > 1 && search_key.count  > 1
+      search_key.each_with_index do |key, i|
+        key = transform_param(key) if search_type.first[i] == 'sex'
+        i == 0 ? @packages = Package.search_by_attributes(key, search_type.first[i]) : @packages = @packages.search_by_attributes(key, search_type.first[i])
       end
+    else   
+      search_key = transform_param(search_key.to_s) if search_type.to_s == 'sex'
+      @packages = Package.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
     end
-    @packages = Package.search_by_attributes(search_key, search_type) unless search_type.nil? || search_key.nil?
-    #redirect_to packages_path
+    @packages
   end
 
   def order
@@ -125,6 +129,14 @@ class PackagesController < ApplicationController
       !package[:saison].nil? ? result[:saison] = package[:saison].collect{ |k| k + "," }.to_s : package[:saison]
 
       result
+    end
+
+    def transform_param(search_key)
+      if search_key =~ /^(j|J)(u|U)(n|N)(g|G)/
+        search_key = 0
+      elsif search_key =~ /^(m|M)(ä|Ä)(d|D)(c|C)(h|H)(e|E)(n|N)/ || search_key =~ /^(m|M)(a|A)(e|E)(d|D)(c|C)(h|H)(e|E)(n|N)/
+        search_key = 1
+      end
     end
     
 end

@@ -11,6 +11,9 @@
       <%= select_tag    :search_type,
                         options_for_select(
                           localized_collection_options_for_select(Package::SearchTypes, :search_types),
-                          params[:search_type]) %>
+                          params[:search_type]),
+                          {:multiple => true}                        
+                        %>
+
   <% end %>
 <% end %>

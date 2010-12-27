@@ -47,6 +47,12 @@ de:
      amount: Anzahl Kleidungsstücke
      sex:  Junge oder Mädchen?
      label:  Marke
+   search_types2:
+     serial_number: Paket-Nr.
+     size: Kleidergröße
+     amount: Anzahl Kleidungsstücke
+     sex:  Junge oder Mädchen?
+     label:  Marke
   yes:  Ja
   no: Nein
   spring: Frühling
