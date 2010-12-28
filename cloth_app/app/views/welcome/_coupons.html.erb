@@ -1,0 +1,11 @@
+<%#
+# Titel:        Upload der DHL-Gutschein-Codes
+# Beschreibung: Import als TXT-Datei und automatisches Speichern in der coupons-Tabelle
+%>
+<div id="coupons" style="display: none">
+  <%= form_tag({:action => :import_coupons, :controller => :welcome}, :multipart => true) do%>
+    <%= file_field :coupons, 'datafile' %>
+    <%= submit_tag "importieren" %>
+  <% end %>
+</div>
+

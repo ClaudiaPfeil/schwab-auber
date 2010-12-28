@@ -25,6 +25,11 @@ class Ability
       can :publish, Content if (user.is? :admin) || (user.is? :publisher)
       can :destroy, Content if (user.is? :admin) || (user.is? :publisher)
 
+      can :read,    Coupon if (user.is? :admin)
+      can :create,  Coupon if (user.is? :admin)
+      can :update,  Coupon if (user.is? :admin)
+      can :destroy, Coupon if (user.is? :admin)
+
       can :read,    Order if (user.is? :premium) || (user.is? :admin)
       can :create,  Order if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
       can :update,  Order if (user.is? :premium) || (user.is? :admin)

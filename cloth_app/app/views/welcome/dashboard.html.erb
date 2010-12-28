@@ -25,7 +25,9 @@
 <%=  create_header2_with_link(I18n.t(:export_addresses), (link_to I18n.t(:export), export_addresses_profiles_path), Profile, :manage) %>
 
 <%# Upload der DHL-Gutschein-Codes%>
-<%= form_tag({:action => :import_coupons, :controller => :welcome}, :multipart => true) do%>
-  <%= file_field :coupons, 'datafile' %>
-  <%= submit_tag "importieren" %>
-<% end %>
+<%= create_header2_with_link( I18n.t(:upload_coupons), ( link_to I18n.t(:import), '#', :rel => 'coupons', :class => 'simpledialog'), Coupon, :manage ) %>
+<%= render "coupons" %>
+
+<%# Anzeige der Charity-Spende des laufenden Monats%>
+<%= create_header2_with_link(I18n.t(:show_charity), (link_to I18n.t(:charity), '#', :rel => 'charity', :class => 'simpledialog'), Package, :manage) %>
+<%= render "charity" %>

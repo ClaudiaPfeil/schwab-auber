@@ -88,6 +88,20 @@ module ApplicationHelper
 
   end
 
+  def create_title_with_form(titel, form)
+    content = render :partial => form
+
+    @content = content_tag(:div, ' ', :class => "tr span-22")
+    @content << content_tag(:div, ' ', :class => "td first")
+    @content << content_tag(:div, ' ', :class => "td span-18")
+    @content << content_tag(:h2, titel)
+    @content << content_tag(:br, content)
+    @content << content_tag(:div,' ', :class => "td last")
+
+    @content
+
+  end
+
   def create_header_with_form_and_link(titel, form, link1, link2 = nil)
     content = content_tag(:div, ' ', :class => "td first")
     

@@ -28,7 +28,8 @@ class PaymentsController < ApplicationController
     payment = {:user_id => user.id,
                :order_id => order.id,
                :package_id => package.id,
-               :kind  => params[:payment][:kind]
+               :kind  => params[:payment][:kind],
+               :balance => params[:payment][:AMOUNT]
               }
     @payment = Payment.new(payment)
     if @payment.save
@@ -90,53 +91,53 @@ class PaymentsController < ApplicationController
 
     def send_to_ogone(params)
       url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
-            "PSPID=#{params[:PSPID].to_s+ PASS_PHRASE}" +
-            "&ORDERID=#{params[:ORDERID].to_s+ PASS_PHRASE}" +
-            "&AMOUNT=#{params[:AMOUNT].to_s+ PASS_PHRASE}" +
-            "&CURRENCY=#{params[:CURRENCY].to_s+ PASS_PHRASE}" +
-            "&LANGUAGE=#{params[:LANGUAGE].to_s+ PASS_PHRASE}" +
-            "&EMAIL=#{params[:EMAIL].to_s+ PASS_PHRASE}" +
-            "&SHASIGN=#{SHA_SIGNATUR.to_s+ PASS_PHRASE}" +
-            "&TITLE=#{params[:TITLE].to_s+ PASS_PHRASE}" +
-            "&BGCOLOR=#{params[:BGCOLOR].to_s+ PASS_PHRASE}" +
-            "&TXTCOLOR=#{params[:TXTCOLOR].to_s+ PASS_PHRASE}" +
-            "&TBLBGCOLOR=#{params[:TBLBGCOLOR].to_s+ PASS_PHRASE}" +
-            "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR].to_s+ PASS_PHRASE}" +
-            "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR].to_s+ PASS_PHRASE}" +
-            "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR].to_s+ PASS_PHRASE}" +
-            "&LOGO=#{params[:LOGO].to_s+ PASS_PHRASE}" +
-            "&FONTTYPE=#{params[:FONTTYPE].to_s+ PASS_PHRASE}" +
-            "&TP=#{params[:TP].to_s+ PASS_PHRASE}" +
-            "&PM=#{params[:PM].to_s+ PASS_PHRASE}" +
-            "&BRAND=#{params[:BRAND].to_s+ PASS_PHRASE}" +
-            "&WIN3DS=#{params[:WIN3DS].to_s+ PASS_PHRASE}" +
-            "&PMLIST=#{params[:PMLIST].to_s+ PASS_PHRASE}" +
-            "&PMLISTTYPE=#{params[:PMLISTTYPE].to_s+ PASS_PHRASE}" +
-            "&HOMEURL=#{params[:HOMEURL].to_s+ PASS_PHRASE}" +
-            "&CATALOGURL=#{params[:CATALOGURL].to_s+ PASS_PHRASE}" +
-            "&COMPLUS=#{params[:COMPLUS].to_s+ PASS_PHRASE}" +
-            "&PARAMPLUS=#{params[:PARAMPLUS].to_s+ PASS_PHRASE}" +
-            "&ACCEPTURL=#{params[:ACCEPTURL].to_s+ PASS_PHRASE}" +
-            "&DECLINEURL=#{params[:DECLINEURL].to_s+ PASS_PHRASE}" +
-            "&EXCEPTIONURL=#{params[:EXCEPTIONURL].to_s+ PASS_PHRASE}" +
-            "&CANCELURL=#{params[:CANCELURL].to_s+ PASS_PHRASE}" +
-            "&OPERATION=#{params[:OPERATION].to_s+ PASS_PHRASE}" +
-            "&USERID=#{params[:USERID].to_s+ PASS_PHRASE}"
+            "PSPID=#{params[:PSPID].to_s}" +
+            "&ORDERID=#{params[:ORDERID].to_s}" +
+            "&AMOUNT=#{params[:AMOUNT].to_s}" +
+            "&CURRENCY=#{params[:CURRENCY].to_s}" +
+            "&LANGUAGE=#{params[:LANGUAGE].to_s}" +
+            "&EMAIL=#{params[:EMAIL].to_s}" +
+            "&SHASIGN=#{SHA_SIGNATUR.to_s}" +
+            "&TITLE=#{params[:TITLE].to_s}" +
+            "&BGCOLOR=#{params[:BGCOLOR].to_s}" +
+            "&TXTCOLOR=#{params[:TXTCOLOR].to_s}" +
+            "&TBLBGCOLOR=#{params[:TBLBGCOLOR].to_s}" +
+            "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR].to_s}" +
+            "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR].to_s}" +
+            "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR].to_s}" +
+            "&LOGO=#{params[:LOGO].to_s}" +
+            "&FONTTYPE=#{params[:FONTTYPE].to_s}" +
+            "&TP=#{params[:TP].to_s}" +
+            "&PM=#{params[:PM].to_s}" +
+            "&BRAND=#{params[:BRAND].to_s}" +
+            "&WIN3DS=#{params[:WIN3DS].to_s}" +
+            "&PMLIST=#{params[:PMLIST].to_s}" +
+            "&PMLISTTYPE=#{params[:PMLISTTYPE].to_s}" +
+            "&HOMEURL=#{params[:HOMEURL].to_s}" +
+            "&CATALOGURL=#{params[:CATALOGURL].to_s}" +
+            "&COMPLUS=#{params[:COMPLUS].to_s}" +
+            "&PARAMPLUS=#{params[:PARAMPLUS].to_s}" +
+            "&ACCEPTURL=#{params[:ACCEPTURL].to_s}" +
+            "&DECLINEURL=#{params[:DECLINEURL].to_s}" +
+            "&EXCEPTIONURL=#{params[:EXCEPTIONURL].to_s}" +
+            "&CANCELURL=#{params[:CANCELURL].to_s}" +
+            "&OPERATION=#{params[:OPERATION].to_s}" +
+            "&USERID=#{params[:USERID].to_s}"
 
         redirect_to url, :notice => I18n.t(:payment_created)
       end
 
       def send_to_ogone_paypal(params)
         url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
-              "PSPID=#{params[:PSPID].to_s+ PASS_PHRASE}" +
-              "&ORDERID=#{params[:ORDERID].to_s+ PASS_PHRASE}" +
-              "&AMOUNT=#{params[:AMOUNT].to_s+ PASS_PHRASE}" +
-              "&CURRENCY=#{params[:CURRENCY].to_s+ PASS_PHRASE}" +
-              "&LANGUAGE=#{params[:LANGUAGE].to_s+ PASS_PHRASE}" +
-              "&ACCEPTURL=#{params[:ACCEPTURL].to_s+ PASS_PHRASE}" +
-              "&DECLINEURL=#{params[:DECLINEURL].to_s+ PASS_PHRASE}" +
-              "&PM=#{params[:PM].to_s+ PASS_PHRASE}" +
-              "&TXTOKEN=#{params[:TXTOKEN].to_s+ PASS_PHRASE}"
+              "PSPID=#{params[:PSPID].to_s}" +
+              "&ORDERID=#{params[:ORDERID].to_s}" +
+              "&AMOUNT=#{params[:AMOUNT].to_s}" +
+              "&CURRENCY=#{params[:CURRENCY].to_s}" +
+              "&LANGUAGE=#{params[:LANGUAGE].to_s}" +
+              "&ACCEPTURL=#{params[:ACCEPTURL].to_s}" +
+              "&DECLINEURL=#{params[:DECLINEURL].to_s}" +
+              "&PM=#{params[:PM].to_s}" +
+              "&TXTOKEN=#{params[:TXTOKEN].to_s}"
 
         redirect_to url, :notice => I18n.t(:payment_created)
       end

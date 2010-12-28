@@ -44,6 +44,10 @@ de:
   ok: in Ordnung
   bad:  mangelhaft
   very_bad: unbefriedigend
+  upload_coupons: Import DHL Gutschein-Codes
+  import: Importieren
+  show_charity: Höhe der aktuellen Charity Spende
+  charity:  Charity
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"
