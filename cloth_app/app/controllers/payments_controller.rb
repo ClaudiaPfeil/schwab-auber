@@ -1,5 +1,7 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
+require "uri"
+require "net/http"
 
 class PaymentsController < ApplicationController
   before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
@@ -90,65 +92,69 @@ class PaymentsController < ApplicationController
     end
 
     def send_to_ogone(params)
-      url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
-            "PSPID=#{params[:PSPID].to_s}" +
-            "&ORDERID=#{params[:ORDERID].to_s}" +
-            "&AMOUNT=#{params[:AMOUNT].to_s}" +
-            "&CURRENCY=#{params[:CURRENCY].to_s}" +
-            "&LANGUAGE=#{params[:LANGUAGE].to_s}" +
-            "&EMAIL=#{params[:EMAIL].to_s}" +
-            "&SHASIGN=#{SHA_SIGNATUR.to_s}" +
-            "&TITLE=#{params[:TITLE].to_s}" +
-            "&BGCOLOR=#{params[:BGCOLOR].to_s}" +
-            "&TXTCOLOR=#{params[:TXTCOLOR].to_s}" +
-            "&TBLBGCOLOR=#{params[:TBLBGCOLOR].to_s}" +
-            "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR].to_s}" +
-            "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR].to_s}" +
-            "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR].to_s}" +
-            "&LOGO=#{params[:LOGO].to_s}" +
-            "&FONTTYPE=#{params[:FONTTYPE].to_s}" +
-            "&TP=#{params[:TP].to_s}" +
-            "&PM=#{params[:PM].to_s}" +
-            "&BRAND=#{params[:BRAND].to_s}" +
-            "&WIN3DS=#{params[:WIN3DS].to_s}" +
-            "&PMLIST=#{params[:PMLIST].to_s}" +
-            "&PMLISTTYPE=#{params[:PMLISTTYPE].to_s}" +
-            "&HOMEURL=#{params[:HOMEURL].to_s}" +
-            "&CATALOGURL=#{params[:CATALOGURL].to_s}" +
-            "&COMPLUS=#{params[:COMPLUS].to_s}" +
-            "&PARAMPLUS=#{params[:PARAMPLUS].to_s}" +
-            "&ACCEPTURL=#{params[:ACCEPTURL].to_s}" +
-            "&DECLINEURL=#{params[:DECLINEURL].to_s}" +
-            "&EXCEPTIONURL=#{params[:EXCEPTIONURL].to_s}" +
-            "&CANCELURL=#{params[:CANCELURL].to_s}" +
-            "&OPERATION=#{params[:OPERATION].to_s}" +
-            "&USERID=#{params[:USERID].to_s}"
-
-        redirect_to url, :notice => I18n.t(:payment_created)
+      url = "https://secure.ogone.com/ncol/test/orderstandard.asp"
+      infos = { 'PSPID'   => params[:PSPID].to_s,
+                'ORDERID' => params[:ORDERID].to_s,
+                'AMOUNT'  => params[:AMOUNT].to_s,
+                'CURRENCY' => params[:CURRENCY].to_s,
+                'LANGUAGE' => params[:LANGUAGE].to_s,
+                'EMAIL' => params[:EMAIL].to_s,
+                'SHASIGN' => SHA_SIGNATUR.to_s,
+                'TITLE' => params[:TITLE].to_s,
+                'BGCOLOR' => params[:BGCOLOR].to_s,
+                'TXTCOLOR' => params[:TXTCOLOR].to_s,
+                'TBLBGCOLOR' => params[:TBLBGCOLOR].to_s,
+                'TBLTXTCOLOR' => params[:TBLTXTCOLOR].to_s,
+                'BUTTONBGCOLOR' => params[:BUTTONBGCOLOR].to_s,
+                'BUTTONTXTCOLOR' => params[:BUTTONTXTCOLOR].to_s,
+                'LOGO' => params[:LOGO].to_s,
+                'FONTTYPE' => params[:FONTTYPE].to_s,
+                'TP' => params[:TP].to_s,
+                'PM' => params[:PM].to_s,
+                'BRAND' => params[:BRAND].to_s,
+                'WIN3DS' => params[:WIN3DS].to_s,
+                'PMLIST' => params[:PMLIST].to_s,
+                'PMLISTTYPE' => params[:PMLISTTYPE].to_s,
+                'HOMEURL' => params[:HOMEURL].to_s,
+                'CATALOGURL' => params[:CATALOGURL].to_s,
+                'COMPLUS' => params[:COMPLUS].to_s,
+                'PARAMPLUS' => params[:PARAMPLUS].to_s,
+                'ACCEPTURL' => params[:ACCEPTURL].to_s,
+                'DECLINEURL' => params[:DECLINEURL].to_s,
+                'EXCEPTIONURL' => params[:EXCEPTIONURL].to_s,
+                'CANCELURL' => params[:CANCELURL].to_s,
+                'OPERATION' => params[:OPERATION].to_s,
+                'USERID' => params[:USERID].to_s
+              }
+              
+          x = Net::HTTP.post_form(URI.parse(url), infos)
+          puts "send_to_ogone: " + x.body
       end
 
       def send_to_ogone_paypal(params)
-        url = "https://secure.ogone.com/ncol/test/orderstandard.asp?" +
-              "PSPID=#{params[:PSPID].to_s}" +
-              "&ORDERID=#{params[:ORDERID].to_s}" +
-              "&AMOUNT=#{params[:AMOUNT].to_s}" +
-              "&CURRENCY=#{params[:CURRENCY].to_s}" +
-              "&LANGUAGE=#{params[:LANGUAGE].to_s}" +
-              "&ACCEPTURL=#{params[:ACCEPTURL].to_s}" +
-              "&DECLINEURL=#{params[:DECLINEURL].to_s}" +
-              "&PM=#{params[:PM].to_s}" +
-              "&TXTOKEN=#{params[:TXTOKEN].to_s}" +
-              "&TITLE=#{params[:TITLE].to_s}" +
-              "&BGCOLOR=#{params[:BGCOLOR].to_s}" +
-              "&TXTCOLOR=#{params[:TXTCOLOR].to_s}" +
-              "&TBLBGCOLOR=#{params[:TBLBGCOLOR].to_s}" +
-              "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR].to_s}" +
-              "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR].to_s}" +
-              "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR].to_s}" +
-              "&LOGO=#{params[:LOGO].to_s}" +
-              "&FONTTYPE=#{params[:FONTTYPE].to_s}"
+        url = "https://secure.ogone.com/ncol/test/orderstandard.asp"
+        infos = { "PSPID" => params[:PSPID].to_s,
+                  "ORDERID" => params[:ORDERID].to_s,
+                  "AMOUNT" => params[:AMOUNT].to_s,
+                  "CURRENCY" => params[:CURRENCY].to_s,
+                  "LANGUAGE" => params[:LANGUAGE].to_s,
+                  "ACCEPTURL" => params[:ACCEPTURL].to_s,
+                  "DECLINEURL" => params[:DECLINEURL].to_s,
+                  "PM" => params[:PM].to_s,
+                  "TXTOKEN" => params[:TXTOKEN].to_s,
+                  "TITLE" => params[:TITLE].to_s,
+                  "BGCOLOR" => params[:BGCOLOR].to_s,
+                  "TXTCOLOR" => params[:TXTCOLOR].to_s,
+                  "TBLBGCOLOR" => params[:TBLBGCOLOR].to_s,
+                  "TBLTXTCOLOR" => params[:TBLTXTCOLOR].to_s,
+                  "BUTTONBGCOLOR" => params[:BUTTONBGCOLOR].to_s,
+                  "BUTTONTXTCOLOR" => params[:BUTTONTXTCOLOR].to_s,
+                  "LOGO" => params[:LOGO].to_s,
+                  "FONTTYPE" => params[:FONTTYPE].to_s
+                }
 
-        redirect_to url, :notice => I18n.t(:payment_created)
+        x = Net::HTTP.post_form(URI.parse(url), infos)
+        puts "send_to_ogone_paypal: " + x.body
       end
 
 end

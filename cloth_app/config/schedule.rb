@@ -4,5 +4,5 @@
 # Löschen der gekündigten Premium Mitgliedschaften
 every 24.hours do runner
   User.destroy_premiums
-  Payment.bill_premiums
+  #Payment.bill_premiums
 end

@@ -44,13 +44,8 @@ module WelcomeHelper
   def get_charity_donation
     sells = Payment.find_by_sql("Select * from payments where left(created_at, 7) like '%#{Date.today.to_s.chop.chop.chop}%'" )
     amount = sells.count
-    donation = 0.0
     
-    sells.each do |sell|
-      donation += sell.balance.to_f / 100
-    end
-
-    (donation.to_f / 100 * 15).to_s + " €"
+    (amount.to_f * 0.25).to_s + " €"
   end
   
 end
