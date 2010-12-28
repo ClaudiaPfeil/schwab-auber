@@ -3,8 +3,8 @@
 <html>
 <head>
   <title>KidsKarton -Rechnung</title>
-  <%= stylesheet_link_tag :all %>
-  <%= stylesheet_link_tag 'blueprint/print', 'blueprint/src/grid' %>
+  <%= stylesheet_link_tag 'bill', 'blueprint/src/grid', :media => :screen %>
+  <%= stylesheet_link_tag 'blueprint/print', 'blueprint/src/grid', :media => :print %>
   <!--[if lt IE 8]>
     <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
   <![endif]-->
@@ -13,19 +13,22 @@
   <%= render '/layouts/set_meta_tags'%>
 </head>
 <body>
-  <div class="container">
-    <div class="tr span-20">
-      <div class="td span-20"><p align="right"><%= link_to I18n.t(:download_bill), bill_path(@bill,"pdf") %></p></div>
+  <div class="container span-20">
+    
+    <div class="tr span-19 margin-5">
+      <div class="td span-8"><%= image_tag '/images/logo.gif', :height => '100', :width => '150' %></div>
+      <div class="td span-10 no_print"><p align="right"><%= link_to I18n.t(:download_bill), bill_path(@bill,"pdf") %></p></div>
     </div>
-    <div class="tr span-23">
+
+    <div class="tr span-19 margin-10">
       <%= render "/layouts/bills/bill_header" %>
 	  </div>
 
-    <div class="tr span-23 ">
-      <%= yield %>     
-    </div>
-
-    <div class="tr span-23">
+    <p>
+      <%= yield %>
+    </p>
+      
+    <div class="tr span-19 margin-foot">
       <%= render '/layouts/bills/bill_footer' %>
 	  </div>
 

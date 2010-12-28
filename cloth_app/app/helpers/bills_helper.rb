@@ -6,20 +6,22 @@ module BillsHelper
 
   def get_address
     addresses = @bill.user.addresses
+    
     if addresses && addresses.count > 1
+
       addresses.each do |a|
+
         if a.kind == true
           return a
         end
+        
       end
+
     elsif addresses && addresses.count == 1
-      if addresses.first.kind == true
-       return addresses
-      end
+      return addresses.first
     else
       nil
-    end
-    
+    end  
   end
   
 end

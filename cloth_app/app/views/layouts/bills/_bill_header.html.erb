@@ -1,22 +1,18 @@
 <%# Kontaktadresse Nutzer, Kundennummer, Bestellnummer, Bestelldatum, Paketnummer, Rechnungsnummer %>
 
-<div class="tr">
-  <div class=" span-13 td">
-    <%= image_tag '/images/logo.gif', :height => '100', :width => '150' %>
-  </div>
-
   <% address = get_address %>
-  <div class="prepend-1 span-4 td">
+  <div class="span-12 td">
+    <% if address %>
     <ol>
-      <li><%= address ? address.receiver : " " %> </li>
-      <li><%= address ? address.co_receiver : " " %></li>
-      <li><%= address ? address.street_and_number : " "%> </li>
-      <li><%= address ? address.postcode : " " %> </li>
-      <li><%= address ? address.town  : " "%> </li>
+      <li><%= address.receiver %> </li>
+      <li><%= address.receiver_additional %></li>
+      <li><%= address.street_and_number %> </li>
+      <li><%= address.postcode %> <%= address.town %></li>
     </ol>
+   <% end %>
   </div>
 
-  <div class="span-7 td last">
+  <div class="span-6 td last">
     <ol>
       <li>Rechnungsdatum:   <%= formatted_date(Date.today)%> </li>
       <li>Rechnungsnummer:  <%= @bill.bill_number  %></li>
@@ -26,7 +22,7 @@
     </ol>
   </div>
 
-</div>
+
 <br><br><br><br>
 
 

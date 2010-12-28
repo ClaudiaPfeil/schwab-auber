@@ -1,17 +1,4 @@
-/* -----------------------------------------------------------------------
 
-
- Blueprint CSS Framework 1.0
- http://blueprintcss.org
-
-   * Copyright (c) 2007-Present. See LICENSE for more info.
-   * See README for instructions on how to use Blueprint.
-   * For credits and origins, see AUTHORS.
-   * This is a compressed file. See the sources in the 'src' directory.
-
------------------------------------------------------------------------ */
-
-/* print.css */
 body {line-height:1.5;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;color:#000;background-color: white;font-size:10pt;}
 .container {background:none;}
 hr {
@@ -27,23 +14,28 @@ hr {
 hr.space {background:#fff;color:#fff;visibility:hidden;}
 h1, h2, h3, h4, h5, h6 {font-family:"Helvetica Neue", Arial, "Lucida Grande", sans-serif; color: black;}
 code {font:.9em "Courier New", Monaco, Courier, monospace;}
-a img {border:none;}
+a img {border:none; color: #369;}
 p img.top {margin-top:0;}
 blockquote {margin:1.5em;padding:1em;font-style:italic;font-size:.9em;}
 .small {font-size:.9em;}
 .large {font-size:1.1em;}
 .quiet {color:black;}
 .hide {display:none;}
-a:link, a:visited {background:transparent;font-weight:700;text-decoration:none;}
-a:link:after, a:visited:after {font-size:90%;}
+a:link, a:visited {background:transparent;font-weight:700;text-decoration:none;color: #369;}
+a:link:after, a:visited:after {font-size:90%;color: #369;}
 
 .background {background-color: white;}
 .abstand {margin-left: 0.5em;}
-ol, li {list-style-type: none;}
+ol, li {list-style-type: none; margin: 0; padding: 0;}
 .tr {display: table-row;margin: 0;padding: 0;}
 .td {display: table-cell;valign: top;padding: 0.5em;text-align: left;vertical-align: top;}
 .border {border: 1px black solid;}
-.no_abstand {margin-right: 0px; padding-right: 0px; margin-left: 0px;}
-.closer { margin-left: -35px;}
-.no_border_left { border-left: gray 0.5px; border-top: 1px; border-bottom: 1px; border-right: 1px; border-color:  black; border-style: solid; }
-.no_print { display: none;}
+.no_border_left { border-left: gray 0.5px; border-top: 1px; border-bottom: 1px; border-right: 1px; border-color:  black; border-style: solid; margin: 0; padding: 0;}
+.no-margin-left { padding-left: 0; margin-left: 0;}
+.no-margin-right { padding-right:  0; margin-right: 0;}
+.col-14 {width: 550px;}
+.col-3 { width: 110px;}
+.font-small { font-size: 8pt;}
+.margin-5 { margin-bottom: 55px;}
+.margin-10 { margin-bottom: 110px;}
+.margin-foot { margin-top: 150px; }

@@ -1,5 +1,11 @@
 
 /* pdf.css */
+/*@page {
+  @bottom_center{
+    content: counter(page);
+  }
+}*/
+
 body {line-height:1.5;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;color:#000;background-color: white;font-size:10pt;}
 .container {background:none;}
 hr {
@@ -34,3 +40,4 @@ ol, li {list-style-type: none;}
 .no_abstand {margin-right: 0px; padding-right: 0px; margin-left: 0px;}
 .closer { margin-left: -35px;}
 .no_border_left { border-left: gray 0.5px; border-top: 1px; border-bottom: 1px; border-right: 1px; border-color:  black; border-style: solid; }
+.no_print { display: none;}

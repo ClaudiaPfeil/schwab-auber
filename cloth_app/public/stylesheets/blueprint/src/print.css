@@ -93,3 +93,4 @@ a:link:after, a:visited:after {
 } */
 
 .background {background-color: #CCCC99;}
+.no_print { display: none;}

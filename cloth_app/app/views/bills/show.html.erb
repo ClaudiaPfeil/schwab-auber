@@ -1,6 +1,6 @@
 <%# Rechnung%>
-<div class="tr span-22">
-  <div class="prepend-1 td span-19">
+<div class="tr span-19">
+  <div class="td span-18">
     <ol>
       <li><h1>Rechnung</h1></li>
       <li><br><br><p>Bitte geben sie bei der Überweisung die Rechnungsnummer mit an.</p></li>
@@ -9,8 +9,8 @@
   </div>
 </div>
 
-<div class="tr">
-  <div class="prepend-1 td span-18 no_abstand">
+<div class="tr span-19">
+  <div class="td no-margin-right col-14">
     <ol class="border">
       <li class="border"><h2><b><%= I18n.t(:description)  %></b></h2></li>
       <li class="border"><%= @bill.package_number%></li>
@@ -21,7 +21,7 @@
     </ol>
   </div>
 
-  <div class="span-3 td no_abstand closer">
+  <div class="td col-3 no-margin-left">
     <ol class="no_border_left ">
       <li class="no_border_left "><h2><b><%= I18n.t(:amount_bill) %></b></h2></li>
       <li class="no_border_left ">&nbsp;</li>

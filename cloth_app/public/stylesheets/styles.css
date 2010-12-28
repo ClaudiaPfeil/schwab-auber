@@ -1,9 +1,3 @@
-@page {
-  @bottom-center {
-    content: counter(page);
-  }
-}
-
 body {
   background-color: #336699;
   font-size: 11px;
@@ -263,29 +257,16 @@ li.optional > fieldset {
   margin: 0;
 }
 
-li.optional > fieldset > ol {
-  margin-left: 240px;
-}
+li.optional > fieldset > ol { margin-left: 240px;}
 
-li.optional > fieldset > ol > li {
-  font-style: normal;
-  display: block;
-}
+li.optional > fieldset > ol > li { font-style: normal; display: block;}
 
-li.optional > fieldset > ol > li > label > input {
-  float: none;
-}
+li.optional > fieldset > ol > li > label > input { float: none;}
 
-li.commit > input {
-  float: right;
-  margin-right: 12em;
-}
+li.commit > input { float: right; margin-right: 12em;}
 
-li.commit > input#package_submit {
-  float: right;
-  margin-right: 35em;
-}
+li.commit > input#package_submit { float: right; margin-right: 35em;}
 
-input#search_key {
-  float: none;
-}
+input#search_key {float: none;}
+
+ol, li { list-style-type: none;}
