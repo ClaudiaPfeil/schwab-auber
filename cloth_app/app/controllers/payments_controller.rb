@@ -137,7 +137,16 @@ class PaymentsController < ApplicationController
               "&ACCEPTURL=#{params[:ACCEPTURL].to_s}" +
               "&DECLINEURL=#{params[:DECLINEURL].to_s}" +
               "&PM=#{params[:PM].to_s}" +
-              "&TXTOKEN=#{params[:TXTOKEN].to_s}"
+              "&TXTOKEN=#{params[:TXTOKEN].to_s}" +
+              "&TITLE=#{params[:TITLE].to_s}" +
+              "&BGCOLOR=#{params[:BGCOLOR].to_s}" +
+              "&TXTCOLOR=#{params[:TXTCOLOR].to_s}" +
+              "&TBLBGCOLOR=#{params[:TBLBGCOLOR].to_s}" +
+              "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR].to_s}" +
+              "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR].to_s}" +
+              "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR].to_s}" +
+              "&LOGO=#{params[:LOGO].to_s}" +
+              "&FONTTYPE=#{params[:FONTTYPE].to_s}"
 
         redirect_to url, :notice => I18n.t(:payment_created)
       end
