@@ -82,6 +82,7 @@ class ProfilesController < ApplicationController
   # Historie aller Profile exportieren als CSV
   def export_histories
     @profiles = User.all if current_user.is? :admin
+
     if @profiles
       path = 'export/'
       name = 'alle_profile_historien.csv'
@@ -89,6 +90,7 @@ class ProfilesController < ApplicationController
       input = ""
 
       @profiles.each do |profi|
+        puts "Profil: " + profi
         File.open(path+name, "w") do |histories|
           
           input << "Name, Vorname, Kunden-Nr.,\n"
@@ -96,6 +98,9 @@ class ProfilesController < ApplicationController
 
           packages = profi.packages
           orders = profi.orders
+
+          puts "packages: " + packages
+          puts "orders: " + orders
           
           unless packages.blank?
             input << "Pakete-Historie," + "\n"
@@ -119,7 +124,7 @@ class ProfilesController < ApplicationController
 
             input << "\n"
           end
-          
+          puts input
           histories.write(input) unless input.blank?
         end
       end

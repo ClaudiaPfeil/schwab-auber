@@ -11,8 +11,8 @@ module BillsHelper
 
       addresses.each do |a|
 
-        if a.kind == true
-          return a
+        if a.first.kind == true
+          return a.first
         end
         
       end
