@@ -18,9 +18,10 @@
     <div class="tr span-19 ">
       <div class="td span-8"><%= image_tag '/images/logo.gif', :height => '100', :width => '150' %></div>
       <div class="td span-10 no_print"><p align="right"><%= link_to I18n.t(:download_bill), bill_path(@bill,"pdf") %></p></div>
+      <br><br><br><br><br>
     </div>
-    <br><br><br><br><br>
-    <div class="tr span-19 margin-10">
+    
+    <div class="tr span-19 margin-5 margin-10">
       <%= render "/layouts/bills/bill_header" %>
 	  </div>
 

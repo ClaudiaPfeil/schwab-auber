@@ -12,6 +12,12 @@
 ----------------------------------------------------------------------- */
 
 /* print.css */
+@page {
+  height: 100%;
+  width: 100%;
+  padding-left: 1cm;
+  margin: 0;
+}
 body {line-height:1.5;font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;color:#000;background-color: white;font-size:10pt;}
 .container {background:none;}
 hr {
