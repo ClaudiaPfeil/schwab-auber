@@ -1,5 +1,5 @@
 <%# Rechnung%>
-<div class="tr span-19">
+<div class="tr span-19 margin-5">
   <div class="td span-18">
     <ol>
       <li><h1>Rechnung</h1></li>
@@ -9,10 +9,11 @@
   </div>
 </div>
 
-<div class="tr span-19">
+<div class="tr span-19 margin-5">
+
   <div class="td no-margin-right col-14">
     <ol class="border">
-      <li class="border"><h2><b><%= I18n.t(:description)  %></b></h2></li>
+      <li class="border"><h2><b><%= I18n.t(:bill_description)  %></b></h2></li>
       <li class="border"><%= @bill.package_number%></li>
       <li class="border"><%= I18n.t(:price_net) %></li>
       <li class="border"><%= I18n.t(:price_post) %></li>
@@ -21,7 +22,7 @@
     </ol>
   </div>
 
-  <div class="td col-3 no-margin-left">
+  <div class="td col-3 no-margin-left abstand_oben">
     <ol class="no_border_left ">
       <li class="no_border_left "><h2><b><%= I18n.t(:amount_bill) %></b></h2></li>
       <li class="no_border_left ">&nbsp;</li>
@@ -31,6 +32,7 @@
       <li class="no_border_left ">&nbsp;<%= get_price.to_f / 100  %></li>
     </ol>
   </div>
+  
 </div>
 
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>

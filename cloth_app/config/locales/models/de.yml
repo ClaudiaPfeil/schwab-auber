@@ -123,6 +123,8 @@ de:
         premium:  Premium
         continue_membership:  Mitgliedschaft nach Ablauf automatisch verlängern?
         premium_period: Monatspakete Premium
+        yes: Ja
+        no: Nein
       order:
         bill_number: Rechnungs-Nr.
         order_number: Bestell-Nr.

@@ -6,6 +6,7 @@ de:
   name_package: Bezeichnung
   amount_clothes: Anzahl Kleider
   description:  Notiz
+  bill_description: Kleidperpaket
   search_packages: Suche nach Kleidungspaketen
   show_packages: Anzeige Kleidungspaket
   show_packages_24: Alle Kleiderpakete der letzten 24h

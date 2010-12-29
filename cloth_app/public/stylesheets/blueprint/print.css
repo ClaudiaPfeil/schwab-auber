@@ -40,20 +40,24 @@ a:link:after, a:visited:after {font-size:90%;}
 .background {background-color: white;}
 .abstand {margin-left: 0.5em;}
 ol, li {list-style-type: none; padding: 0;}
-.tr {display: table-row;margin: 0;padding: 0;}
-.td {display: table-cell;valign: top;padding: 0.5em;text-align: left;vertical-align: top;}
+.tr {display: table-row;}
+.td {display: table-cell; padding: 0.5em;text-align: left;}
 .border {border: 1px black solid;}
-.no_border_left { border-left: gray 0.5px; border-top: 1px; border-bottom: 1px; border-right: 1px; border-color:  black; border-style: solid; margin: 0; padding: 0;}
-.no-margin-left { padding-left: 0; margin-left: 0; margin-top: 5px;}
+.no_border_left { border-left: gray 0.5px; border-top: 1px; border-bottom: 1px; border-right: 1px; border-color:  black; border-style: solid; }
+.no-margin-left { padding-left: 0; margin-left: 0;}
 .no-margin-right { padding-right:  0; margin-right: 0;}
 .col-14 {width: 15cm;}
-.col-3 { width: 5cm;}
-.font-small { font-size: 8pt;}
-.margin-5 { margin-bottom: 2cm;}
-.margin-10 { margin-bottom: 3cm;}
-.margin-foot { margin-bottom: 1cm; }
+.col-3 { width: 5cm; }
+.font-small { font-size: 8pt; margin-right: 20px;}
+.margin-5 { margin-bottom: 50px; border: 2px blue dotted;}
+.margin-10 { margin-bottom: 100px; border: 2px blue dotted;}
+.margin-foot { margin-top: 50px; border: 2px blue dotted; }
 .no_print { display: none;}
-.span-19 { width: 700px; border: 2px blue dotted;}
-.span-12 {width: 450px; }
-.span-6 { width: 220px;}
-.td { border: 1px aqua dashed; text-align: left; padding: 0;}
+.span-19 { width: 700px; }
+.span-12 {width: 440px; }
+.span-6 { width: 230px;}
+.span-4 { width: 150px; }
+.td { text-align: left; padding: 0; margin:0;}
+.abstand_oben { margin-top: 50px;}
+
+/*border: 2px blue dotted;*/

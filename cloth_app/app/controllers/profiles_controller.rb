@@ -90,6 +90,9 @@ class ProfilesController < ApplicationController
 
       @profiles.each do |profi|
         File.open(path+name, "w") do |histories|
+          
+          input << "Name, Vorname, Kunden-Nr.,\n"
+          input << "#{profi.last_name}, #{profi.first_name}, #{profi.user_number}\n"
 
           packages = profi.packages
           orders = profi.orders
@@ -117,7 +120,7 @@ class ProfilesController < ApplicationController
             input << "\n"
           end
           
-          histories.write(input) if input
+          histories.write(input) unless input.blank?
         end
       end
       send_file(path+name) 
