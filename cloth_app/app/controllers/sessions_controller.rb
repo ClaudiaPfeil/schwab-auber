@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
       self.current_user = user
       new_cookie_flag = (params[:remember_me] == "1")
       handle_remember_cookie! new_cookie_flag
-      current_user.is_premium? ? (redirect_to search_packages_path, :notice => "Login erfolgreich.") : (redirect_to membership_path, :notice => "Login erfolgreich.")
+      redirect_to packages_path, :notice => "Login erfolgreich."
       #redirect_back_or_default('/', :notice => "Logged in successfully")
     else
       note_failed_signin

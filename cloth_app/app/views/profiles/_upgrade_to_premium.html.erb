@@ -1,0 +1,20 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%#*Upgrade auf Premium-Mitgliedschaft anbieten%>
+
+<% if current_user.is? :registered %>
+  <%= create_header3_with_link(I18n.t(:upgrade_premium), (link_to I18n.t(:upgrade), '#', :rel => 'premium', :class => 'upgrade'), Profile, :update) %>
+<% end %>
+
+<div id="premium" style="display: none">
+
+  <div class="tr span-22">
+    <div class="td first">&nbsp;</div>
+    <div class="td spna-21"><%= render "/welcome/choose_membership", :@user => current_user, :upgrade => true %></div>
+    <div class="td last">&nbsp;</div>
+  </div>
+
+</div>
