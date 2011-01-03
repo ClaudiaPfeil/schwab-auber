@@ -85,7 +85,7 @@ class UsersController < ApplicationController
       end
       
       if user[:membership] == "true"
-        puts user
+        
         if @user.update_attributes({:role => "premium", :premium_period => user[:premium_period], :membership_ends => period, :membership_starts => Date.today, :membership => true} )
           redirect_to payment_method_bank_detail_path(@user, :upgrade => true), :notice => I18n.t(:membership_upgraded)
         else

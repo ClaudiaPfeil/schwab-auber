@@ -8,10 +8,10 @@
 <%# Payment-Anbindung%>
 <%# General params:%>
 <%= bank.input :PSPID, :as => :hidden, :value => 'pauber' %>
-<%= bank.input :ORDERID, :as => :hidden, :value => id %>
+<%= bank.input :ORDERID, :as => :hidden, :value => (params[:upgrade] ? 0 : id) %>
 
 <% if params[:upgrade] %>
-<%# debugger %>
+
   <%= bank.input :AMOUNT, :as => :hidden, :value => get_membership_price %>
 <% else %>
   <%= bank.input :AMOUNT, :as => :hidden, :value => get_price %>

@@ -10,7 +10,7 @@
                   :collection =>  {I18n.t(:prepayment) => 1, I18n.t(:paypal) => 2, I18n.t(:master_visa_card)  =>  3},
                   :first_blank => false
   %>
-  <%= bank.input :package_id, :as => :hidden, :value => params[:id] %>
+  <%= bank.input :package_id, :as => :hidden, :value => ( params[:upgrade] ? 0 : params[:id]) %>
 
   <%= render "interface", :bank => bank, :id => params[:id] %>
 
