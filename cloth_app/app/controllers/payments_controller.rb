@@ -26,7 +26,7 @@ class PaymentsController < ApplicationController
   # - ein Kleiderpaket bestellt wird oder
   # - ein Upgrade der Premium-Mitgliedschaft erfolgt
   def create
-    if params[:payment][:package_id]
+    unless params[:payment][:package_id].blank?
       package = Package.find_by_id(params[:payment][:package_id])
       user = package.user
       order = package.order
