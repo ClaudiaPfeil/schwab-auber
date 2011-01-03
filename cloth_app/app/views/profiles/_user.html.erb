@@ -11,7 +11,7 @@
   <%= profile.input :telephone %>
   <%= profile.input :email %>
   <%= profile.input :user_number, :input_html => {:readonly => true} %>
-  <%= profile.input :activated_at, :as => :datepicker %>
+  <%= profile.input :activated_at, :as => :datepicker, :input_html => {:readonly => true} %>
   <%= profile.input :start_holidays, :as => :datepicker %>
   <%= profile.input :end_holidays, :as => :datepicker %>
   <%= profile.input :cartons, :input_html => {:readonly => true} %>

@@ -31,7 +31,7 @@
     <% result.each do |name| %>
       <div class="td .span-2">
         <% if name.to_s == "kind" %>
-          <%= address.attributes[name.to_s] == 0 ? "Lieferanschrift" : "Rechnungsanschrift" %>
+          <%= address.attributes[name.to_s] == 0 ? "Rechnungsanschrift" : "Lieferanschrift" %>
         <% else %>
           <%=  address.attributes[name.to_s]  %>
         <% end %>
