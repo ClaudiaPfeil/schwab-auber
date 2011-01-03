@@ -1,7 +1,7 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
-require "uri"
 require "net/http"
+require "uri"
 
 class PaymentsController < ApplicationController
   before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
@@ -167,8 +167,9 @@ class PaymentsController < ApplicationController
                   "LOGO" => params[:LOGO].to_s,
                   "FONTTYPE" => params[:FONTTYPE].to_s
                 }
-
+        
         x = Net::HTTP.post_form(URI.parse(url), infos)
+
         puts "send_to_ogone_paypal: " + x.body
       end
 
