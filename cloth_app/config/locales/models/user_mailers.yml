@@ -8,3 +8,5 @@ de:
   bank:         'Kreditinstitut: '
   bank_conto:   'Blz :                     '
   bank_account: 'Konto-Nr. :        '
+  forgot_password:  Passwort vergessen
+  reset_password: Passwort zurücksetzen

@@ -75,6 +75,8 @@ de:
         name: Bezeichnung
         amount: Anzahl Kleider
         basics: Erstausstattung
+        no: Nein
+        yes: Ja
       payment:
         kind: 'Wählen Sie eine Zahlungsart aus:'
         paypal: Paypal

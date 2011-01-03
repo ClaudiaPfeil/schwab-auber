@@ -69,6 +69,8 @@ ClothApp::Application.routes.draw do
   match 'dashboard' => 'welcome#dashboard', :as => :dashboard
   match 'profiles/invite_friend' => 'profiles#invite_friend', :as => 'invite_friend'
   match 'welcome/import_coupons' => 'welcome#import_coupons', :as => 'import_coupons'
+  match 'forgot_password' => 'users#forgot_password', :as => 'forgot_password'
+  match 'reset_password/:id' => 'users#reset_password', :as => 'reset_password'
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

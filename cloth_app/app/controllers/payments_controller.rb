@@ -1,9 +1,9 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
-require "net/http"
-require "uri"
-
 class PaymentsController < ApplicationController
+  require "net/http"
+  require "uri"
+
   before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
 
   SHA_SIGNATUR = "B7DB33CA21A704FF97ECA72608491AF739DDFE4952932A9AAEE6B1806764D9469FE0980369693A7B65341A08EF9B8B037E482663951CD9608CC3536D4079EB26"
@@ -147,29 +147,29 @@ class PaymentsController < ApplicationController
       end
 
       def send_to_ogone_paypal(params)
-        url = "https://secure.ogone.com/ncol/test/orderstandard.asp"
-        infos = { "PSPID" => params[:PSPID].to_s,
-                  "ORDERID" => params[:ORDERID].to_s,
-                  "AMOUNT" => params[:AMOUNT].to_s,
-                  "CURRENCY" => params[:CURRENCY].to_s,
-                  "LANGUAGE" => params[:LANGUAGE].to_s,
-                  "ACCEPTURL" => params[:ACCEPTURL].to_s,
-                  "DECLINEURL" => params[:DECLINEURL].to_s,
-                  "PM" => params[:PM].to_s,
-                  "TXTOKEN" => params[:TXTOKEN].to_s,
-                  "TITLE" => params[:TITLE].to_s,
-                  "BGCOLOR" => params[:BGCOLOR].to_s,
-                  "TXTCOLOR" => params[:TXTCOLOR].to_s,
-                  "TBLBGCOLOR" => params[:TBLBGCOLOR].to_s,
-                  "TBLTXTCOLOR" => params[:TBLTXTCOLOR].to_s,
-                  "BUTTONBGCOLOR" => params[:BUTTONBGCOLOR].to_s,
-                  "BUTTONTXTCOLOR" => params[:BUTTONTXTCOLOR].to_s,
-                  "LOGO" => params[:LOGO].to_s,
-                  "FONTTYPE" => params[:FONTTYPE].to_s
+        url = 'https://secure.ogone.com/ncol/test/orderstandard.asp'
+        infos = { 'PSPID' => params[:PSPID].to_s,
+                  'ORDERID' => params[:ORDERID].to_s,
+                  'AMOUNT' => params[:AMOUNT].to_s,
+                  'CURRENCY"' => params[:CURRENCY].to_s,
+                  'LANGUAGE' => params[:LANGUAGE].to_s,
+                  'ACCEPTURL' => params[:ACCEPTURL].to_s,
+                  'DECLINEURL' => params[:DECLINEURL].to_s,
+                  'PM' => params[:PM].to_s,
+                  'TXTOKEN' => params[:TXTOKEN].to_s,
+                  'TITLE' => params[:TITLE].to_s,
+                  'BGCOLOR' => params[:BGCOLOR].to_s,
+                  'TXTCOLOR' => params[:TXTCOLOR].to_s,
+                  'TBLBGCOLOR' => params[:TBLBGCOLOR].to_s,
+                  'TBLTXTCOLOR' => params[:TBLTXTCOLOR].to_s,
+                  'BUTTONBGCOLOR' => params[:BUTTONBGCOLOR].to_s,
+                  'BUTTONTXTCOLOR' => params[:BUTTONTXTCOLOR].to_s,
+                  'LOGO' => params[:LOGO].to_s,
+                  'FONTTYPE' => params[:FONTTYPE].to_s
                 }
         
-        x = Net::HTTP.post_form(URI.parse(url), infos)
-
+        #x = Net::HTTP.post_form URI.parse(url), infos
+        x = Net::HTTP.post_form URI.parse('www.google.com'), infos
         puts "send_to_ogone_paypal: " + x.body
       end
 

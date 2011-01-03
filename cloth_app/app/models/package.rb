@@ -21,6 +21,7 @@ class Package < ActiveRecord::Base
 
   before_save do
     set_serial_number if self.serial_number.nil? || self.serial_number.blank?
+    puts self.serial_number
   end
 
   SearchTypes  = %w(serial_number sex size label)

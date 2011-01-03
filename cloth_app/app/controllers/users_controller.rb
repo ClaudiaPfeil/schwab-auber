@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :update, :invite_friend, :confirm_delivery]
+  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :update, :invite_friend, :confirm_delivery, :reset_password]
 
   # render new.rhtml
   def new
@@ -111,7 +111,27 @@ class UsersController < ApplicationController
     @user.update_attribute(:confirmed_delivery, 1)
     redirect_to dashboard_path
   end
-  
+
+  def forgot_password
+    user = User.find_by_login_and_email(params[:forgot_password][:login], params[:forgot_password][:email])
+    notice = ''
+    if user
+      UserMailer.forgot_password(user).deliver
+      notice += 'Ihr Passwort wurde eben an ihre E-Mail Konto versendet.'
+    else
+      notice += "Kein Nutzerkonto zu Login = #{params[:forgot_password][:login]} und E-Mail = #{params[:forgot_password][:email]} gefunden!"
+    end
+    redirect_back_or_default('/', :notice => notice )
+  end
+
+  def reset_password
+    if params[:user]
+      if @user.update_attribute(:password, params[:user][:password])
+        redirect_to login_path, :notice => I18n.t(:password_reseted_successfully)
+      end
+    end
+    
+  end
   # There's no page here to update or destroy a user.  If you add those, be
   # smart -- make sure you check that the visitor is authorized to do so, that they
   # supply their old password along with a new one to update it, etc.
@@ -119,7 +139,7 @@ class UsersController < ApplicationController
   protected
 
   def find_user
-    @user = User.find(params[:id])
+    @user = User.find_by_id(params[:id])
   end
 
   def create_lead(user)

@@ -18,3 +18,8 @@ de:
   register: Anmelden
   accepted: Akzeptieren
   membership_upgraded:  Upgrade zur Premium-Mitgliedschaft erfolgreich
+  login: Login
+  email_password: Passwort per E-Mail senden
+  send_password:  Passwort senden
+  reset_password: Passwort zurücksetzen
+  password_reseted_successfully:  Passwort erfolgreich zurückgesetzt

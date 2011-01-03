@@ -48,6 +48,8 @@ de:
   import: Importieren
   show_charity: Höhe der aktuellen Charity Spende
   charity:  Charity
+  no: Nein
+  yes: Ja
   mailers/user_mailer:
     subject_signup:  "KidsKarton Konto Aktivierung"
     signup_created: "Ihr KidsKarton Konto wurde eingerichtet"

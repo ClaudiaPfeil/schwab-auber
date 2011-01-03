@@ -37,6 +37,13 @@ class UserMailer < ActionMailer::Base
     @message  = payment[:message]
     @bank = get_content("BankDetails")
   end
+
+  def forgot_password(user)
+    setup_email(user)
+    @subject += I18n.t('reset_password')
+    @user = user
+    @link = "http://#{SITE_URL}/" + "reset_password/" + user.id.to_s
+  end
   
   protected
 

@@ -1,7 +1,13 @@
 <div class="span-9 prepend-1">
   <h1>Anmelden</h1>
   <%= get_notices %>
- 
+  <p>
+    <% unless get_notices.blank? %>
+      <%= link_to "Passwort vergessen?", '#', :rel => 'forgot_password', :class => 'simpledialog' %>
+      <div id="forgot_password" style="display: none"><%= render 'forgot_password', :login => params[:login] %> </div>
+    <% end %>
+  </p>
+  
   <%= form_tag session_path do -%>
   <p><%= label_tag 'login' %>
   <%= text_field_tag 'login', @login %></p>
@@ -15,7 +21,10 @@
   <p><%= submit_tag 'Log in' %></p>
   <% end -%>
 
+  
 </div>
+
+
 
 <%= render '/contents/cms/site', :contents => @contents %>
 
