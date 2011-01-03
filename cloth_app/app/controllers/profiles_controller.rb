@@ -99,9 +99,6 @@ class ProfilesController < ApplicationController
           packages = profi.packages
           orders = profi.orders
 
-          puts "packages: " + packages
-          puts "orders: " + orders
-          
           unless packages.blank?
             input << "Pakete-Historie," + "\n"
             input << "Paket-Nr., Erstellt am, Anzahl Kleider, Geschlecht, Beschreibung, Labels," + "\n"
