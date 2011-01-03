@@ -22,17 +22,31 @@ class PaymentsController < ApplicationController
     @payment = Payment.new()
   end
 
+  # Payment-Eintrag wenn:
+  # - ein Kleiderpaket bestellt wird oder
+  # - ein Upgrade der Premium-Mitgliedschaft erfolgt
   def create
-    package = Package.find_by_id(params[:payment][:package_id])
-    user = package.user
-    order = package.order
- 
-    payment = {:user_id => user.id,
-               :order_id => order.id,
-               :package_id => package.id,
-               :kind  => params[:payment][:kind],
-               :balance => params[:payment][:AMOUNT]
-              }
+    if params[:payment][:package_id]
+      package = Package.find_by_id(params[:payment][:package_id])
+      user = package.user
+      order = package.order
+
+      payment = {:user_id => user.id,
+                 :order_id => order.id,
+                 :package_id => package.id,
+                 :kind  => params[:payment][:kind],
+                 :balance => params[:payment][:AMOUNT]
+                }
+    else
+      payment = {
+                 :user_id => user.id,
+                 :order_id => 0,
+                 :package_id => 0,
+                 :kind  => params[:payment][:kind],
+                 :balance => params[:payment][:AMOUNT]
+                }
+    end
+    
     @payment = Payment.new(payment)
     if @payment.save
       # Bezahlschnittstelle ogone aufrufen, wenn MasterCard/Visa ausgewählt ist
