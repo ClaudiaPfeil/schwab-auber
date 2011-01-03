@@ -78,7 +78,8 @@ class UsersController < ApplicationController
     end
     
     if @user.update_attributes(user)
-      if @user.option.nil? && !user[:option].nil?
+      
+      if @user.option.nil? && !params[:option].nil?
         option = params[:option]
         option[:user_id] = params[:id].to_i
         Option.create(option)
