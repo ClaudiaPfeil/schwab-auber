@@ -90,7 +90,7 @@ class ProfilesController < ApplicationController
       input = ""
 
       @profiles.each do |profi|
-        puts "Profil: " + profi
+       
         File.open(path+name, "w") do |histories|
           
           input << "Name, Vorname, Kunden-Nr.,\n"
