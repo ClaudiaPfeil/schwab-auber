@@ -18,9 +18,11 @@ class PricesController < ApplicationController
   def create
     @price  = Price.new(params[:price])
     if @price.save
-      redirect_to prices_path, :notice  =>  :price_created
+      redirect_to prices_path, :notice  =>  I18n.t(:price_created)
     else
-      render  :action =>  "new",  :notice =>  :price_not_created
+      @price = @price
+      @notice = I18n.t(:price_not_created)
+      render  :action =>  "new"
     end
   end
 
@@ -28,9 +30,11 @@ class PricesController < ApplicationController
 
   def update
     if @price.update_attributes(params[:price])
-      redirect_to prices_path, :notice  =>  :price_updated
+      redirect_to prices_path, :notice  =>  I18n.t(:price_updated)
     else
-      render  :action =>  'edit', :notice =>  :price_not_updated
+      @price = @price
+      @notice = I18n.t(:price_not_updated)
+      render  :action =>  'edit'
     end
   end
 

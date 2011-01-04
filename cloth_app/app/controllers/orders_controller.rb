@@ -33,10 +33,14 @@ class OrdersController < ApplicationController
       if @order.save
         redirect_to order_path(@order), :notice => I18n.t(:order_created)
       else
-        render :action => 'new', :notice => I18n.t(:order_not_created)
+        @order = @order
+        @notice = I18n.t(:order_not_created)
+        render :action => 'new'
       end
     else
-      render :action => 'new', :notice => I18n.t(:equal_change_principle)
+      @order = @order
+      @notice = I18n.t(:equal_change_principle)
+      render :action => 'new'
     end
     
   end
@@ -51,6 +55,8 @@ class OrdersController < ApplicationController
         redirect_to profile_path(@order.user), :notice => I18n.t(:order_not_updated)
       end
     else
+      @order = @order
+      @notice = I18n.t(:order_not_updated)
       render :action => 'edit'
     end
   end

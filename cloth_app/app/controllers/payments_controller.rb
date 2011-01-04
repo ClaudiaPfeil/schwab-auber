@@ -1,9 +1,9 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
-class PaymentsController < ApplicationController
-  require "net/http"
-  require "uri"
+require "net/http"
+require "uri"
 
+class PaymentsController < ApplicationController
   before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
 
   SHA_SIGNATUR = "B7DB33CA21A704FF97ECA72608491AF739DDFE4952932A9AAEE6B1806764D9469FE0980369693A7B65341A08EF9B8B037E482663951CD9608CC3536D4079EB26"
@@ -60,7 +60,9 @@ class PaymentsController < ApplicationController
         redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
       end
     else
-      render :action => "new", :notice => I18n.t(:payment_not_created)
+      @payment = @payment
+      @notice = I18n.t(:payment_not_created)
+      render :action => "new"
     end
   end
 
@@ -75,7 +77,9 @@ class PaymentsController < ApplicationController
     if @payment.update_attributes(params[:payment])
       redirect_to payments_path, :notice => I18n.t(:payment_updated)
     else
-      render :action => "edit", :notice => I18n.t(:payment_not_updated)
+      @payment = @payment
+      @notice = I18n.t(:payment_not_updated)
+      render :action => "edit"
     end
   end
 
@@ -88,7 +92,9 @@ class PaymentsController < ApplicationController
     if @payment.update_attribute(:prepayment_confirmed, true)
       redirect_to payments_path, :notice => I18n.t(:prepayment_confirmed)
     else
-      render :action => "index", :notice => I18n.t(:prepayment_not_confirmed)
+      @payment = @payment
+      @notice = I18n.t(:prepayment_not_confirmed)
+      render :action => "index"
     end
   end
 

@@ -1,0 +1,7 @@
+## YAML Template.
+---
+de:
+  coupons: Gutscheine
+  coupon_created: Gutschein erfolgreich erstellt
+  coupont_not_created:  Gutschein nicht erstellt
+

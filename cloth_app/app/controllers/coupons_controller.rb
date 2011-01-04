@@ -20,7 +20,9 @@ class CouponsController < ApplicationController
     if @coupon.save
       redirect_to coupons_path, :notice => I18n.t(:coupon_created)
     else
-      render :action => :new, :notice => I18n.t(:coupon_not_created)
+      @coupon = @coupon
+      @notice = I18n.t(:coupon_not_created)
+      render :action => :new
     end
   end
 

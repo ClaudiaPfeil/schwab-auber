@@ -7,4 +7,8 @@ de:
   destroy: Entfernen
   back: Zurück
   content_details: Text & Bild
+  content_created:  Inhalt erfolgreich erstellt
+  content_not_created:  Inhalt nicht erstellt
+  content_updated:  Inhalt erfolgreich aktualisiert
+  content_not_updated:  Inhalt nicht aktualisiert
   

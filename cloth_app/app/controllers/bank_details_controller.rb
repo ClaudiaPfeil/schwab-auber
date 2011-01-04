@@ -21,7 +21,9 @@ class BankDetailsController < ApplicationController
     if @bank_detail.save
       redirect_to bank_details_path, :notice  => I18n.t(:bank_detail_created)
     else
-      render  :action => 'new', :notice => I18n.t(:bank_detail_created_failed)
+      @bank_detail = @bank_detail
+      @notice = I18n.t(:bank_detail_created_failed)
+      render  :action => 'new'
     end
   end
 
@@ -33,7 +35,9 @@ class BankDetailsController < ApplicationController
     if @bank_detail.update_attributes(params[:bank_detail])
       redirect_to bank_details_path, :notice  =>  I18n.t(:bank_detail_updated)
     else
-      render  :action => 'edit', :notice  =>  I18n.t(:bank_detail_updated_failed)
+      @bank_detail = @bank_detail
+      @notice = I18n.t(:bank_detail_updated_failed)
+      render  :action => 'edit'
     end
   end
 

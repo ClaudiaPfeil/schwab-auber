@@ -24,7 +24,9 @@ class ProfilesController < ApplicationController
     if @profile.save
       redirect_to profiles_path, :notice => I18n.t(:profile_created)
     else
-      render :action => 'new', :notice => I18n.t(:profile_not_created)
+      @profile = @profile
+      @notice = I18n.t(:profile_not_created)
+      render :action => 'new'
     end
   end
 

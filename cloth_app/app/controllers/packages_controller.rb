@@ -26,7 +26,9 @@ class PackagesController < ApplicationController
     if @package.save
       redirect_to packages_path(@package), :notice => I18n.t(:package_created)
     else
-      render :action => 'new', :notice => I18n.t(:package_not_created)
+      @package = @package
+      @notice = I18n.t(:package_not_created)
+      render :action => 'new'
     end
     
   end
@@ -37,7 +39,9 @@ class PackagesController < ApplicationController
     if @package.update_attributes(prepare_package(params[:package]))
       redirect_to packages_path(@package), :notice => I18n.t(:package_updated)
     else
-      render :action => 'edit', :notice => I18n.t(:package_not_updated)
+      @package = @package
+      @notice = I18n.t(:package_not_updated)
+      render :action => 'edit'
     end
   end
 

@@ -10,20 +10,36 @@ class UsersController < ApplicationController
  
   def create
     logout_keeping_session!
-    @user = User.new(params[:user])
-    @user.register! if @user && @user.valid?
-    success = @user && @user.valid?
-    if success && @user.errors.empty?
-      # Prüfen, ob Neukunde ein geworbener Kunde ist?
-      if cookies[:invited]
-        create_lead(@user)
-        set_premium_first_month(@user)
+    address = Address.new(params[:user][:address])
+
+    if address
+      address.receiver = params[:user][:first_name] + " " + params[:user][:last_name]
+
+      if address.save!
+        @user = User.new(params[:user])
+        @user.register! if @user && @user.valid?
+
+        success = @user && @user.valid?
+        if success && @user.errors.empty?
+          # Prüfen, ob Neukunde ein geworbener Kunde ist?
+          if cookies[:invited]
+            create_lead(@user)
+            set_premium_first_month(@user)
+            #delete cookie
+            cookies.delete :invited
+          end
+          redirect_back_or_default('/', :notice => I18n.t(:user_created) )
+        else
+          flash.now[:error]  = I18n.t(:user_not_created)
+          render :action => 'new'
+        end
+      else
+        @user = @user
+        flash.now[:error]  = I18n.t(:user_not_created)
+        render :action => 'new'
       end
-      redirect_back_or_default('/', :notice => "Vielen Dank für die Anmeldung!  Wir senden ihnen einen Aktivierungs-Code per E-Mail.")
-    else
-      flash.now[:error]  = "Wir konnten das Konto leider nicht einrichten.  Versuchen sie es noch einmal oder kontaktieren sie unseren Admin."
-      render :action => 'new'
-    end
+      
+    end  
   end
 
   def activate
@@ -90,14 +106,18 @@ class UsersController < ApplicationController
         if @user.update_attributes({:role => "premium", :premium_period => user[:premium_period], :membership_ends => period, :membership_starts => Date.today, :membership => true} )
           redirect_to payment_method_bank_detail_path(@user, :upgrade => true), :notice => I18n.t(:membership_upgraded)
         else
-          render :action => 'edit', :notice => I18n.t(:membership_not_upgraded)
+          @user = @user
+          @notice = I18n.t(:membership_not_upgraded)
+          render :action => 'edit'
         end
       else
         redirect_to profiles_path, :notice => I18n.t(:profile_updated)
       end
       
     else
-      render :action => 'edit', :notice => I18n.t(:profile_not_updated)
+      @user = @user
+      @notice = I18n.t(:profile_not_updated)
+      render :action => 'edit'
     end
   end
 
@@ -117,7 +137,7 @@ class UsersController < ApplicationController
     notice = ''
     if user
       UserMailer.forgot_password(user).deliver
-      notice += 'Ihr Passwort wurde eben an ihre E-Mail Konto versendet.'
+      notice += I18n.t(:send_link)
     else
       notice += "Kein Nutzerkonto zu Login = #{params[:forgot_password][:login]} und E-Mail = #{params[:forgot_password][:email]} gefunden!"
     end
@@ -153,7 +173,7 @@ class UsersController < ApplicationController
   end
 
   def set_premium_first_month(user)
-    user.update_attributes(:membership => 1, :membership_starts => Date.today, :membership_ends => 1.months.from_now)
+    user.update_attributes(:membership => 1, :membership_starts => Date.today, :membership_ends => Date.today + 1.months)
   end
 
 end

@@ -15,8 +15,10 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
     if @category.save
-      redirect_to edit_category_path(@category), :notice => "Category successfully created"
+      redirect_to edit_category_path(@category), :notice => I18n.t(:category_created)
     else
+      @category = @category
+      @notice = I18n.t(:category_not_created)
       render :action => 'new'
     end
   end
@@ -25,8 +27,10 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update_attributes(params[:category])
-      redirect_to edit_category_path(@category), :notice => "Category successfully updated"
+      redirect_to edit_category_path(@category), :notice => I18n.t(:category_updated)
     else
+      @category = @category
+      @notice = I18n.t(:category_not_updated)
       render :action => 'edit'
     end
   end

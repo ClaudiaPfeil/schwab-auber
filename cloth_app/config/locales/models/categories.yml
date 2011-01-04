@@ -5,4 +5,8 @@ de:
   name_cat: Name
   description_cat:  Beschreibung
   new_category: Hinzufügen
+  category_created: Kategorie erfolgreich angelegt
+  category_not_created: Kategorie nicht angelegt
+  category_updated: Kategorie erfolgreich aktualisiert
+  category_not_updated: Kategorie nicht aktualisiert
   

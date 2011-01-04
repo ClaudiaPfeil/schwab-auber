@@ -3,16 +3,33 @@
   <div class="span-22 prepend-1 last">
     <h1>Registrieren als neues Mitglied</h1>
     <h2>und Kleidertauschen</h2>
-
+   
     <% @user.password = @user.password_confirmation = nil %>
 
     <%= semantic_form_for @user do |user| %>
-      <%= user.input :login %>
-      <%= user.input :email%>
-      <%= user.input :password, :as => :password%>
-      <%= user.input :password_confirmation, :as => :password, :hint => 'Bestätigen sie ihr Password' %>
-      <%= user.input :role, :value => 'registered', :as => :hidden %>
 
+      <%= user.inputs 'Details' do %>
+        <%= user.input :first_name %>
+        <%= user.input :last_name %>
+
+        <%#*Liefer-Anschrift%>
+        <%= user.semantic_fields_for :address do |address|  %>
+          <%= address.input :street_and_number %>
+          <%= address.input :postcode %>
+          <%= address.input :town %>
+          <%= address.input :land %>
+          <%= address.input :kind, :as => :hidden, :value => 1 %>
+        <% end %>
+      <% end %>
+
+      <%= user.inputs 'Login' do %>
+        <%= user.input :login %>
+        <%= user.input :email%>
+        <%= user.input :password, :as => :password%>
+        <%= user.input :password_confirmation, :as => :password, :hint => 'Bestätigen sie ihr Passwort' %>
+        <%= user.input :role, :value => 'registered', :as => :hidden %>
+      <% end %>
+    
       <%= user.inputs link_to I18n.t(:accept_agbs), '#', :rel => 'agbs', :class => 'simpledialog' do %>
         <%= user.input :accepted, :as => :boolean%>
       <% end %>

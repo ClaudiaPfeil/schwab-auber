@@ -11,3 +11,7 @@ de:
   price:  Preis
   prices: Preise
   new_price:  Hinzufügen
+  price_created:  Preis erfolgreich erstellt
+  price_not_created: Preis nicht erstellt
+  price_updated:  Preis erfolgreich aktualisiert
+  price_not_updated: Preis nicht aktualisiert

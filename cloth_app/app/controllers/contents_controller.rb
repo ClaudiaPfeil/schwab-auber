@@ -20,8 +20,10 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(params[:content])
     if @content.save
-      redirect_to edit_content_path(@content), :notice => "Content successfully created"
+      redirect_to edit_content_path(@content), :notice => I18n.t(:content_created)
     else
+      @ocntent = @content
+      @notice = I18n.t(:content_not_created)
       render :action => 'new'
     end
   end
@@ -30,8 +32,10 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update_attributes(params[:content])
-      redirect_to edit_content_path(@content), :notice => "Content successfully updated"
+      redirect_to edit_content_path(@content), :notice => I18n.t(:content_updated)
     else
+      @content = @content
+      @notice = I18n.t(:content_not_updated)
       render :action => 'edit'
     end
   end

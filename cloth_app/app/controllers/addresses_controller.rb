@@ -23,11 +23,15 @@ class AddressesController < ApplicationController
         profile = User.find_by_id(@address.user_id)
         redirect_to edit_profile_path(profile), :notice => I18n.t(:address_created)
       else
-        render :action => 'new', :notice => I18n.t(:address_not_created)
+        @address = @address
+        @notice = I18n.t(:address_not_created)
+        render :action => 'new'
       end
 
     else
-      render :action => 'new', :notice => I18n.t(:address_still_exist)
+      @address = @address
+      @notice  = I18n.t(:address_still_exist)
+      render :action => 'new'
     end
     
   end
@@ -38,7 +42,9 @@ class AddressesController < ApplicationController
     if @address.update_attributes(params[:address])
       redirect_to show_address_path(@address), :notice => I18n.t(:address_updated)
     else
-      render :action => 'edit', :notice => I18n.t(:address_not_updated)
+      @address = @address
+      @notice = I18n.t(:address_not_updated)
+      render :action => 'edit'
     end
   end
 
