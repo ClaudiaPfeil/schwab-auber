@@ -34,11 +34,13 @@
   <% else %>
 
     <% unless  @profile.orders.blank? %>
-      <div class="tr span-22">
-        <%  @table_cols.each do |name| %>
-          <div class='td span-6'><%= Order.find_by_id(@profile.orders.id).attributes[name.to_s]  %> </div>
-        <% end %>
-      </div>
+      <% @profile.orders.each do |order| %>
+        <div class="tr span-22">
+          <%  @table_cols.each do |name| %>
+            <div class='td span-6'><%= order.attributes[name.to_s]  %> </div>
+          <% end %>
+        </div>
+      <% end %>
 
       <%#*Anzeige des Punktestands%>
       <% score, max, max_eva = @profile.calc_score(@profile.id) %>

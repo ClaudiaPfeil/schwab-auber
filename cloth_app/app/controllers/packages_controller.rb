@@ -69,24 +69,27 @@ class PackagesController < ApplicationController
                        :package_id     => @package.id,
                        :user_id        => current_user.id
                       )
-
-    @order.bill_number = @order.get_bill_number
-    @order.order_number  = @order.get_order_number
+  
     @order.package.accepted = 1
     @order.package.confirmed = 1
     @order.package.user.accepted = 1
     
     if @order.check_change_principle == true && @order.check_holidays == true
-      
+      @order.order_number  = @order.get_order_number
+      @order.bill_number = @order.get_bill_number
       if @order.save!
         # count down cartons
         @package.user.count_down
-        redirect_to payment_method_bank_detail_path(@package), :notice => :order_created
+        redirect_to payment_method_bank_detail_path(@package), :notice => I18n.t(:order_created)
       else
-        render :action => 'search', :notice => :order_not_created
+        @packages = Package.all
+        @notice = I18n.t(:order_not_created)
+        render :action => 'index'
       end
     else
-      render :action => 'search', :notice => I18n.t(:check_failed)
+      @packages = Package.all
+      @notice = I18n.t(:check_failed)
+      render :action => 'index'
     end
   
   end

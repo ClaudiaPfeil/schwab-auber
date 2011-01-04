@@ -106,5 +106,8 @@ de:
   brown:  Braun
   serial_number:  Paket-Nr.
   show_package: Kleiderpaket
+  check_failed: Ihre Bestellung konnte leider nicht angenommen werden. Entweder ist das Tauschprinzip nicht gewährleistet oder der Anbieter ist in Urlaub.
+  order_not_created:  Leider ist ein Fehler im System aufgetreten und ihr Kleiderpaket konnte nicht bestellt werden. Versuchen sie es zu einem späteren Zeitpunkt noch einmal oder wenden sie sich an den Webmaster.
+  order_created: Bestellung erfolgreich eingegangen.
               		
 
