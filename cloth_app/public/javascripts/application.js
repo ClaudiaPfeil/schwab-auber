@@ -128,7 +128,9 @@ $(document).ready(function(){
   $('#package_kind_shirts__tops').click(function () {
     
     if($('#package_kind_shirts__tops').attr("checked")){
-      $('#package_shirts_input').slideDown();
+      //$('#package_shirts_input').slideDown();
+      alert("Clicked!")
+      $('#package_shirts_input').simpleDialog();
     }
     else
     {

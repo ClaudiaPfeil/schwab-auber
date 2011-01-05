@@ -29,7 +29,8 @@
     <%= package.input :kind,
                       :hint => I18n.t('hint_kind'),
                       :as =>  :check_boxes,
-                      :collection => translate(@package.get_contents("Kind"))
+                      :collection => translate(@package.get_contents("Kind"))#,
+                      #:input_html => {:class => 'simpledialog'}
     %>
 
     <%= package.input :shirts,

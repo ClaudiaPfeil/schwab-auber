@@ -1,4 +1,3 @@
-
 ###############################
 #
 # Capistrano Deployment on shared Webhosting by avarteq
@@ -7,21 +6,11 @@
 #
 ###############################
 
-#### Personal Settings
-## User and Password ( this values are prefilled )
+# Multistage Environment
+require 'capistrano/ext/multistage'
 
-# user to login to the target server
-set :user, "user13811513"
-
-# password to login to the target server
-set :password, "EjeB58GLiM"
-
-##
-
-## Application name and repository
-
-# application name ( should be rails1 rails2 rails3 ... )
-set :application, "rails2"
+# Stages
+set :stages, %w(development staging production)
 
 # repository location
 set :repository, "git@github.com:ClaudiaPfeil/schwab-auber.git"
@@ -33,10 +22,6 @@ set :scm_verbose, true
 #submodules
 set :git_enable_submodules, 1
 
-##
-
-####
-
 #### System Settings
 ## General Settings ( don't change them please )
 
@@ -45,16 +30,6 @@ default_run_options[:pty] = true
 
 # don't use sudo it's not necessary
 set :use_sudo, false
-
-# set the location where to deploy the new project
-set :deploy_to, "/home/#{user}/#{application}"
-
-# live
-role :app, "zeta.railshoster.de"
-role :web, "zeta.railshoster.de"
-role :db,  "zeta.railshoster.de", :primary => true
-
-
 
 ## ## ## ## ## ## ## ## ## ## ## ## ## ##
 ## Dont Modify following Tasks!
@@ -83,15 +58,6 @@ namespace :deploy do
     run "cd #{deploy_to} && rm -f ./current/public/system              && ln -s ../../shared/system #{current_path}/public/"
   end
 
-
-  after "deploy:rollback" do
-    if previous_release
-      run "rm #{current_path}; ln -s ./releases/#{releases[-2]} #{current_path}"
-    else
-      abort "could not rollback the code because there is no prior release"
-    end
-  end
-
 end
 
 
@@ -100,20 +66,5 @@ namespace :bundle do
   task :install, :roles => :app do
     run "cd #{current_path} && bundle check || bundle install --path=/home/#{user}/.bundle --without=test"
   end
-end
-
-
-
-namespace :rollback do
-
-  desc "overwrite rollback because of relative symlink paths"
-  task :revision, :except => { :no_release => true } do
-    if previous_release
-      run "rm -f #{current_path}; ln -s ./releases/#{releases[-2]} #{current_path}"
-    else
-      abort "could not rollback the code because there is no prior release"
-    end
-  end
-
 end
 
