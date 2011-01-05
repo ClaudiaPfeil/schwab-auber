@@ -20,7 +20,7 @@ class PackagesController < ApplicationController
     @package = Package.new()
   end
 
-  def create          
+  def create
     @package = Package.new(prepare_package(params[:package]))
     
     if @package.save
@@ -124,6 +124,7 @@ class PackagesController < ApplicationController
       result[:amount_labels] = package[:amount_labels]
       result[:confirmed] = package[:confirmed]
       result[:accepted] = package[:accepted]
+      result[:user_id] = package[:user_id]
       !package[:kind].nil? ? result[:kind] = package[:kind].collect{ |k| k + "," }.to_s : package[:kind]
       !package[:shirts].nil? ? result[:shirts] = package[:shirts].collect{ |k| k + "," }.to_s : package[:shirts]
       !package[:blouses].nil? ? result[:blouses] = package[:blouses].collect{ |k| k + "," }.to_s : package[:blouses]

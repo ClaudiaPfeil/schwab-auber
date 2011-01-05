@@ -24,7 +24,7 @@
 <%= bank.input :EMAIL, :as => :hidden, :value => current_user.email %>
 
 <%# SHA-1-IN signature %>
-<%= bank.input :SHASIGN, :as => :hidden, :value => 'schwab_und_auber_21' %>
+<%= bank.input :SHASIGN, :as => :hidden, :value => PaymentsController::SHA_SIGNATUR %>
 
 <%# Look & Feel:%>
 <%= bank.input :TITLE, :as => :hidden, :value => 'KidsKarton.de' %>

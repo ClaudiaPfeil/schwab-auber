@@ -129,56 +129,103 @@ $(document).ready(function(){
     
     if($('#package_kind_shirts__tops').attr("checked")){
       //$('#package_shirts_input').slideDown();
-      alert("Clicked!")
-      $('#package_shirts_input').simpleDialog();
-    }
-    else
-    {
-      $('#package_shirts_input').slideUp();
-    }
+      var dlg = $('#package_shirts_input').dialog({
+          height: 500,
+          width: 500,
+          modal: true,
+          buttons: {
+                      OK: function() {
+                                        $(this).dialog('close');
+                                      }
+                   }
+        });
+
+        dlg.parent().appendTo($("#new_package"));
+     }
   })
 
    $('#package_kind_blusen__hemden').click(function () {
      if($('#package_kind_blusen__hemden').attr("checked")){
-       $('#package_blouses_input').slideDown();
-     }else{
-       $('#package_blouses_input').slideUp();
+       //$('#package_blouses_input').slideDown();
+       var dlg = $('#package_blouses_input').dialog({
+          height: 500,
+          width: 500,
+          modal: true,
+          buttons: {
+                      OK: function() {
+                                        $(this).dialog('close');
+                                     }
+                   }
+        });
+        dlg.parent().appendTo($("#new_package"));
      }
-    
   })
 
   $('#package_kind_jacken').click(function () {
     if($('#package_kind_jacken').attr("checked")){
-      $('#package_jackets_input').slideDown();
-    }else{
-      $('#package_jackets_input').slideUp();
+      var dlg = $('#package_jackets_input').dialog({
+          height: 500,
+          width: 500,
+          modal: true,
+          buttons: {
+                      OK: function() {
+                                        $(this).dialog('close');
+                                     }
+                   }
+        });
+        dlg.parent().appendTo($("#new_package"));
     }
   })
 
   $('#package_kind_jeans').click(function () {
     if($('#package_kind_jeans').attr("checked")){
-      $('#package_jeans_input').slideDown();
-    }else{
-      $('#package_jeans_input').slideUp();
+      var dlg = $('#package_jeans_input').dialog({
+          height: 700,
+          width: 500,
+          modal: true,
+          buttons: {
+                      OK: function() {
+                                        $(this).dialog('close');
+                                     }
+                   }
+        });
+        dlg.parent().appendTo($("#new_package"));
     }
   })
 
   $('#package_kind_kleider__röcke').click(function () {
     if($('#package_kind_kleider__röcke').attr("checked")){
-      $('#package_dresses_input').slideDown();
-    }else{
-      $('#package_dresses_input').slideUp();
+      var dlg = $('#package_dresses_input').dialog({
+          height: 500,
+          width: 500,
+          modal: true,
+          buttons: {
+                      OK: function() {
+                                        $(this).dialog('close');
+                                     }
+                   }
+        });
+      dlg.parent().appendTo($("#new_package"));
     }
   })
 
   $('#package_kind_erstausstattung').click(function () {
     if($('#package_kind_erstausstattung').attr("checked")){
-      $('#package_basics_input').slideDown();
-    }else{
-      $('#package_basics_input').slideUp();
+      var dlg = $('#package_basics_input').dialog({
+          height: 500,
+          width: 500,
+          modal: true,
+          buttons: {
+                      OK: function() {
+                                        $inputs_basics = $("inputs","#package_basics_input");
+                                        $(this).dialog('close');
+                                     }
+                   }
+        });
+      dlg.parent().appendTo($("#new_package"));
     }
   })
-  
+
 })
 
 //$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));
@@ -203,3 +250,4 @@ jQuery(function($){
                 initStatus: 'Wähle ein Datum', isRTL: false};
         $.datepicker.setDefaults($.datepicker.regional['de']);
 });
+

@@ -8,8 +8,8 @@ module ProfilesHelper
   def outstanding_packages(profile)
     p = profile.packages.count
     o = profile.orders.count
-
-    o - (p + 1)
+    rest = o - (p + 1)
+    rest == 0 ? 1 : rest
     
   end
 
@@ -20,12 +20,13 @@ module ProfilesHelper
     (p + 1) - o
   end
 
-  def cartons_konto(profile)
+  def packages_konto(profile)
     pack_count  =   profile.packages.count
     ord_count   =   profile.orders.count
     success     =   "Sie haben noch #{credit_packages(profile)} Bestellung(en) offen bevor sie neue Kleiderpakete einstellen müssen."
     failure     =   "Sie schulden noch #{outstanding_packages(profile)} Kleiderpakete bevor sie wieder bestellen dürfen!"
-
+    puts "Anz. eingestellter Kleiderpaket: " + pack_count.to_s
+    puts "Anz. Bestellungen: " + ord_count.to_s
     pack_count < ord_count ? failure : success
   end
 

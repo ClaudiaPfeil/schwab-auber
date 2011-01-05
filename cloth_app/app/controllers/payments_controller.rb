@@ -77,7 +77,7 @@ class PaymentsController < ApplicationController
     if @payment.update_attributes(params[:payment])
       redirect_to payments_path, :notice => I18n.t(:payment_updated)
     else
-      @payment = @payment
+      #@payment = @payment
       @notice = I18n.t(:payment_not_updated)
       render :action => "edit"
     end
@@ -153,33 +153,39 @@ class PaymentsController < ApplicationController
       end
 
       def send_to_ogone_paypal(params)
-        url = 'secure.ogone.com/ncol/test/orderstandard.asp'
-        infos = { 'PSPID' => params[:PSPID].to_s,
-                  'ORDERID' => params[:ORDERID].to_s,
-                  'AMOUNT' => params[:AMOUNT].to_s,
-                  'CURRENCY"' => params[:CURRENCY].to_s,
-                  'LANGUAGE' => params[:LANGUAGE].to_s,
-                  'ACCEPTURL' => params[:ACCEPTURL].to_s,
-                  'DECLINEURL' => params[:DECLINEURL].to_s,
-                  'PM' => params[:PM].to_s,
-                  'TXTOKEN' => params[:TXTOKEN].to_s,
-                  'TITLE' => params[:TITLE].to_s,
-                  'BGCOLOR' => params[:BGCOLOR].to_s,
-                  'TXTCOLOR' => params[:TXTCOLOR].to_s,
-                  'TBLBGCOLOR' => params[:TBLBGCOLOR].to_s,
-                  'TBLTXTCOLOR' => params[:TBLTXTCOLOR].to_s,
-                  'BUTTONBGCOLOR' => params[:BUTTONBGCOLOR].to_s,
-                  'BUTTONTXTCOLOR' => params[:BUTTONTXTCOLOR].to_s,
-                  'LOGO' => params[:LOGO].to_s,
-                  'FONTTYPE' => params[:FONTTYPE].to_s
-                }
-        
-        x = Net::HTTP.post_form(URI.parse(url), infos)
-        puts "send_to_ogone_paypal: " + x.body
-        #res = Net::HTTP.post_form(URI.parse('http://translate.google.de/translate_t'),{'ie'=> 'UTF-8','text'=>'Hello World','sl'=>'en','tl'=>'de'})
-        #puts "send post to google: " + res.body
-        
-        
+        url = 'https://secure.ogone.com/ncol/test/orderstandard.asp?'
+        infos = "PSPID=#{params[:PSPID]}" +
+                "&ORDERID=#{params[:ORDERID]}" +
+                "&AMOUNT=#{params[:AMOUNT]}" +
+                "&CURRENCY=#{params[:CURRENCY]}" +
+                "&LANGUAGE=#{params[:LANGUAGE]}" +
+                "&ACCEPTURL=#{params[:ACCEPTURL]}" +
+                "&DECLINEURL=#{params[:DECLINEURL]}" +
+                "&PM=#{params[:PM]}" +
+                "&TXTOKEN=#{params[:TXTOKEN]}" +
+                "&TITLE=#{params[:TITLE]}" +
+                "&BGCOLOR=#{params[:BGCOLOR]}" +
+                "&TXTCOLOR=#{params[:TXTCOLOR]}" +
+                "&TBLBGCOLOR=#{params[:TBLBGCOLOR]}" +
+                "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR]}" +
+                "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR]}" +
+                "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR]}" +
+                "&LOGO=#{params[:LOGO]}" +
+                "&FONTTYPE=#{params[:FONTTYPE]}"
+                
+           
+        url = URI.parse(url)
+        req = Net::HTTP::Post.new(url.path + infos)
+        req.basic_auth 'pauber', 'auber&schwab'
+        req.set_form_data({'from'=> Date.today, 'to'=> Date.today + 1.months }, ';')
+        res = Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
+
+        case res
+        when Net::HTTPSuccess, Net::HTTPRedirection
+          puts "Ogone Schnittstelle erfolgreich aufgerufen"
+        else
+          puts "Ogone Schnittstelle nicht erreicht: " + s.error!
+        end
       end
 
 end
