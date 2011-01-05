@@ -36,8 +36,8 @@ de:
   send_invitation:  Einladung versenden
   friends_last_name:  Nachname
   friends_email:  E-Mail
-  yes: Ja
-  no: Nein
+  received_yes: Ja
+  received_no: Nein
   choose_settings: "Wählen sie zunächst ihre Einstellungen aus: "
   profile:  Profil
   upgrade: Upgrade

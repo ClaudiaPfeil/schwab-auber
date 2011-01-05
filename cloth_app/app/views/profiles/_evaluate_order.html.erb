@@ -8,7 +8,7 @@
 
   <%= o.input :evaluation, 
               :as => :select,
-              :collection  =>  @order.get_contents("Evaluation"),
+              :collection  =>  translate(@order.get_contents("Evaluation")),
               :include_blank => false
   %>
 

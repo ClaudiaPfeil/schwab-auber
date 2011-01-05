@@ -32,9 +32,5 @@ module PackagesHelper
     
   end
 
-  def translate(collection)
-    collection.map { |word| I18n.t(word.to_sym)}
-  end
-
 
 end

@@ -334,5 +334,10 @@ module ApplicationHelper
   def get_net_price
     ((get_price.to_f / 100) / 1.19).round(2)
   end
+
+  # Übersetzung der Bewertungen im Profil oder der Kleidersachen in Pakete
+  def translate(collection)
+    collection.map { |word| I18n.t(word.to_sym)}
+  end
   
 end

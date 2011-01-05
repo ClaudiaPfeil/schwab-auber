@@ -13,6 +13,8 @@ de:
       categories: Kategorien
       bank_detail:  Bankverbindung
       payment:  Bezahlung
+      yes: Ja
+      no: Nein
     attributes:
       address:
         back: Zurück
@@ -160,6 +162,7 @@ de:
         date_of_birth: Geburtsdatum
         telephone:  Telefonnummer
         cartons: Benachrichtigt werden bei mind. Versand-Kartonagen
+       
       
         
 

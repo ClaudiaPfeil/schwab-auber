@@ -26,7 +26,7 @@
         <% if name.to_s == "created_at" %>
           <%= formatted_date(profile.attributes[name.to_s]) %>
         <% elsif name.to_s == "received" %>
-          <%= profile.attributes[name.to_s] == 1 ? I18n.t(:yes) : I18n.t(:no) %>
+          <%= profile.attributes[name.to_s] == 1 ? I18n.t(:received_yes) : I18n.t(:received_no) %>
         <% else %>
           <%= profile.attributes[name.to_s] %>
         <% end %>
