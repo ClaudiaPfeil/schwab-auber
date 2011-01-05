@@ -153,7 +153,7 @@ class PaymentsController < ApplicationController
       end
 
       def send_to_ogone_paypal(params)
-        url = 'https://secure.ogone.com/ncol/test/orderstandard.asp'
+        url = 'secure.ogone.com/ncol/test/orderstandard.asp'
         infos = { 'PSPID' => params[:PSPID].to_s,
                   'ORDERID' => params[:ORDERID].to_s,
                   'AMOUNT' => params[:AMOUNT].to_s,
@@ -174,9 +174,12 @@ class PaymentsController < ApplicationController
                   'FONTTYPE' => params[:FONTTYPE].to_s
                 }
         
-        #x = Net::HTTP.post_form URI.parse(url), infos
-        x = Net::HTTP.post_form URI.parse('www.google.com'), infos
+        x = Net::HTTP.post_form(URI.parse(url), infos)
         puts "send_to_ogone_paypal: " + x.body
+        #res = Net::HTTP.post_form(URI.parse('http://translate.google.de/translate_t'),{'ie'=> 'UTF-8','text'=>'Hello World','sl'=>'en','tl'=>'de'})
+        #puts "send post to google: " + res.body
+        
+        
       end
 
 end
