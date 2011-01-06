@@ -50,12 +50,12 @@ namespace :deploy do
       else
         logger.important "no previous release to rollback to, rollback of symlink skipped"
       end
-    end
+    end/var/www/kidskarton/current/cloth_app/config
     run "cd #{deploy_to} && rm -f #{current_path}                      && ln -s ./releases/#{release_name} #{current_path}"
-    run "cd #{deploy_to} && rm -f #{current_path}/config/database.yml   && ln -s ../../../shared/config/database.yml #{current_path}/config/"
-    run "cd #{deploy_to} && rm -f ./current/log                        && ln -s ../../shared/log #{current_path}/"
-    run "cd #{deploy_to} && rm -f ./current/pids                       && ln -s ../../shared/pids #{current_path}/"
-    run "cd #{deploy_to} && rm -f ./current/public/system              && ln -s ../../shared/system #{current_path}/public/"
+    run "cd #{deploy_to} && rm -f #{current_path}/cloth_app/config/database.yml   && ln -s ../../../shared/config/database.yml #{current_path}/cloth_app/config"
+    run "cd #{deploy_to} && rm -f ./current/cloth_app/log                        && ln -s ../../shared/log #{current_path}/cloth_app/"
+    run "cd #{deploy_to} && rm -f ./current/cloth_app/pids                       && ln -s ../../shared/pids #{current_path}/cloth_app/"
+    run "cd #{deploy_to} && rm -f ./current/cloth_app/public/system              && ln -s ../../shared/system #{current_path}/cloth_app/public/"
   end
 
 end

@@ -170,7 +170,8 @@ $(document).ready(function(){
 
   // zurück zu Schritt 2 von 3
   $('#back2').click( function () {
-   $('#continue1').show();
+    $('#continue1').show();
+    $('#continue2').hide();
     $('#package_saison_input').show();
     $('#package_kind_input').show();
     $('#package_sex_input').hide();
@@ -194,7 +195,32 @@ $(document).ready(function(){
 
   // zurück zu Schritt 1 von 4
   $('#back1').click( function () {
-    
+    $('#package_age_input').show();
+    $('#package_size_input').show();
+    $('#package_next_size_input').show();
+    $('#continue').show();
+    $('#package_shirts_input').hide();
+    $('#package_blouses_input').hide();
+    $('#package_jackets_input').hide();
+    $('#package_jeans_input').hide();
+    $('#package_dresses_input').hide();
+    $('#package_basics_input').hide();
+    $('#package_saison_input').hide();
+    $('#package_kind_input').hide();
+    $('#package_label_input').hide();
+    $('#package_amount_labels_input').hide();
+    $('#package_colors_input').hide();
+    $('#package_notice_input').hide();
+    $('.simpledialog').hide();
+    $('#package_accepted_input').hide();
+    $('#package_confirmed_input').hide();
+    $('#package_submit').hide();
+    $('#continue1').hide();
+    $('#continue2').hide();
+    $('#back3').hide();
+    $('#back2').hide();
+    $('#back1').hide();
+
   })
 
 
