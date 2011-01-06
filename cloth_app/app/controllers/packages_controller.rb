@@ -22,14 +22,19 @@ class PackagesController < ApplicationController
 
   def create
     @package = Package.new(prepare_package(params[:package]))
-    
-    if @package.save
-      redirect_to packages_path(@package), :notice => I18n.t(:package_created)
-    else
-      @package = @package
-      @notice = I18n.t(:package_not_created)
-      render :action => 'new'
-    end
+
+    #if params[:commit] == 'create_package'
+      if @package.save
+        redirect_to packages_path(@package), :notice => I18n.t(:package_created)
+      else
+        @package = @package
+        @notice = I18n.t(:package_not_created)
+        render :action => 'new'
+      end
+#    else
+#      @package = @package
+#      render :action => 'new'
+#    end 
     
   end
 
