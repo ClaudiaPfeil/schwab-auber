@@ -95,6 +95,7 @@ $(document).ready(function(){
     $('#continue').hide();
     $('#back3').hide();
     $('#back2').hide();
+    $('#back1').show();
   })
 
 
@@ -109,8 +110,9 @@ $(document).ready(function(){
     $('#package_age_input').hide();
     $('#continue').hide();
     $('#continue1').hide();
+    $('#back1').hide();
     $('#back3').hide();
-    $('#back1').show();
+    $('#back2').show();
     $('#package_label_input').show();
     $('#package_amount_labels_input').show();
     $('#package_colors_input').show();
@@ -130,6 +132,7 @@ $(document).ready(function(){
     $('#continue1').hide();
     $('#continue2').hide();
     $('#back2').hide();
+    $('#back1').hide();
     $('#package_label_input').hide();
     $('#package_amount_labels_input').hide();
     $('#package_colors_input').hide();
@@ -143,7 +146,6 @@ $(document).ready(function(){
 
   // zurück von Seite 4 zu Seite 3
   $('#back3').click( function () {
-    alert("bonjour");
     $('#continue2').show();
     $('#package_saison_input').hide();
     $('#package_kind_input').hide();
@@ -153,8 +155,9 @@ $(document).ready(function(){
     $('#package_age_input').hide();
     $('#continue').hide();
     $('#continue1').hide();
-    $('#back2').hide();
+    $('#back1').hide();
     $('#back3').hide();
+    $('#back2').show();
     $('#package_label_input').show();
     $('#package_amount_labels_input').show();
     $('#package_colors_input').show();
@@ -163,18 +166,37 @@ $(document).ready(function(){
     $('#package_accepted_input').hide();
     $('#package_confirmed_input').hide();
     $('#package_submit').hide();
-    $('#continue1').hide();
-    $('#continue2').hide();
-    $('#back3').hide();
-    $('#back2').hide();
   })
 
   // zurück zu Schritt 2 von 3
   $('#back2').click( function () {
-   
+   $('#continue1').show();
+    $('#package_saison_input').show();
+    $('#package_kind_input').show();
+    $('#package_sex_input').hide();
+    $('#package_size_input').hide();
+    $('#package_next_size_input').hide();
+    $('#package_age_input').hide();
+    $('#continue').hide();
+    $('#continue1').hide();
+    $('#back3').hide();
+    $('#back2').hide();
+    $('#package_label_input').hide();
+    $('#package_amount_labels_input').hide();
+    $('#package_colors_input').hide();
+    $('#package_notice_input').hide();
+    $('.simpledialog').hide();
+    $('#package_accepted_input').hide();
+    $('#package_confirmed_input').hide();
+    $('#package_submit').hide();
+    $('#back1').show();
   })
 
   // zurück zu Schritt 1 von 4
+  $('#back1').click( function () {
+    
+  })
+
 
   // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist
   $('#user_membership_true').click(function (){
