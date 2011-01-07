@@ -32,11 +32,19 @@
                       :collection => translate(@package.get_contents("Kind"))
     %>
 
-    <%= package.input :shirts,
+    <%#= package.input :shirts,
                       :as => :check_boxes,
                       :collection => translate(@package.get_contents("Shirts"))
     %>
-
+    <div id="shirts" style="display: none">
+      <% translate(@package.get_contents("Shirts")).each do |category| %>
+      <%= package.input category.downcase.gsub("-", "_").to_sym,
+                        :as => :select,
+                        :collection  =>  @package.get_contents("Amount"),
+                        :include_blank => false
+      %>
+    <% end %>
+    </div>
     <%= package.input :blouses,
                       :as => :check_boxes,
                       :collection => translate(@package.get_contents("Blouses"))
@@ -62,14 +70,6 @@
                       :collection =>  translate(@package.get_contents("Basics"))
     %>
 
-    <p>
-    <%#= package.input :amount_clothes, :hint => I18n.t('hint_amount_clothes'),
-                      :as => :select,
-                      :collection  =>  @package.get_contents("Amount"),
-                      :include_blank => false
-    %></p>
-
-    <p>
     <%= package.input :label,
                       :as => :check_boxes,
                       :collection  => @package.get_contents("Label")

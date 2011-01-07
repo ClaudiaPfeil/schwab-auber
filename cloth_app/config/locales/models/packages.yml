@@ -4,7 +4,7 @@ de:
   sex:  Junge oder Mädchen?
   new_package:  Erstellen
   name_package: Bezeichnung
-  amount_clothes: Anzahl Kleider
+  amount_clothes: Anz.
   description:  Notiz
   bill_description: Kleidperpaket
   search_packages: Suche nach Kleidungspaketen
@@ -110,4 +110,5 @@ de:
   order_not_created:  Leider ist ein Fehler im System aufgetreten und ihr Kleiderpaket konnte nicht bestellt werden. Versuchen sie es zu einem späteren Zeitpunkt noch einmal oder wenden sie sich an den Webmaster.
   order_created: Bestellung erfolgreich eingegangen.
   cancel: Abbrechen
+  C&A: C&A
 

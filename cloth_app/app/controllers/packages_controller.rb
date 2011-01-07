@@ -22,19 +22,14 @@ class PackagesController < ApplicationController
 
   def create
     @package = Package.new(prepare_package(params[:package]))
-
-    #if params[:commit] == 'create_package'
-      if @package.save
-        redirect_to packages_path(@package), :notice => I18n.t(:package_created)
-      else
-        @package = @package
-        @notice = I18n.t(:package_not_created)
-        render :action => 'new'
-      end
-#    else
-#      @package = @package
-#      render :action => 'new'
-#    end 
+    
+    if @package.save
+      redirect_to packages_path(@package), :notice => I18n.t(:package_created)
+    else
+      @package = @package
+      @notice = I18n.t(:package_not_created)
+      render :action => 'new'
+    end
     
   end
 
@@ -124,7 +119,7 @@ class PackagesController < ApplicationController
       result[:notice] = package[:notice]
       result[:size] = package[:size]
       result[:next_size] = package[:next_size]
-      result[:amount_clothes] = package[:amount_clothes]
+      result[:amount_clothes] = 10
       result[:age] = package[:age]
       result[:amount_labels] = package[:amount_labels]
       result[:confirmed] = package[:confirmed]

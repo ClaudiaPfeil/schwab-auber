@@ -62,6 +62,8 @@ $(document).ready(function(){
   // Erste Seite
   $('#package_next_size_input').hide();
   $('#package_shirts_input').hide();
+  $('#package_amount_clothes_input').hide();
+  $('.label').hide();
   $('#package_blouses_input').hide();
   $('#package_jackets_input').hide();
   $('#package_jeans_input').hide();
@@ -285,8 +287,8 @@ $(document).ready(function(){
   $('#package_kind_shirts__tops').click(function () {
     
     if($('#package_kind_shirts__tops').attr("checked")){
-      //$('#package_shirts_input').slideDown();
-      var dlg = $('#package_shirts_input').dialog({
+      $('#package_shirts_input').slideDown();
+      var dlg = $('#shirts').dialog({
           height: 500,
           width: 500,
           modal: true,

@@ -6,5 +6,19 @@ class Category < ActiveRecord::Base
   def destroyable?
     false
   end
+
+  def get_attr
+    attributes = ""
+    categories = Category.where(:description => 'package')
+    categories.each do |cat|
+      content = Content.find_by_category_id(cat.id)
+      unless content.title == 'Menge' || content.title == 'Alter' || content.title == 'Kleidergröße' || content.title == 'Jahreszeit'
+        content.article.split(" ").each do |cont|
+          attributes << ":" + (I18n.t(cont.to_sym).to_s).gsub(" ", "").gsub("-", "_").downcase + ", "
+        end
+      end
+    end
+    attributes
+  end
   
 end
