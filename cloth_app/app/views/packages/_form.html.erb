@@ -82,10 +82,6 @@
     <% end %>
     </div>
 
-    <%#= package.input :basics,
-                      :as =>  :check_boxes,
-                      :collection =>  translate(@package.get_contents("Basics"))
-    %>
     <div id="basics" style="display: none">
       <% translate(@package.get_contents("Basics")).each do |category| %>
       <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
@@ -110,6 +106,10 @@
                          :as => :check_boxes,
                          :collection  => translate(@package.get_contents("Colors"))
     %></p>
+
+    <%= package.input :amount_clothes,
+                      :input_html => {:read_only => :true}
+    %>
     <p><%= package.input :notice%></p>
   <% end %>
 

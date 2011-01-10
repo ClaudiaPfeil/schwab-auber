@@ -102,7 +102,7 @@ $(document).ready(function(){
 
 
   //dritte Seite
-  $('#continue1').click( function() {
+  $('#continue1').click( function() {   
     $('#continue2').show();
     $('#package_saison_input').hide();
     $('#package_kind_input').hide();
@@ -119,6 +119,7 @@ $(document).ready(function(){
     $('#package_amount_labels_input').show();
     $('#package_colors_input').show();
 
+    
   })
 
   // vierte Seite
@@ -181,7 +182,7 @@ $(document).ready(function(){
     $('#package_next_size_input').hide();
     $('#package_age_input').hide();
     $('#continue').hide();
-    $('#continue1').hide();
+    $('#continue1').show();
     $('#back3').hide();
     $('#back2').hide();
     $('#package_label_input').hide();
@@ -272,15 +273,6 @@ $(document).ready(function(){
     var next_size = parseInt(document.getElementById('package_size').value)
     next_size = next_size + 2
     $("#package_next_size").val(next_size)
-  })
-
-  $('#package_amount_clothes').click(function () {
-    var amount = parseInt(document.getElementById('package_amount_clothes').value)
-
-    if (amount < 10) {
-      alert("Ist die Box wirklich voll?");
-    }
-
   })
 
   // Erstellen Kleiderpaket
@@ -385,6 +377,48 @@ $(document).ready(function(){
     }
   })
 
+  // Anzahl der Kleidungsstücke in der Kleiderbox überprüfen --> Ist die Box wirklich voll?
+  $('#package_submit').click(function () {
+    // Anz. Kleidungsstücke bestimmen
+    var amount = parseInt(document.getElementById('package_tops').value)
+                 + parseInt(document.getElementById('package_t_shirts').value)
+                 + parseInt(document.getElementById('package_polo_shirts').value)
+                 + parseInt(document.getElementById('package_langarm_shirt').value)
+                 + parseInt(document.getElementById('package_fleece_shirt').value)
+                 + parseInt(document.getElementById('package_pullover').value)
+                 + parseInt(document.getElementById('package_blusen').value)
+                 + parseInt(document.getElementById('package_shirtstops').value)
+                 + parseInt(document.getElementById('package_tuniken').value)
+                 + parseInt(document.getElementById('package_fleecejacke').value)
+                 + parseInt(document.getElementById('package_sweetjacke').value)
+                 + parseInt(document.getElementById('package_strickjacke').value)
+                 + parseInt(document.getElementById('package_schneejacke').value)
+                 + parseInt(document.getElementById('package_weste').value)
+                 + parseInt(document.getElementById('package_jeans').value)
+                 + parseInt(document.getElementById('package_latzhose').value)
+                 + parseInt(document.getElementById('package_regenhosen').value)
+                 + parseInt(document.getElementById('package_schneehose').value)
+                 + parseInt(document.getElementById('package_bermudas').value)
+                 + parseInt(document.getElementById('package_leggins').value)
+                 + parseInt(document.getElementById('package_shorts').value)
+                 + parseInt(document.getElementById('package_sweat_hose').value)
+                 + parseInt(document.getElementById('package_sporthose').value)
+                 + parseInt(document.getElementById('package_trainingsanzug').value)
+                 + parseInt(document.getElementById('package_kleider').value)
+                 + parseInt(document.getElementById('package_kleiderröcke').value)
+                 + parseInt(document.getElementById('package_bodies').value)
+                 + parseInt(document.getElementById('package_strampler').value)
+                 + parseInt(document.getElementById('package_schlafanzüge').value)
+                 + parseInt(document.getElementById('package_schlafsäcke').value)
+     alert("amount= " + amount);
+    // Anz. Kleider setzen
+     $('#package_amount_clothes_input').val(amount);
+
+    if (amount < 10) {
+      alert("Ist die Box wirklich voll?");
+    }
+  })
+ 
 })
 
 //$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));
