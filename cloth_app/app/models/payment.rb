@@ -12,12 +12,33 @@ class Payment < ActiveRecord::Base
                 :BRAND, :WIN3DS, :PMLIST, :PMLISTTYPE, :HOMEURL, :CATALOGURL, :COMPLUS, :PARAMPLUS, :PARAMVAR, :ACCEPTURL,
                 :DECLINEURL, :EXCEPTIONURL, :CANCELURL, :OPERATION, :USERID, :ALIAS, :ALIASUSAGE, :ALIASOPERATION, :TXTOKEN
 
-  HOME_URL = 'http://user13811513-2.zeta.railshoster.de/'
+  HOME_URL = 'http://dev.kidskarton.de/'
   CATALOG_URL = HOME_URL + 'serach'
   ACCEPT_URL = HOME_URL + 'accept'
   DECLINE_URL = HOME_URL + 'decline'
   EXCEPTION_URL = HOME_URL + 'exception'
   CANCEL_URL   = HOME_URL + 'cancel'
+  BGCOLOR = "#336699"
+  BUTTONBGCOLOR = "#336699"
+  BUTTONTXTCOLOR = "#09f"
+  BRAND = "pauber"
+  PSPID = "pauber"
+  OPERATION = 'SAL'
+  TBBGCOLOR = '#CCCC99'
+  PMLISTTYPE = 'pauber'
+  PMLIST = 'pauber'
+  WIN3DS = 'pauber'
+  PM = 'pauber'
+  TP = 'http://dev.kidskarton.de/layouts/application'
+  TITLE = 'KidsKarton.de'
+  TXTCOLOR = '#222222'
+  CURRENCY = 'EUR'
+  FONTTYPE = ''
+  HOMEURL = 'http://dev.kidskarton.de'
+  LANGUAGE = 'de_DE'
+  LOGO = 'http://dev.kidskarton.de/images/logo.gif'
+  TXTOKEN = 'pauber'
+  TBLBGCOLOR = '#000000'
 
   def is_destroyable?
     false
@@ -37,43 +58,5 @@ class Payment < ActiveRecord::Base
   end
 
   private
-
-    def bill
-      ogone = [ {:PSPID => 'pauber'},
-                {:ORDERID  =>  ''},
-                {:AMOUNT =>  ''},
-                {:LANGUAGE => ''},
-                {:EMAIL  => ''},
-                {:SHASIGN  => ''},
-                {:TITLE  => ''},
-                {:BGCOLOR => ''},
-                {:TXTCOLOR => ''},
-                {:TBLBGCOLOR => ''},
-                {:TBLTXTCOLOR => ''},
-                {:BUTTONBGCOLOR => ''},
-                {:BUTTONTXTCOLOR => ''},
-                {:LOGO => ''},
-                {:FONTTYPE => ''},
-                {:TP => ''},
-                {:PM => ''},
-                {:BRAND => ''},
-                {:WIN3DS => ''},
-                {:PMLIST => ''},
-                {:PMLISTTYPE => ''},
-                {:HOMEURL => ''},
-                {:CATALOGURL => ''},
-                {:COMPLUS => ''},
-                {:PARAMPLUS => ''},
-                {:PARAMVAR => ''},
-                {:ACCEPTURL => ''},
-                {:DECLINEURL => ''},
-                {:EXCEPTIONURL => ''},
-                {:CANCELURL => ''},
-                {:OPERATION => ''},
-                {:USERID => ''}
-              ]
-              
-      PaymentsController.new.send_to_ogone(ogone)
-    end
   
 end

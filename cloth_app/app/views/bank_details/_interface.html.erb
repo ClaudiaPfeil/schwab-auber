@@ -7,65 +7,45 @@
 
 <%# Payment-Anbindung%>
 <%# General params:%>
-<%= bank.input :PSPID, :as => :hidden, :value => 'pauber' %>
-<%= bank.input :ORDERID, :as => :hidden, :value => (params[:upgrade] ? 0 : id) %>
+<p>Ihre Bestellung ist bei uns eingegangen, vielen Dank!<br> Fahren sie nun mit der Bezahlung fort!</p>
+<FORM METHOD="post" ACTION="https://secure.ogone.com/ncol/test/orderstandard_utf8.asp" id=form1 name=form1>
+  
+   <%# optional operation field%>
+  <INPUT type="hidden" NAME="ACCEPTURL" value="<%= params[:ogone][:ACCEPTURL] %>" >
+  <INPUT type="hidden" NAME="AMOUNT" value="<%= params[:ogone][:AMOUNT] %> ">
+  <INPUT type="hidden" NAME="BGCOLOR" value ="<%= params[:ogone][:BGCOLOR]%>">
+  <INPUT type="hidden" NAME="BUTTONBGCOLOR" value ="<%= params[:ogone][:BUTTONBGCOLOR]%>">
+  <INPUT type="hidden" NAME="BUTTONTXTCOLOR" value ="<%= params[:ogone][:BUTTONTXTCOLOR]%>">
+  <INPUT type="hidden" NAME="BRAND" value="<%= params[:ogone][:BRAND]%>">
+  <INPUT type="hidden" NAME="CANCELURL" value ="<%=  Payment::CANCEL_URL %>">
+  <INPUT type="hidden" NAME="CATALOGURL" value ="<%=  Payment::CATALOG_URL %> ">
+  <INPUT type="hidden" NAME="COMPLUS" value ="<%= params[:ogone][:COMPLUS]%> ">
+  <INPUT type="hidden" NAME="CURRENCY" value="<%= params[:ogone][:CURRENCY]%>">
+  <INPUT type="hidden" NAME="DECLINEURL" value ="<%= params[:ogone][:DECLINEURL] %>">
+  <INPUT type="hidden" NAME="EMAIL" value = <%=  params[:ogone][:EMAIL] %> >
+	<INPUT type="hidden" NAME="EXCEPTIONURL" value ="<%= params[:ogone][:EXCEPTIONURL] %>">
+  <INPUT type="hidden" NAME="FONTTYPE" value="<%= params[:ogone][:FONTTYPE] %>">
+  <INPUT type="hidden" NAME="HOMEURL" value ="<%= params[:ogone][:HOMEURL] %>">
+  <INPUT type="hidden" NAME="LANGUAGE" value="<%= params[:ogone][:LANGUAGE] %>">
+  <INPUT type="hidden" NAME="LOGO" value ="<%= params[:ogone][:LOGO] %>">
+	<INPUT type="hidden" NAME="ORDERID" value="<%= params[:ogone][:LOGO] %>">
+  <INPUT type="hidden" NAME="OPERATION" value = '<%= params[:ogone][:OPERATION] %>' %>
+  <INPUT type="hidden" NAME="PARAMPLUS" value ='<%= params[:ogone][:PARAMPLUS] %>' >
+  <INPUT type="hidden" NAME="PMLIST" value="<%= params[:ogone][:PMLIST] %>">
+  <INPUT type="hidden" NAME="PMLISTTYPE" value="<%= params[:ogone][:PMLISTTYPE] %>">
+  <INPUT type="hidden" NAME="PSPID" value="<%= params[:ogone][:PSPID] %>">
+  <INPUT type="hidden" NAME="PM" value="<%= params[:ogone][:PM] %>">
+  <INPUT type="hidden" NAME="SHASIGN"  value="<%= params[:ogone][:SHASIGN]%>">
+  <INPUT type="hidden" NAME="TBLBGCOLOR" value ="<%= params[:ogone][:TBLBGCOLOR]%>">
+  <INPUT type="hidden" NAME="TITLE" value ="<%= params[:ogone][:TITLE]%>">
+  <INUT type="hidden" NAME="TP" value = '<%= params[:ogone][:TITLE]%>' >
+  <INUT type="hidden" NAME="TXTOKEN" value = '<%= params[:ogone][:TXTOKEN]%>' >
+  <INPUT type="hidden" NAME="TXTCOLOR" value ="<%= params[:ogone][:TXTCOLOR]%>">
+  <INPUT type="hidden" NAME="USERID" value ="<%=  params[:ogone][:USERID] %>">
+  <INPUT type="hidden" NAME="WIN3DS" value="<%=  params[:ogone][:WIN3DS] %>">
 
-<% if params[:upgrade] %>
-
-  <%= bank.input :AMOUNT, :as => :hidden, :value => get_membership_price %>
-<% else %>
-  <%= bank.input :AMOUNT, :as => :hidden, :value => get_price %>
-<% end %>
-
-<%= bank.input :CURRENCY, :as => :hidden, :value => 'EUR' %>
-<%= bank.input :LANGUAGE, :as => :hidden, :value => 'de-D' %>
-
-<%# Customer params:%>
-<%= bank.input :EMAIL, :as => :hidden, :value => current_user.email %>
-
-<%# SHA-1-IN signature %>
-<%= bank.input :SHASIGN, :as => :hidden, :value => PaymentsController::SHA_SIGNATUR %>
-
-<%# Look & Feel:%>
-<%= bank.input :TITLE, :as => :hidden, :value => 'KidsKarton.de' %>
-<%= bank.input :BGCOLOR, :as => :hidden, :value => '#CCCC99' %>
-<%= bank.input :TXTCOLOR, :as => :hidden, :value => '#222222' %>
-<%= bank.input :TBLBGCOLOR, :as => :hidden, :value => '#000000' %>
-<%= bank.input :TBLTXTCOLOR, :as => :hidden, :value => '#222222' %>
-<%= bank.input :BUTTONBGCOLOR, :as => :hidden, :value => '#336699' %>
-<%= bank.input :BUTTONTXTCOLOR, :as => :hidden, :value => '#09f' %>
-<%= bank.input :LOGO, :as => :hidden, :value => 'http://localhost:3000/images/rails.png' %>
-<%= bank.input :FONTTYPE, :as => :hidden, :value => 'Helvetica Neue, Arial, Helvetica, sans-serif' %>
-
-<%# dynamic template:%>
-<%= bank.input :TP, :as => :hidden, :value => 'http://localhost:3000/' %>
-
-<%# payment methods/page specifics: %>
-<%= bank.input :PM, :as => :hidden %>
-<%= bank.input :TXTOKEN, :as => :hidden %>
-<%= bank.input :BRAND, :as => :hidden %>
-<%= bank.input :WIN3DS, :as => :hidden %>
-<%= bank.input :PMLIST, :as => :hidden %>
-<%= bank.input :PMLISTTYPE, :as => :hidden %>
-
-<%# link to my website%>
-<%= bank.input :HOMEURL, :as => :hidden, :value => Payment::HOME_URL %>
-<%= bank.input :CATALOGURL, :as => :hidden, :value => Payment::CATALOG_URL %>
-
-<%# post payment params%>
-<%= bank.input :COMPLUS, :as => :hidden, :value => id %>
-<%= bank.input :PARAMPLUS, :as => :hidden, :value => 'id='+ current_user.id.to_s %>
-<%#= bank.input :PARAMVAR, :as => :hidden, :value => '' %>
-
-<%# optional operation field%>
-<%= bank.input :ACCEPTURL, :as => :hidden, :value => Payment::ACCEPT_URL %>
-<%= bank.input :DECLINEURL, :as => :hidden, :value => Payment::DECLINE_URL %>
-<%= bank.input :EXCEPTIONURL, :as => :hidden, :value => Payment::EXCEPTION_URL %>
-<%= bank.input :CANCELURL, :as => :hidden, :value => Payment::CANCEL_URL %>
-
-<%# optional extra login detail %>
-<%= bank.input :OPERATION, :as => :hidden, :value => 'SAL' %>
-<%= bank.input :USERID, :as => :hidden, :value => current_user.id %>
+  <p><input type="submit" value="Weiter zum Bezahlen" id="Bezahlen" name=submit2></p>
+	</form>
 
 
 

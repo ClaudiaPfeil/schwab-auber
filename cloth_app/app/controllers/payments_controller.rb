@@ -1,12 +1,11 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
-require "net/http"
-require "uri"
+require 'digest/sha1'
+
 
 class PaymentsController < ApplicationController
   before_filter :init_payment, :action => [:new, :edit, :update, :show, :destroy, :confirm_prepayment]
-
-  SHA_SIGNATUR = "B7DB33CA21A704FF97ECA72608491AF739DDFE4952932A9AAEE6B1806764D9469FE0980369693A7B65341A08EF9B8B037E482663951CD9608CC3536D4079EB26"
+   
   PASS_PHRASE = "schwab_und_auber_21"
 
 
@@ -36,26 +35,30 @@ class PaymentsController < ApplicationController
                  :order_id => order.id,
                  :package_id => package.id,
                  :kind  => params[:payment][:kind],
-                 :balance => params[:payment][:AMOUNT]
+                 :balance => params[:payment][:balance]
                 }
     else
       payment = {
-                 :user_id => params[:payment][:USERID],
+                 :user_id => params[:payment][:user_id],
                  :order_id => 0,
                  :package_id => 0,
                  :kind  => params[:payment][:kind],
-                 :balance => params[:payment][:AMOUNT]
+                 :balance => params[:payment][:balance]
                 }
     end
     
     @payment = Payment.new(payment)
     if @payment.save
       # Bezahlschnittstelle ogone aufrufen, wenn MasterCard/Visa ausgewählt ist
-      if params[:payment][:kind].to_i == 3 
-        send_to_ogone(params[:payment])
+      if params[:payment][:kind].to_i == 3
+        ogone = prepare_ogone_card(params[:payment])
+        ogone['SHASIGN'] = get_sha1(ogone)
+        redirect_to master_visa_card_path(ogone), :notice => I18n.t(:payment_created)
       # Bezahlschnittstelle ogone aufrufen, wenn Paypal ausgewählt ist
       elsif params[:payment][:kind].to_i == 2
-        send_to_ogone_paypal(params[:payment])
+        ogone = prepare_ogone_paypal(params[:payment])
+        ogone['SHASIGN'] = get_sha1(ogone)
+        redirect_to paypal_path(ogone), :notice => I18n.t(:payment_created)
       else
         redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
       end
@@ -112,80 +115,56 @@ class PaymentsController < ApplicationController
       @current_object = yield
     end
 
-    def send_to_ogone(params)
-      url = "https://secure.ogone.com/ncol/test/orderstandard.asp"
-      infos = { 'PSPID'   => params[:PSPID].to_s,
-                'ORDERID' => params[:ORDERID].to_s,
-                'AMOUNT'  => params[:AMOUNT].to_s,
-                'CURRENCY' => params[:CURRENCY].to_s,
-                'LANGUAGE' => params[:LANGUAGE].to_s,
-                'EMAIL' => params[:EMAIL].to_s,
-                'SHASIGN' => SHA_SIGNATUR.to_s,
-                'TITLE' => params[:TITLE].to_s,
-                'BGCOLOR' => params[:BGCOLOR].to_s,
-                'TXTCOLOR' => params[:TXTCOLOR].to_s,
-                'TBLBGCOLOR' => params[:TBLBGCOLOR].to_s,
-                'TBLTXTCOLOR' => params[:TBLTXTCOLOR].to_s,
-                'BUTTONBGCOLOR' => params[:BUTTONBGCOLOR].to_s,
-                'BUTTONTXTCOLOR' => params[:BUTTONTXTCOLOR].to_s,
-                'LOGO' => params[:LOGO].to_s,
-                'FONTTYPE' => params[:FONTTYPE].to_s,
-                'TP' => params[:TP].to_s,
-                'PM' => params[:PM].to_s,
-                'BRAND' => params[:BRAND].to_s,
-                'WIN3DS' => params[:WIN3DS].to_s,
-                'PMLIST' => params[:PMLIST].to_s,
-                'PMLISTTYPE' => params[:PMLISTTYPE].to_s,
-                'HOMEURL' => params[:HOMEURL].to_s,
-                'CATALOGURL' => params[:CATALOGURL].to_s,
-                'COMPLUS' => params[:COMPLUS].to_s,
-                'PARAMPLUS' => params[:PARAMPLUS].to_s,
-                'ACCEPTURL' => params[:ACCEPTURL].to_s,
-                'DECLINEURL' => params[:DECLINEURL].to_s,
-                'EXCEPTIONURL' => params[:EXCEPTIONURL].to_s,
-                'CANCELURL' => params[:CANCELURL].to_s,
-                'OPERATION' => params[:OPERATION].to_s,
-                'USERID' => params[:USERID].to_s
+    def prepare_ogone_card(params)
+      ogone = {   'ORDERID' => params[:order_id],
+                  'AMOUNT'  => params[:balance],
+                  'EMAIL' => User.find_by_id(params[:user_id].email),
+                  'TP' => Payment::TP,
+                  'PM' => Payment::PM,
+                  'BRAND' => Payment::BRAND,
+                  'WIN3DS' => Payment::WIN3DS,
+                  'PMLIST' => Payment::PMLIST,
+                  'PMLISTTYPE' => Payment::PMLISTTYPE,
+                  'USERID' => params[:user_id],
+                  'COMPLUS' => params[:order_id],
+                  'PARAMPLUS' => "id=#{params[:user_id]}",
+                  'OPERATION' => Payment::OPERATION,
+                  'PSPID' => Payment::PSPID,
+                  'TBBGCOLOR' => Payment::TBBGCOLOR,
+                  'ACCEPTURL' => Payment::ACCEPT_URL,
+                  'BGCOLOR' => Payment::BGCOLOR,
+                  'BUTTONBGCOLOR' => Payment::BUTTONBGCOLOR,
+                  'BUTTONTXTCOLOR' => Payment::BUTTONTXTCOLOR,
+                  'CANCELURL' => Payment::CANCELURL,
+                  'CATALOGURL' => Payment::CATALOGURL,
+                  'CURRENCY' => Payment::CURRENCY,
+                  'DECLINEURL' => Payment::DECLINEURL,
+                  'EXCEPTIONURL' => Payment::EXCEPTIONURL,
+                  'FONTTYPE' => Payment::FONTTYPE,
+                  'HOMEURL' => Payment::HOMEURL,
+                  'LANGUAGE' => Payment::LANGUAGE,
+                  'LOGO' => Payment::LOGO,
+                  'TBLBGCOLOR' => Payment::TBLBGCOLOR,
+                  'TITLE' => Payment::TITLE,
+                  'TXTOKEN' => Payment::TXTOKEN,
+                  'TXTCOLOR' => Payment::TXTCOLOR
+                  }
+      ogone
+    end
+
+    def prepare_ogone_paypal(params)
+      ogone = { 'ORDERID' => params[:order_id],
+                'AMOUNT' => params[:balance],
+                'EMAIL' => User.find_by_id(params[:user_id].email),
+                'COMPLUS' => params[:order_id]
               }
-              
-          x = Net::HTTP.post_form(URI.parse(url), infos)
-          puts "send_to_ogone: " + x.body
-      end
+      ogone
+    end
 
-      def send_to_ogone_paypal(params)
-        url = 'https://secure.ogone.com/ncol/test/orderstandard.asp?'
-        infos = "PSPID=#{params[:PSPID]}" +
-                "&ORDERID=#{params[:ORDERID]}" +
-                "&AMOUNT=#{params[:AMOUNT]}" +
-                "&CURRENCY=#{params[:CURRENCY]}" +
-                "&LANGUAGE=#{params[:LANGUAGE]}" +
-                "&ACCEPTURL=#{params[:ACCEPTURL]}" +
-                "&DECLINEURL=#{params[:DECLINEURL]}" +
-                "&PM=#{params[:PM]}" +
-                "&TXTOKEN=#{params[:TXTOKEN]}" +
-                "&TITLE=#{params[:TITLE]}" +
-                "&BGCOLOR=#{params[:BGCOLOR]}" +
-                "&TXTCOLOR=#{params[:TXTCOLOR]}" +
-                "&TBLBGCOLOR=#{params[:TBLBGCOLOR]}" +
-                "&TBLTXTCOLOR=#{params[:TBLTXTCOLOR]}" +
-                "&BUTTONBGCOLOR=#{params[:BUTTONBGCOLOR]}" +
-                "&BUTTONTXTCOLOR=#{params[:BUTTONTXTCOLOR]}" +
-                "&LOGO=#{params[:LOGO]}" +
-                "&FONTTYPE=#{params[:FONTTYPE]}"
-                
-           
-        url = URI.parse(url)
-        req = Net::HTTP::Post.new(url.path + infos)
-        req.basic_auth 'pauber', 'auber&schwab'
-        req.set_form_data({'from'=> Date.today, 'to'=> Date.today + 1.months }, ';')
-        res = Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
-
-        case res
-        when Net::HTTPSuccess, Net::HTTPRedirection
-          puts "Ogone Schnittstelle erfolgreich aufgerufen"
-        else
-          puts "Ogone Schnittstelle nicht erreicht: " + s.error!
-        end
-      end
+    def get_sha1(payment)
+      sha1_key = ''
+      payment.each { |key, value| sha1_key << value.to_s + PASS_PHRASE}
+      Digest::SHA1.hexdigest(sha1_key)
+    end
 
 end

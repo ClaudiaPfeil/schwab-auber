@@ -4,16 +4,19 @@
 # Datum:  10.12.2010
 %>
 
-<%= semantic_form_for Payment.new, {:url => 'https://secure.ogone.com/ncol/test/orderstandard.asp', :method => :post} do |bank| %>
+<%= semantic_form_for @payment do |bank| %>
 
   <%= bank.input  :kind, :as => :radio,
                   :collection =>  {I18n.t(:prepayment) => 1, I18n.t(:paypal) => 2, I18n.t(:master_visa_card)  =>  3},
                   :first_blank => false
   %>
   <%= bank.input :package_id, :as => :hidden, :value => ( params[:upgrade] ? 0 : params[:id]) %>
-
-  <%= render "interface", :bank => bank, :id => params[:id] %>
-
+  <% if params[:upgrade] %>
+    <%= bank.input :balance, :as => :hidden, :value => get_membership_price %>
+  <% else %>
+    <%= bank.input :balance, :as => :hidden, :value => get_price %>
+  <% end %>
+  <%= bank.input :user_id, :as => :hidden, :value => current_user.id %>
 
   <%= bank.buttons  %>
 
