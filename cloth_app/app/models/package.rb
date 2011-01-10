@@ -9,9 +9,16 @@ class Package < ActiveRecord::Base
   validates_numericality_of :accepted, :confirmed, :equal_to => 1
   validates_uniqueness_of :serial_number
 
-  attr_accessor :accepted, :confirmed, :tops, :t_shirts, :polo_shirts, :langarm_shirt, :fleece_shirt, :pullover
-  attributes = Category.new.get_attr
-  #attr_accessor attributes unless attributes.nil?
+  attr_accessor :accepted, :confirmed,
+                :tops, :t_shirts, :polo_shirts, :langarm_shirt, :fleece_shirt, :pullover,
+                :blusen, :shirtstops, :tuniken,
+                :fleecejacke, :sweatjacke, :strickjacke, :schneejacke, :weste,
+                :hosen, :latzhose, :regenhosen, :schneehose, :bermudas, :leggins, :shorts, :sweat_hose, :sporthose, :trainingsanzug,
+                :kleiderröcke, :kleider,
+                :bodies, :strampler, :schlafanzüge, :schlafsäcke
+
+  #attributes = Category.new.get_attr
+  #ModelMethods.attr_accessor attributes unless attributes.nil?
 
   
   accepts_nested_attributes_for :user, :allow_destroy => true

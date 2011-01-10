@@ -126,16 +126,57 @@ class PackagesController < ApplicationController
       result[:accepted] = package[:accepted]
       result[:user_id] = package[:user_id]
       !package[:kind].nil? ? result[:kind] = package[:kind].collect{ |k| k + "," }.to_s : package[:kind]
-      !package[:shirts].nil? ? result[:shirts] = package[:shirts].collect{ |k| k + "," }.to_s : package[:shirts]
-      !package[:blouses].nil? ? result[:blouses] = package[:blouses].collect{ |k| k + "," }.to_s : package[:blouses]
-      !package[:jeans].nil? ? result[:jeans] = package[:jeans].collect{ |k| k + "," }.to_s : package[:jeans]
-      !package[:jackets].nil? ? result[:jackets] = package[:jackets].collect{ |k| k + "," }.to_s : package[:jackets]
-      !package[:dresses].nil? ? result[:dresses] = package[:dresses].collect{ |k| k + "," }.to_s : package[:dresses]
-      !package[:basics].nil? ? result[:basics] = package[:basics].collect{ |k| k + "," }.to_s : package[:basics]
+      # Abfrage der Auswahl der Oberkategorie: Shirts, Blusen, Jeans, Jacken, Kleider&Röcke, Erstausstattung
+      package[:kind].each do |kind|
+        case kind
+          when 'Shirts & Tops': result[:shirts] = ''
+                                result[:shirts]+= package[:t_shirts].to_s + ' T-Shirt(s)' if package[:t_shirts]
+                                result[:shirts]+= ', ' + package[:polo_shirts].to_s + ' Polo-Shirt(s)' if package[:polo_shirts]
+                                result[:shirts]+= ', ' + package[:langarm_shirt].to_s + ' Langarm-Shirt(s)' if package[:langarm_shirt]
+                                result[:shirts]+= ', ' + package[:fleece_shirt].to_s + ' Fleece-Shirt(s)' if package[:fleece_shirt]
+                                result[:shirts]+= ', ' + package[:pullover].to_s + ' Pullover(s)' if package[:pullover]
+
+          when 'Blusen & Hemden': result[:blouses] = ''
+                                  result[:blouses] += package[:blouses].to_s + ' Bluse(n)' if package[:blouses]
+                                  result[:blouses] += ', ' + package[:tunics].to_s + ' Tuniken' if package[:tunics]
+                                  result[:blouses] += ', ' + package[:shirts].to_s + ' Shirts & Tops' if package[:shirts]
+
+          when 'Jacken':  result[:jackets] = ''
+                          result[:jackets] += package[:fleece].to_s + ' Fleece Jacke(n)' if package[:fleece]
+                          result[:jackets] += ', ' + package[:sweater].to_s + ' Sweatjacke(n)' if package[:sweater]
+                          result[:jackets] += ', ' + package[:jersey].to_s + ' Strickjacke(n)' if package[:jersey]
+                          result[:jackets] += ', ' + package[:snow].to_s + ' Schneejacke(n)' if package[:snow]
+                          result[:jackets] += ', ' + package[:vest].to_s + ' Weste(n)' if package[:vest]
+         
+          when 'Jeans' :  result[:jeans] = ''
+                          result[:jeans] += package[:pants].to_s + ' Hose(n)' if package[:pants]
+                          result[:jeans] += ', ' + package[:jeans].to_s + ' Jeans' if package[:jeans]
+                          result[:jeans] += ', ' + package[:overalls].to_s + ' Latzhose(n)' if package[:overalls]
+                          result[:jeans] += ', ' + package[:rain_pants].to_s + ' Regenhose(n)' if package[:rain_pants]
+                          result[:jeans] += ', ' + package[:snow_pants].to_s + ' Schneehose(n)' if package[:snow_pants]
+                          result[:jeans] += ', ' + package[:bermudas].to_s + ' Bermudas' if package[:bermudas]
+                          result[:jeans] += ', ' + package[:leggins].to_s + ' Leggins' if package[:leggins]
+                          result[:jeans] += ', ' + package[:shorts].to_s + ' Shorts' if package[:shorts]
+                          result[:jeans] += ', ' + package[:sweat_pants].to_s + ' Sweat-Hose(n)' if package[:sweat_pants]
+                          result[:jeans] += ', ' + package[:trunks].to_s + ' Sporthose(n)' if package[:trunks]
+                          result[:jeans] += ', ' + package[:tracksuit] > 1 ? package[:tracksuit].to_s + ' Trainingsanzüge' : package[:tracksuit].to_s + ' Trainingsanzug' if package[:tracksuit]
+         
+          when 'Kleider & Röcke' : result[:dresses] = ''
+                                   result[:dresses] += ', ' + package[:skirt].to_s + ' Röcke' if package[:skirt]
+                                   result[:dresses] += ', ' + package[:dresses].to_s + ' Kleider' if package[:dresses]
+        
+          when 'Erstausstattung' : result[:basics] = ''
+                                   result[:basics] += ', ' + package[:bodies].to_s + ' Bodies' if package[:bodies]
+                                   result[:basics] += ', ' + package[:romper_suits].to_s + ' Strampler' if package[:romper_suits]
+                                   result[:basics] += ', ' + package[:pyjamas].to_s + ' Schlafanzüge' if package[:pyjamas]
+                                   result[:basics] += ', ' + package[:sleeping_bags].to_s + ' Schlafsäcke' if package[:sleeping_bags]
+        end
+      end
+      # ---Ende---
       !package[:colors].nil? ? result[:colors] = package[:colors].collect{ |k| k + "," }.to_s : package[:colors]
       !package[:labels].nil? ? result[:labels] = package[:labels].collect{ |k| k + "," }.to_s : package[:labels]
       !package[:saison].nil? ? result[:saison] = package[:saison].collect{ |k| k + "," }.to_s : package[:saison]
-
+      
       result
     end
 

@@ -32,10 +32,6 @@
                       :collection => translate(@package.get_contents("Kind"))
     %>
 
-    <%#= package.input :shirts,
-                      :as => :check_boxes,
-                      :collection => translate(@package.get_contents("Shirts"))
-    %>
     <div id="shirts" style="display: none">
       <% translate(@package.get_contents("Shirts")).each do |category| %>
       <%= package.input category.downcase.gsub("-", "_").to_sym,
@@ -45,30 +41,60 @@
       %>
     <% end %>
     </div>
-    <%= package.input :blouses,
-                      :as => :check_boxes,
-                      :collection => translate(@package.get_contents("Blouses"))
-    %>
+    
+    <div id="blouses" style="display: none">
+      <% translate(@package.get_contents("Blouses")).each do |category| %>
+      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                        :as => :select,
+                        :collection  =>  @package.get_contents("Amount"),
+                        :include_blank => false
+      %>
+    <% end %>
+    </div>
 
-    <%= package.input :jackets,
-                      :as => :check_boxes,
-                      :collection => translate( @package.get_contents("Jackets"))
-    %>
+    <div id="jackets" style="display: none">
+      <% translate(@package.get_contents("Jackets")).each do |category| %>
+      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                        :as => :select,
+                        :collection  =>  @package.get_contents("Amount"),
+                        :include_blank => false
+      %>
+    <% end %>
+    </div>
 
-    <%= package.input :jeans,
-                      :as =>  :check_boxes,
-                      :collection =>  translate(@package.get_contents("Jeans"))
-    %>
+    <div id="jeans" style="display: none">
+      <% translate(@package.get_contents("Jeans")).each do |category| %>
+      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                        :as => :select,
+                        :collection  =>  @package.get_contents("Amount"),
+                        :include_blank => false
+      %>
+    <% end %>
+    </div>
 
-    <%= package.input :dresses,
-                      :as =>  :check_boxes,
-                      :collection =>  translate(@package.get_contents("Dresses"))
-    %>
+    <div id="dresses" style="display: none">
+      <% translate(@package.get_contents("Dresses")).each do |category| %>
+      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                        :as => :select,
+                        :collection  =>  @package.get_contents("Amount"),
+                        :include_blank => false
+      %>
+    <% end %>
+    </div>
 
-    <%= package.input :basics,
+    <%#= package.input :basics,
                       :as =>  :check_boxes,
                       :collection =>  translate(@package.get_contents("Basics"))
     %>
+    <div id="basics" style="display: none">
+      <% translate(@package.get_contents("Basics")).each do |category| %>
+      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                        :as => :select,
+                        :collection  =>  @package.get_contents("Amount"),
+                        :include_blank => false
+      %>
+    <% end %>
+    </div>
 
     <%= package.input :label,
                       :as => :check_boxes,

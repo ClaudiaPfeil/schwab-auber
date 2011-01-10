@@ -7,7 +7,7 @@
         </file>
         <file>
             <url>app/models/package.rb</url>
-            <line>33</line>
+            <line>38</line>
         </file>
         <file>
             <url>app/views/packages/index.html.erb</url>

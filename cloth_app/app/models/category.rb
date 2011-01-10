@@ -12,9 +12,9 @@ class Category < ActiveRecord::Base
     categories = Category.where(:description => 'package')
     categories.each do |cat|
       content = Content.find_by_category_id(cat.id)
-      unless content.title == 'Menge' || content.title == 'Alter' || content.title == 'Kleidergröße' || content.title == 'Jahreszeit'
+      unless content.title == 'Menge' || content.title == 'Alter' || content.title == 'Kleidergröße' || content.title == 'Jahreszeit' || content.title == 'Colors'
         content.article.split(" ").each do |cont|
-          attributes << ":" + (I18n.t(cont.to_sym).to_s).gsub(" ", "").gsub("-", "_").downcase + ", "
+          attributes << ":" + (I18n.t(cont.to_sym).to_s).gsub(" ", "").gsub("-", "_").gsub("&", "").downcase + ", "
         end
       end
     end

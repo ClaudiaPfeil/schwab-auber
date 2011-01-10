@@ -306,7 +306,7 @@ $(document).ready(function(){
    $('#package_kind_blusen__hemden').click(function () {
      if($('#package_kind_blusen__hemden').attr("checked")){
        //$('#package_blouses_input').slideDown();
-       var dlg = $('#package_blouses_input').dialog({
+       var dlg = $('#blouses').dialog({
           height: 500,
           width: 500,
           modal: true,
@@ -322,7 +322,7 @@ $(document).ready(function(){
 
   $('#package_kind_jacken').click(function () {
     if($('#package_kind_jacken').attr("checked")){
-      var dlg = $('#package_jackets_input').dialog({
+      var dlg = $('#jackets').dialog({
           height: 500,
           width: 500,
           modal: true,
@@ -338,7 +338,7 @@ $(document).ready(function(){
 
   $('#package_kind_jeans').click(function () {
     if($('#package_kind_jeans').attr("checked")){
-      var dlg = $('#package_jeans_input').dialog({
+      var dlg = $('#jeans').dialog({
           height: 700,
           width: 500,
           modal: true,
@@ -354,7 +354,7 @@ $(document).ready(function(){
 
   $('#package_kind_kleider__röcke').click(function () {
     if($('#package_kind_kleider__röcke').attr("checked")){
-      var dlg = $('#package_dresses_input').dialog({
+      var dlg = $('#dresses').dialog({
           height: 500,
           width: 500,
           modal: true,
@@ -370,7 +370,7 @@ $(document).ready(function(){
 
   $('#package_kind_erstausstattung').click(function () {
     if($('#package_kind_erstausstattung').attr("checked")){
-      var dlg = $('#package_basics_input').dialog({
+      var dlg = $('#basics').dialog({
           height: 500,
           width: 500,
           modal: true,
