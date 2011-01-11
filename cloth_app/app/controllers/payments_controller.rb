@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
 
 
   def index
-    (current_user && !(current_user.is? :admin) ) ? @payments = Payment.where(:user_id => current_user.id) : @payments = Payment.all
+    (current_user && !(current_user.is? :admin) ) ? @payments = Payment.order("created_at DESC").where(:user_id => current_user.id) : @payments = Payment.order("created_at DESC").all
   end
 
   def show
