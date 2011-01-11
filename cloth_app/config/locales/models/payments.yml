@@ -24,3 +24,5 @@ de:
   send_email: E-Mail senden
   subject_remember_prepayment:  Zahlungserinnerung Vorauskasse für ihre Premium-Mitgliedschaft
   download_bill:  Download
+  choose_master_visa_card:  Sie haben sich für die Bezahlung mit Master/Visa-Card entschieden. Bitte setzen sie die Bezahlung im nächsten Schritt fort.
+  choose_paypal:  Sie haben sich für die Bezahlung mit PayPal entschieden. Bitte setzen sie die Bezahlung im nächsten Schritt fort.

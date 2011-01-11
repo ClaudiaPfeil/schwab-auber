@@ -71,8 +71,8 @@ ClothApp::Application.routes.draw do
   match 'welcome/import_coupons' => 'welcome#import_coupons', :as => 'import_coupons'
   match 'forgot_password' => 'users#forgot_password', :as => 'forgot_password'
   match 'reset_password/:id' => 'users#reset_password', :as => 'reset_password'
-  match 'master_visa_card' => 'bank_details#master_visa_card', :as => :master_visa_card
-  match 'paypal' => 'bank_details#paypal', :as => :paypal
+  match 'master_visa_card' => 'payments#master_visa_card', :as => :master_visa_card
+  match 'paypal' => 'payments#paypal', :as => :paypal
   
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

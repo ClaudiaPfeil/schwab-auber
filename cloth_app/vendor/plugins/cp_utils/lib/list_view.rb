@@ -18,21 +18,21 @@ class ListView
         
         options.each do |key, value|
           if key.to_s == name.to_s
-            relation = (value.to_s.camelize.constantize).find_by_id(entry.attributes[value.to_s + "_id"])
-            relation.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(relation.attributes[name.to_s])
+            relation = (value.to_s.camelize.constantize).find_by_id(entry.attributes[value.to_s + "_id"]) unless entry.nil?
+            relation.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(relation.attributes[name.to_s]) unless entry.nil?
           end
         end
 
         if name.to_s == "created_at" || name.to_s == "updated_at"
-          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(self.formatted_date(entry.attributes[name.to_s]))
+          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(self.formatted_date(entry.attributes[name.to_s])) unless entry.nil?
         elsif entry.attributes[name.to_s]
-          entries.push(entry.attributes[name.to_s])
+          entries.push(entry.attributes[name.to_s]) unless entry.nil?
         end
       else
         if name.to_s == "created_at" || name.to_s == "updated_at"
-          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(self.formatted_date(entry.attributes[name.to_s]))
+          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(self.formatted_date(entry.attributes[name.to_s])) unless entry.nil?
         else
-          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(entry.attributes[name.to_s])
+          entry.attributes[name.to_s].nil? ? entries.push(" ") : entries.push(entry.attributes[name.to_s]) unless entry.nil?
         end
       end
 

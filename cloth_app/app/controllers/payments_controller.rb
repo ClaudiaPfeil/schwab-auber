@@ -28,12 +28,9 @@ class PaymentsController < ApplicationController
     package = Package.find_by_id(params[:payment][:package_id]) unless params[:payment][:package_id].to_i == 0
 
     if package
-      user = package.user
-      order = package.order
-
-      payment = {:user_id => user.id,
-                 :order_id => order.id,
-                 :package_id => package.id,
+      payment = {:user_id => params[:payment][:user_id],
+                 :order_id => package.order.id,
+                 :package_id => params[:payment][:package_id],
                  :kind  => params[:payment][:kind],
                  :balance => params[:payment][:balance]
                 }
@@ -49,16 +46,21 @@ class PaymentsController < ApplicationController
     
     @payment = Payment.new(payment)
     if @payment.save
-      # Bezahlschnittstelle ogone aufrufen, wenn MasterCard/Visa ausgewählt ist
+     
       if params[:payment][:kind].to_i == 3
-        ogone = prepare_ogone_card(params[:payment])
+        ogone = prepare_ogone_card(payment)
         ogone['SHASIGN'] = get_sha1(ogone)
-        redirect_to master_visa_card_path(ogone), :notice => I18n.t(:payment_created)
-      # Bezahlschnittstelle ogone aufrufen, wenn Paypal ausgewählt ist
+         # Bezahlschnittstelle ogone aufrufen, wenn MasterCard/Visa ausgewählt ist
+         @ogone = ogone.to_hash
+         @notice = I18n.t(:choose_master_visa_card)
+        render :action =>  "master_visa_card"
       elsif params[:payment][:kind].to_i == 2
-        ogone = prepare_ogone_paypal(params[:payment])
+        ogone = prepare_ogone_paypal(payment)
         ogone['SHASIGN'] = get_sha1(ogone)
-        redirect_to paypal_path(ogone), :notice => I18n.t(:payment_created)
+        # Bezahlschnittstelle ogone aufrufen, wenn Paypal ausgewählt ist
+        @ogone = ogone.to_hash
+        @notice = I18n.t(:choose_paypal)
+        render :action => "paypal"
       else
         redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
       end
@@ -105,6 +107,14 @@ class PaymentsController < ApplicationController
     @payments = Payment.where(:prepayment_confirmed => false).joins("INNER JOIN users on users.id = payments.user_id and users.membership = 1")
   end
 
+  def master_visa_card
+    
+  end
+
+  def paypal
+    
+  end
+
   private
 
     def init_payment
@@ -115,12 +125,12 @@ class PaymentsController < ApplicationController
       @current_object = yield
     end
 
-    def prepare_ogone_card(params)
+    def prepare_ogone_card(params) 
       ogone = {   'ORDERID' => params[:order_id],
                   'AMOUNT'  => params[:balance],
-                  'EMAIL' => User.find_by_id(params[:user_id].email),
+                  'EMAIL' => User.find_by_id(params[:user_id]).email,
                   'TP' => Payment::TP,
-                  'PM' => Payment::PM,
+                  'PM' => Payment::PM_CARD,
                   'BRAND' => Payment::BRAND,
                   'WIN3DS' => Payment::WIN3DS,
                   'PMLIST' => Payment::PMLIST,
@@ -130,35 +140,55 @@ class PaymentsController < ApplicationController
                   'PARAMPLUS' => "id=#{params[:user_id]}",
                   'OPERATION' => Payment::OPERATION,
                   'PSPID' => Payment::PSPID,
-                  'TBBGCOLOR' => Payment::TBBGCOLOR,
                   'ACCEPTURL' => Payment::ACCEPT_URL,
                   'BGCOLOR' => Payment::BGCOLOR,
                   'BUTTONBGCOLOR' => Payment::BUTTONBGCOLOR,
                   'BUTTONTXTCOLOR' => Payment::BUTTONTXTCOLOR,
-                  'CANCELURL' => Payment::CANCELURL,
-                  'CATALOGURL' => Payment::CATALOGURL,
+                  'CANCELURL' => Payment::CANCEL_URL,
+                  'CATALOGURL' => Payment::CATALOG_URL,
                   'CURRENCY' => Payment::CURRENCY,
-                  'DECLINEURL' => Payment::DECLINEURL,
-                  'EXCEPTIONURL' => Payment::EXCEPTIONURL,
+                  'DECLINEURL' => Payment::DECLINE_URL,
+                  'EXCEPTIONURL' => Payment::EXCEPTION_URL,
                   'FONTTYPE' => Payment::FONTTYPE,
-                  'HOMEURL' => Payment::HOMEURL,
+                  'HOMEURL' => Payment::HOME_URL,
                   'LANGUAGE' => Payment::LANGUAGE,
                   'LOGO' => Payment::LOGO,
                   'TBLBGCOLOR' => Payment::TBLBGCOLOR,
                   'TITLE' => Payment::TITLE,
-                  'TXTOKEN' => Payment::TXTOKEN,
                   'TXTCOLOR' => Payment::TXTCOLOR
                   }
-      ogone
     end
 
     def prepare_ogone_paypal(params)
       ogone = { 'ORDERID' => params[:order_id],
-                'AMOUNT' => params[:balance],
-                'EMAIL' => User.find_by_id(params[:user_id].email),
-                'COMPLUS' => params[:order_id]
+                'AMOUNT'  => params[:balance],
+                'EMAIL' => User.find_by_id(params[:user_id]).email,
+                'TP' => Payment::TP,
+                'PM' => Payment::PM_CARD,  
+                'WIN3DS' => Payment::WIN3DS,
+                'USERID' => params[:user_id],
+                'COMPLUS' => params[:order_id],
+                'PARAMPLUS' => "id=#{params[:user_id]}",
+                'OPERATION' => Payment::OPERATION,
+                'PSPID' => Payment::PSPID,
+                'ACCEPTURL' => Payment::ACCEPT_URL,
+                'BGCOLOR' => Payment::BGCOLOR,
+                'BUTTONBGCOLOR' => Payment::BUTTONBGCOLOR,
+                'BUTTONTXTCOLOR' => Payment::BUTTONTXTCOLOR,
+                'CANCELURL' => Payment::CANCEL_URL,
+                'CATALOGURL' => Payment::CATALOG_URL,
+                'CURRENCY' => Payment::CURRENCY,
+                'DECLINEURL' => Payment::DECLINE_URL,
+                'EXCEPTIONURL' => Payment::EXCEPTION_URL,
+                'FONTTYPE' => Payment::FONTTYPE,
+                'HOMEURL' => Payment::HOME_URL,
+                'LANGUAGE' => Payment::LANGUAGE,
+                'LOGO' => Payment::LOGO,
+                'TBLBGCOLOR' => Payment::TBLBGCOLOR,
+                'TITLE' => Payment::TITLE,
+                'TXTCOLOR' => Payment::TXTCOLOR,
+                'TXTOKEN' => Payment::TXTOKEN
               }
-      ogone
     end
 
     def get_sha1(payment)

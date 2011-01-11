@@ -21,24 +21,24 @@ class Payment < ActiveRecord::Base
   BGCOLOR = "#336699"
   BUTTONBGCOLOR = "#336699"
   BUTTONTXTCOLOR = "#09f"
-  BRAND = "pauber"
+  BRAND = "VISA"
   PSPID = "pauber"
   OPERATION = 'SAL'
-  TBBGCOLOR = '#CCCC99'
-  PMLISTTYPE = 'pauber'
-  PMLIST = 'pauber'
-  WIN3DS = 'pauber'
-  PM = 'pauber'
+  TBLBGCOLOR = '#CCCC99'
+  PMLISTTYPE = "2"
+  PMLIST = "VISA;MasterCard"
+  WIN3DS = "POPUP"
+  PM = "PAYPAL"
+  PM_CARD = "CreditCard"
   TP = 'http://dev.kidskarton.de/layouts/application'
   TITLE = 'KidsKarton.de'
   TXTCOLOR = '#222222'
   CURRENCY = 'EUR'
-  FONTTYPE = ''
+  FONTTYPE = 'Helvetica, sans-serif'
   HOMEURL = 'http://dev.kidskarton.de'
   LANGUAGE = 'de_DE'
   LOGO = 'http://dev.kidskarton.de/images/logo.gif'
-  TXTOKEN = 'pauber'
-  TBLBGCOLOR = '#000000'
+  TXTOKEN = "INIT"
 
   def is_destroyable?
     false

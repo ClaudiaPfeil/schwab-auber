@@ -8,14 +8,15 @@
 <%= create_header_with_link(I18n.t(:payments), (link_to I18n.t(:all_unconfirmed), all_unconfirmed_payments_path), Payment, :manage) %>
 <br>
 <%= create_table_header(ListView.get_table_columns(Payment, [:first_name, :last_name, :package, :kind_payment, :created_at])) %>
-
+<%= get_notices %>
 <% @payments.each do |payment| %>
+
   <div class="tr span-22">
     <div class="td first">&nbsp;</div>
-    <% cols = ListView.get_entries(Payment, payment, [:first_name, :last_name, :serial_number, :kind, :created_at], {:first_name => :user, :last_name => :user, :serial_number => :package}) %>
-    <% cols.each do |col| %>
-      <div class="td span-3"><%= col %></div>
-    <% end %>
+    <%# cols = ListView.get_entries(Payment, payment, [:first_name, :last_name, :serial_number, :kind, :created_at], {:first_name => :user, :last_name => :user, :serial_number => :package}) %>
+    <%# cols.each do |col| %>
+      <div class="td span-3"><%#= col %></div>
+    <%# end %>
     <div class="td last">
       <%= link_to I18n.t(:confirm_prepayment), confirm_prepayment_payment_path(payment) if payment.kind == true && payment.prepayment_confirmed == false %>
     </div>
