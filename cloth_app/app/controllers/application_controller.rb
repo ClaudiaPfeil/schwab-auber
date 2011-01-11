@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include AuthenticatedSystem
   protect_from_forgery
-  before_filter :authenticate
+  #before_filter :authenticate
 
   rescue_from CanCan::AccessDenied do |exception|
     #flash[:alert] = exception.message
