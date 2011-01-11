@@ -57,7 +57,7 @@ $(document).ready(function(){
   // standardmäßig Periode und Verlängerung nicht anzeigen
   $('#user_continue_membership_input').hide();
   $('#user_premium_period_input').hide();
-
+ 
   // Erstellen Kleiderpaket mit "mehrseitigem Formular"
   // Erste Seite
   $('#package_next_size_input').hide();
@@ -384,8 +384,10 @@ $(document).ready(function(){
       modal: true
     });
   })
- 
+
 })
+
+
 
 //$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));
 

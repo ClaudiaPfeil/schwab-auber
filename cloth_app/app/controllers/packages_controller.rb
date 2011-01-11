@@ -101,7 +101,7 @@ class PackagesController < ApplicationController
   private
 
     def init_package
-      init_current_object { (current_user.is? :admin)? @package = Package.find_by_id(params[:id]) : @package = Package.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+      init_current_object { @package = Package.find_by_id(params[:id]) }
     end
 
     def init_order_package

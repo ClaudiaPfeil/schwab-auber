@@ -1,26 +1,45 @@
-<%= semantic_form_for @package do |package| %>
-<%= package.inputs "<h2>"+I18n.t('show_package')+ "</h2>" do  %>
-    <p><%= package.input :serial_number, :input_html => {:readonly => true}  %></p>
-    <p><%= package.input :sex, :as => :radio, :collection => [["Junge", false],["Mädchen", true]],
-                               :input_html => {:readonly => true}
-        %></p>
-    <p><%= package.input :size, :input_html => {:readonly => true} %></p>
-    <p><%= package.input :next_size, :input_html => {:readonly => true} %></p>
-    <p><%= package.input :age, :input_html => {:readonly => true} %></p>
-    <p><%= package.input :saison, :input_html => {:readonly => true} %></p>
-    <%= package.input :kind, :hint => I18n.t('hint_kind'),
-                             :input_html => {:readonly => true}
-        %><br><br>
-    <p><%= package.input :amount_clothes, :hint => I18n.t('hint_amount_clothes'),
-                                          :input_html => {:readonly => true}
-        %></p>
-    <p><%= package.input :label, :input_html => {:readonly => true} %></p>
-    <p><%= package.input :amount_labels, :input_html => {:readonly => true} %></p>
-    <p><%= package.input :colors, :hint => I18n.t('hint_colors'),
-                                  :input_html => {:readonly => true}
-        %></p>
-    <p><%= package.input :notice, :input_html => {:readonly => true}%></p>
-  <% end %>
+<h2><%=  I18n.t('show_package') %></h2>
+<%= form_for @package, :html => {:id => "edit_package"} do |package| %>
+
+    <p><%= package.label :serial_number %> <%= package.text_field :serial_number, :readonly => true  %></p>
+    <p><%= package.label :sex %><%= package.text_field :sex, :value => ( @package.sex == true ? "Mädchen" : "Junge"), :readonly => true %></p>
+    <p><%= package.label :size %><%= package.text_field :size, :readonly => true %></p>
+    <p><%= package.label :next_size %><%= package.text_field :next_size, :readonly => true %></p>
+    <p><%= package.label :age %><%= package.text_field :age, :readonly => true %></p>
+    
+    
+    <p><%= package.label :saison %><%= package.text_field :saison, :readonly => true %></p>
+    <p>
+        <%= package.label :kind %><%= package.text_field :kind, :readonly => true%><br>
+       
+           <%if @package.kind.include? 'Shirts & Tops' %>
+             <%= package.label :shirts %><%= package.text_area :shirts, :readonly => true %><br>
+           <% end %>
+           <%if @package.kind.include? 'Blusen & Hemden' %>
+             <%= package.label :blouses %><%= package.text_area :blouses, :readonly => true %><br>
+           <%end%>
+           <%if @package.kind.include? 'Jeans' %>
+             <%= package.label :jeans %><%= package.text_area :jeans, :readonly => true %><br>
+           <% end %>
+           <%if @package.kind.include? 'Jacken' %>
+             <%= package.label :jackets %><%= package.text_area :jackets, :readonly => true %><br>
+           <% end %>
+           <%if @package.kind.include? 'Kleider & Röcke' %>
+             <%= package.label :dresses %><%= package.text_area :dresses, :readonly => true %><br>
+           <% end %>
+           <%if @package.kind.include? 'Erstausstattung' %>
+             <%= package.label :basics %><%= package.text_area :basics, :readonly => true %><br>
+           <% end %>
+    </p>
+
+
+    <p><%= package.label 'Anz. Kleidungsstücke gesamt' %><%= package.text_field :amount_clothes, :hint => I18n.t('hint_amount_clothes'),:readonly => true %></p>
+    <p><%= package.label :label %><%= package.text_field :label, :readonly => true %></p>
+    <p><%= package.label :amount_labels %><%= package.text_field :amount_labels, :readonly => true %></p>
+    <p><%= package.label :colors %><%= package.text_field :colors, :hint => I18n.t('hint_colors'),:readonly => true %></p>
+    <p><%= package.label :notice %><%= package.text_area :notice, :input_html => {:readonly => true, :style => "display: inline;"}%></p>
+    
+ 
 
 <% end %>
 
