@@ -1,0 +1,30 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<%=h @user[:title].to_s + " " + @user[:receiver].to_s %> hat folgende Nachricht an KidsKarton.de gesendet:
+
+<i><%=h @user[:message] %></i>
+
+
+Die Kontaktdaten von <%=h @user[:title].to_s + " " + @user[:receiver].to_s %> sind:
+
+<i>Anschrift</i>
+
+<%=h @user[:street_and_number]%>
+<%=h @user[:postcode] %>
+<%=h @user[:town] %>
+<%=h @user[:land] %>
+
+<i>E-Mail</i>
+
+<%=h @user[:email] %>
+
+<i>Telefon (Festnetz)</i>
+
+<%=h @user[:telephone] %>
+
+<i>Mobil</i>
+
+<%=h @user[:mobile] %>

@@ -1,0 +1,5 @@
+## YAML Template.
+---
+de:
+  message:  Nachricht
+  receiver: Name (Vor- und Zuname)
