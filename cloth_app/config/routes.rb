@@ -73,7 +73,11 @@ ClothApp::Application.routes.draw do
   match 'reset_password/:id' => 'users#reset_password', :as => 'reset_password'
   match 'master_visa_card' => 'payments#master_visa_card', :as => :master_visa_card
   match 'paypal' => 'payments#paypal', :as => :paypal
-  
+  match 'impressum' => 'welcome#impressum', :as => :impressum
+  match 'help' => 'welcome#help', :as => :help
+  match 'contact' => 'welcome#contact', :as => :contact
+  match 'get_in_contact' => 'welcome#get_in_contact', :as => :get_in_contact
+
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action

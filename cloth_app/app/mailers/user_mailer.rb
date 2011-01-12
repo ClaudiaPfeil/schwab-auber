@@ -44,6 +44,12 @@ class UserMailer < ActionMailer::Base
     @user = user
     @link = "http://#{SITE_URL}/" + "reset_password/" + user.id.to_s
   end
+
+  def contact_kidskarton(user)
+    setup_email(user)
+    @subject += I18n.t('get_in_contact')
+    @user = user
+  end
   
   protected
 

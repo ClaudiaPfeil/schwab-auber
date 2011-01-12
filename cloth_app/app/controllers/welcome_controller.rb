@@ -37,5 +37,22 @@ class WelcomeController < ApplicationController
     DataFile.cleanup("doc",post)
     redirect_to dashboard_path, :notice => "Gutscheine erfolgreich importiert"
   end
+
+  def help
+    @contents = get_content("Help")
+  end
+
+  def contact
+    @contents = get_content("Contact")
+    @contact = Contact.new()
+  end
+
+  def get_in_contact
+    
+  end
+
+  def impressum
+    @contents = get_content("Impressum")
+  end
   
 end

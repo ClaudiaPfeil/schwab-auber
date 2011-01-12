@@ -21,3 +21,6 @@ de:
   kind: Art
   confirm_address: Möchten sie die Anschrift wirklich löschen?
   edit_address: Anschrift ändern
+  contact_name: Name (Vor- und Zuname)
+  contact_message: Nachricht
+  contact_send: Absenden

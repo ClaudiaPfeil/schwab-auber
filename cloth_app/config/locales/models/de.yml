@@ -1,4 +1,8 @@
 de:
+  help: Hilfe
+  faq:  Häufig gestellte Fragen
+  contact:  Kontakt
+  title_impressum:  Impressum
   activerecord:
     models:
       content: Inhalt

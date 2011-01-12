@@ -193,7 +193,7 @@ class PaymentsController < ApplicationController
 
     def get_sha1(payment)
       sha1_key = ''
-      payment.each { |key, value| sha1_key << key.to_s + "=" + value.to_s + PASS_PHRASE}
+      payment.sort.each { |key, value| sha1_key << key.to_s + "=" + value.to_s + PASS_PHRASE}
       puts "SHA1-Key= " + sha1_key
       Digest::SHA1.hexdigest(sha1_key)
     end

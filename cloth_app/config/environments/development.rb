@@ -24,7 +24,7 @@ ClothApp::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
 
-  SITE_URL  = "localhost:3000"
-  LANDING_URL = "localhost:3000/landing_page/"
+  SITE_URL  = "www.dev.kidskarton.de"
+  LANDING_URL = "www.dev.kidskarton.de/landing_page/"
 end
 

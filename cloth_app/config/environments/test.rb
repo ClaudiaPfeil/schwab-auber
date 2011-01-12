@@ -32,4 +32,7 @@ ClothApp::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  SITE_URL  = "www.test.kidskarton.de"
+  LANDING_URL = "www.test.kidskarton.de/landing_page/"
 end
