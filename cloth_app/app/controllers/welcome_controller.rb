@@ -48,7 +48,8 @@ class WelcomeController < ApplicationController
   end
 
   def get_in_contact
-    
+    UserMailer.send_contact(params[:contact]).deliver
+    redirect_to contact_path, :notice => I18n.t(:contact_sended)
   end
 
   def impressum

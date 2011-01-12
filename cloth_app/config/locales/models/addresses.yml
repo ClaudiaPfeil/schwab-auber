@@ -24,3 +24,8 @@ de:
   contact_name: Name (Vor- und Zuname)
   contact_message: Nachricht
   contact_send: Absenden
+  contact_sended: Nachricht erfolgreich gesendet
+  email: E-Mail
+  telephone:  Festnetz-Nr.
+  mobile: Mobil-Nr.
+  contact_title: Anrede
