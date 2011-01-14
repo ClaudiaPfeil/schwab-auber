@@ -6,7 +6,7 @@
 <%#*Upgrade auf Premium-Mitgliedschaft anbieten%>
 
 <% if current_user.is? :registered %>
-  <%= create_header3_with_link(I18n.t(:upgrade_premium), (link_to I18n.t(:upgrade), '#', :rel => 'premium', :class => 'upgrade'), Profile, :update) %>
+  <%= create_header3_with_link(I18n.t(:upgrade_premium), (link_to I18n.t(:upgrade), :rel => 'premium', :class => 'upgrade'), Profile, :update) %>
 <% end %>
 
 <div id="premium" style="display: none">
