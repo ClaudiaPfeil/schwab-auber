@@ -49,10 +49,7 @@ ClothApp::Application.routes.draw do
   resources :addresses
   resources :bills
   resources :categories
-  resources :contacts
   resources :coupons
-  resources :helps
-  resources :impressums
   resources :orders
   resources :options
   resources :prices
