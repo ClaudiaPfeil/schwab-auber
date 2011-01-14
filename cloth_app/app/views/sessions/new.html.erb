@@ -3,7 +3,7 @@
   <%= get_notices %>
   <p>
     <% unless get_notices.blank? %>
-      <%= link_to 'Passwort vergessen?', :rel => "forgot_password", :class => 'simpledialog' %>
+      <%= link_to 'Passwort vergessen?', '#', :rel => "forgot_password", :class => 'simpledialog' %>
       <div id="forgot_password" style="display: none"><%= render 'forgot_password', :login => params[:login] %> </div>
     <% end %>
   </p>

@@ -76,10 +76,10 @@ module ProfilesHelper
   end
 
   def new_bank
-    link_to I18n.t(:new_bank), :rel => "bank", :class => 'simpledialog'
+    link_to I18n.t(:new_bank), '#', :rel => "bank", :class => 'simpledialog'
   end
 
   def update_bank
-    link_to I18n.t(:update_bank), :rel => "bank", :class => 'simpledialog'
+    link_to I18n.t(:update_bank), '#', :rel => "bank", :class => 'simpledialog'
   end
 end

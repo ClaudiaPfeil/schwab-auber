@@ -30,7 +30,7 @@
         <%= user.input :role, :value => 'registered', :as => :hidden %>
       <% end %>
     
-      <%= user.inputs link_to I18n.t(:accept_agbs), :rel => 'agbs', :class => 'simpledialog' do %>
+      <%= user.inputs link_to I18n.t(:accept_agbs), '#', :rel => 'agbs', :class => 'simpledialog' do %>
         <%= user.input :accepted, :as => :boolean%>
       <% end %>
 

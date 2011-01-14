@@ -377,13 +377,15 @@ $(document).ready(function(){
     }
   })
 
-  %('#Bezahlen').click(function () {
+  $('#Bezahlen').click(function () {
    dialog({
       height: 500,
       width: 500,
       modal: true
     });
   })
+
+  $('.simpledialog').show();
 
 })
 
