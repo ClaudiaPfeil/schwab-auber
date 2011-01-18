@@ -127,7 +127,9 @@ class ProfilesController < ApplicationController
           histories.write(input) unless input.blank?
         end
       end
-      send_file(path+name) 
+      send_file(path+name)
+    else
+      puts "Kein Admin, keine Profile Historien! " + (current_user.is? :admin).to_s
     end
 
   end
