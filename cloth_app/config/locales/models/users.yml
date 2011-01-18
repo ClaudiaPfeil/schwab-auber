@@ -29,8 +29,7 @@ de:
   profile_not_updated:  Nutzerkonto nicht aktualisiert
   membership_not_upgraded: Ihre Mitgliedschaft konnte leider nicht heraufgestuft werden. Bitte versuchen sie es später erneut oder wenden sie sich an den Webmaster.
   send_link: 'Ein Link zum Zurücksetzen ihres Passwortes wurde eben an ihre E-Mail Konto versendet.'
-  address:
-    street_and_number:  Straße und Hausnummer
-    postcode: Postleitzahl
-    town: Stadt
-    land: Land
+  street_and_number:  Straße und Hausnummer
+  postcode: Postleitzahl
+  town: Stadt
+  land: Land

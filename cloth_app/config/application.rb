@@ -46,10 +46,10 @@ module ClothApp
     config.autoload_paths += %W(#{config.root}/lib)
 
     ActionMailer::Base.smtp_settings = {
-      :address        => 'smtp.googlemail.com', # default: localhost
+      :address        => 'kidskarton.de', # default: localhost
       :port           => '25',                  # default: 25
-      :user_name      => 'claudia.pfeil',
-      :password       => 'aidualc83',
+      :user_name      => 'info@kidskarton.de',
+      :password       => 'schwab&auber',
       :authentication => :plain                 # :plain, :login or :cram_md5
     }
   end

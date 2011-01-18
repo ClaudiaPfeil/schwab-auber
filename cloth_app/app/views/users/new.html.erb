@@ -14,10 +14,10 @@
 
         <%#*Liefer-Anschrift%>
         <%= user.semantic_fields_for :address do |address|  %>
-          <%= address.input :street_and_number %>
-          <%= address.input :postcode %>
-          <%= address.input :town %>
-          <%= address.input :land %>
+          <%= address.input :street_and_number, :label => I18n.t(:street_and_number) %>
+          <%= address.input :postcode, :label => I18n.t(:postcode) %>
+          <%= address.input :town, :label => I18n.t(:town) %>
+          <%= address.input :land, :label => I18n.t(:land) %>
           <%= address.input :kind, :as => :hidden, :value => 1 %>
         <% end %>
       <% end %>
