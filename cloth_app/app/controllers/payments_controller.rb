@@ -143,8 +143,8 @@ class PaymentsController < ApplicationController
                   'HOMEURL' => Payment::HOME_URL,
                   'LANGUAGE' => Payment::LANGUAGE,
                   'LOGO' => Payment::LOGO,
-                  'ORDERID' => params[:order_id],
                   'OPERATION' => Payment::OPERATION,
+                  'ORDERID' => params[:order_id],
                   'PARAMPLUS' => "id=#{params[:user_id]}",
                   'PM' => Payment::PM_CARD,
                   'PMLIST' => Payment::PMLIST,
@@ -176,8 +176,8 @@ class PaymentsController < ApplicationController
                 'HOMEURL' => Payment::HOME_URL,
                 'LANGUAGE' => Payment::LANGUAGE,
                 'LOGO' => Payment::LOGO,
-                'OPERATION' => Payment::OPERATION,
                 'ORDERID' => params[:order_id],
+                'OPERATION' => Payment::OPERATION,
                 'PARAMPLUS' => "id=#{params[:user_id]}",
                 'PM' => Payment::PM_CARD,
                 'PSPID' => Payment::PSPID,
@@ -195,8 +195,8 @@ class PaymentsController < ApplicationController
       sha1_key = ''
       payment.sort.each { |key, value| sha1_key << key.to_s + "=" + value.to_s + PASS_PHRASE}
       puts "SHA1-Key= " + sha1_key
-      puts (Digest::SHA1.hexdigest(sha1_key))
-      Digest::SHA1.hexdigest(sha1_key)
+      puts (Digest::SHA1.hexdigest(sha1_key).to_s.upcase)
+      Digest::SHA1.hexdigest(sha1_key).to_s.upcase
     end
 
 end
