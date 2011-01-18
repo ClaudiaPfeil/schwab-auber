@@ -1,16 +1,17 @@
 class UserMailer < ActionMailer::Base
   include Cms
+  #Object.SITE_URL
 
   def signup_notification(user)
     setup_email(user.reload)
     @subject    += I18n.t('subject_signup')
-    @url  = "http://#{SITE_URL}/activate/#{user.activation_code}"
+    @url  = "http://#{::SITE_URL}/activate/#{user.activation_code}"
   end
   
   def activation(user)
     setup_email(user)
     @subject    += I18n.t('subject_activation')
-    @url  = "http://#{SITE_URL}/"
+    @url  = "http://#{::SITE_URL}/"
   end
 
   def order_cartons(user)
@@ -27,7 +28,7 @@ class UserMailer < ActionMailer::Base
   def send_invitation(friend, user)
     setup_friend_email(friend, user)
     @subject    += I18n.t('subject_invitation')
-    @url  = "http://#{LANDING_URL}?id=#{user.id}"
+    @url  = "http://#{::LANDING_URL}?id=#{user.id}"
     @friend =  friend
   end
 
@@ -42,7 +43,7 @@ class UserMailer < ActionMailer::Base
     setup_email(user)
     @subject += I18n.t('reset_password')
     @user = user
-    @link = "http://#{SITE_URL}/" + "reset_password/" + user.id.to_s
+    @link = "http://#{::SITE_URL}/" + "reset_password/" + user.id.to_s
   end
 
   def send_contact(user)
@@ -56,7 +57,7 @@ class UserMailer < ActionMailer::Base
   def setup_email(user)
     @recipients  = "#{user.email}"
     @from        = "KidsKarton.de"
-    @subject     = "[#{SITE_URL}] "
+    @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user = user
   end
@@ -64,7 +65,7 @@ class UserMailer < ActionMailer::Base
   def setup_admin_email(user)
     @recipients  = "info@claudia-pfeil.com"#"info@kidskarton.de"
     @from        = "#{user.email}"
-    @subject     = "[#{SITE_URL}] "
+    @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user = user
   end
@@ -72,7 +73,7 @@ class UserMailer < ActionMailer::Base
   def setup_friend_email(friend, user)
     @recipients  = friend[:friends_email]
     @from        = "#{user.first_name} #{user.last_name}"
-    @subject     = "[#{SITE_URL}] "
+    @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user = user
   end
@@ -80,7 +81,7 @@ class UserMailer < ActionMailer::Base
   def setup_remember_prepayment(user, payment)
     @recipients  = user.email || payment[:email]
     @from        = "KidsKarton.de"
-    @subject     = "[#{SITE_URL}] "
+    @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user        = user
   end
@@ -88,7 +89,7 @@ class UserMailer < ActionMailer::Base
   def setup_contact_email(user)
     @recipients  = "info@kidskarton.de"
     @from        =  user[:email]
-    @subject     = "[#{SITE_URL}] "
+    @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user = user
   end

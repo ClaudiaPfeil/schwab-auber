@@ -47,7 +47,7 @@ ClothApp::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  config.SITE_URL  = "kidskarton.de"
-  config.LANDING_URL = "kidskarton.de/landing_page/"
+  SITE_URL  = "kidskarton.de"
+  LANDING_URL = "kidskarton.de/landing_page/"
 
 end
