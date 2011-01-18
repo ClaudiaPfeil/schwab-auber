@@ -46,7 +46,7 @@ module ClothApp
     config.autoload_paths += %W(#{config.root}/lib)
 
     ActionMailer::Base.smtp_settings = {
-      :address        => 'kidskarton.de', # default: localhost
+      :address        => 'smtp.kidskarton.de', # default: localhost
       :port           => '25',                  # default: 25
       :user_name      => 'info@kidskarton.de',
       :password       => 'schwab&auber',
