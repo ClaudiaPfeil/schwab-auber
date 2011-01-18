@@ -150,7 +150,6 @@ class PaymentsController < ApplicationController
                   'PMLIST' => Payment::PMLIST,
                   'PMLISTTYPE' => Payment::PMLISTTYPE,
                   'PSPID' => Payment::PSPID,
-                  'TP' => Payment::TP,
                   'TBLBGCOLOR' => Payment::TBLBGCOLOR,
                   'TITLE' => Payment::TITLE,
                   'TXTCOLOR' => Payment::TXTCOLOR,
@@ -160,34 +159,19 @@ class PaymentsController < ApplicationController
     end
 
     def prepare_ogone_paypal(params)
-      ogone = { 'ACCEPTURL' => Payment::ACCEPT_URL,
-                'AMOUNT'  => params[:balance],
+      ogone = { 'AMOUNT'  => params[:balance],
                 'BGCOLOR' => Payment::BGCOLOR,
                 'BUTTONBGCOLOR' => Payment::BUTTONBGCOLOR,
                 'BUTTONTXTCOLOR' => Payment::BUTTONTXTCOLOR,
-                'COMPLUS' => params[:order_id],
-                'CANCELURL' => Payment::CANCEL_URL,
-                'CATALOGURL' => Payment::CATALOG_URL,
                 'CURRENCY' => Payment::CURRENCY,
-                'DECLINEURL' => Payment::DECLINE_URL,
-                'EMAIL' => User.find_by_id(params[:user_id]).email,
-                'EXCEPTIONURL' => Payment::EXCEPTION_URL,
                 'FONTTYPE' => Payment::FONTTYPE,
-                'HOMEURL' => Payment::HOME_URL,
                 'LANGUAGE' => Payment::LANGUAGE,
-                'LOGO' => Payment::LOGO,
                 'ORDERID' => params[:order_id],
-                'OPERATION' => Payment::OPERATION,
-                'PARAMPLUS' => "id=#{params[:user_id]}",
-                'PM' => Payment::PM_CARD,
+                'PM' => Payment::PM,
                 'PSPID' => Payment::PSPID,
                 'TBLBGCOLOR' => Payment::TBLBGCOLOR,
                 'TITLE' => Payment::TITLE,
-                'TP' => Payment::TP,
-                'TXTCOLOR' => Payment::TXTCOLOR,
-                'TXTOKEN' => Payment::TXTOKEN,
-                'USERID' => params[:user_id],
-                'WIN3DS' => Payment::WIN3DS
+                'TXTCOLOR' => Payment::TXTCOLOR
               }
     end
 
