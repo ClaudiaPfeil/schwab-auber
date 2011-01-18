@@ -83,21 +83,23 @@ class ProfilesController < ApplicationController
 
   # Historie aller Profile exportieren als CSV
   def export_histories
+    puts " Exportieren aller Profil Historien sofern Admin: " + (current_user.is? :admin).to_s
     @profiles = User.all if current_user.is? :admin
 
     if @profiles
+      puts "\n Alle Profile" 
       path = 'export/'
       name = 'alle_profile_historien.csv'
       File.new(path + name, "w").path
       input = ""
 
       @profiles.each do |profi|
-       
+        puts "\n jedes Profil"
         File.open(path+name, "w") do |histories|
           
           input << "Name, Vorname, Kunden-Nr.,\n"
           input << "#{profi.last_name}, #{profi.first_name}, #{profi.user_number}\n"
-
+          puts " Erste Zeile: " + input.to_s
           packages = profi.packages
           orders = profi.orders
 
