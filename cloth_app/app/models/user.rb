@@ -180,7 +180,7 @@ class User < ActiveRecord::Base
     elsif addresses.blank?
       false
     else
-      addresses.kind == false ? true : false  
+      addresses.first.kind == 0 ? true : false
     end
   end
 
@@ -193,7 +193,7 @@ class User < ActiveRecord::Base
     elsif addresses.blank?
       false
     else
-      addresses.kind == true ? true : false
+      addresses.first.kind == 1 ? true : false
     end
   end
 
