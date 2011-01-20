@@ -23,7 +23,7 @@ ClothApp::Application.configure do
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
-  #config.action_mailer.delivery_method = :test
+  config.action_mailer.delivery_method = :smtp
 
   # Use SQL instead of Active Record's schema dumper when creating the test database.
   # This is necessary if your schema can't be completely dumped by the schema dumper,
@@ -32,14 +32,6 @@ ClothApp::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-
-  ActionMailer::Base.smtp_settings = {
-      :address        => 'kidskarton.de', # default: localhost
-      :port           => '25',                  # default: 25
-      :user_name      => 'info@kidskarton.de',
-      :password       => 'schwab&auber',
-      :authentication => :plain                 # :plain, :login or :cram_md5
-  }
 
   SITE_URL  = "stage.kidskarton.de"
   LANDING_URL = "stage.kidskarton.de/landing_page/"

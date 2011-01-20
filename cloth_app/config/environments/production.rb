@@ -47,14 +47,6 @@ ClothApp::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
-  ActionMailer::Base.smtp_settings = {
-      :address        => 'kidskarton.de', # default: localhost
-      :port           => '25',                  # default: 25
-      :user_name      => 'info@kidskarton.de',
-      :password       => 'schwab&auber',
-      :authentication => :plain                 # :plain, :login or :cram_md5
-  }
-
   SITE_URL  = "kidskarton.de"
   LANDING_URL = "kidskarton.de/landing_page/"
 
