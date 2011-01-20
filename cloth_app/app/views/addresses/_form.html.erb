@@ -24,7 +24,7 @@
       <%= address.input :postcode %>
       <%= address.input :town %>
       <%= address.input :land %>
-      <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => false, "Rechnungsanschrift" => true} %>
+      <%= address.input :kind, :as => :radio, :collection => {"Lieferanschrift" => 0, "Rechnungsanschrift" => 1} %>
       <%= address.input :user_id, :value => (params[:user_id]? params[:user_id] : current_user.id), :as => :hidden %>
 
     <%= address.buttons %>
