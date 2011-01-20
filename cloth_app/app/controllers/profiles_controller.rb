@@ -78,7 +78,7 @@ class ProfilesController < ApplicationController
     profile = User.find_by_id(friend[:user_id])
 
     UserMailer.send_invitation(friend, profile).deliver
-    redirect_to profile_path(profile)
+    redirect_to profile_path(friend[:user_id])
   end
 
   # Historie aller Profile exportieren als CSV
