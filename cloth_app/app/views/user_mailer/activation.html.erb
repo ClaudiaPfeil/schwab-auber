@@ -1,3 +1,3 @@
-<%=h @user.first_name %>&nbsp;<%=h @user.last_name%>, <%=h I18n.t('message_activation') %>
+<%=h @user.first_name.to_s + " " + @user.last_.to_s %>, <%=h I18n.t('message_activation') %>
 
 <%=h @url %>

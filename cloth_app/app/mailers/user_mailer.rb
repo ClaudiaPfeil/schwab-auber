@@ -1,6 +1,5 @@
 class UserMailer < ActionMailer::Base
   include Cms
-  #Object.SITE_URL
 
   def signup_notification(user)
     setup_email(user.reload)
@@ -63,7 +62,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def setup_admin_email(user)
-    @recipients  = "info@claudia-pfeil.com"#"info@kidskarton.de"
+    @recipients  = "info@kidskarton.de"
     @from        = "#{user.email}"
     @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now

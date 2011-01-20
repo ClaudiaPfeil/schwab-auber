@@ -98,6 +98,13 @@ class PackagesController < ApplicationController
   
   end
 
+  def sex
+    search_key = params[:id]
+    search_type = "Sex"
+    @packages = Package.search_by_attributes(search_key, search_type)
+    render :action => :index, :@packages => @packages
+  end
+
   private
 
     def init_package

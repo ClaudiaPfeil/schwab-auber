@@ -40,7 +40,7 @@ class AddressesController < ApplicationController
 
   def update
     if @address.update_attributes(params[:address])
-      redirect_to show_address_path(@address), :notice => I18n.t(:address_updated)
+      redirect_to address_path(@address), :notice => I18n.t(:address_updated)
     else
       @address = @address
       @notice = I18n.t(:address_not_updated)
