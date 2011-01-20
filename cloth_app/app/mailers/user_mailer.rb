@@ -55,7 +55,7 @@ class UserMailer < ActionMailer::Base
 
   def setup_email(user)
     @recipients  = "#{user.email}"
-    @from        = "KidsKarton.de"
+    @from        = "info@kidskarton.de"
     @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user = user
@@ -71,7 +71,7 @@ class UserMailer < ActionMailer::Base
 
   def setup_friend_email(friend, user)
     @recipients  = friend[:friends_email]
-    @from        = "#{user.first_name} #{user.last_name}"
+    @from        = "info@kidskarton.de"
     @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user = user
