@@ -1,7 +1,6 @@
 cloth_app/.bundle/config
 cloth_app/db/*.sqlite3
 cloth_app/log/*.log
-cloth_app/tmp/**/*
 cloth_app/config/database.yml
 cloth_app/config/initializers/site_keys.rb
 cloth_app/public/system
