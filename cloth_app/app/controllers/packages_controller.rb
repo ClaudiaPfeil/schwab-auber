@@ -13,7 +13,7 @@ class PackagesController < ApplicationController
   
   # Anzeige aller Pakete, die in den vergangenen 24 Stunden eingestellt wurden
   def show_24
-    @packages = Package.where(:created_at => "BETWEEN #{Date.today} AND DATE_SUB(#{Date.today}, #{Date.today - 24.hours}) ")
+    @packages = Package.where("LEFT(packages.created_at,10) BETWEEN '#{formatted_mysql_date(Date.today - 24.hours)}' AND '#{Date.today}' ")
   end
 
   def new
@@ -98,8 +98,8 @@ class PackagesController < ApplicationController
   
   end
 
-  def sex
-    search_key = params[:id]
+  def search_remote
+    search_key = params[:format]
     search_type = "Sex"
     @packages = Package.search_by_attributes(search_key, search_type)
     render :action => :index, :@packages => @packages
@@ -201,6 +201,10 @@ class PackagesController < ApplicationController
       elsif search_key =~ /^(m|M)(ä|Ä)(d|D)(c|C)(h|H)(e|E)(n|N)/ || search_key =~ /^(m|M)(a|A)(e|E)(d|D)(c|C)(h|H)(e|E)(n|N)/
         search_key = 1
       end
+    end
+
+    def formatted_mysql_date(date)
+      date.strftime("%Y-%m-%d") unless date.nil?
     end
     
 end

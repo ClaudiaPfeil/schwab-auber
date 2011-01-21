@@ -55,45 +55,32 @@ $(document).ready(function() {
 
 $(document).ready(function(){
   // standardmäßig Periode und Verlängerung nicht anzeigen
-  $('#user_continue_membership_input').hide();
-  $('#user_premium_period_input').hide();
+    $('#user_continue_membership_input').hide();
+    $('#user_premium_period_input').hide();
  
   // Erstellen Kleiderpaket mit "mehrseitigem Formular"
   // Erste Seite
-  $('#package_next_size_input').hide();
-  $('#package_shirts_input').hide();
-  $('#package_amount_clothes_input').hide();
-  $('.label').hide();
-  $('#package_blouses_input').hide();
-  $('#package_jackets_input').hide();
-  $('#package_jeans_input').hide();
-  $('#package_dresses_input').hide();
-  $('#package_basics_input').hide();
-  $('#package_saison_input').hide();
-  $('#package_kind_input').hide();
-  $('#package_label_input').hide();
-  $('#package_amount_labels_input').hide();
-  $('#package_colors_input').hide();
-  $('#package_notice_input').hide();
-  $('.simpledialog').hide();
-  $('#package_accepted_input').hide();
-  $('#package_confirmed_input').hide();
-  $('#package_submit').hide();
-  $('#continue1').hide();
-  $('#continue2').hide();
-  $('#back3').hide();
-  $('#back2').hide();
-  $('#back1').hide();
+    $('#package_next_size_input').hide();
+    $('#package_amount_clothes_input').hide();
+    $('#rules').hide();
+    $('#package_accepted_input').hide();
+    $('#package_confirmed_input').hide();
+    $('#package_submit').hide();
+    $('#continue1').hide();
+    $('#continue2').hide();
+    $('#continue3').hide();
+    $('#back3').hide();
+    $('#back2').hide();
+    $('#back1').hide();
+    $('#page_2').hide();
+    $('#page_3').hide();
+    $('#page_4').hide();
 
   //zweite Seite
   $('#continue').click( function () {
     $('#continue1').show();
-    $('#package_saison_input').show();
-    $('#package_kind_input').show();
-    $('#package_sex_input').hide();
-    $('#package_size_input').hide();
-    $('#package_next_size_input').hide();
-    $('#package_age_input').hide();
+    $('#page_1').hide();
+    $('#page_2').show();
     $('#continue').hide();
     $('#back3').hide();
     $('#back2').hide();
@@ -104,12 +91,10 @@ $(document).ready(function(){
   //dritte Seite
   $('#continue1').click( function() {   
     $('#continue2').show();
-    $('#package_saison_input').hide();
-    $('#package_kind_input').hide();
-    $('#package_sex_input').hide();
-    $('#package_size_input').hide();
-    $('#package_next_size_input').hide();
-    $('#package_age_input').hide();
+    $('#page_1').hide();
+    $('#page_2').hide();
+    $('#page_3').show();
+    $('#page_4').hide();
     $('#continue').hide();
     $('#continue1').hide();
     $('#back1').hide();
@@ -125,50 +110,33 @@ $(document).ready(function(){
   // vierte Seite
   $('#continue2').click( function () {
     $('#package_submit').show();
-    $('#package_saison_input').hide();
-    $('#package_kind_input').hide();
-    $('#package_sex_input').hide();
-    $('#package_size_input').hide();
-    $('#package_next_size_input').hide();
-    $('#package_age_input').hide();
+    $('#page_1').hide();
+    $('#page_2').hide();
+    $('#page_3').hide();
+    $('#page_4').show();
+    $('#package_accepted_input').show();
+    $('#package_confirmed_input').show();
     $('#continue').hide();
     $('#continue1').hide();
     $('#continue2').hide();
     $('#back2').hide();
     $('#back1').hide();
     $('#package_label_input').hide();
-    $('#package_amount_labels_input').hide();
-    $('#package_colors_input').hide();
-    $('#package_notice_input').show();
-    $('.simpledialog').show();
-    $('#package_accepted_input').show();
-    $('#package_confirmed_input').show();
     $('#back3').show();
 
   })
 
   // zurück von Seite 4 zu Seite 3
   $('#back3').click( function () {
-    $('#continue2').show();
-    $('#package_saison_input').hide();
-    $('#package_kind_input').hide();
-    $('#package_sex_input').hide();
-    $('#package_size_input').hide();
-    $('#package_next_size_input').hide();
-    $('#package_age_input').hide();
+    $('#continue2').show();  
     $('#continue').hide();
     $('#continue1').hide();
     $('#back1').hide();
     $('#back3').hide();
     $('#back2').show();
-    $('#package_label_input').show();
-    $('#package_amount_labels_input').show();
-    $('#package_colors_input').show();
-    $('#package_notice_input').hide();
-    $('.simpledialog').hide();
-    $('#package_accepted_input').hide();
-    $('#package_confirmed_input').hide();
-    $('#package_submit').hide();
+    $('#page_4').hide();
+    $('#page_3').show();
+   
   })
 
   // zurück zu Schritt 2 von 3

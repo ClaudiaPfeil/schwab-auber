@@ -3,136 +3,158 @@
 <%= semantic_form_for @package do |package| %>
 
   <%= package.inputs "<h2> #{I18n.t(:form_package)}</h2>" do  %>
-    <%#= package.input :serial_number, :input_html => {:readonly => true}  %>
-    <p><%= package.input :sex, :as => :radio, :collection => [[I18n.t(:boy), false],[I18n.t(:girl), true]] %></p>
-    <p><%= package.input :size,
-                         :as => :select,
-                         :collection  =>  @package.get_contents("Size"),
-                         :include_blank =>  false
-        %></p>
-    <p><%= package.input :next_size,
-                         :input_html => {:readonly => true}
+   
+    <div id="page_1">
 
-        %></p>
-    <p><%= package.input :age,
-                         :as  =>  :select,
-                         :collection  =>  @package.get_contents("Age"),
-                         :include_blank =>  false
-        %></p>
+      <p><%= package.input :sex, :as => :radio, :collection => [[I18n.t(:boy), false],[I18n.t(:girl), true]] %></p>
+      <p><%= package.input :size,
+                           :as => :select,
+                           :collection  =>  @package.get_contents("Size"),
+                           :include_blank =>  false
+          %></p>
+      <p><%= package.input :next_size,
+                           :input_html => {:readonly => true}
 
-    <p><%= package.input :saison,
-                         :as => :check_boxes,
-                         :collection =>  translate(@package.get_contents("Saison"))
-                         
-       %></p>
+          %></p>
+      <p><%= package.input :age,
+                           :as  =>  :select,
+                           :collection  =>  @package.get_contents("Age"),
+                           :include_blank =>  false
+          %></p>
+    </div>
 
-    <%= package.input :kind,
-                      :hint => I18n.t('hint_kind'),
-                      :as =>  :check_boxes,
-                      :collection => translate(@package.get_contents("Kind"))
-    %>
+    <div id="page_2">
+      <p><%= package.input :saison,
+                           :as => :check_boxes,
+                           :collection =>  translate(@package.get_contents("Saison"))
 
-    <div id="shirts" style="display: none">
-      <% translate(@package.get_contents("Shirts")).each do |category| %>
-      <%= package.input category.downcase.gsub("-", "_").to_sym,
-                        :as => :select,
-                        :collection  =>  @package.get_contents("Amount"),
-                        :include_blank => false
+         %></p>
+      <%= package.input :kind,
+                        :hint => I18n.t('hint_kind'),
+                        :as =>  :check_boxes,
+                        :collection => translate(@package.get_contents("Kind"))
       %>
-    <% end %>
+
+      <div id="shirts" style="display: none">
+        <% translate(@package.get_contents("Shirts")).each do |category| %>
+        <%= package.input category.downcase.gsub("-", "_").to_sym,
+                          :as => :select,
+                          :collection  =>  @package.get_contents("Amount"),
+                          :include_blank => false
+        %>
+      <% end %>
+      </div>
+
+      <div id="blouses" style="display: none">
+        <% translate(@package.get_contents("Blouses")).each do |category| %>
+        <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                          :as => :select,
+                          :collection  =>  @package.get_contents("Amount"),
+                          :include_blank => false
+        %>
+      <% end %>
+      </div>
+
+      <div id="jackets" style="display: none">
+        <% translate(@package.get_contents("Jackets")).each do |category| %>
+        <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                          :as => :select,
+                          :collection  =>  @package.get_contents("Amount"),
+                          :include_blank => false
+        %>
+      <% end %>
+      </div>
+
+      <div id="jeans" style="display: none">
+        <% translate(@package.get_contents("Jeans")).each do |category| %>
+        <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                          :as => :select,
+                          :collection  =>  @package.get_contents("Amount"),
+                          :include_blank => false
+        %>
+      <% end %>
+      </div>
+
+      <div id="dresses" style="display: none">
+        <% translate(@package.get_contents("Dresses")).each do |category| %>
+        <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                          :as => :select,
+                          :collection  =>  @package.get_contents("Amount"),
+                          :include_blank => false
+        %>
+      <% end %>
+      </div>
+
+      <div id="basics" style="display: none">
+        <% translate(@package.get_contents("Basics")).each do |category| %>
+        <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
+                          :as => :select,
+                          :collection  =>  @package.get_contents("Amount"),
+                          :include_blank => false
+        %>
+        <% end %>
+      </div>
     </div>
     
-    <div id="blouses" style="display: none">
-      <% translate(@package.get_contents("Blouses")).each do |category| %>
-      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
-                        :as => :select,
-                        :collection  =>  @package.get_contents("Amount"),
-                        :include_blank => false
+    <div id="page_3">
+      <%= package.input :label,
+                        :as => :check_boxes,
+                        :collection  => @package.get_contents("Label")
       %>
-    <% end %>
-    </div>
 
-    <div id="jackets" style="display: none">
-      <% translate(@package.get_contents("Jackets")).each do |category| %>
-      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
-                        :as => :select,
-                        :collection  =>  @package.get_contents("Amount"),
-                        :include_blank => false
-      %>
-    <% end %>
+      <p><%= package.input :amount_labels,
+                           :as => :select,
+                           :collection  => @package.get_contents("Amount"),
+                           :include_blank => false
+      %></p>
+      <p><%= package.input :colors, :hint => I18n.t('hint_colors'),
+                           :as => :check_boxes,
+                           :collection  => translate(@package.get_contents("Colors"))
+      %></p>
     </div>
-
-    <div id="jeans" style="display: none">
-      <% translate(@package.get_contents("Jeans")).each do |category| %>
-      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
-                        :as => :select,
-                        :collection  =>  @package.get_contents("Amount"),
-                        :include_blank => false
-      %>
-    <% end %>
-    </div>
-
-    <div id="dresses" style="display: none">
-      <% translate(@package.get_contents("Dresses")).each do |category| %>
-      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
-                        :as => :select,
-                        :collection  =>  @package.get_contents("Amount"),
-                        :include_blank => false
-      %>
-    <% end %>
-    </div>
-
-    <div id="basics" style="display: none">
-      <% translate(@package.get_contents("Basics")).each do |category| %>
-      <%= package.input category.downcase.gsub("-", "_").gsub(" ", "").gsub("&","").to_sym,
-                        :as => :select,
-                        :collection  =>  @package.get_contents("Amount"),
-                        :include_blank => false
-      %>
-    <% end %>
-    </div>
-
-    <%= package.input :label,
-                      :as => :check_boxes,
-                      :collection  => @package.get_contents("Label")
-    %></p>
-    
-    <p><%= package.input :amount_labels,
-                         :as => :select,
-                         :collection  => @package.get_contents("Amount"),
-                         :include_blank => false
-    %></p>
-    <p><%= package.input :colors, :hint => I18n.t('hint_colors'),
-                         :as => :check_boxes,
-                         :collection  => translate(@package.get_contents("Colors"))
-    %></p>
+   
 
     <%= package.input :amount_clothes,
                       :input_html => {:read_only => :true}
     %>
-    <p><%= package.input :notice%></p>
-  <% end %>
 
-  <%= package.inputs link_to I18n.t('rules'), '#', :rel => "test", :class => 'simpledialog' do %>
-    <%= package.input :accepted, :as => :boolean, :hint => I18n.t("hint_accepted") %>
-    <%= package.input :confirmed, :as => :boolean, :hint => I18n.t("hint_confirmed") %>
-  <% end %>
+    <div id="page_4">
+      
+      <p><%= package.input :notice%></p>
+      
 
+      <%= package.inputs link_to I18n.t('rules'), '#', :rel => "test", :class => 'simpledialog' do %>
+        <%= package.input :accepted, :as => :boolean, :hint => I18n.t("hint_accepted") %>
+        <%= package.input :confirmed, :as => :boolean, :hint => I18n.t("hint_confirmed") %>
+      <% end %>
+
+       <%= package.buttons %>
+    </div>
+    
   <%= package.input :user_id, :value => current_user.id, :as => :hidden %>
 
-    <%= link_to "Weiter zu Schritt 2 von 4", '#', :id => 'continue' %>
-    <%= link_to "Weiter zu Schritt 3 von 4", '#', :id => 'continue1' %>
-    <%= link_to "Weiter zu Schritt 4 von 4", '#', :id => 'continue2' %>
-    <%= link_to "Zurück", '#', :id => 'back3' %>
-    <%= link_to "Zurück", '#', :id => 'back2' %>
-    <%= link_to "Zurück", '#', :id => 'back1' %>
-  <%= package.buttons %>
+  
 
+  
+   
+  
+  <p align="center">
+    <%= link_to "Zurück", '#', :id => 'back3' %>&nbsp;&nbsp;&nbsp;
+    <%= link_to "Zurück", '#', :id => 'back2' %>&nbsp;&nbsp;&nbsp;
+    <%= link_to "Zurück", '#', :id => 'back1' %>&nbsp;&nbsp;&nbsp;
+    
+    <%= link_to "Weiter zu Schritt 2 von 4", '#', :id => 'continue' %>&nbsp;&nbsp;&nbsp;
+    <%= link_to "Weiter zu Schritt 3 von 4", '#', :id => 'continue1' %>&nbsp;&nbsp;&nbsp;
+    <%= link_to "Weiter zu Schritt 4 von 4", '#', :id => 'continue2' %>&nbsp;&nbsp;&nbsp;
+    
+    <%= link_to I18n.t(:cancel), packages_path %>&nbsp;&nbsp;&nbsp;
+  </p>
+  <% end %>
 <% end %>
 
 <div id="test" style="display: none">
   <%= render '/contents/cms/site', :@contents => @package.get_rules %>
 </div>
 
-<p align="center"><%= link_to I18n.t(:cancel), packages_path %></p>
+
 

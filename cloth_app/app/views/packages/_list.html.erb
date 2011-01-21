@@ -7,7 +7,15 @@
 # Datum:         22.12.2010
 %>
 
-<%#= link_to 'Geschlecht', sex_packages_path(0) %>
+<%# semantic_form_for Package.new do |package| %>
+  <%#= package.input :sex, :as => :check_boxes, :collection => [[ link_to ( I18n.t(:boy), search_remote_packages_path(0)), false],[ link_to ( I18n.t(:girl), search_remote_packages_path(1)), true]]  %>
+  <%#= package.input :size, :as => :check_boxes, :collection  =>  make_link(Package.new.get_contents("Size")) %><br>
+  <%#= package.input :saison, :as => :check_boxes, :collection => make_link(translate(Package.new.get_contents("Saison"))) %><br>
+  <%#= package.input :kind, :as => :check_boxes, :collection => make_link(translate(Package.new.get_contents("Kind"))) %><br>
+  <%#= package.input :label, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Label")) %><br>
+  <%#= package.input :colors, :as => :check_boxes, :collection => make_link(translate(Package.new.get_contents("Colors"))) %>
+<%# end %>
+
 <div class="tr span-22">
   <div class="td first">&nbsp;</div>
   <div class="td span-4"><b><%= I18n.t(:serial_number)%></b> </div>

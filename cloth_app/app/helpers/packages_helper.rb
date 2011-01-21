@@ -32,5 +32,15 @@ module PackagesHelper
     
   end
 
+  def make_link(content)
+    result = []
+    
+    content.to_a.each do |c|
+      result << [link_to (c, search_remote_packages_path(c)), c]
+    end
+
+    result
+  end
+
 
 end
