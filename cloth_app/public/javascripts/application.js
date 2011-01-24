@@ -355,6 +355,18 @@ $(document).ready(function(){
 
   $('.simpledialog').show();
 
+  // Filter für Kleiderpakete
+  $('#search').click(function()
+    {
+        if($(this).val().length >= 3)
+        {
+            $.get("search.php", {search: $(this).val()}, function(data)
+            {
+                $("#results").html(data);
+            });
+        }
+    });
+
 })
 
 
