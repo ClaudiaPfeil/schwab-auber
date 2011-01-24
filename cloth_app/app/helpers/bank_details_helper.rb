@@ -15,4 +15,8 @@ module BankDetailsHelper
 
       @content
     end
+
+    def check_role(role)
+      current_user.is? role.to_sym
+    end
 end

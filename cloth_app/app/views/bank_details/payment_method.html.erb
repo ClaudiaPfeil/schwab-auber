@@ -9,7 +9,7 @@
 <%= create_header(I18n.t(:payments)) %>
 
 <%#*Upgrade auf Premium-Mitgliedschaft anbieten%>
-<% if (current_user.is? :registered) %>
+<% if check_role("registered") %>
   <%= link_to I18n.t(:upgrade_premium), '#', :rel => 'premium', :class => 'upgrade' %>
 <% end %>
 
