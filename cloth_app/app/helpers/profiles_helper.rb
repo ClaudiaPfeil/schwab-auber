@@ -82,4 +82,8 @@ module ProfilesHelper
   def update_bank
     link_to I18n.t(:update_bank), '#', :rel => "bank", :class => 'simpledialog'
   end
+
+  def allow_more_addresses?(profile)
+    profile.addresses.count.to_i < 2 ? true : false
+  end
 end

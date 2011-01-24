@@ -7,7 +7,7 @@
 
 <p><%= render "bank", :@profile => @profile %><br></p>
 
-<p><%= render "addresses"  %><br></p>
+<p><%= render "addresses", :@profile => @profile  %><br></p>
 
 <% unless @profile.new_record? %>
   <p><%= render "history", :profile => @profile %><br></p>
