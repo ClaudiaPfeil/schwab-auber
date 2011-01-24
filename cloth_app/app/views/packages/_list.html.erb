@@ -49,7 +49,7 @@
           <%= link_to I18n.t(:detail), package_path(package) %><br>
         <% end %>
 
-        <% if (can? :create, Order) && package.state == 0 %>
+        <% if (can? :create, Order) && package.state == 0 && package.owner? == 'false'%>
           <%= link_to I18n.t(:order), order_package_path(package) %><br>
         <% end %>
 

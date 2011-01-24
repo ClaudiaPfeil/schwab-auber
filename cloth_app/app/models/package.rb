@@ -54,6 +54,18 @@ class Package < ActiveRecord::Base
     get_content(title).first.article.split(" ") if get_content(title)
   end
 
+  def owner?
+    package_id = self.id
+    own_packages = Package.where(:user_id => self.user_id)
+    result = ""
+    #debugger 
+    own_packages.each do |p|
+      result << p.id.to_s + " "
+    end
+    
+    result.include? package_id ? 'true' : 'false'
+  end
+
   private
 
     def set_serial_number
