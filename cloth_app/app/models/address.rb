@@ -4,6 +4,8 @@
 class Address < ActiveRecord::Base
   belongs_to :user
 
+  validates_presence_of :receiver, :street_and_number, :postcode, :town, :kind
+
   def is_destroyable?
     true
   end

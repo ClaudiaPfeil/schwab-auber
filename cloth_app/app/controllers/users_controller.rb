@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   # render new.rhtml
   def new
-    @user = User.new
+    @user = User.new if @user.nil?
   end
  
   def create
@@ -14,8 +14,8 @@ class UsersController < ApplicationController
 
     if address
       address.receiver = params[:user][:first_name] + " " + params[:user][:last_name]
-
-      if address.save!
+      
+      if address.valid? && address.save!
         @user = User.new(params[:user])
         @user.register! if @user && @user.valid?
 
@@ -30,12 +30,13 @@ class UsersController < ApplicationController
           end
           redirect_back_or_default('/', :notice => I18n.t(:user_created) )
         else
+          @user = User.new(params[:user])
           flash.now[:error]  = I18n.t(:user_not_created)
           render :action => 'new'
         end
       else
-        @user = @user
-        flash.now[:error]  = I18n.t(:user_not_created)
+        @user = User.new(params[:user])
+        flash.now[:error]  = I18n.t(:address_not_created)
         render :action => 'new'
       end
       

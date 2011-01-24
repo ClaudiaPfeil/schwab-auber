@@ -25,6 +25,7 @@ de:
   password_reseted_successfully:  Passwort erfolgreich zurückgesetzt
   user_created: "Vielen Dank für die Anmeldung!  Wir senden ihnen einen Aktivierungs-Code per E-Mail."
   user_not_created: "Wir konnten das Konto leider nicht einrichten.  Versuchen sie es noch einmal oder kontaktieren sie unseren Admin."
+  address_not_created: "Die Angabe einer Lieferanschrift ist notwendig."
   profile_updated: Nutzerkonto erfolgreich aktualisiert
   profile_not_updated:  Nutzerkonto nicht aktualisiert
   membership_not_upgraded: Ihre Mitgliedschaft konnte leider nicht heraufgestuft werden. Bitte versuchen sie es später erneut oder wenden sie sich an den Webmaster.

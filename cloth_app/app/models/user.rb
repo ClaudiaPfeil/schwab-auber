@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   validates_numericality_of :accepted, :equal_to => 1, :on => :create, :message => :agbs_not_accepted
 
+  #validates_presence_of :street_and_number, :postcode, :town,  :land, :message => "Lieferanschrift muss angegeben werden."
+
 
   scope :default_ordered, order('created_at DESC')
 
@@ -48,7 +50,7 @@ class User < ActiveRecord::Base
   # anything else you want your user to change should be added here.
   attr_accessible :login, :email, :name, :password, :password_confirmation, :role, :activated_at, :user_number, :updated_at, :sex, :last_name, :telephone, :date_of_birth, 
                   :first_name, :option_attributes, :start_holidays, :end_holidays, :cartons, :membership, :membership_starts, :membership_ends,  :premium_period, :continue_membership, :accepted, :address, :street_and_number, :postcode, :town, :land, :kind, :tag_names
-  attr_accessor   :friends_first_name, :friends_last_name, :friends_email, :accepted, :address, :street_and_number, :postcode, :town, :land, :kind, :tag_names
+  attr_accessor   :password_confirmation, :friends_first_name, :friends_last_name, :friends_email, :accepted, :address, :street_and_number, :postcode, :town, :land, :kind, :tag_names
   accepts_nested_attributes_for :addresses, :option, :bank_detail
 
   # users roles
