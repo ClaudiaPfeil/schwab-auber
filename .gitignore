@@ -6,3 +6,4 @@ cloth_app/config/initializers/site_keys.rb
 cloth_app/public/system
 cloth_app/doc/*
 cloth_app/export/*
+cloth_app/test/*
