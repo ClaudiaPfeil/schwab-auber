@@ -36,10 +36,14 @@ module PackagesHelper
     result = []
     
     content.to_a.each do |c|
-      result << [link_to (c, search_remote_packages_path(c)), c]
+      result << [link_to(c, search_remote_packages_path(c)), c]
     end
 
     result
+  end
+
+  def owner?(user_id)
+    user_id.to_i == current_user.id.to_i ? true : false
   end
 
 

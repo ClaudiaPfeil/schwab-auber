@@ -48,8 +48,8 @@
        <% if can? :show, Package %>
           <%= link_to I18n.t(:detail), package_path(package) %><br>
         <% end %>
-
-        <% if (can? :create, Order) && package.state == 0 && package.owner? == 'false'%>
+       
+        <% if (can? :create, Order) && package.state == 0 && !owner?(package.user_id) %>
           <%= link_to I18n.t(:order), order_package_path(package) %><br>
         <% end %>
 

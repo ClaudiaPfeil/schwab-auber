@@ -169,9 +169,9 @@ class PackagesController < ApplicationController
                           result[:jeans] += ', ' + package[:leggins].to_s + ' Leggins' if package[:leggins].to_i > 0
                           result[:jeans] += ', ' + package[:shorts].to_s + ' Shorts' if package[:shorts].to_i > 0
                           result[:jeans] += ', ' + package[:sweat_pants].to_s + ' Sweat-Hose(n)' if package[:sweat_pants].to_i > 0
-                          result[:jeans] += ', ' + package[:trunks].to_s + ' Sporthose(n)' if package[:trunks] > 0
-                          result[:jeans] += ', ' + package[:tracksuit] > 1 ? package[:tracksuit].to_s + ' Trainingsanzüge' : package[:tracksuit].to_s + ' Trainingsanzug' if package[:tracksuit].to_i > 0
-                          amount += package[:pants].to_i + package[:jeans].to_i + package[:overalls].to_i + package[:rain_pants].to_i + package[:snow_pants].to_i + package[:bermudas].to_i + package[:leggins].to_i + package[:shorts].to_i + package[:sweat_pants].to_i + package[:trunks] +  package[:tracksuit].to_i
+                          result[:jeans] += ', ' + package[:trunks].to_s + ' Sporthose(n)' if package[:trunks].to_i > 0
+                          result[:jeans] += ', ' + package[:tracksuit].to_i > 1 ? package[:tracksuit].to_s + ' Trainingsanzüge' : package[:tracksuit].to_s + ' Trainingsanzug' if package[:tracksuit].to_i > 0
+                          amount += package[:pants].to_i + package[:jeans].to_i + package[:overalls].to_i + package[:rain_pants].to_i + package[:snow_pants].to_i + package[:bermudas].to_i + package[:leggins].to_i + package[:shorts].to_i + package[:sweat_pants].to_i + package[:trunks].to_i +  package[:tracksuit].to_i
          
           when 'Kleider & Röcke' : result[:dresses] = ''
                                    result[:dresses] += ', ' + package[:skirt].to_s + ' Röcke' if package[:skirt].to_i > 0
