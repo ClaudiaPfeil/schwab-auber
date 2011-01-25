@@ -356,16 +356,28 @@ $(document).ready(function(){
   $('.simpledialog').show();
 
   // Filter für Kleiderpakete
-  $('#search').click(function()
-    {
-        if($(this).val().length >= 3)
-        {
-            $.get("search.php", {search: $(this).val()}, function(data)
-            {
-                $("#results").html(data);
-            });
-        }
-    });
+   function newHref(href){
+      $('a.remote').each(
+              function( intIndex ){
+                var params = $( this ).attr('href') + "," + href;
+                $( this ).attr('href', params);
+              }
+      );
+
+    }
+
+    function getCheckedValues() {
+      
+      var strValues = '';
+      $("input:checked").each (function() {
+        strValues += ','+$(this).val();
+      });
+      strValues = strValues.substr(1);
+      //alert("selektierte Werte=" + strValues);
+      newHref(strValues);
+    }
+
+    $('a.remote').click(getCheckedValues);
 
 })
 

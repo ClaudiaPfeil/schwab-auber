@@ -99,9 +99,26 @@ class PackagesController < ApplicationController
   end
 
   def search_remote
-    search_key = params[:format]
-    search_type = "Sex"
-    @packages = Package.search_by_attributes(search_key, search_type)
+    search_key = ""
+    search_type = ""
+    search_keys = params[:format].split(",")
+    
+    search_keys.delete_at(0)
+    
+    search_keys.each do |key|
+      tmp = key.split("=")
+      search_type << tmp.first.to_s + " " if tmp
+      search_key  << tmp.second.to_s + " " if tmp
+    end
+
+    search_key = search_key.split(" ")
+    search_type = search_type.split(" ")
+    #debugger
+    search_key.each_with_index do |key, i|
+      key = transform_param(key) if search_type[i] == 'sex'
+      i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
+    end
+    
     render :action => :index, :@packages => @packages
   end
 

@@ -32,11 +32,11 @@ module PackagesHelper
     
   end
 
-  def make_link(content)
+  def make_link(content, title)
     result = []
     
     content.to_a.each do |c|
-      result << [link_to(c, search_remote_packages_path(c)), c]
+      result << [link_to(c, search_remote_packages_path(c), :class => 'remote'), title + "=" + c.to_s]
     end
 
     result
