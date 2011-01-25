@@ -375,10 +375,12 @@ $(document).ready(function(){
       strValues = strValues.substr(1);
       //alert("selektierte Werte=" + strValues);
       newHref(strValues);
+      $('a.remote_search').click();
     }
 
     $('a.remote').click(getCheckedValues);
-
+    $('form#new_package input:checkbox').click(getCheckedValues);
+    $('p.remote_search').hide();
 })
 
 

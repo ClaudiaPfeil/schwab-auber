@@ -14,6 +14,7 @@
   <%= package.input :kind, :as => :check_boxes, :collection => make_link(translate(Package.new.get_contents("Kind")), "kind") %><br>
   <%= package.input :label, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Label"), "label") %><br>
   <%= package.input :colors, :as => :check_boxes, :collection => make_link(translate(Package.new.get_contents("Colors")), "colors") %>
+  <p class="remote_search"><%= link_to search_remote_packages_path, :class => 'remote_search' %></p>
 <% end %>
 
 <div class="tr span-22 ">
