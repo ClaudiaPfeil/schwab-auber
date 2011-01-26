@@ -373,14 +373,24 @@ $(document).ready(function(){
         strValues += ','+$(this).val();
       });
       strValues = strValues.substr(1);
-      //alert("selektierte Werte=" + strValues);
       newHref(strValues);
-      $('a.remote_search').click();
+    }
+
+    function test(){
+      alert("bonjour");
+      var strValues = '';
+      $("input:checked").each (function() {
+        strValues += ','+$(this).val();
+      });
+      strValues = strValues.substr(1);
+      $.get("http://localhost:3000/packages/search_remote_2." + strValues, function(data){
+        //alert("result= " + data);
+      });
     }
 
     $('a.remote').click(getCheckedValues);
-    $('form#new_package input:checkbox').click(getCheckedValues);
-    $('p.remote_search').hide();
+    $('form#new_package input:checkbox').click(test);
+ 
 })
 
 

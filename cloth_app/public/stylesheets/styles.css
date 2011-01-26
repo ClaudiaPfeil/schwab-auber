@@ -270,3 +270,9 @@ li.commit > input#package_submit { float: right; margin-right: 35em;}
 input#search_key {float: none;}
 
 ol, li { list-style-type: none;}
+
+li#package_sex_input.check_boxes.optional > fieldset > ol { margin: 0;}
+
+li#package_size_input.check_boxes.optional > fieldset > ol { margin: 0;}
+
+li#package_label_input.check_boxes.optional > fieldset > ol { margin: 0;}

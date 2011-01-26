@@ -16,6 +16,8 @@ ClothApp::Application.routes.draw do
       get :order, :on => :member
       get :show_24, :on => :collection
       get :search_remote, :on => :collection
+      post :search_remote, :on => :collection
+      get :search_remote_2, :on => :collection
   end
 
   resources :payments do

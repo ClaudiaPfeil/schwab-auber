@@ -101,10 +101,31 @@ class PackagesController < ApplicationController
   def search_remote
     search_key = ""
     search_type = ""
+    
     search_keys = params[:format].split(",")
-    
     search_keys.delete_at(0)
+    search_keys.each do |key|
+      tmp = key.split("=")
+      search_type << tmp.first.to_s + " " if tmp
+      search_key  << tmp.second.to_s + " " if tmp
+    end
     
+    search_key = search_key.split(" ")
+    search_type = search_type.split(" ")
+    
+    search_key.each_with_index do |key, i|
+      i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
+    end
+    
+    render :action => :index, :@packages => @packages
+  end
+
+  def search_remote_2
+    search_key = ""
+    search_type = ""
+
+    search_keys = params[:format].split(",")
+    #search_keys.delete_at(0)
     search_keys.each do |key|
       tmp = key.split("=")
       search_type << tmp.first.to_s + " " if tmp
@@ -113,13 +134,13 @@ class PackagesController < ApplicationController
 
     search_key = search_key.split(" ")
     search_type = search_type.split(" ")
-    #debugger
+
     search_key.each_with_index do |key, i|
-      key = transform_param(key) if search_type[i] == 'sex'
       i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
     end
-    
-    render :action => :index, :@packages => @packages
+    puts "test " + search_key.to_s
+    #"package"=>{"label"=>[""], "kind"=>[""], "saison"=>[""], "size"=>["", "size=64"], "sex"=>["", "sex=1"], "colors"=>[""]}
+    @packages
   end
 
   private
