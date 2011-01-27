@@ -22,7 +22,7 @@ class Payment < ActiveRecord::Base
   BUTTONBGCOLOR = "#336699"
   BUTTONTXTCOLOR = "#09f"
   BRAND = "VISA"
-  PSPID = "pauber"
+  PSPID = "pauberPROD"
   OPERATION = 'SAL'
   TBLBGCOLOR = '#CCCC99'
   PMLISTTYPE = "2"
