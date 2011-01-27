@@ -116,8 +116,12 @@ class PackagesController < ApplicationController
     search_key.each_with_index do |key, i|
       i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
     end
+
+    respond_to do |format|
+      format.html {render :action => :index, :@packages => @packages}
+      format.js {render :layout => false}
+    end
     
-    render :action => :index, :@packages => @packages
   end
 
   def search_remote_2
