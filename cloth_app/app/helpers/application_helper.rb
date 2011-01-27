@@ -290,18 +290,21 @@ module ApplicationHelper
     membership = user.membership
     prices = Price.find_by_kind(membership)
 
-    if user.is_premium?
-      period = user.premium_period
-      case period
-        when true  :   price += prices.shipping
-        when false :   price += prices.shipping
+    if prices
+      if user.is_premium?
+        period = user.premium_period
+        case period
+          when true  :   price += prices.shipping
+          when false :   price += prices.shipping
+        else
+          price += prices.shipping - 1.0
+        end
       else
-        price += prices.shipping - 1.0
+        price += prices.shipping.to_f + prices.handling.to_f
       end
-    else
-      price += prices.shipping.to_f + prices.handling.to_f
+      price.to_s.gsub(".","")
     end
-    price.to_s.gsub(".","")
+    
   end
 
   #  Methode :      get_membership_price
@@ -311,15 +314,18 @@ module ApplicationHelper
     user = current_user
     prices = Price.find_by_kind(1)
     period = user.premium_period
-    
-    case period
-      when true   :   price += prices.three_months
-      when false  :   price += prices.six_months
-    else
-      price += prices.twelve_months
-    end
 
-    price.to_s.gsub(".","")
+    if prices
+      case period
+        when true   :   price += prices.three_months
+        when false  :   price += prices.six_months
+      else
+        price += prices.twelve_months
+      end
+
+      price.to_s.gsub(".","")
+    end
+    
   end
 
 #  Methode:       get_mwst
