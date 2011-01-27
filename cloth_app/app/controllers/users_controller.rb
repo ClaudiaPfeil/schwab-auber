@@ -9,18 +9,19 @@ class UsersController < ApplicationController
   end
  
   def create
+    debugger
     logout_keeping_session!
     address = Address.new(params[:user][:address])
 
-    if address
-      address.receiver = params[:user][:first_name] + " " + params[:user][:last_name]
-      
-      if address.valid? && address.save!
-        @user = User.new(params[:user])
-        @user.register! if @user && @user.valid?
+    if address  
+      @user = User.new(params[:user])
+      @user.register! if @user && @user.valid?
 
-        success = @user && @user.valid?
-        if success && @user.errors.empty?
+      success = @user && @user.valid?
+      if success && @user.errors.empty?
+        address.receiver = params[:user][:first_name] + " " + params[:user][:last_name]
+        address.user_id = @user.id
+        if address.valid? && address.save!
           # Prüfen, ob Neukunde ein geworbener Kunde ist?
           if cookies[:invited]
             create_lead(@user)
@@ -31,16 +32,20 @@ class UsersController < ApplicationController
           redirect_back_or_default('/', :notice => I18n.t(:user_created) )
         else
           @user = User.new(params[:user])
-          flash.now[:error]  = I18n.t(:user_not_created)
+          flash.now[:error]  = I18n.t(:address_not_created)
           render :action => 'new'
         end
       else
         @user = User.new(params[:user])
-        flash.now[:error]  = I18n.t(:address_not_created)
+        flash.now[:error]  = I18n.t(:user_not_created)
         render :action => 'new'
       end
-      
-    end  
+    else
+      @user = User.new(params[:user])
+      flash.now[:error]  = I18n.t(:address_missing)
+        render :action => 'new'
+    end
+    
   end
 
   def activate

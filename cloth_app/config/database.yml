@@ -3,14 +3,14 @@ development: &db
  encoding: utf8
  pool: 5
  timeout:  5000
- database: cloth_app_dev
+ database: kidskarton_stage
  username: ronaldpfeil
  password: trockenbau-ronaldpfeil
   
 
 test:
   <<: *db
-  database: home_app_test
+  database: kidskarton_stage
   
 
 production:
