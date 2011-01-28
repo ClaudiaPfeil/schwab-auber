@@ -117,10 +117,7 @@ class PackagesController < ApplicationController
       i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
     end
 
-    respond_to do |format|
-      format.html {render :action => :index, :@packages => @packages}
-      format.js {render :layout => false}
-    end
+    render :action => :index, :@packages => @packages
     
   end
 
@@ -142,9 +139,14 @@ class PackagesController < ApplicationController
     search_key.each_with_index do |key, i|
       i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
     end
-    puts "test " + search_key.to_s
-    #"package"=>{"label"=>[""], "kind"=>[""], "saison"=>[""], "size"=>["", "size=64"], "sex"=>["", "sex=1"], "colors"=>[""]}
-    @packages
+
+#    respond_to do |format|
+#      format.html {render :partial => "packages", :locales => @packages}
+#      format.js {render :partial => "packages", :locales => @packages}
+#    end
+
+    render :partial => "packages", :locales => {@packages => @packages, :number => @packages.count}
+    
   end
 
   private
