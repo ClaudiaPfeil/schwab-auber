@@ -49,7 +49,7 @@ module ClothApp
       :address        => 'kidskarton.de', # default: localhost
       :port           => '25',                  # default: 25
       :user_name      => 'info@kidskarton.de',
-      :password       => 'schwab&auber',
+      :password       => 'Eire2009',
       :authentication => :plain                 # :plain, :login or :cram_md5
     }
   end

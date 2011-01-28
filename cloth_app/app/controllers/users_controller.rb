@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     else
       @user = User.new(params[:user])
       flash.now[:error]  = I18n.t(:address_missing)
-        render :action => 'new'
+      render :action => 'new'
     end
     
   end
