@@ -9,7 +9,6 @@ class UsersController < ApplicationController
   end
  
   def create
-    debugger
     logout_keeping_session!
     address = Address.new(params[:user][:address])
 
