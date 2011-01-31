@@ -9,7 +9,7 @@
   <%= profile.input :sex, :as => :radio, :collection => [["weiblich", false],["männlich", true]] %>
   <%= profile.input :date_of_birth, :as => :datepicker %>
   <%= profile.input :telephone %>
-  <%= profile.input :email %>
+  <%= profile.input :email, :input_html => {:readonly => true} %>
   <%= profile.input :user_number, :input_html => {:readonly => true} %>
   <%= profile.input :activated_at, :as => :datepicker, :input_html => {:readonly => true} %>
   <%= profile.input :start_holidays, :as => :datepicker %>

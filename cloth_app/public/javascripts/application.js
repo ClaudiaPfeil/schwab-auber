@@ -259,7 +259,7 @@ $(document).ready(function(){
                    }
         });
 
-        dlg.parent().appendTo($("#new_package"));
+        dlg.parent().appendTo($("formtastic.package"));
      }
   })
 
@@ -276,7 +276,7 @@ $(document).ready(function(){
                                      }
                    }
         });
-        dlg.parent().appendTo($("#new_package"));
+        dlg.parent().appendTo($(".formtastic.package"));
      }
   })
 
@@ -292,7 +292,7 @@ $(document).ready(function(){
                                      }
                    }
         });
-        dlg.parent().appendTo($("#new_package"));
+        dlg.parent().appendTo($(".formtastic.package"));
     }
   })
 
@@ -308,7 +308,7 @@ $(document).ready(function(){
                                      }
                    }
         });
-        dlg.parent().appendTo($("#new_package"));
+        dlg.parent().appendTo($(".formtastic.package"));
     }
   })
 
@@ -324,7 +324,7 @@ $(document).ready(function(){
                                      }
                    }
         });
-      dlg.parent().appendTo($("#new_package"));
+      dlg.parent().appendTo($(".formtastic.package"));
     }
   })
 
@@ -341,7 +341,7 @@ $(document).ready(function(){
                                      }
                    }
         });
-      dlg.parent().appendTo($("#new_package"));
+      dlg.parent().appendTo($(".formtastic.package"));
     }
   })
 

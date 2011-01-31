@@ -106,7 +106,11 @@ class User < ActiveRecord::Base
   end
 
   def count_down
-    self.update_attribute(:cartons, 4)
+    self.update_attribute(:cartons, (self.cartons.to_i - 1))
+  end
+
+  def count_up
+    self.update_attribute(:cartons, (self.cartons.to_i + 1))
   end
 
   def calc_score(user_id)
