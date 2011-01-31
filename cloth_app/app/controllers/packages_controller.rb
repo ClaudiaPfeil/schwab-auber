@@ -24,6 +24,8 @@ class PackagesController < ApplicationController
     @package = Package.new(prepare_package(params[:package]))
     
     if @package.save
+      # count down cartons
+      @package.user.count_down
       redirect_to packages_path(@package), :notice => I18n.t(:package_created)
     else
       @package = @package
@@ -82,8 +84,6 @@ class PackagesController < ApplicationController
       @order.order_number  = @order.get_order_number
       @order.bill_number = @order.get_bill_number
       if @order.save!
-        # count down cartons
-        @package.user.count_down
         redirect_to payment_method_bank_detail_path(@package), :notice => I18n.t(:order_created)
       else
         @packages = Package.all
