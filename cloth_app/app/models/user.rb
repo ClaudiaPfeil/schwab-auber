@@ -109,6 +109,10 @@ class User < ActiveRecord::Base
     self.update_attribute(:cartons, (self.cartons.to_i - 1))
   end
 
+  def count_up
+    self.update_attribute(:cartons, (self.cartons.to_i + 1))
+  end
+
   def calc_score(user_id)
     evas = self.orders.where(:user_id => user_id)
     result = {

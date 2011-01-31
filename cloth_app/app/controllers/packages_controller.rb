@@ -49,6 +49,8 @@ class PackagesController < ApplicationController
 
   def destroy
     @package.destroy if @package.destroyable?
+    # count up cartons
+    @package.user.count_up
     redirect_to packages_path
   end
 
