@@ -382,7 +382,8 @@ $(document).ready(function(){
         strValues += ','+$(this).val();
       });
       strValues = strValues.substr(1);
-      $.get("http://localhost:3000/packages/search_remote_2." + strValues, function(data){
+      $.get("http://dev.kidskarton.de/packages/search_remote_2." + strValues, function(data){
+      //$.get("http://localhost:3000/packages/search_remote_2." + strValues, function(data){
         $('.result').html(data);
       });
     }
