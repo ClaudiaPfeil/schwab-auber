@@ -377,14 +377,12 @@ $(document).ready(function(){
     }
 
     function test(){
-      //alert("bonjour");
       var strValues = '';
       $("input:checked").each (function() {
         strValues += ','+$(this).val();
       });
       strValues = strValues.substr(1);
       $.get("http://localhost:3000/packages/search_remote_2." + strValues, function(data){
-        //alert("result= " + data);
         $('.result').html(data);
       });
     }

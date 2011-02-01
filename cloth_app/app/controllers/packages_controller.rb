@@ -143,11 +143,16 @@ class PackagesController < ApplicationController
     end
 
 #    respond_to do |format|
-#      format.html {render :partial => "packages", :locales => @packages}
-#      format.js {render :partial => "packages", :locales => @packages}
+#      format.html {render :partial => "packages", :locales => @packages, :content-type => 'application/html'}
+#      if request.xhr?
+#        format.js do
+#          render :update do |page|
+#            page.insert_html @packages, @packages, :partial => 'packages'
+#          end
+#        end
+#      end
 #    end
-
-    render :partial => "packages", :locales => {@packages => @packages, :number => @packages.count}
+    render :partial => "packages", :locales => {:@packages => @packages}
     
   end
 
