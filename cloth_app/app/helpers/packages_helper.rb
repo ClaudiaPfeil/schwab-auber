@@ -32,11 +32,31 @@ module PackagesHelper
     
   end
 
-  def make_link(content, title)
+  def make_link(content, title, translate)
     result = []
     
     content.to_a.each do |c|
-      result << [link_to(c, search_remote_packages_path(c), :class => 'remote'), title + "=" + c.to_s]
+      translate == false ? result << [link_to(c.to_s + " (#{Package.where("#{title.to_sym} LIKE '%#{c.to_s}%'").count})", search_remote_packages_path(c), :class => 'remote'), title + "='" + c.to_s + "'"] : result << [link_to(I18n.t(c.to_sym).to_s + " (#{Package.where("#{title.to_sym} LIKE '%#{c.to_s}%'").count})", search_remote_packages_path(c), :class => 'remote'), title + "='" + c.to_s + "'"]
+    end
+
+    result
+  end
+
+  def make_link_strict(content, title, translate)
+    result = []
+
+    content.to_a.each do |c|
+      translate == false ? result << [link_to(c.to_s + " (#{Package.where("#{title.to_sym} = '#{c.to_s}'").count})", search_remote_packages_path(c), :class => 'remote'), title + "='" + c.to_s + "'"] : result << [link_to(I18n.t(c.to_sym).to_s + " (#{Package.where("#{title.to_sym} = '#{c.to_s}'").count})", search_remote_packages_path(c), :class => 'remote'), title + "='" + c.to_s + "'"]
+    end
+
+    result
+  end
+
+  def make_link_special(content, title)
+    result = []
+
+    content.to_a.each do |c|
+      result << [link_to(I18n.t(c.to_sym).to_s + " (#{Package.where("#{title.to_sym} LIKE '%#{I18n.t(c.to_sym).to_s}%'").count})", search_remote_packages_path(c), :class => 'remote'), title + "='" + c.to_s + "'"]
     end
 
     result
@@ -44,6 +64,10 @@ module PackagesHelper
 
   def owner?(user_id)
     user_id.to_i == current_user.id.to_i ? true : false
+  end
+
+  def get_amount(title, value)
+    Package.where(title.to_sym => value.to_s).count
   end
 
 

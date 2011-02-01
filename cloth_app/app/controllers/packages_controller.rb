@@ -127,22 +127,19 @@ class PackagesController < ApplicationController
     search_key = ""
     search_type = ""
 
-    search_keys = params[:format].split(",")
-    #search_keys.delete_at(0)
-    search_keys.each do |key|
-      tmp = key.split("=")
-      search_type << tmp.first.to_s + " " if tmp
-      search_key  << tmp.second.to_s + " " if tmp
+    if params[:format]
+      search_keys = params[:format].split(",")
+      amount = search_keys.count
+      sql = ""
+      search_keys.each_with_index do |key, index|
+        (amount > 1 && index < amount-1) ? sql << "#{key.to_s} OR " : sql << "#{key.to_s}"
+      end
+      @packages = Package.where(sql).default_ordered
+    else
+      @packages = Package.all.default_ordered
     end
 
-    search_key = search_key.split(" ")
-    search_type = search_type.split(" ")
-
-    search_key.each_with_index do |key, i|
-      i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
-    end
-
-#    respond_to do |format|
+    #    respond_to do |format|
 #      format.html {render :partial => "packages", :locales => @packages, :content-type => 'application/html'}
 #      if request.xhr?
 #        format.js do

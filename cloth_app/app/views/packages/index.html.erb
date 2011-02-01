@@ -1,11 +1,11 @@
 <%=  get_notices %>
 
 <% if (can? :read, Package) && (can? :create, Package) %>
-  <%= create_header_with_form_and_link( I18n.t("show_packages"), 'search_form', (link_to I18n.t(:show_24), show_24_packages_path), (link_to I18n.t(:new_package), new_package_path) ) %>
+  <%= create_header_with_two_links( I18n.t("show_packages"), (link_to I18n.t(:show_24), show_24_packages_path), (link_to I18n.t(:new_package), new_package_path) ) %>
 <% elsif (can? :read, Package) %>
-  <%= create_header_with_form_and_link( I18n.t("show_packages"), 'search_form', (link_to I18n.t(:show_24), show_24_packages_path) ) %>
+  <%= create_header_with_link( I18n.t("show_packages"), (link_to I18n.t(:show_24), show_24_packages_path) ) %>
 <% elsif  (can? :create, Package)%>
-  <%= create_header_with_form_and_link( I18n.t("show_packages"), 'search_form', (link_to I18n.t(:new_package), new_package_path) ) %>
+  <%= create_header_with_link( I18n.t("show_packages"), (link_to I18n.t(:new_package), new_package_path) ) %>
 <% end %>
       
 <%= render "list" %>

@@ -26,13 +26,12 @@ class Package < ActiveRecord::Base
   scope :default_ordered, order('created_at DESC, size DESC')
 
   scope :search_by_attributes, lambda { |search_key, *attribute_names|
-    sql = [attribute_names].flatten.map { |a| '%s LIKE :search_key' % a }.join(' OR ')
-    where(sql, :search_key => "%#{ search_key }%").default_ordered
+    sql = [attribute_names].flatten.map { |a| '%s LIKE :search_key' % a }.join(" OR ")
+    where( sql, :search_key => "%#{ search_key }%" ).default_ordered
   }
 
   before_save do
     set_serial_number if self.serial_number.nil? || self.serial_number.blank?
-    puts self.serial_number
   end
 
   SearchTypes  = %w(serial_number sex size label)

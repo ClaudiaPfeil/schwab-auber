@@ -145,6 +145,28 @@ module ApplicationHelper
 
   end
 
+  def create_header_with_two_links(titel, link1, link2 = nil)
+    content = content_tag(:div, ' ', :class => "td first")
+
+    col1 = content_tag(:h1, titel)
+    content << content_tag(:div, col1, :class => "td span-17")
+
+    if link1
+      col2 = content_tag(:br, link1, :class => "right")
+    end
+
+    if link2
+      content_next = content_tag(:br, link2, :class => "right")
+    end
+
+    links = col2 if col2
+    links << content_next if content_next
+
+    content  << content_tag(:div, links, :class => "td last") if links
+    @content = content_tag(:div, content, :class => "tr span-22")
+
+  end
+
   def create_div_with_form(form, additonal = nil)
     content = render :partial => form
     content_next = render :partial => additonal
