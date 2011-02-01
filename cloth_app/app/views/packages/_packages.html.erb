@@ -1,0 +1,42 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+<% unless @packages.nil? %>
+
+  <% @packages.each do |package| %>
+
+    <div class="tr span-22 result">
+      <div class="td first">&nbsp;</div>
+      <div class="td span-4"><%= package.serial_number%> </div>
+      <div class="td span-3"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
+      <div class="td span-2"><%= package.size%> </div>
+      <div class="td span-2"><%= package.amount_clothes%> </div>
+      <div class="td span-5"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
+      <div class="td last">
+        <% if can? :update, package %>
+         <%= link_to  I18n.t("edit"), edit_package_path(package) if current_user.is_owner? package%><br>
+        <% end %>
+
+        <% if can? :destroy, package %>
+          <%= link_to I18n.t("destroy"), package, :confirm => I18n.t(:confirm_destroy), :method => :delete %><br>
+        <%end%>
+
+       <% if can? :show, Package %>
+          <%= link_to I18n.t(:detail), package_path(package) %><br>
+        <% end %>
+
+        <% if (can? :create, Order) && package.state == 0 && !owner?(package.user_id) %>
+          <%= link_to I18n.t(:order), order_package_path(package) %><br>
+        <% end %>
+
+        <% if can? :read, Profile %>
+          <%#= link_to I18n.t(:profile), profile_path(package.user_id) %>
+        <% end %>
+
+      </div>
+    </div>
+
+  <% end %>
+<% end %>
