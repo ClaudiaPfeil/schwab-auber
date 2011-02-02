@@ -104,8 +104,9 @@ class PackagesController < ApplicationController
     search_key = ""
     search_type = ""
     
-    search_keys = params[:format].split(",")
-    search_keys.delete_at(0)
+    params[:format].to_s.include?(",") ? search_keys = params[:format].split(",") : search_keys = params[:format]
+    search_keys.delete_at(0) if search_keys.count > 1
+    
     search_keys.each do |key|
       tmp = key.split("=")
       search_type << tmp.first.to_s + " " if tmp
@@ -116,10 +117,10 @@ class PackagesController < ApplicationController
     search_type = search_type.split(" ")
     
     search_key.each_with_index do |key, i|
-      i == 0 ? @packages = Package.search_by_attributes(key, search_type[i]) : @packages = @packages.search_by_attributes(key, search_type[i])
+      @packages = Package.search_by_attributes(key, search_type[i])
     end
-
-    render :action => :index, :@packages => @packages
+    
+    render :action => :index, :locales => {:@packages => @packages}
     
   end
 
