@@ -134,20 +134,49 @@ class PaymentsController < ApplicationController
         # package aktualisieren, setzen des status=2 für paied
         @payment.order.update_attribute(:status, 2)
         @payment.package.update_attribute(:state, 2)
+      else
+        # order zurücksetzen (stornieren)
+        # package wieder freigeben
+        @payment.order.update_attribute(:status, 0)
+        @payment.package.update_attribute(:state, 0)
       end
     end
   end
 
   def decline
-    
+    order_id, status, pay_id, nc_error, trx_date, shasign = prepare_feedback(params)
+    @payment = Payment.find_by_order_id(order_id)
+    if @payment
+      @payment.update_attributes(:status => status, :pay_id => pay_id, :nc_error => nc_error)
+      # order zurücksetzen (stornieren)
+      # package wieder freigeben
+      @payment.order.update_attribute(:status, 0)
+      @payment.package.update_attribute(:state, 0)
+    end
   end
 
   def exception
-    
+    order_id, status, pay_id, nc_error, trx_date, shasign = prepare_feedback(params)
+    @payment = Payment.find_by_order_id(order_id)
+    if @payment
+      @payment.update_attributes(:status => status, :pay_id => pay_id, :nc_error => nc_error)
+      # order zurücksetzen (stornieren)
+      # package wieder freigeben
+      @payment.order.update_attribute(:status, 0)
+      @payment.package.update_attribute(:state, 0)
+    end
   end
 
   def cancel
-    
+    order_id, status, pay_id, nc_error, trx_date, shasign = prepare_feedback(params)
+    @payment = Payment.find_by_order_id(order_id)
+    if @payment
+      @payment.update_attributes(:status => status, :pay_id => pay_id, :nc_error => nc_error)
+      # order zurücksetzen (stornieren)
+      # package wieder freigeben
+      @payment.order.update_attribute(:status, 0)
+      @payment.package.update_attribute(:state, 0)
+    end
   end
 
   private
