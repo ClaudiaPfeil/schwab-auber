@@ -182,64 +182,66 @@ class PackagesController < ApplicationController
       result[:confirmed] = package[:confirmed]
       result[:accepted] = package[:accepted]
       result[:user_id] = package[:user_id]
-      !package[:kind].nil? ? result[:kind] = package[:kind].collect{ |k| k + "," }.to_s : package[:kind]
+      !package[:kind].nil? ? result[:kind] = package[:kind].collect{ |k| (k + ",") unless k.blank? }.to_s : package[:kind]
       # Abfrage der Auswahl der Oberkategorie: Shirts, Blusen, Jeans, Jacken, Kleider&Röcke, Erstausstattung
       package[:kind].each do |kind|
         case kind
+          # :tops, :t_shirts, :polo_shirts, :langarm_shirt, :fleece_shirt, :pullover,
           when 'Shirts & Tops': result[:shirts] = ''
-                                result[:shirts]+= package[:t_shirts].to_s + ' T-Shirt(s)' if package[:t_shirts].to_i > 0
-                                result[:shirts]+= ', ' + package[:polo_shirts].to_s + ' Polo-Shirt(s)' if package[:polo_shirts].to_i > 0
-                                result[:shirts]+= ', ' + package[:langarm_shirt].to_s + ' Langarm-Shirt(s)' if package[:langarm_shirt].to_i > 0
-                                result[:shirts]+= ', ' + package[:fleece_shirt].to_s + ' Fleece-Shirt(s)' if package[:fleece_shirt].to_i > 0
-                                result[:shirts]+= ', ' + package[:pullover].to_s + ' Pullover(s)' if package[:pullover].to_i > 0
-                                amount += package[:t_shirts].to_i + package[:polo_shirts].to_i + package[:langarm_shirt].to_i + package[:fleece_shirt].to_i +  package[:pullover].to_i
+                                result[:shirts]+= package[:tops].to_s + ' Top(s)' if package[:tops].to_i > 0
+                                result[:shirts]+= (', ' + package[:t_shirts].to_s + ' T-Shirt(s)') if package[:t_shirts].to_i > 0
+                                result[:shirts]+= (', ' + package[:polo_shirts].to_s + ' Polo-Shirt(s)') if package[:polo_shirts].to_i > 0
+                                result[:shirts]+= (', ' + package[:langarm_shirt].to_s + ' Langarm-Shirt(s)') if package[:langarm_shirt].to_i > 0
+                                result[:shirts]+= (', ' + package[:fleece_shirt].to_s + ' Fleece-Shirt(s)') if package[:fleece_shirt].to_i > 0
+                                result[:shirts]+= (', ' + package[:pullover].to_s + ' Pullover(s)') if package[:pullover].to_i > 0
+                                amount += package[:tops].to_i + package[:t_shirts].to_i + package[:polo_shirts].to_i + package[:langarm_shirt].to_i + package[:fleece_shirt].to_i +  package[:pullover].to_i
 
           when 'Blusen & Hemden': result[:blouses] = ''
                                   result[:blouses] += package[:blusen].to_s + ' Bluse(n)' if package[:blusen].to_i > 0
-                                  result[:blouses] += ', ' + package[:tuniken].to_s + ' Tuniken' if package[:tuniken].to_i > 0
-                                  result[:blouses] += ', ' + package[:shirtstops].to_s + ' Shirts & Tops' if package[:shirtstops].to_i > 0
+                                  result[:blouses] += (', ' + package[:tuniken].to_s + ' Tuniken') if package[:tuniken].to_i > 0
+                                  result[:blouses] += (', ' + package[:shirtstops].to_s + ' Shirts & Tops') if package[:shirtstops].to_i > 0
                                   amount += package[:blusen].to_i + package[:tuniken].to_i + package[:shirtstops].to_i
 
           when 'Jacken':  result[:jackets] = ''
                           result[:jackets] += package[:fleecejacke].to_s + ' Fleece Jacke(n)' if package[:fleecejacke].to_i > 0
-                          result[:jackets] += ', ' + package[:sweatjacke].to_s + ' Sweatjacke(n)' if package[:sweatjacke].to_i > 0
-                          result[:jackets] += ', ' + package[:strickjacke].to_s + ' Strickjacke(n)' if package[:strickjacke].to_i > 0
-                          result[:jackets] += ', ' + package[:schneejacke].to_s + ' Schneejacke(n)' if package[:schneejacke].to_i > 0
-                          result[:jackets] += ', ' + package[:weste].to_s + ' Weste(n)' if package[:weste].to_i > 0
+                          result[:jackets] += (', ' + package[:sweatjacke].to_s + ' Sweatjacke(n)') if package[:sweatjacke].to_i > 0
+                          result[:jackets] += (', ' + package[:strickjacke].to_s + ' Strickjacke(n)') if package[:strickjacke].to_i > 0
+                          result[:jackets] += (', ' + package[:schneejacke].to_s + ' Schneejacke(n)') if package[:schneejacke].to_i > 0
+                          result[:jackets] += (', ' + package[:weste].to_s + ' Weste(n)') if package[:weste].to_i > 0
                           amount += package[:fleecejacke].to_i + package[:sweatjacke].to_i + package[:strickjacke].to_i + package[:schneejacke].to_i + package[:weste].to_i
          
           when 'Jeans' :  result[:jeans] = ''
                           result[:jeans] += package[:hosen].to_s + ' Hose(n)' if package[:hosen].to_i > 0
-                          result[:jeans] += ', ' + package[:jeans].to_s + ' Jeans' if package[:jeans].to_i > 0
-                          result[:jeans] += ', ' + package[:latzhosen].to_s + ' Latzhose(n)' if package[:latzhosen].to_i > 0
-                          result[:jeans] += ', ' + package[:regenhosen].to_s + ' Regenhose(n)' if package[:regenhosen].to_i > 0
-                          result[:jeans] += ', ' + package[:schneehosen].to_s + ' Schneehose(n)' if package[:schneehosen].to_i > 0
-                          result[:jeans] += ', ' + package[:bermudas].to_s + ' Bermudas' if package[:bermudas].to_i > 0
-                          result[:jeans] += ', ' + package[:leggins].to_s + ' Leggins' if package[:leggins].to_i > 0
-                          result[:jeans] += ', ' + package[:shorts].to_s + ' Shorts' if package[:shorts].to_i > 0
-                          result[:jeans] += ', ' + package[:sweathosen].to_s + ' Sweat-Hose(n)' if package[:sweathosen].to_i > 0
-                          result[:jeans] += ', ' + package[:sporthosen].to_s + ' Sporthose(n)' if package[:sporthosen].to_i > 0
-                          result[:jeans] += ', ' + (package[:trainingsanzug].to_i > 1 ? package[:trainingsanzug].to_s + ' Trainingsanzüge' : package[:trainingsanzug].to_s + ' Trainingsanzug') if package[:trainingsanzug].to_i > 0
+                          result[:jeans] += (', ' + package[:jeans].to_s + ' Jeans') if package[:jeans].to_i > 0
+                          result[:jeans] += (', ' + package[:latzhosen].to_s + ' Latzhose(n)') if package[:latzhosen].to_i > 0
+                          result[:jeans] += (', ' + package[:regenhosen].to_s + ' Regenhose(n)') if package[:regenhosen].to_i > 0
+                          result[:jeans] += (', ' + package[:schneehosen].to_s + ' Schneehose(n)') if package[:schneehosen].to_i > 0
+                          result[:jeans] += (', ' + package[:bermudas].to_s + ' Bermudas') if package[:bermudas].to_i > 0
+                          result[:jeans] += (', ' + package[:leggins].to_s + ' Leggins') if package[:leggins].to_i > 0
+                          result[:jeans] += (', ' + package[:shorts].to_s + ' Shorts') if package[:shorts].to_i > 0
+                          result[:jeans] += (', ' + package[:sweathosen].to_s + ' Sweat-Hose(n)') if package[:sweathosen].to_i > 0
+                          result[:jeans] += (', ' + package[:sporthosen].to_s + ' Sporthose(n)') if package[:sporthosen].to_i > 0
+                          result[:jeans] += (', ' + (package[:trainingsanzug].to_i > 1 ? package[:trainingsanzug].to_s + ' Trainingsanzüge' : package[:trainingsanzug].to_s + ' Trainingsanzug')) if package[:trainingsanzug].to_i > 0
                           amount += package[:hosen].to_i + package[:jeans].to_i + package[:latzhosen].to_i + package[:regenhosen].to_i + package[:schneehosen].to_i + package[:bermudas].to_i + package[:leggins].to_i + package[:shorts].to_i + package[:sweathosen].to_i + package[:sporthosen].to_i +  package[:trainingsanzug].to_i
          
           when 'Kleider & Röcke' : result[:dresses] = ''
-                                   result[:dresses] += ', ' + package[:kleiderröcke].to_s + ' Röcke' if package[:kleiderröcke].to_i > 0
-                                   result[:dresses] += ', ' + package[:kleider].to_s + ' Kleider' if package[:kleider].to_i > 0
+                                   result[:dresses] += (', ' + package[:kleiderröcke].to_s + ' Röcke') if package[:kleiderröcke].to_i > 0
+                                   result[:dresses] += (', ' + package[:kleider].to_s + ' Kleider') if package[:kleider].to_i > 0
                                    amount += package[:kleiderröcke].to_i + package[:kleider].to_i
         
           when 'Erstausstattung' : result[:basics] = ''
-                                   result[:basics] += ', ' + package[:bodies].to_s + ' Bodies' if package[:bodies].to_i > 0
-                                   result[:basics] += ', ' + package[:strampler].to_s + ' Strampler' if package[:strampler].to_i > 0
-                                   result[:basics] += ', ' + package[:schlafanzüge].to_s + ' Schlafanzüge' if package[:schlafanzüge].to_i > 0
-                                   result[:basics] += ', ' + package[:schlafsäcke].to_s + ' Schlafsäcke' if package[:schlafsäcke].to_i > 0
+                                   result[:basics] += (', ' + package[:bodies].to_s + ' Bodies') if package[:bodies].to_i > 0
+                                   result[:basics] += (', ' + package[:strampler].to_s + ' Strampler') if package[:strampler].to_i > 0
+                                   result[:basics] += (', ' + package[:schlafanzüge].to_s + ' Schlafanzüge') if package[:schlafanzüge].to_i > 0
+                                   result[:basics] += (', ' + package[:schlafsäcke].to_s + ' Schlafsäcke') if package[:schlafsäcke].to_i > 0
                                    amount += package[:bodies].to_i + package[:strampler].to_i + package[:schlafanzüge].to_i + package[:schlafsäcke].to_i
         end
       end
       # ---Ende---
       result[:amount_clothes] = amount
-      !package[:colors].nil? ? result[:colors] = package[:colors].collect{ |k| k + "," }.to_s : package[:colors]
-      !package[:labels].nil? ? result[:labels] = package[:labels].collect{ |k| k + "," }.to_s : package[:labels]
-      !package[:saison].nil? ? result[:saison] = package[:saison].collect{ |k| k + "," }.to_s : package[:saison]
+      !package[:colors].nil? ? result[:colors] = package[:colors].collect{ |k| (k + ",") unless k.blank?}.to_s : package[:colors]
+      !package[:label].nil? ? result[:label] = package[:label].collect{ |k| (k + ",") unless k.blank? }.to_s : package[:label]
+      !package[:saison].nil? ? result[:saison] = package[:saison].collect{ |k| (k + ",") unless k.blank? }.to_s : package[:saison]
       
       result
     end

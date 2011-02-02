@@ -259,7 +259,7 @@ $(document).ready(function(){
                    }
         });
 
-        dlg.parent().appendTo($("formtastic.package"));
+        dlg.parent().appendTo($(".formtastic.package"));
      }
   })
 
