@@ -82,53 +82,30 @@ class ProfilesController < ApplicationController
   end
 
   # Historie aller Profile exportieren als CSV
+  # Kunden-Nr. | Name | Vorname | Straße und Haus-Nr. | Postleitzahl | Ort|
   def export_histories
-    puts " Exportieren aller Profil Historien sofern Admin: " + (current_user.is? :admin).to_s
     @profiles = User.all if current_user.is? :admin
 
     if @profiles
-      puts "\n Alle Profile" 
       path = 'export/'
       name = 'alle_profile_historien.csv'
       File.new(path + name, "w").path
       input = ""
 
-      @profiles.each do |profi|
-        puts "\n jedes Profil"
+      @profiles.each do |profi| 
         File.open(path+name, "w") do |histories|
-          
-          input << "Name, Vorname, Kunden-Nr.,\n"
-          input << "#{profi.last_name}, #{profi.first_name}, #{profi.user_number}\n"
-          puts " Erste Zeile: " + input.to_s
-          packages = profi.packages
-          orders = profi.orders
-
-          unless packages.blank?
-            input << "Pakete-Historie," + "\n"
-            input << "Paket-Nr., Erstellt am, Anzahl Kleider, Geschlecht, Beschreibung, Labels," + "\n"
-            packages.each do |package|
-              input << "#{package.serial_number},#{formatted_date(package.created_at)},#{package.amount_clothes},#{package.sex == true ? "Mädchen" : "Junge"},"
-              input << "#{package.notice.gsub(",", " ")}," unless package.notice.nil?
-              input << "#{package.label.gsub(",", " ").gsub("--", " ")}," unless package.label.nil?
+          profi.addresses.each do |address|
+            if address.kind.to_i == 1
+              input << "Kunden-Nr., Name, Vorname, Straße und Haus-Nr., Postleitzahl, Ort \n"
+              input << "#{profi.user_number}, #{profi.last_name}, #{profi.first_name}, #{address.street_and_number}, #{address.postcode}, #{address.town}, #{} \n"
               input << "\n"
             end
           end
           
-          unless orders.blank?
-            input << "\n"+ "Bestell-Historie," + "\n"
-            input << "Bestell-Nr., Bestellt am, Bewerted am , Bewertung, Angekommen?," + "\n"
-            orders.each do |order|
-              input << "#{order.order_number},#{formatted_date(order.created_at)}, #{formatted_date(order.eva_date_created_at)},"
-              input << "#{I18n.t(order.evaluation.to_sym)}," if order.evaluation
-              input << "#{order.received == true ? "Nein" : "Ja"}" + "\n"
-            end
-
-            input << "\n"
-          end
-          puts input
           histories.write(input) unless input.blank?
         end
       end
+      
       send_file(path+name)
     else
       puts "Kein Admin, keine Profile Historien! " + (current_user.is? :admin).to_s
