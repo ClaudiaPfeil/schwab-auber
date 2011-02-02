@@ -7,14 +7,14 @@
 # Datum:         22.12.2010
 %>
 
-<%= semantic_form_for Package.new, :url => search_remote_packages_path do |package| %>
-  <%= package.input :sex, :as => :check_boxes, :collection => [[ link_to( I18n.t(:boy) + " (#{get_amount("sex", 0)})", search_remote_packages_path(0), :class => 'remote', :id => 'test'), "sex=0"],[ link_to( I18n.t(:girl) + " (#{get_amount("sex", 1)})", search_remote_packages_path(1), :class => 'remote'), "sex=1"]], :input_html => {:class => "required"}  %>
-  <%= package.input :size, :as => :check_boxes, :collection  =>  make_link_strict(Package.new.get_contents("Size"), "size", false), :input_html => {:class => "required"} %><br>
-  <%= package.input :saison, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Saison"), "saison", true) %><br>
-  <%= package.input :kind, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Kind"), "kind", true) %><br>
-  <%= package.input :label, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Label"), "label", false) %><br>
-  <%= package.input :colors, :as => :check_boxes, :collection => make_link_special(Package.new.get_contents("Colors"), "colors") %>
-<% end %>
+<%#= semantic_form_for Package.new, :url => search_remote_packages_path do |package| %>
+  <%#= package.input :sex, :as => :check_boxes, :collection => [[ link_to( I18n.t(:boy) + " (#{get_amount("sex", 0)})", search_remote_packages_path(0), :class => 'remote', :id => 'test'), "sex=0"],[ link_to( I18n.t(:girl) + " (#{get_amount("sex", 1)})", search_remote_packages_path(1), :class => 'remote'), "sex=1"]], :input_html => {:class => "required"}  %>
+  <%#= package.input :size, :as => :check_boxes, :collection  =>  make_link_strict(Package.new.get_contents("Size"), "size", false), :input_html => {:class => "required"} %><br>
+  <%#= package.input :saison, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Saison"), "saison", true) %><br>
+  <%#= package.input :kind, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Kind"), "kind", true) %><br>
+  <%#= package.input :label, :as => :check_boxes, :collection => make_link(Package.new.get_contents("Label"), "label", false) %><br>
+  <%#= package.input :colors, :as => :check_boxes, :collection => make_link_special(Package.new.get_contents("Colors"), "colors") %>
+<%# end %>
 
 <div class="tr span-22 ">
   <div class="td first">&nbsp;</div>
