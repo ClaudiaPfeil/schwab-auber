@@ -4,7 +4,7 @@
 %>
 
 <% @address ? @address : @address = Address.new(:user_id => params[:id])  %>
-
+<%= get_notices %>
 <div class="tr span-16">
   <div class="td first">&nbsp;</div>
   <div class="td span-16"><h3><%= @address.new_record? ? I18n.t(:new_address) : I18n.t(:edit_address)%></h3></div>

@@ -30,3 +30,5 @@ de:
   mobile: Mobil-Nr.
   contact_title: Anrede
   address_missing:  Bitte geben sie ihre Lieferanschrift für ihr Nutzerkonto an.
+  address_deleted: Anschrift erfolgreich gelöscht
+  address_not_unique: Sie dürfen jeweils nur eine Lieferanschrift und Rechnungsanschrift angeben

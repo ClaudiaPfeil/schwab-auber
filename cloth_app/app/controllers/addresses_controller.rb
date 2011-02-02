@@ -16,8 +16,9 @@ class AddressesController < ApplicationController
 
   def create
     @address = Address.new(params[:address])
-    # prüfen, ob Kunde bereits eine Liefer- und Rechnungsanschrift besitzt
-    if check_address == true
+    # prüfen, ob Kunde bereits eine Liefer- und Rechnungsanschrift besitzt und
+    # prüfen, das jeweils nur eine Adresse hinzugefügt werden darf
+    if check_address(@address.kind)
 
       if @address.save
         profile = User.find_by_id(@address.user_id)
@@ -30,7 +31,7 @@ class AddressesController < ApplicationController
 
     else
       @address = @address
-      @notice  = I18n.t(:address_still_exist)
+      @notice  = I18n.t(:address_not_unique)
       render :action => 'new'
     end
     
@@ -64,8 +65,17 @@ class AddressesController < ApplicationController
       @current_object = yield
     end
 
-    def check_address
+    def check_address(kind)
       user = User.find_by_id(@address.user_id)
-      user.has_delivery_address? && user.has_bill_address? ? false : true
+      #user.has_delivery_address? && user.has_bill_address? ? false : true
+      if user.has_delivery_address?
+        kind == 0 ? false : true
+      elsif user.has_bill_address?
+        kind == 1 ? false : true
+      elsif user.has_delivery_address? && user.has_bill_address?
+        false
+      else
+        true
+      end
     end
 end
