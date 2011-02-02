@@ -185,10 +185,10 @@ class ProfilesController < ApplicationController
         
         unless rec_address.blank?
           File.open(path+name, "w") do |file|
-            recv = rec_address.first.street_and_number.split(" ")
+            recv = rec_address.street_and_number.split(" ")
             sender_address = get_delivery_address(sender)
-            sender_tmp = sender_address.first.street_and_number.split(" ")
-            input << "#{sender.first_name + ' ' + sender.last_name}, #{sender_address.first.receiver_additional ? sender_address.first.receiver_additional : SEND_NAME2}, #{sender_address.first.street_and_number.gsub(sender_tmp.last,"")}, #{sender_tmp.last}, #{sender_address.first.postcode}, #{sender_address.first.town}, #{SEND_COUNTRY},#{profile.first_name + ' ' + profile.last_name}, #{rec_address.first.receiver_additional ? rec_address.first.receiver_additional : SEND_NAME2},#{rec_address.first.street_and_number.gsub(recv.last,"")}, #{recv.last}, #{rec_address.first.postcode}, #{rec_address.first.town}, #{SEND_COUNTRY}, #{PRODUCT}, #{coupon}\n"
+            sender_tmp = sender_address.street_and_number.split(" ")
+            input << "#{sender.first_name + ' ' + sender.last_name}, #{sender_address.receiver_additional ? sender_address.receiver_additional : SEND_NAME2}, #{sender_address.street_and_number.gsub(sender_tmp.last,"")}, #{sender_tmp.last}, #{sender_address.postcode}, #{sender_address.town}, #{SEND_COUNTRY},#{profile.first_name + ' ' + profile.last_name}, #{rec_address.receiver_additional ? rec_address.receiver_additional : SEND_NAME2},#{rec_address.street_and_number.gsub(recv.last,"")}, #{recv.last}, #{rec_address.postcode}, #{rec_address.town}, #{SEND_COUNTRY}, #{PRODUCT}, #{coupon}\n"
             
             file.write(input) if input
           end
