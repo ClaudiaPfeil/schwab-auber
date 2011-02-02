@@ -8,7 +8,8 @@
 
   <%= bank.input  :kind, :as => :radio,
                   :collection =>  {I18n.t(:paypal) => 2, I18n.t(:master_visa_card)  =>  3},
-                  :first_blank => false
+                  :first_blank => false,
+                  :label => I18n.t(:payment_kind)
   %>
   <%= bank.input :package_id, :as => :hidden, :value => ( params[:upgrade] ? 0 : params[:id]) %>
   <% if params[:upgrade] %>

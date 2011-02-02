@@ -40,7 +40,8 @@ class AddressesController < ApplicationController
   def edit; end
 
   def update
-    if @address.update_attributes(params[:address])
+    # alles außer die Art der Anschrift aktualisieren 
+    if @address.update_attributes(params[:address].delete("kind"))
       redirect_to address_path(@address), :notice => I18n.t(:address_updated)
     else
       @address = @address

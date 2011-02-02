@@ -1,5 +1,5 @@
 de:
-  kind: 'Bitte wählen sie eine Zahlungsmethode aus:'
+  payment_kind: 'Bitte wählen sie eine Zahlungsmethode aus:'
   payments: Bezahlungen
   payment_destroyed:  Bezahlung kann nicht gelöscht werden!
   payment_updated:  Bezahlung erfolgreich aktualisiert!

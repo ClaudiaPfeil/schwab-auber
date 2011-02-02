@@ -18,7 +18,7 @@ de:
   postcode: Postleitzahl
   town: Stadt
   land: Land
-  kind: Art
+  address_kind: Art
   confirm_address: Möchten sie die Anschrift wirklich löschen?
   edit_address: Anschrift ändern
   contact_name: Name (Vor- und Zuname)
