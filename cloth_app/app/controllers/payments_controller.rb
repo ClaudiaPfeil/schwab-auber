@@ -22,8 +22,8 @@ class PaymentsController < ApplicationController
   end
 
   # Payment-Eintrag wenn:
-  # - ein Kleiderpaket bestellt wird oder
-  # - ein Upgrade der Premium-Mitgliedschaft erfolgt
+  # - ein Kleiderpaket bestellt und bezahlt wird mit status=2 oder
+  # - ein Upgrade der Premium-Mitgliedschaft erfolgt und diese bezahlt wird mit status=2
   def create
     package = Package.find_by_id(params[:payment][:package_id]) unless params[:payment][:package_id].to_i == 0
 
@@ -32,7 +32,8 @@ class PaymentsController < ApplicationController
                  :order_id => package.order.id,
                  :package_id => params[:payment][:package_id],
                  :kind  => params[:payment][:kind],
-                 :balance => params[:payment][:balance]
+                 :balance => params[:payment][:balance],
+                 :status => 1
                 }
     else
       payment = {
@@ -40,7 +41,8 @@ class PaymentsController < ApplicationController
                  :order_id => 0,
                  :package_id => 0,
                  :kind  => params[:payment][:kind],
-                 :balance => params[:payment][:balance]
+                 :balance => params[:payment][:balance],
+                 :status => 1
                 }
     end
     
@@ -61,6 +63,13 @@ class PaymentsController < ApplicationController
         @ogone = ogone.to_hash
         @notice = I18n.t(:choose_paypal)
         render :action => "paypal"
+      elsif params[:payment][:kind].to_i == 4
+        ogone = prepare_ogone_direct(payment)
+        ogone['SHASIGN'] = get_sha1(ogone)
+         # Bezahlschnittstelle ogone aufrufen, wenn Lastschriftverfahren ausgewählt ist
+         @ogone = ogone.to_hash
+         @notice = I18n.t(:choose_master_visa_card)
+        render :action =>  "direct"
       else
         redirect_to profile_path(@payment.user), :notice => I18n.t(:payment_created)
       end
@@ -115,6 +124,32 @@ class PaymentsController < ApplicationController
     
   end
 
+  def accept
+    order_id, status, pay_id, nc_error, trx_date, shasign = prepare_feedback(params)
+    @payment = Payment.find_by_order_id(order_id)
+    if @payment
+      @payment.update_attributes(:status => status, :pay_id => pay_id, :nc_error => nc_error)
+      if status.to_i == 9
+        # order aktualisieren, setzen des status=2 für paied
+        # package aktualisieren, setzen des status=2 für paied
+        @payment.order.update_attribute(:status, 2)
+        @payment.package.update_attribute(:state, 2)
+      end
+    end
+  end
+
+  def decline
+    
+  end
+
+  def exception
+    
+  end
+
+  def cancel
+    
+  end
+
   private
 
     def init_payment
@@ -161,6 +196,7 @@ class PaymentsController < ApplicationController
     def prepare_ogone_paypal(params)
       ogone = { 'AMOUNT'  => params[:balance],
                 'BGCOLOR' => Payment::BGCOLOR,
+                'BRAND' => Payment::BRAND_PAYPAL,
                 'BUTTONBGCOLOR' => Payment::BUTTONBGCOLOR,
                 'BUTTONTXTCOLOR' => Payment::BUTTONTXTCOLOR,
                 'CURRENCY' => Payment::CURRENCY,
@@ -168,6 +204,24 @@ class PaymentsController < ApplicationController
                 'LANGUAGE' => Payment::LANGUAGE,
                 'ORDERID' => params[:order_id],
                 'PM' => Payment::PM,
+                'PSPID' => Payment::PSPID,
+                'TBLBGCOLOR' => Payment::TBLBGCOLOR,
+                'TITLE' => Payment::TITLE,
+                'TXTCOLOR' => Payment::TXTCOLOR
+              }
+    end
+
+    def prepare_ogone_direct(params)
+      ogone = { 'AMOUNT'  => params[:balance],
+                'BGCOLOR' => Payment::BGCOLOR,
+                'BRAND' => Payment::BRAND_DIRECT,
+                'BUTTONBGCOLOR' => Payment::BUTTONBGCOLOR,
+                'BUTTONTXTCOLOR' => Payment::BUTTONTXTCOLOR,
+                'CURRENCY' => Payment::CURRENCY,
+                'FONTTYPE' => Payment::FONTTYPE,
+                'LANGUAGE' => Payment::LANGUAGE,
+                'ORDERID' => params[:order_id],
+                'PM' => Payment::PM_DIRECT,
                 'PSPID' => Payment::PSPID,
                 'TBLBGCOLOR' => Payment::TBLBGCOLOR,
                 'TITLE' => Payment::TITLE,
@@ -183,4 +237,16 @@ class PaymentsController < ApplicationController
       Digest::SHA1.hexdigest(sha1_key).to_s.upcase
     end
 
+    def prepare_feedback(params)
+      if params
+        order_id = params[:ORDER_ID]
+        status   = params[:STATUS]
+        pay_id   = params[:PAYID]
+        nc_error = params[:NCERROR]
+        trx_date = params[:TRXDATE]
+        shasign  = params[:SHASIGN]
+        
+        return order_id, status, pay_id, nc_error, trx_date, shasign
+      end
+    end
 end

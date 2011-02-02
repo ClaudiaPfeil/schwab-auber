@@ -22,6 +22,8 @@ class Payment < ActiveRecord::Base
   BUTTONBGCOLOR = "#336699"
   BUTTONTXTCOLOR = "#09f"
   BRAND = "VISA"
+  BRAND_PAYPAL = "PAYPAL"
+  BRAND_DIRECT = "Direct Debits DE"
   PSPID = "pauberPROD"
   OPERATION = 'SAL'
   TBLBGCOLOR = '#CCCC99'
@@ -30,6 +32,7 @@ class Payment < ActiveRecord::Base
   WIN3DS = "POPUP"
   PM = "PAYPAL"
   PM_CARD = "CreditCard"
+  PM_DIRECT = "Direct Debits DE"
   TP = 'http://dev.kidskarton.de/layouts/application'
   TITLE = 'KidsKarton.de'
   TXTCOLOR = '#222222'

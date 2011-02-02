@@ -4,7 +4,7 @@ class PackagesController < ApplicationController
 
   # Alle Kunden dürfen alle Kleiderpakete sehen, egal ob Basis, Premium oder Gast
   def index
-    @packages = Package.all 
+    @packages = Package.where(:state => 0)
   end
 
   def show
@@ -71,8 +71,9 @@ class PackagesController < ApplicationController
     @packages
   end
 
+  # create order
+  # set status to ordered = 1 and to paied = 2 if transaction was successfully
   def order
-    #create order
     @order = Order.new(:package_number => @package.serial_number,
                        :package_id     => @package.id,
                        :user_id        => current_user.id
@@ -81,6 +82,7 @@ class PackagesController < ApplicationController
     @order.package.accepted = 1
     @order.package.confirmed = 1
     @order.package.user.accepted = 1
+    @order.status = 1
     
     if @order.check_change_principle == true && @order.check_holidays == true
       @order.order_number  = @order.get_order_number

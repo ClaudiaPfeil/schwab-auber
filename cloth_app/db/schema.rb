@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101227081112) do
+ActiveRecord::Schema.define(:version => 20110202140151) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -85,15 +85,16 @@ ActiveRecord::Schema.define(:version => 20101227081112) do
   create_table "options", :force => true do |t|
     t.boolean  "sex"
     t.boolean  "name"
+    t.boolean  "first_name"
+    t.boolean  "last_name"
     t.boolean  "address"
+    t.boolean  "first_letter_of_first_name"
+    t.boolean  "first_letter_of_last_name"
     t.boolean  "date_of_birth"
     t.boolean  "telephone"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id",                    :null => false
-    t.boolean  "first_letter_of_first_name"
-    t.boolean  "first_letter_of_last_name"
-    t.boolean  "first_name"
+    t.integer  "user_id"
     t.integer  "cartons"
   end
 
@@ -104,19 +105,20 @@ ActiveRecord::Schema.define(:version => 20101227081112) do
   end
 
   create_table "orders", :force => true do |t|
-    t.string   "order_number",                     :null => false
-    t.string   "package_number",                   :null => false
-    t.integer  "user_id",                          :null => false
-    t.integer  "package_id",                       :null => false
-    t.string   "evaluation"
+    t.string   "order_number"
+    t.string   "package_number"
+    t.integer  "user_id"
+    t.integer  "package_id"
+    t.integer  "evaluation"
     t.text     "eva_notice"
     t.date     "eva_date_created_at"
     t.date     "eva_date_updated_at"
     t.text     "notice"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "bill_number",                      :null => false
+    t.string   "bill_number"
     t.integer  "received",            :limit => 1
+    t.integer  "status",                           :default => 0
   end
 
   create_table "packages", :force => true do |t|
@@ -154,6 +156,9 @@ ActiveRecord::Schema.define(:version => 20101227081112) do
     t.datetime "updated_at"
     t.boolean  "prepayment_confirmed", :default => false
     t.integer  "balance"
+    t.string   "status",               :default => "0"
+    t.string   "pay_id"
+    t.string   "nc_error"
   end
 
   create_table "prices", :force => true do |t|
@@ -192,16 +197,17 @@ ActiveRecord::Schema.define(:version => 20101227081112) do
     t.date     "start_holidays"
     t.date     "end_holidays"
     t.integer  "cartons",                                  :default => 5
-    t.boolean  "premium_period",                           :default => false
-    t.boolean  "continue_membership",                      :default => true
     t.boolean  "membership",                               :default => false
     t.date     "membership_starts"
     t.date     "membership_ends"
+    t.boolean  "premium_period",                           :default => false
+    t.boolean  "continue_membership",                      :default => true
     t.boolean  "ordered_cartons",                          :default => false
     t.boolean  "confirmed_delivery",                       :default => false
     t.boolean  "canceled",                                 :default => false
     t.date     "paied"
     t.integer  "status"
+    t.integer  "membership_state",                         :default => 0
   end
 
   add_index "users", ["login"], :name => "index_users_on_login", :unique => true

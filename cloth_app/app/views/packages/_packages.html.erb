@@ -16,7 +16,7 @@
       <div class="td span-5"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>
       <div class="td last">
         <% if can? :update, package %>
-         <%= link_to  I18n.t("edit"), edit_package_path(package) if current_user.is_owner? package%><br>
+         <%= link_to  I18n.t("edit"), edit_package_path(package) if (current_user.is_owner? package || (current_user.is? :admin) ) %><br>
         <% end %>
 
         <% if can? :destroy, package %>
@@ -27,7 +27,7 @@
           <%= link_to I18n.t(:detail), package_path(package) %><br>
         <% end %>
 
-        <% if (can? :create, Order) && package.state == 0 && !owner?(package.user_id) %>
+        <% if (can? :create, Order) && !owner?(package.user_id) %>
           <%= link_to I18n.t(:order), order_package_path(package) %><br>
         <% end %>
 
