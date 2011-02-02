@@ -238,8 +238,15 @@ $(document).ready(function(){
 
   $('#package_size').click(function (){
     $('#package_next_size_input').show();
-    var next_size = parseInt(document.getElementById('package_size').value)
-    next_size = next_size + 2
+    var next_size = 0
+    var size = parseInt(document.getElementById('package_size').value)
+    
+    if(size < 50){
+      next_size = size + 2
+    }else{
+      next_size = size + 6
+    }
+
     $("#package_next_size").val(next_size)
   })
 
