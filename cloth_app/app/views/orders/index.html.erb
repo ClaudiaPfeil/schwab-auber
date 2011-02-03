@@ -1,52 +1,56 @@
-<div class="tr span-22">
-  <div class="td first">&nbsp;</div>
-  <div class="td span-18"><h1><%= I18n.t(:orders) %></h1><br><%=  get_notices %></div>
-  <div class="td last"><br>
-    <% if can? :create, Order %>
-      <%= link_to I18n.t(:new), new_order_path %>
-    <%end%>
-  </div>
-</div>
+<% if current_user %>
 
-<% tmp = [:order_number, :received, :package_number, :evaluation, :created_at] %>
-<% order_cols = Order.column_names.to_a%>
-<% result = tmp - order_cols%>
-
-<div class="tr span-22">
-  <div class="td first">&nbsp;</div>
-  <% result.each do |column| %>
-    <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
-  <% end %>
-  <div class="td last">&nbsp;</div>
-</div>
-
-<% @orders.each do |order| %>
   <div class="tr span-22">
     <div class="td first">&nbsp;</div>
-    <% result.each do |name| %>
-      <div class="td span-3">
-        <%  if name.to_s == 'created_at' %>
-          <%=  formatted_date(order.attributes[name.to_s]) %>
-        <% elsif name.to_s == 'evaluation' %>
-          <%=  I18n.t(order.attributes[name.to_s].to_sym)  unless order.attributes[name.to_s].nil? || order.attributes[name.to_s].blank? { |unusedlocal|  } %>
-        <% elsif name.to_s == 'received' %>
-          <%=  order.attributes[name.to_s] == true ? "Ja" : "Nein"  %>
-        <% else %>
-          <%=  order.attributes[name.to_s]  %>
-        <% end %>
-      </div>
-    <% end %>
-    <div class="td last">
-      <% if can? :update, Order %>
-        <%= link_to I18n.t(:edit), edit_order_path(order) %><br>
-      <%end%>
-      <% if can? :bill, Order %>
-        <%= link_to I18n.t(:bill), bill_path(order) %><br>
-      <%end%>
-      <% if can? :delete, Order %>
-        <%= link_to I18n.t(:delete_order), order, :confirm => I18n.t(:confirm_order) , :method => 'delete' %>
+    <div class="td span-18"><h1><%= I18n.t(:orders) %></h1><br><%=  get_notices %></div>
+    <div class="td last"><br>
+      <% if can? :create, Order %>
+        <%= link_to I18n.t(:new), new_order_path %>
       <%end%>
     </div>
   </div>
+
+  <% tmp = [:order_number, :received, :package_number, :evaluation, :created_at] %>
+  <% order_cols = Order.column_names.to_a%>
+  <% result = tmp - order_cols%>
+
+  <div class="tr span-22">
+    <div class="td first">&nbsp;</div>
+    <% result.each do |column| %>
+      <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
+    <% end %>
+    <div class="td last">&nbsp;</div>
+  </div>
+
+  <% @orders.each do |order| %>
+    <div class="tr span-22">
+      <div class="td first">&nbsp;</div>
+      <% result.each do |name| %>
+        <div class="td span-3">
+          <%  if name.to_s == 'created_at' %>
+            <%=  formatted_date(order.attributes[name.to_s]) %>
+          <% elsif name.to_s == 'evaluation' %>
+            <%=  I18n.t(order.attributes[name.to_s].to_sym)  unless order.attributes[name.to_s].nil? || order.attributes[name.to_s].blank? { |unusedlocal|  } %>
+          <% elsif name.to_s == 'received' %>
+            <%=  order.attributes[name.to_s] == true ? "Ja" : "Nein"  %>
+          <% else %>
+            <%=  order.attributes[name.to_s]  %>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="td last">
+        <% if can? :update, Order %>
+          <%= link_to I18n.t(:edit), edit_order_path(order) %><br>
+        <%end%>
+        <% if can? :bill, Order %>
+          <%= link_to I18n.t(:bill), bill_path(order) %><br>
+        <%end%>
+        <% if can? :delete, Order %>
+          <%= link_to I18n.t(:delete_order), order, :confirm => I18n.t(:confirm_order) , :method => 'delete' %>
+        <%end%>
+      </div>
+    </div>
+  <% end %>
+
 <% end %>
 

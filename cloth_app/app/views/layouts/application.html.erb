@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>KidsKarton.de</title>
-  <%= stylesheet_link_tag :all %>
-  <%= stylesheet_link_tag 'blueprint/screen' %>
+  <title>KidsKarton</title>
+  <%#= stylesheet_link_tag :all %>
+  <%= stylesheet_link_tag 'main.css', 'thickbox.css', 'jquery.simpledialog.0.1.css', 'jquery.jgrowl.css', 'jquery-ui-1.8.1.custom.css', 'blueprint/src/grid.css', 'forms.css', 'cp_cms.css' %>
   <!--[if lt IE 8]>
     <link rel="stylesheet" href="css/blueprint/ie.css" type="text/css" media="screen, projection">
   <![endif]-->
@@ -12,23 +12,37 @@
   <%= render '/layouts/set_meta_tags'%>
 </head>
 <body>
-  
-  <div class="container">
-    <div class="span-22">
-      <%= render "/layouts/header" %>
-      <%= render "/layouts/subnavi" %>
-	  </div>
+  <div id="all">
+      <div id="header"></div>
+      
+      <div id="navigation">
+        <!-- render navi_header -->
+        <%= render '/layouts/subnavi' %>
+      </div>
 
-    <div class="span-22 background">
-     <%= yield %>
+      <div id="content">
+
+        <div id="left">
+          <%= yield %>
+        </div>
+
+        <div id="right">
+          <% if current_user %>
+          <div id="info_box">&nbsp;
+              
+            </div> 
+          <%  else %>
+            <%= render '/sessions/login'  %>
+          <% end %>
+        </div>
+      
     </div>
-
-    <div class="span-22">
-      <br>
-      <span class="sub">&copy; 2010.Schwab&Auber GbR. <a href="mailto:infoatkidskarton.de">E-mail senden</a></span>
-      <br>&nbsp;<br>
-	  </div> 
-  </div>
-
+    <div id="footer">
+      <!-- render navi_footer-->
+      <a href="#" class="footer">&Uuml;ber uns</a>
+      <a href="#" class="footer" onfocus="this.blur()">Kontakt</a><a href="#" class="footer" onfocus="this.blur()">AGB</a>
+      <a href="#" class="footer" onfocus="this.blur()">Rechtliches</a>
+      <a href="#" class="footer" onfocus="this.blur()">Affilates</a>
+    </div>
 </body>
 </html>

@@ -4,42 +4,43 @@
 # Datum:  29.11.2010
 %>
 
-<div class="subnavi">
   <!--||| Der erste Punkt zeigt den Seitenbereich an und wird nicht verlinkt. Die Sublinks = das Untermenü hier anpassen. |||-->
-  <span class="sub span-22">
-    <%#= link_to I18n.t(:impressum), impressums_path  %>
-    <% if current_user %>
+  
 
-      <% if can? :manage, Profile %>
-        <%= link_to I18n.t(:menue_dashboard), dashboard_path %>
-      <% end %>
+  <%= link_to I18n.t(:home), root_path, :class => "navigation"  %><span class="nav_seperator">|</span>
+  <%= link_to I18n.t(:menue_package), packages_path, :class => "navigation"  %><span class="nav_seperator">|</span>
+  <% if current_user %>
 
-      <% if can? :manage, Category %>
-        <%= link_to I18n.t(:menue_category), categories_path %>
-      <% end %>
-
-      <%  if (can? :manage, Content) || (can? :publish, Content) %>
-        <%= link_to I18n.t(:content), contents_path %>
-        <%= link_to I18n.t(:landingpage), landing_page_path %>
-      <%  end %>
-
-      <% if can? :manage, Order %>
-        <%= link_to I18n.t(:menue_order), orders_path %>
-      <% end %>
-
-      <% if can? :manage, Payment %>
-        <%= link_to I18n.t(:menue_payment), payments_path %>
-      <% end %>
-
-      <% if can? :manage, Price %>
-        <%= link_to I18n.t(:menue_price), prices_path %>
-      <% end %>
-
-      <%= link_to I18n.t(:logout), logout_path%>
-
+    <% if can? :manage, Profile %>
+      <%= link_to I18n.t(:menue_dashboard), dashboard_path, :class => "navigation" %><span class="nav_seperator">|</span>
     <% end %>
-    <%= link_to I18n.t(:impressum), impressum_path%>
-    <br>
-  </span>
 
-</div>
+    <%= link_to I18n.t(:menue_profile), profiles_path, :class => "navigation"  %><span class="nav_seperator">|</span>
+
+    <% if can? :manage, Category %>
+      <%= link_to I18n.t(:menue_category), categories_path, :class => "navigation" %><span class="nav_seperator">|</span>
+    <% end %>
+
+    <%  if (can? :manage, Content) || (can? :publish, Content) %>
+      <%= link_to I18n.t(:content), contents_path, :class => "navigation" %><span class="nav_seperator">|</span>
+      <%= link_to I18n.t(:landingpage), landing_page_path, :class => "navigation" %><span class="nav_seperator">|</span>
+    <%  end %>
+
+    <% if can? :manage, Order %>
+      <%= link_to I18n.t(:menue_order), orders_path, :class => "navigation" %><span class="nav_seperator">|</span>
+    <% end %>
+
+    <% if can? :manage, Payment %>
+      <%= link_to I18n.t(:menue_payment), payments_path, :class => "navigation" %><span class="nav_seperator">|</span>
+    <% end %>
+
+    <% if can? :manage, Price %>
+      <%= link_to I18n.t(:menue_price), prices_path, :class => "navigation" %><span class="nav_seperator">|</span>
+    <% end %>
+
+    <%= link_to I18n.t(:logout), logout_path, :class => "navigation" %><span class="nav_seperator">|</span>
+
+  <% end %>
+  <%= link_to I18n.t(:impressum), impressum_path, :class => "navigation"%>
+ 
+  

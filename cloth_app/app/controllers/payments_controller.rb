@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
 
 
   def index
-    (current_user && !(current_user.is? :admin) ) ? @payments = Payment.order("created_at DESC").where(:user_id => current_user.id, :status => 9) : @payments = Payment.order("created_at DESC").where(:status => 9)
+    (current_user && !(current_user.is? :admin) ) ? @payments = Payment.order("created_at DESC").where(:user_id => current_user.id, :status => 9) : @payments = Payment.order("created_at DESC").where(:status => 9) if current_user
   end
 
   def show

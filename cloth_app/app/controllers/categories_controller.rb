@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
   
 
   def index
-    @categories = Category.all
+    @categories = Category.all if current_user
   end
 
   def new

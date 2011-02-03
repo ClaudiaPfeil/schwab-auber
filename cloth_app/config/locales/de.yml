@@ -8,19 +8,19 @@ de:
   amount: Anzahl Kleider
   description:  Beschreibung
   name: Kleidungspaket
-  home: '. start'
-  menue_package: '. kleidungspakete'
-  search: '. suche'
-  impressum: '. impressum'
-  menue_profile: '. profil'
-  menue_payment: '. zahlungen'
-  content: '. texte & bilder'
-  landingpage: '. landungs seite'
-  menue_order: '. bestellungen'
-  menue_price: '. preise'
-  menue_category: '. kategorien'
-  menue_dashboard: '. dashboard'
-  logout: '. abmelden'
+  home: 'Start'
+  menue_package: 'Kleidungspakete'
+  search: 'Suche'
+  impressum: 'Impressum'
+  menue_profile: 'Profil'
+  menue_payment: 'Zahlungen'
+  content: 'Texte & Bilder'
+  landingpage: 'Landungsseite'
+  menue_order: 'Bestellungen'
+  menue_price: 'Preise'
+  menue_category: 'Kategorien'
+  menue_dashboard: 'Dashboard'
+  logout: 'Abmelden'
   user_order_cartons: hat eben eine neue Kartonagen-Lieferung angefordert
   name: Name
   add_address:  Es wurden noch keine Anschriften hinterlegt. Bitte fügen sie eine Anschrift hinzu!

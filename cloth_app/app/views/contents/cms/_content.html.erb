@@ -1,4 +1,9 @@
 <% unless content.nil? %>
+<p>
+    <% if content.image_file_name.length > 1 %>
+      <%= image_tag(content.image.to_s) %>
+    <% end %>
+  </p>
   <h1><%= content.title %></h1>
   <h2><%= content.subtitle %> </h2>
   <p>
@@ -7,9 +12,5 @@
   <p>
     <%= link_to "#{content.link_name}", content.link if content.link %>
   </p>
-  <p>
-    <% if content.image_file_name.length > 1 %>
-      <%= image_tag(content.image.to_s, :size => "200x150") %>
-    <% end %>
-  </p>
+  
 <% end %>

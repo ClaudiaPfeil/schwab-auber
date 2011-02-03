@@ -6,7 +6,7 @@ class PricesController < ApplicationController
   before_filter :init_price, :action  =>  [:show, :edit, :update, :destroy]
 
   def index
-    @prices = Price.all
+    @prices = Price.all if current_user
   end
 
   def show; end

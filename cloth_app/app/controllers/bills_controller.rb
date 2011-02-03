@@ -5,7 +5,7 @@ class BillsController < ApplicationController
   layout 'bills/bill'
 
   def index
-    @bills = Order.all
+    @bills = Order.all if current_user
   end
 
   def show

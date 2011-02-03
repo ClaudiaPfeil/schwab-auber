@@ -5,7 +5,7 @@ class BankDetailsController < ApplicationController
   before_filter :init_bank_detail, :action => [:edit, :update, :show, :destroy]
 
   def index
-    (current_user.is? :admin) ? @bank_details  = BankDetail.all : @bank_details = BankDetail.all.where(:user_id => params[:user_id])
+    (current_user.is? :admin) ? @bank_details  = BankDetail.all : @bank_details = BankDetail.all.where(:user_id => params[:user_id]) if current_user
   end
 
   def show

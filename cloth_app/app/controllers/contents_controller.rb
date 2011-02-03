@@ -3,7 +3,7 @@ class ContentsController < ApplicationController
   before_filter :init_content, :action => [:edit, :update, :show, :destroy]
 
   def index
-    @contents = Content.all
+    @contents = Content.all if current_user
   end
 
   def show

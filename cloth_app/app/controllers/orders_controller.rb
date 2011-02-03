@@ -4,14 +4,15 @@ class OrdersController < ApplicationController
   before_filter :init_order, :actions => [:show, :edit, :update, :destroy, :show_bill]
 
   def index
-    if current_user.is? :admin
-      @orders = Order.where(:status => 2)
-      @orders = @orders.to_a unless @orders.nil?
-    else
-      @orders = Order.where(:user_id => current_user.id, :status => 2) if current_user
-      @orders = @orders.to_a unless @orders.nil?
+    if current_user
+      if current_user.is? :admin
+        @orders = Order.where(:status => 2)
+        @orders = @orders.to_a unless @orders.nil?
+      else
+        @orders = Order.where(:user_id => current_user.id, :status => 2) if current_user
+        @orders = @orders.to_a unless @orders.nil?
+      end
     end
-    
   end
 
   def show; end
@@ -75,10 +76,12 @@ class OrdersController < ApplicationController
   private
 
     def init_order
-      if current_user.is? :admin
-        init_current_object { @order = Order.find_by_id(params[:id]) } unless current_user.nil?
-      else
-        init_current_object { @order = Order.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+      if current_user
+        if current_user.is? :admin
+          init_current_object { @order = Order.find_by_id(params[:id]) } unless current_user.nil?
+        else
+          init_current_object { @order = Order.find_by_id_and_user_id(params[:id], current_user.id)} unless current_user.nil?
+        end
       end
     end
 
