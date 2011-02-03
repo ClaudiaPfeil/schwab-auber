@@ -13,30 +13,27 @@
 </head>
 <body>
   <div id="all">
-      <div id="header"></div>
-      
-      <div id="navigation">
-        <!-- render navi_header -->
-        <%= render '/layouts/subnavi' %>
+    <div id="header"></div>
+
+    <div id="navigation">
+      <!-- render navi_header -->
+      <%= render '/layouts/subnavi' %>
+    </div>
+
+    <div id="content">
+      <div id="left">
+        <%= yield %>
       </div>
 
-      <div id="content">
-
-        <div id="left">
-          <%= yield %>
-        </div>
-
-        <div id="right">
-          <% if current_user %>
-          <div id="info_box">&nbsp;
-              
-            </div> 
-          <%  else %>
-            <%= render '/sessions/login'  %>
-          <% end %>
-        </div>
-      
+      <div id="right">
+        <% if current_user %>
+        <div id="info_box">&nbsp;</div>
+        <%  else %>
+          <%= render '/sessions/login'  %>
+        <% end %>
+      </div>
     </div>
+
     <div id="footer">
       <!-- render navi_footer-->
       <a href="#" class="footer">&Uuml;ber uns</a>
@@ -44,5 +41,6 @@
       <a href="#" class="footer" onfocus="this.blur()">Rechtliches</a>
       <a href="#" class="footer" onfocus="this.blur()">Affilates</a>
     </div>
+  </div>
 </body>
 </html>
