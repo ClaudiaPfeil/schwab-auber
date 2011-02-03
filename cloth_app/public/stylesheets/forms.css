@@ -1,0 +1,108 @@
+/* 
+    Document   : forms
+    Created on : 03.02.2011, 16:59:10
+    Author     : claudiapfeil
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+/*formtastic*/
+fieldset {
+  border: none;
+}
+
+fieldset.inputs > ol {
+  list-style-type: none;
+  float: left;
+}
+
+fieldset.buttons > ol {
+  list-style-type: none;
+}
+
+ol {
+  margin-left: 1em;
+
+}
+
+li#package_confirmed_input {
+  margin-left: 250px;
+  margin-right: 5px;
+}
+
+li#package_accepted_input {
+  margin-left: 250px;
+  margin-right: 5px;
+}
+
+input#package_accepted {
+  margin-right: 5px;
+}
+
+input#package_confirmed {
+  margin-right: 5px;
+}
+
+input {
+  line-height: 1.5;
+}
+
+input#remember_me {
+  margin-right: 12em;
+  vertical-align: bottom;
+}
+
+textarea {
+  margin-righ: 0em;
+  line-height: 1;
+}
+
+li {
+  list-style-type: none;
+}
+li.string_optional {  margin-bottom: 2em; }
+li.file.optional {  list-style-type: none;  }
+li.file.optional > input {  padding-right: 7em; }
+li.content_image_input.file.optional > label {  text-align: left; }
+select {  margin-right: 15em;}
+radio.optional { list-style-type: none;}
+li.optional > fieldset {  padding: 0; margin: 0; }
+li.optional > fieldset > ol { margin-left: 240px;}
+li.optional > fieldset > ol > li { font-style: normal; display: block;}
+li.optional > fieldset > ol > li > label > input { float: none;}
+li.commit > input { float: right; margin-right: 12em;}
+li.commit > input#package_submit { float: right; margin-right: 35em;}
+input#search_key {float: none;}
+ol, li { list-style-type: none;}
+
+/* forms.css */
+label { font-weight:bold;width: 150px;vertical-align: top;}
+label { line-height: 2.5; horizontal-align: left; display: inline-block;  }
+label.label_info_box {width: 50px; font-weight: normal;}
+fieldset {padding:0 1.4em 1.4em 1.4em;margin:0 0 1.5em 0;border:none;}
+legend {font-weight:bold;;margin-top:-0.2em;margin-bottom:1em;}
+fieldset, #IE8#HACK {padding-top:1.4em;}
+legend, #IE8#HACK {margin-top:0;margin-bottom:0;}
+input[type=text], input[type=password], input.text, input.title, textarea {background-color:#fff;border:1px solid #bbb;}
+input[type=text]:focus, input[type=password]:focus, input.text:focus, input.title:focus, textarea:focus {border-color:#666;}
+select {background-color:#fff;border-width:1px;border-style:solid;width: 280px;}
+input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0.5em 0;}
+input.text, input.title {width:200px;padding:5px;}
+input.title {font-size:1.5em;}
+textarea {width:155px;height:50px;padding:5px;}
+form.inline {line-height:3;}
+form.inline p {margin-bottom:0;}
+.error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
+.error, .alert {background:#fbe3e4;color:#8a1f11;border-color:#fbc2c4;}
+.notice {color:#ffd324;border-color:#66bc29;font-weight: bold;}
+.success {background:#e6efc2;color:#264409;border-color:#c6d880;}
+.info {background:#d5edf8;color:#205791;border-color:#92cae4;}
+.error a, .alert a {color:#8a1f11;}
+.notice a {color:#514721;}
+.success a {color:#264409;}
+.info a {color:#205791;}

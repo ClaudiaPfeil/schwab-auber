@@ -1,0 +1,22 @@
+/* 
+    Document   : cp_cms
+    Created on : 03.02.2011, 17:01:45
+    Author     : claudiapfeil
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+div.tr {  display: table-row; margin: 0;  padding: 0; }
+
+div.tr_titles { display: table-row; margin: 0;  padding: 0; width: 575px; position: absolute; top: 6em; left: 40em; }
+
+div.tr_next { display: table-row; margin: 0;  padding: 0; width: 100%;  }
+
+div.td { display: table-cell; valign: top; padding: 0.5em; text-align: left; vertical-align: top; }
+
+
