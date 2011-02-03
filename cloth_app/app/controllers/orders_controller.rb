@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
 
   def index
     if current_user.is? :admin
-      @orders = Order.all
+      @orders = Order.where(:status => 2)
       @orders = @orders.to_a unless @orders.nil?
     else
-      @orders = Order.where(:user_id => current_user.id) if current_user
+      @orders = Order.where(:user_id => current_user.id, :status => 2) if current_user
       @orders = @orders.to_a unless @orders.nil?
     end
     

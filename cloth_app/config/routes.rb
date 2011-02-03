@@ -23,10 +23,6 @@ ClothApp::Application.routes.draw do
   resources :payments do
     get :confirm_prepayment, :on => :member
     get :all_unconfirmed, :on => :collection
-    get :cancel, :on => :member
-    get :accept, :on => :member
-    get :decline, :on => :member
-    get :exception, :on => :member
   end
 
   resources :profiles do
@@ -77,6 +73,10 @@ ClothApp::Application.routes.draw do
   match 'help' => 'welcome#help', :as => :help
   match 'contact' => 'welcome#contact', :as => :contact
   match 'get_in_contact' => 'welcome#get_in_contact', :as => :get_in_contact
+  match 'accept' => 'payments#accept', :as => :accept
+  match 'cancel' => 'payments#cancel', :as => :cancel
+  match 'decline' => 'payments#decline', :as => :decline
+  match 'exception' => 'payments#exception', :as => :exception
 
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'

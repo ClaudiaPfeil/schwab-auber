@@ -10,7 +10,7 @@ class PaymentsController < ApplicationController
 
 
   def index
-    (current_user && !(current_user.is? :admin) ) ? @payments = Payment.order("created_at DESC").where(:user_id => current_user.id) : @payments = Payment.order("created_at DESC").all
+    (current_user && !(current_user.is? :admin) ) ? @payments = Payment.order("created_at DESC").where(:user_id => current_user.id, :status => 9) : @payments = Payment.order("created_at DESC").where(:status => 9)
   end
 
   def show
@@ -134,6 +134,12 @@ class PaymentsController < ApplicationController
         # package aktualisieren, setzen des status=2 für paied
         @payment.order.update_attribute(:status, 2)
         @payment.package.update_attribute(:state, 2)
+        # inform creator of the package to send it if payed
+        user = User.find_by_id(@payment.package.user_id)
+        receiver =  User.find_by_id(@payment.user_id)
+        package = Package.find_by_id(@payment.package_id)
+        
+        UserMailer.send_package_ordered_email(user, receiver, package).deliver if user && receiver && package
       else
         # order zurücksetzen (stornieren)
         # package wieder freigeben

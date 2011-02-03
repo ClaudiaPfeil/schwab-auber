@@ -3,6 +3,10 @@ de:
   faq:  Häufig gestellte Fragen
   contact:  Kontakt
   title_impressum:  Impressum
+  payment_accepted: Ihre Zahlung wurde akzeptiert. Bitte melden sie sich neu an.
+  payment_canceled: Ihre Zahlung wurde abgebrochen oder sie haben den Zahlungsvorgang beendet. Ihre Bestellung wurde storniert. Bitte melden sie sich neu an.
+  payment_declined: Ihre Zahlung wurde abgewiesen und ihre Bestellung storniert. Bitte melden sie sich neu an.
+  payment_exception: Ihre Zahlung hat einen Fehler verursacht und ihre Bestellung wurde storniert. Bitte melden sie sich neu an.
   activerecord:
     models:
       content: Inhalt

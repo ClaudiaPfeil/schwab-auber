@@ -50,6 +50,14 @@ class UserMailer < ActionMailer::Base
     @subject += I18n.t('get_in_contact')
     @user = user
   end
+
+  def send_package_ordered_email(user, receiver, package)
+    setup_info_order_email(user)
+    @subject += I18n.t('send_package_info')
+    @user = user
+    @receiver = receiver
+    @package = package
+  end
   
   protected
 
@@ -88,6 +96,14 @@ class UserMailer < ActionMailer::Base
   def setup_contact_email(user)
     @recipients  = "info@kidskarton.de"
     @from        =  user[:email]
+    @subject     = "[#{::SITE_URL}] "
+    @sent_on     = Time.now
+    @user = user
+  end
+
+  def setup_info_order_email(user)
+    @recipients  =  user.email
+    @from        = "info@kidskarton.de"
     @subject     = "[#{::SITE_URL}] "
     @sent_on     = Time.now
     @user = user
