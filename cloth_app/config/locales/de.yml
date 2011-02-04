@@ -5,7 +5,7 @@ de:
   link: URL
   size: Größe
   sex:  Junge oder Mädchen?
-  amount: Anzahl Kleider
+  amount_clothes: Anzahl
   description:  Beschreibung
   name: Kleidungspaket
   home: 'Start'

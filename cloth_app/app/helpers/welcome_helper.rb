@@ -42,10 +42,15 @@ module WelcomeHelper
   end
 
   def get_charity_donation
-    sells = Payment.find_by_sql("Select * from payments where left(created_at, 7) like '%#{Date.today.to_s.chop.chop.chop}%'" )
-    amount = sells.count
-    
-    (amount.to_f * 0.25).to_s + " €"
+    result = ""
+    sells = Payment.find_by_sql("Select * from payments where left(created_at, 7) like '%#{Date.today.to_s.chop.chop.chop}%' and status=2" )
+    if sells
+      amount = sells.count
+      result = (amount.to_f * 0.25).to_s + " €"
+    else
+      result = "0 €"
+    end
+    result
   end
   
 end

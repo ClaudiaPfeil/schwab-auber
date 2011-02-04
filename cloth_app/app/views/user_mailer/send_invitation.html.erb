@@ -4,10 +4,18 @@
 # Datum:  06.12.10
 %>
 
-<%=h I18n.t('greeting') %>  <%=h @friend[:friends_first_name] + " " + @friend[:friends_last_name] %>
+Guten Tag <%=h @friend[:friends_first_name] + " " + @friend[:friends_last_name] %>,<br><br>
 
-<%=h @user.first_name + " " + @user.last_name %> <%= I18n.t('reference_message') %>
+sie wurden von <%=h @user.first_name + " " + @user.last_name %> zu KidsKarton.de, der deutschlandweit ersten Online Tauschbörse für Kinderbekleidung, eingeladen.<br><br>
 
-<%=h @url %>
+Was erwartet Sie bei KidsKarton.de?<br><br>
 
-<%h I18n.t('reference_goodbye') %>
+Sie haben bei uns die Möglichkeit, kostengünstig und einfach an passende Kinderbekleidung zu kommen.<br><br>
+
+Tauschen Sie bequem von zu Hause aus Kleidung, die Ihrem Kind zu klein geworden ist gegen passende Kleidung ein.<br><br>
+
+<%= link_to 'Registieren Sie sich hier kostenlos', @url %> und schauen Sie sich doch einmal unverbindlich auf unserer Seite um!<br><br>
+
+Wir würden uns freuen, Sie als neues Mitglied bei KidsKarton.de begrüßen zu dürfen!<br><br>
+
+Ihr KidsKarton.de – Team

@@ -3,7 +3,9 @@
 # Autor:  Claudia Pfeil
 # Datum:  25.11.2010
 %>
+Ein Mitglied hat gekündigt:
 
-<%=h @user.first_name + " " + @user.last_name %><%=h I18n.t('user_canceled_membership') %>
-<%=h I18n.t('membership') %> <%=h @user.membership == 0 ? "Basis" : "Premium" %>
-<%=h I18n.t('membership_ends') %><%=h date_formatted(@user.membership_ends) %>
+Mitgliedsname: <%=h @user.first_name + " " + @user.last_name %>
+Emailadresse. <%=h @user.email %>
+Kündigungsgrund des Mitgliedes: hier den gewählten Grund des Kunden anzeigen
+Bemerkungen des Mitgliedes: Hier Freitext anzeigen falls Kunde einen eingetragen hat

@@ -1,0 +1,71 @@
+<%#
+# To change this template, choose Tools | Templates
+# and open the template in the editor.
+%>
+
+Guten Tag <%=h @user.first_name.to_s + " " + @user.last_name.to_s%>,
+
+Soeben wurde Ihr Kleiderpaket mit der Nummer <%=h @package.serial_number %> bestellt.
+Bitte versenden Sie das Paket innerhalb von 3 Arbeitstagen an folgende Adresse:
+
+<% if @receiver.addresses.count > 1 %>
+
+  <% @receiver.addresses.each do |address| %>
+
+    <% if address.kind.to_i == 1 %>
+      <%=h address.receiver %>
+      <%=h address.receiver_additional %>
+      <%=h address.street_and_number %>
+      <%=h address.postcode %>
+      <%=h address.town %>
+      <%=h address.land %>
+    <%else%>
+     Der Besteller hat leider keine Lieferanschrift angegeben.
+     Bitte kontaktieren sie ihn direkt, um seine Lieferanschrift zu erfahren: <%=h @user.email%>
+    <% end %>
+
+  <% end %>
+
+<% elsif @receiver.addresses.count == 1 && @receiver.addresses.kind == 0 %>
+  Der Besteller hat leider keine Lieferanschrift angegeben.
+  Bitte kontaktieren sie ihn direkt, um seine Lieferanschrift zu erfahren: <%=h @user.email%>
+<% end %>
+
+Gehen Die dazu bitte wie folgt vor:
+
+1.) Rufen Sie mit folgendem Link die Onlinefrankierung der DHL auf:
+
+<link>Zur DHL Onlinefrankierung!<linkende>
+Diesen Link hinterlegen:
+https://www.dhl.de/popweb/ProductOrder.do;jsessionid=HmypN23Q4ndyTM1sTZ8p91gGgLS7pTntFhRRD822KyHrNsjvbBMk!197582836!-817261759?checkOnInit=false&itemId=0&insert=false
+
+2.)
+Wahlen Sie aus:
+
+Sendungstyp: 	Päckchen/Paket
+Produkt:  	  Päckchen bis 2 kg (max. 60 x 30 x 15cm)
+
+
+3.)
+Geben Sie Ihre Adresse als Absender ein.
+Geben Sie die Liederadresse des Bestellers als Empfänger ein;
+Legen Sie den Paketschein in Ihren Warenkorb.
+
+4.)
+Geben Sie folgenden Coupon-Code ein: <%=h @coupon %>
+Klicken Sie auf „Jetzt einlösen“
+
+5.)
+Geben Sie Ihre emailadresse zur Bestätigung
+Klicken Sie auf „Weiter zum Druck“
+
+Drucken Sie Ihren Paketschein aus („Portodruck“)
+
+Kleben Sie den Paketschein auf das Paket und bringen Sie es zur Post.
+
+Sie müssen dafür nichts bezahlen, durch die Eingabe des Coupon-Codes ist der Versand für Sie kostenfrei!
+
+
+Herzliche Grüsse,
+
+Ihr KidsKarton.de Team

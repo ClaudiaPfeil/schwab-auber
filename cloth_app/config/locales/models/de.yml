@@ -70,7 +70,7 @@ de:
         saison: Jahreszeit
         kind: Kleidersachen
         hint_kind: Welche Arten von Kleidung,z.B. Hose, Rock, Pullover, T-Shirt?
-        amount_clothes: ''
+        amount_clothes: Anzahl
         label:  Marke der Kleidung
         amount_labels:  Menge der Marken
         colors: Farben der Kleidung
