@@ -71,6 +71,9 @@ ClothApp::Application.routes.draw do
   match 'paypal' => 'payments#paypal', :as => :paypal
   match 'impressum' => 'welcome#impressum', :as => :impressum
   match 'help' => 'welcome#help', :as => :help
+  match 'agb'  => 'welcome#agb', :as => :agb
+  match 'rights' => 'welcome#rights', :as => :rights
+  match 'info' => 'welcome#info', :as => :info
   match 'contact' => 'welcome#contact', :as => :contact
   match 'get_in_contact' => 'welcome#get_in_contact', :as => :get_in_contact
   match 'accept' => 'payments#accept', :as => :accept

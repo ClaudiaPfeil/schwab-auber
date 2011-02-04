@@ -55,5 +55,17 @@ class WelcomeController < ApplicationController
   def impressum
     @contents = get_content("Impressum")
   end
+
+  def agb
+    @contents = get_content("AGB")
+  end
+
+  def rights
+    @contents = get_content("Rechtliches")
+  end
+
+  def info
+    @contents = get_content("Info")
+  end
   
 end
