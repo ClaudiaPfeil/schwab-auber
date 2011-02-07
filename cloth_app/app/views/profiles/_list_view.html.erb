@@ -5,7 +5,7 @@
 <% if (current_user.is? :admin) %>
 
   <% @profiles.each do |profile| %>
-    <div class='tr span-18'>
+    <div class='tr span-22'>
       <div class='td first'>&nbsp;</div>
       <%= render "submenue", :profile => profile, :@table_cols => @table_cols %>
     </div>
@@ -13,7 +13,7 @@
 
 <% else %>
   
-  <div class='tr span-18'>
+  <div class='tr span-22'>
     <div class='td first'>&nbsp;</div>
     <%= render "submenue", :profile => current_user, :@table_cols => @table_cols %>
   </div>
