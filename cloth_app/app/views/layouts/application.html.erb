@@ -27,7 +27,7 @@
 
       <div id="right">
         <% if current_user %>
-          <div id="info_box">&nbsp;</div>
+          <div id="info_box"><p><%= render "/profiles/infos", :profile => current_user %><br></p></div>
         <%  else %>
           <%= render '/sessions/login'  %>
         <% end %>
