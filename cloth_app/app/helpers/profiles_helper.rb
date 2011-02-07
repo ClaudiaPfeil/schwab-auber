@@ -60,6 +60,12 @@ module ProfilesHelper
       result = object.first_name + " " + object.last_name.first
     elsif name.to_s == "membership"
       object.membership == true ? result = I18n.t(:premium) : result = I18n.t(:base)
+    elsif name.to_s == "address"
+      object.addresses.each do|a|
+        if a.kind == 1
+          result = "#{a.receiver} #{a.receiver_additional}  #{a.street_and_number}  #{a.postcode}  #{a.town}"
+        end
+      end
     else
       result = object.attributes[name.to_s]
     end

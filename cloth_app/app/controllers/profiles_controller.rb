@@ -38,15 +38,18 @@ class ProfilesController < ApplicationController
     unless @profile.is_premium?
       @profile.destroy if @profile.is_destroyable?
       destroy_packages
+      @notice = I18n.t(:profile_deleted)
     else
       # Premium Account erst nach Ablauf der Mitgliedschaft löschen
       # die Kleiderpakete auch erst nach Ablauf der Mitgliedschaft löschen
       if @profile.premium_is_destroyable?
         @profile.destroy 
         destroy_packages
+        @notice = I18n.t(:profile_deleted)
       else
         # ToDo: Speichern der Kündigung der Mitgliedschaft
         @profile.udpate_attribute(:canceled, 1)
+        @notice = I18n.t(:profile_deleted_saved)
       end
 
     end

@@ -4,7 +4,7 @@ de:
   back: Zurück
   new_profile: Erstellen
   edit: Editieren
-  delete: Löschen
+  delete: Konto löschen
   email: E-Mail
   membership: Mitgliedschaft
   base_data: Stammdaten
@@ -14,7 +14,7 @@ de:
   profile_updated: Das Profil wurde erfolgreich aktualisiert.
   profile_not_updated: Das Profil wurde nicht aktualisiert.
   profile_deleted: Das Profil wurde erfolgreich gelöscht!
-  confirm_profile: Möchten sie das Profil wirklich löschen?
+  confirm_profile: Möchten sie ihr KidsKarton-Konto wirklich löschen?
   new_address: Neue Anschrift
   history:  Bestell- & Einstell-Historie
   profile_packages:  Eingestellte Kleiderpakete
@@ -41,6 +41,7 @@ de:
   choose_settings: "Wählen sie zunächst ihre Einstellungen aus: "
   profile:  Profil
   upgrade: Upgrade
+  profile_deleted_saved: Ihr Profil wird nach Ablauf der Premium-Mitgliedschaft gekündigt.
 
 
   

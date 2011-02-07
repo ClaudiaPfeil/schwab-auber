@@ -11,9 +11,9 @@
   <% if can? :update, Profile %>
     <%=  link_to I18n.t(:edit), edit_profile_path(profile) %>
   <% end %>
-
+  
   <% if can? :destroy, Profile %>
-    <%=  link_to I18n.t(:delete), profile, :confirm => I18n.t(:confirm_profile) , :method => 'delete' %>
+    <%=  link_to I18n.t(:delete), profile, :confirm => I18n.t(:confirm_profile) , :method => 'delete' if ((current_user.is? :admin) || profile.id.to_i == current_user.id.to_i)%>
   <% end %>
 
 </div>
