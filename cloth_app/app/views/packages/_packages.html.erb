@@ -7,10 +7,9 @@
 
   <% @packages.each do |package| %>
   
-    <%#*<div class="tr span-18 ">%>
       <div class="td first">&nbsp;</div>
-      <div class="td span-4"><%= package.serial_number%> </div>
-      <div class="td span-3"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
+      <div class="td span-2"><%= package.serial_number%> </div>
+      <div class="td span-2"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
       <div class="td span-2"><%= package.size%> </div>
       <div class="td span-2"><%= package.amount_clothes%> </div>
       <div class="td span-5"><%= truncate(package.notice, :length => 20, :omission => "...")%> </div>

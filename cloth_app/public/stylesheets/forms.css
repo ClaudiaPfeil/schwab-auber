@@ -104,6 +104,9 @@ form.inline p {margin-bottom:0;}
 .success a {color:#264409;}
 .info a {color:#205791;}
 
-/* Filter */
-#filter { display:inline-block; float:left; }
-#result { display:inline-block; float:right; width: 710px;}
+/* Tabelle */
+div.table { display:table; border-collapse:collapse; }
+div.tr { display:table-row; }
+div.td { display:table-cell;}
+
+.two_columns { width: 870px;}

@@ -21,6 +21,7 @@
     </div>
 
     <div id="content">
+
       <div id="left">
         <%= yield %>
       </div>
@@ -33,6 +34,7 @@
          <div id="register"><p><%= link_to I18n.t(:register), signup_path, :class => "register" %></p></div>
         <% end %>
       </div>
+      
     </div>
     
     <div id="footer">

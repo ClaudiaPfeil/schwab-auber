@@ -26,7 +26,7 @@ a:hover {color:red; text-decoration:underline}
 
 #content { background-color:#66bc29; min-height:400px; padding:20px; display:inline-block; width:959px; }
 
-#right { background-color:#66bc29; width:225px; display:inline-block; float:right; }
+#right { background-color:#66bc29; width:225px; display:inline-block; float:right; top: 5px; }
 
 #left { background-color:#66bc29; width:700px; display:inline-block; float:left; }
 

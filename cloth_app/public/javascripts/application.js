@@ -397,7 +397,7 @@ $(document).ready(function(){
     }
 
     $('a.remote').click(getCheckedValues);
-    $('form#new_package input:checkbox').click(test);
+    //$('form#new_package input:checkbox').click(test);
  
 })
 

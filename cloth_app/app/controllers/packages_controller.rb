@@ -1,7 +1,7 @@
 class PackagesController < ApplicationController
   before_filter :init_package, :action => [:show, :edit, :update, :destroy]
   before_filter :init_order_package, :action => [:order]
-
+  
   # Alle Kunden dürfen alle Kleiderpakete sehen, egal ob Basis, Premium oder Gast
   def index
     @packages = Package.where(:state => 0)
