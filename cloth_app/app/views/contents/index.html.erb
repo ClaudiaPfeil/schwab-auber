@@ -1,7 +1,7 @@
 <% if current_user %>
-  <div class="tr span-22">
+  <div class="tr span-18">
     <div class="td first">&nbsp;</div>
-    <div class="td span-18"><h1><%= I18n.t(:contents) %></h1><br><%=  get_notices %></div>
+    <div class="td span-14"><h1><%= I18n.t(:contents) %></h1><br><%=  get_notices %></div>
     <div class="td last">
       <br>
       <% if can? :create, Content %>
@@ -10,7 +10,7 @@
     </div>
   </div>
 
-  <div class="tr span-22">
+  <div class="tr span-18">
     <div class="td first">&nbsp;</div>
     <div class="td span-4"><b><%=  I18n.t('title')%></b> </div>
     <div class="td span-4"><b><%= I18n.t('subtitle')%></b> </div>
@@ -21,7 +21,7 @@
 
   <% @contents.each do |content| %>
 
-    <div class="tr span-22">
+    <div class="tr span-18">
       <div class="td span-4"><%= content.title%> </div>
       <div class="td span-4"><%= content.subtitle%> </div>
       <div class="td span-4"><%= truncate(content.article, :length => 20, :omission => "...")%> </div>

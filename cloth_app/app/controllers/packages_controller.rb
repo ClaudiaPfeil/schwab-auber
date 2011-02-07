@@ -108,6 +108,7 @@ class PackagesController < ApplicationController
     
     if params[:format]
       search_keys = params[:format].split(",")
+      search_keys << "state=0"
       amount = search_keys.count
       sql = ""
       search_keys.each_with_index do |key, index|

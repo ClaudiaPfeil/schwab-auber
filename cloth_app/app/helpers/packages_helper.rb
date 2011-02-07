@@ -67,7 +67,7 @@ module PackagesHelper
   end
 
   def get_amount(title, value)
-    Package.where(title.to_sym => value.to_s).count
+    Package.where(title.to_sym => 'value.to_s', :state => 0).count
   end
 
 

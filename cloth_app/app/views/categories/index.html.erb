@@ -1,16 +1,16 @@
 <% if current_user %>
 
-<div class="tr span-22">
+<div class="tr span-20">
   <div class="td first">&nbsp;</div>
-  <div class="td span-18"><h1><%= I18n.t(:categories) %></h1><br><%=  get_notices %></div>
+  <div class="td span-16"><h1><%= I18n.t(:categories) %></h1><br><%=  get_notices %></div>
   <div class="td last">
     <br><%= link_to I18n.t(:new_category), new_category_path %>
   </div>
 </div>
 
-<div class="tr span-22">
+<div class="tr span-20">
   <div class="td span-6"><b><%= I18n.t(:name_cat) %></b> </div>
-  <div class="td span-10"><b><%= I18n.t(:description_cat) %></b> </div>
+  <div class="td span-8"><b><%= I18n.t(:description_cat) %></b> </div>
   <div class="td span-4">&nbsp;</div>
 </div>
 
@@ -19,9 +19,9 @@
 
 <% @categories.each do |category| %>
 
-  <div class="tr span-22">
+  <div class="tr span-20">
     <div class="td span-6"><%= category.name%></div>
-    <div class="td span-10"><%= category.description%></div>
+    <div class="td span-8"><%= category.description%></div>
 
     <div class="td last span-4">
       <% if can? :update, Category %>

@@ -180,7 +180,7 @@ module ApplicationHelper
   end
   
   def create_table_header(cols)
-    @content = content_tag(:div, '', :class => "tr span-22")
+    @content = content_tag(:div, '', :class => "tr span-18")
     @content << content_tag(:div, '', :class => "td first")
     cols.each do |col|
       @content << content_tag(:b, I18n.t(col.to_s), :class => "td span-4")
