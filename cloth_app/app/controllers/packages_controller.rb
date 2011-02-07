@@ -106,20 +106,16 @@ class PackagesController < ApplicationController
     search_key = ""
     search_type = ""
     
-    params[:format].to_s.include?(",") ? search_keys = params[:format].split(",") : search_keys = params[:format]
-    search_keys.delete_at(0) if search_keys.count > 1
-    
-    search_keys.each do |key|
-      tmp = key.split("=")
-      search_type << tmp.first.to_s + " " if tmp
-      search_key  << tmp.second.to_s + " " if tmp
-    end
-    
-    search_key = search_key.split(" ")
-    search_type = search_type.split(" ")
-    
-    search_key.each_with_index do |key, i|
-      @packages = Package.search_by_attributes(key, search_type[i])
+    if params[:format]
+      search_keys = params[:format].split(",")
+      amount = search_keys.count
+      sql = ""
+      search_keys.each_with_index do |key, index|
+        (amount > 1 && index < amount-1) ? sql << "#{(key + " ").to_s.gsub("='", " LIKE '%").gsub("' ", "%'").to_s} AND " : sql << "#{(key + " ").to_s.gsub("='", " LIKE '%").gsub("' ", "%'").to_s}"
+      end
+      @packages = Package.where(sql).default_ordered
+    else
+      @packages = Package.all.default_ordered
     end
     
     render :action => :index, :locales => {:@packages => @packages}

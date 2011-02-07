@@ -385,12 +385,13 @@ $(document).ready(function(){
 
     function test(){
       var strValues = '';
-      $("input:checked").each (function() {
-        strValues += ','+$(this).val();
-      });
-      strValues = strValues.substr(1);
+//      $("input:checked").each (function() {
+//        strValues += ','+$(this).val();
+//      });
+//      strValues = strValues.substr(1);
       //$.get("http://dev.kidskarton.de/packages/search_remote_2." + strValues, function(data){
-      $.get("http://localhost:3000/packages/search_remote_2." + strValues, function(data){
+      //$.get("http://localhost:3000/packages/search_remote_2." + strValues, function(data){
+      $.get("http://localhost:3000/packages/search_remote_2.", function(data){
         $('.result').html(data);
       });
     }

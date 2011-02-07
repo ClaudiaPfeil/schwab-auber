@@ -25,10 +25,7 @@ fieldset.buttons > ol {
   list-style-type: none;
 }
 
-ol {
-  margin-left: 1em;
-
-}
+/* ol { margin-left: 1em;} */
 
 li#package_confirmed_input {
   margin-left: 250px;
@@ -72,7 +69,7 @@ li.content_image_input.file.optional > label {  text-align: left; }
 select {  margin-right: 15em;}
 radio.optional { list-style-type: none;}
 li.optional > fieldset {  padding: 0; margin: 0; }
-li.optional > fieldset > ol { margin-left: 240px;}
+/* li.optional > fieldset > ol { margin-left: 240px;}*/
 li.optional > fieldset > ol > li { font-style: normal; display: block;}
 li.optional > fieldset > ol > li > label > input { float: none;}
 li.commit > input { float: right; margin-right: 12em;}
@@ -84,7 +81,7 @@ ol, li { list-style-type: none;}
 label { font-weight:bold;width: 150px;vertical-align: top;}
 label { line-height: 2.5; horizontal-align: left; display: inline-block;  }
 label.label_info_box {width: 50px; font-weight: normal;}
-fieldset {padding:0 1.4em 1.4em 1.4em;margin:0 0 1.5em 0;border:none;}
+/* fieldset {padding:0 1.4em 1.4em 1.4em;margin:0 0 1.5em 0;border:none;} */
 legend {font-weight:bold;;margin-top:-0.2em;margin-bottom:1em;}
 fieldset, #IE8#HACK {padding-top:1.4em;}
 legend, #IE8#HACK {margin-top:0;margin-bottom:0;}
@@ -106,3 +103,7 @@ form.inline p {margin-bottom:0;}
 .notice a {color:#514721;}
 .success a {color:#264409;}
 .info a {color:#205791;}
+
+/* Filter */
+#filter { display:inline-block; float:left; }
+#result { display:inline-block; float:right; width: 710px;}

@@ -6,8 +6,8 @@
 <% unless @packages.nil? %>
 
   <% @packages.each do |package| %>
-
-    <div class="tr span-22 result">
+  
+    <%#*<div class="tr span-18 ">%>
       <div class="td first">&nbsp;</div>
       <div class="td span-4"><%= package.serial_number%> </div>
       <div class="td span-3"><%= package.sex ? I18n.t(:girl) : I18n.t(:boy)%> </div>
@@ -36,7 +36,7 @@
         <% end %>
 
       </div>
-    </div>
+    <%#*</div>%>
 
   <% end %>
 <% end %>
