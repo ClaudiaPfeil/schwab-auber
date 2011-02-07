@@ -126,7 +126,7 @@ module ApplicationHelper
     
     col1 = content_tag(:h1, titel)
     col1 << content_tag(:br, (render :partial => form))
-    content << content_tag(:div, col1, :class => "td span-17")
+    content << content_tag(:div, col1, :class => "td span-14")
 
     if link1
       col2 = content_tag(:br, link1, :class => "right")
@@ -140,7 +140,7 @@ module ApplicationHelper
     links << content_next if content_next
 
     content  << content_tag(:div, links, :class => "td last") if links
-    @content = content_tag(:div, content, :class => "tr span-22")
+    @content = content_tag(:div, content, :class => "tr span-18")
 
   end
 
