@@ -22,10 +22,6 @@
 
     <div id="content">
 
-      <div id="left">
-        <%= yield %>
-      </div>
-
       <div id="right">
         <% if current_user %>
           <div id="info_box"><%= render "/profiles/infos", :profile => current_user %></div>
@@ -33,6 +29,10 @@
          <div id="login_form"><%= render '/sessions/login'  %></div>
          <div id="register"><p><%= link_to I18n.t(:register), signup_path, :class => "register" %></p></div>
         <% end %>
+      </div>
+
+      <div id="left">
+        <%= yield %>
       </div>
       
     </div>

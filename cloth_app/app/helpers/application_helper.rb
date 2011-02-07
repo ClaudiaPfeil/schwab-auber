@@ -20,7 +20,7 @@ module ApplicationHelper
 
   def create_header(titel)
     content = content_tag(:h1, titel)
-    @content  = content_tag(:div, '', :class => "tr span-22")
+    @content  = content_tag(:div, '', :class => "tr span-18")
     @content  << content_tag(:div, '', :class => "td first")
     @content  << content_tag(:div, content, :class => "td span-16")
     @content  << content_tag(:div, '', :class => "td last")
@@ -29,11 +29,11 @@ module ApplicationHelper
   end
 
   def create_link(link, model, method)
-    @content  = content_tag(:div, '', :class => "tr span-22")
+    @content  = content_tag(:div, '', :class => "tr span-18")
     @content  << content_tag(:div, '', :class => "td first")
 
     if can? method, model
-      @content  << content_tag(:div, link, :class => "td span-22 right")
+      @content  << content_tag(:div, link, :class => "td span-18 right")
     end
 
     @content  << content_tag(:div, '', :class => "td last")
@@ -45,9 +45,9 @@ module ApplicationHelper
     content = content_tag(:h1, titel)
     content_next = content_tag(:br, '')
     
-    @content  = content_tag(:div, '', :class => "tr span-22")
+    @content  = content_tag(:div, '', :class => "tr span-18")
     @content  << content_tag(:div, '', :class => "td first")
-    @content  << content_tag(:div, content, :class => "td span-16")
+    @content  << content_tag(:div, content, :class => "td span-10")
     
     if can? method, model   
       content_next << link
@@ -63,9 +63,9 @@ module ApplicationHelper
     content = content_tag(:h2, titel)
     content_next = content_tag(:br, '')
 
-    @content  = content_tag(:div, '', :class => "tr span-22")
+    @content  = content_tag(:div, '', :class => "tr span-18")
     @content  << content_tag(:div, '', :class => "td first")
-    @content  << content_tag(:div, content, :class => "td span-16")
+    @content  << content_tag(:div, content, :class => "td span-10")
 
     if can? method, model
       content_next << link
@@ -148,7 +148,7 @@ module ApplicationHelper
     content = content_tag(:div, ' ', :class => "td first")
 
     col1 = content_tag(:h1, titel)
-    content << content_tag(:div, col1, :class => "td span-17")
+    content << content_tag(:div, col1, :class => "td span-10")
 
     if link1
       col2 = content_tag(:br, link1, :class => "right")
@@ -162,7 +162,7 @@ module ApplicationHelper
     links << content_next if content_next
 
     content  << content_tag(:div, links, :class => "td last") if links
-    @content = content_tag(:div, content, :class => "tr span-22")
+    @content = content_tag(:div, content, :class => "tr span-18")
 
   end
 
