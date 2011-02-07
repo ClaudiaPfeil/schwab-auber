@@ -139,8 +139,13 @@ class PaymentsController < ApplicationController
         receiver =  User.find_by_id(@payment.user_id)
         package = Package.find_by_id(@payment.package_id)
         coupon = Coupon.where(:used => 0)
-        coupon.update_attribute(:used, 1)
-        UserMailer.send_package_ordered_email(user, receiver, package, coupon.code).deliver if user && receiver && package
+        code = ""
+        if coupon
+          coupon.update_attribute(:used, 1)
+          code = coupon.code
+        end
+        
+        UserMailer.send_package_ordered_email(user, receiver, package, code).deliver if user && receiver && package
       else
         # order zurücksetzen (stornieren)
         # package wieder freigeben
