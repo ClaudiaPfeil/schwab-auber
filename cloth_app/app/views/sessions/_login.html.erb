@@ -3,7 +3,7 @@
 # and open the template in the editor.
 %>
 
-<div class="info_box">
+
   <h2>Login</h2>
 
   <%= form_tag session_path do -%>
@@ -20,7 +20,3 @@
     <%= link_to 'Passwort vergessen?', '#', :rel => "forgot_password", :class => 'simpledialog' %>
     <div id="forgot_password" style="display: none"><%= render '/sessions/forgot_password', :login => params[:login] %> </div>
   </p>
-
-</div>
-
-<div id="register"><%= link_to I18n.t(:register), signup_path, :class => "register" %></div>

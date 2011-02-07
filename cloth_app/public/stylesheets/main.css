@@ -105,10 +105,7 @@ a:hover {color:red; text-decoration:underline}
   float:left;
 }
 
-#login_form
-{
-  background-color:#80cb48; border:solid 2px #fd4239; width:201px; padding:10px; margin-bottom:10px; height: 100px;
-}
+#login_form{ background-color:#80cb48; border:solid 2px #fd4239; width:201px; padding:10px; margin-bottom:10px; }
 
 #register
 {
@@ -170,7 +167,7 @@ a.footer:hover
 
 .password {margin-left:5px; width:130px; padding: 0;}
 
-#info_box {background-color:#80cb48; border:solid 2px #fd4239; width:200px; padding:10px; margin-bottom:10px; height: 120px;}
+#info_box {background-color:#80cb48; border:solid 2px #fd4239; width:200px; padding:10px; margin-bottom:10px;}
 
 #td {}
 
