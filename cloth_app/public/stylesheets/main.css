@@ -39,7 +39,7 @@ a.register { position:absolute; color:#fff; text-decoration:none; padding:87px 0
 a.register:hover { color:#66bc29; }
 
 #teaser { border:0; color:#fd4239; font-size:18pt; line-height:23pt; font-weight:bold; padding:55px 15px 0 0; position:inherit; clear:both; }
-#footer { background-color:#66bc29; text-align:right; padding:5px 15px 5px 0; }
+#footer { background-color:#66bc29; text-align:right; padding:5px 15px 5px 0; margin-top: -5px; }
 a.footer { margin-left:10px; }
 a.footer:link , a.footer:visited { color:#fff; text-decoration:none; }
 a.footer:hover { color:#fd4239; }
