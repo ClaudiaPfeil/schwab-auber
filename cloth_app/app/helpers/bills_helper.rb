@@ -11,14 +11,14 @@ module BillsHelper
 
       addresses.each do |a|
 
-        if a.first.kind == true
-          return a.first
+        if a.kind == true
+          return a
         end
         
       end
 
     elsif addresses && addresses.count == 1
-      return addresses.first
+      return addresses
     else
       nil
     end  
