@@ -63,7 +63,7 @@ class WelcomeController < ApplicationController
   end
 
   def agb
-    @contents = get_content("AGB")
+    @contents = get_content("Agbs")
   end
 
   def rights
