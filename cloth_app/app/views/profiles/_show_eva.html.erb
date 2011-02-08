@@ -4,7 +4,7 @@
 %>
 <% unless (current_user.is? :admin) %>
 
-  <div class="tr span-22">
+  <div class="tr span-18">
     <div class="td first">&nbsp;</div>
     <%  @profile.orders.nil? || @profile.orders.blank? ? result = "Es wurden noch keine Bewertungen zu bestellten Kleiderpaketen erhalten." : @table_cols = get_table_order%>
     <% if @table_cols && !@profile.orders.blank? %>
@@ -24,7 +24,7 @@
     <% @profile.orders.each do |order| %>
 
       <% model = Order.find_by_id(order.id) %>
-      <div class="tr span-22">
+      <div class="tr span-18">
         <%  @table_cols.each do |name| %>
           <div class='td span-6'><%= model.attributes[name.to_s]%> </div>
         <% end %>
@@ -35,7 +35,7 @@
 
     <% unless  @profile.orders.blank? %>
       <% @profile.orders.each do |order| %>
-        <div class="tr span-22">
+        <div class="tr span-18">
           <%  @table_cols.each do |name| %>
             <div class='td span-6'><%= order.attributes[name.to_s]  %> </div>
           <% end %>
@@ -44,7 +44,7 @@
 
       <%#*Anzeige des Punktestands%>
       <% score, max, max_eva = @profile.calc_score(@profile.id) %>
-      <div class="tr span-22">
+      <div class="tr span-18">
         <div class="td span-6"><b>Score :</b> &nbsp;<%= score if score%> positive Bewertungen</div>
         <div class="td span-6"><b>Maximale mögliche Punkte:</b>&nbsp;<%= max if max%> </div>
         <div class="td span-6"><b>Maximal erreichte Punkte:</b>&nbsp;<%= max_eva if max_eva%></div>

@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
   end
 
   def calc_score(user_id)
-    evas = self.orders.where(:user_id => user_id)
+    evas = self.orders.where("user_id = #{user_id} AND evaluation != NULL")
     result = {
       :very_good => 0,
       :good  => 0,
@@ -123,38 +123,23 @@ class User < ActiveRecord::Base
       :very_bad => 0
     }
 
-    number_evas = 0
-
-    evas.each do |e|
-      number_evas += 1
-      case e.evaluation
-      when  "very_good"
-        result[:very_good] += 1
-      when "good"
-        result[:good] += 1
-      when "ok"
-        result[:ok] += 1
-      when "bad"
-        result[:bad] += 1
-      when "very_bad"
-        result[:very_bad] += 1
-      else
-        number_evas -= 1
+    number_evas = evas.count
+    
+    if number_evas > 1
+      evas.each do |e|
+        result = do_eva(e)
       end
+    elsif evas.count == 1
+      number_evas = 1
+      result = do_eva(evas)
     end
+    
+    max_eva = result[:very_good] + result[:good] + result[:ok] + result[:bad] + result[:very_bad]
+    
+    score = max_eva / 100 * number_evas
 
-    max = number_evas.to_i * 5
-    very_good = result[:very_good] * 5
-    good  = result[:good] * 4
-    ok  = result[:ok] * 3
-    bad = result[:ok] * 2
-    very_bad = result[:very_bad] * 1
-
-    max_eva = very_good + good + ok + bad + very_bad
-
-    score = max_eva / 100 * max
-
-    return score, max, max_eva
+    return score, number_evas * 5, max_eva
+    
   end
 
   def premium_is_destroyable?
@@ -222,4 +207,20 @@ class User < ActiveRecord::Base
       self.user_number.nil? ? self.user_number = NumberGenerator.alphanumeric({:prefix => "KK-", :length => 9}) : self.user_number = self.user_number
     end
 
+    def do_eva(e)
+      case e.evaluation
+        when  5
+          result[:very_good] += 5
+        when 4
+          result[:good] += 4
+        when 3
+          result[:ok] += 3
+        when 2
+          result[:bad] += 2
+        when 1
+          result[:very_bad] += 1
+        end
+
+      return result
+    end
 end

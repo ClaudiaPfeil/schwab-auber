@@ -23,7 +23,6 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new()
-
     package = Package.find_by_id(params[:id])
     @order.package_number = package.serial_number
     @order.package_id = package.id
@@ -49,6 +48,15 @@ class OrdersController < ApplicationController
   def edit; end
 
   def update
+    if params[:order][:evaluation]
+       case params[:order][:evaluation]
+         when 'ausgezeichnet': params[:order][:evaluation]= 5
+         when 'sehr gut': params[:order][:evaluation] = 4
+         when 'gut' : params[:order][:evaluation] = 3
+         when 'befriedigend' : params[:order][:evaluation] = 2
+         when 'ungenügend' : params[:order][:evaluation] = 1
+       end
+    end
     if @order.update_attributes(params[:order])
       if (current_user.is? :admin)
         redirect_to orders_path, :notice => I18n.t(:order_updated)
