@@ -10,8 +10,12 @@
             <line>44</line>
         </file>
         <file>
+            <url>public/stylesheets/forms.css</url>
+            <line>109</line>
+        </file>
+        <file>
             <url>app/views/packages/index.html.erb</url>
-            <line>10</line>
+            <line>16</line>
         </file>
     </editor-bookmarks>
 </project-private>

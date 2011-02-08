@@ -55,7 +55,7 @@ namespace :deploy do
     run "cd #{deploy_to} && rm -f #{current_path}/cloth_app/config/database.yml  && ln -s ../../../../shared/config/database.yml #{current_path}/cloth_app/config"
     run "cd #{deploy_to} && rm -rf ./current/cloth_app/log                       && ln -s ../../../shared/log #{current_path}/cloth_app/"
     run "cd #{deploy_to} && rm -rf ./current/cloth_app/pids                      && ln -s ../../../shared/pids #{current_path}/cloth_app/"
-    run "cd #{deploy_to} && rm -rf ./current/cloth_app/public/system             && ln -s ../../../shared/system #{current_path}/cloth_app/public/"
+    run "cd #{deploy_to} && rm -rf ./current/cloth_app/public/system             && ln -s ../../../../shared/system #{current_path}/cloth_app/public/"
     run "cd #{deploy_to} && rm -rf ./current/cloth_app/.bundle                   && ln -s ../../../shared/bundle/.bundle #{current_path}/cloth_app/.bundle"
     run "cd #{deploy_to} && rm -rf ./current/cloth_app/export                    && ln -s ../../../shared/export #{current_path}/cloth_app/export"
   end
