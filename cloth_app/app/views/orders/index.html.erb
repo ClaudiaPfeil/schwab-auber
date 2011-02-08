@@ -1,8 +1,8 @@
 <% if current_user %>
 
-  <div class="tr span-22">
+  <div class="tr span-18">
     <div class="td first">&nbsp;</div>
-    <div class="td span-18"><h1><%= I18n.t(:orders) %></h1><br><%=  get_notices %></div>
+    <div class="td span-14"><h1><%= I18n.t(:orders) %></h1><br><%=  get_notices %></div>
     <div class="td last"><br>
       <% if can? :create, Order %>
         <%= link_to I18n.t(:new), new_order_path %>
@@ -14,7 +14,7 @@
   <% order_cols = Order.column_names.to_a%>
   <% result = tmp - order_cols%>
 
-  <div class="tr span-22">
+  <div class="tr span-18">
     <div class="td first">&nbsp;</div>
     <% result.each do |column| %>
       <div class="td span-3"><b><%=  I18n.t(column)%></b> </div>
@@ -23,7 +23,7 @@
   </div>
 
   <% @orders.each do |order| %>
-    <div class="tr span-22">
+    <div class="tr span-18">
       <div class="td first">&nbsp;</div>
       <% result.each do |name| %>
         <div class="td span-3">
