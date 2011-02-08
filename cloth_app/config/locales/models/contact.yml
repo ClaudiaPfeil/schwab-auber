@@ -1,5 +1,10 @@
-## YAML Template.
----
 de:
   message:  Nachricht
   receiver: Name (Vor- und Zuname)
+  not_valid_contact:  Sie müssen das Formular ausfüllen
+  street_and_number: Straße und Haus-Nr.
+  title: Anrede
+  postcoce: Postleitzahl
+  town: Stadt
+  land: Land
+

@@ -5,13 +5,14 @@
 # Autor:        Claudia Pfeil
 %>
 <%= get_notices %>
+
 <%= render '/contents/cms/site', :contents => @contents %>
-<%= semantic_form_for @contact, :url => { :controller => :welcome, :action => :get_in_contact} do |contact| %>
+<%= semantic_form_for Contact.new, :url => { :controller => :welcome, :action => :get_in_contact} do |contact| %>
   <%= contact.input :title, :label => I18n.t(:contact_title) %>
   <%= contact.input :receiver, :label => I18n.t(:contact_name) %>
-  <%= contact.input :street_and_number %>
-  <%= contact.input :postcode %>
-  <%= contact.input :town %>
+  <%= contact.input :street_and_number, :label => I18n.t(:street_and_number) %>
+  <%= contact.input :postcode, :label => I18n.t(:postcode) %>
+  <%= contact.input :town, :label => I18n.t(:town) %>
   <%= contact.input :land %>
   <%= contact.input :email, :label => I18n.t(:email) %>
   <%= contact.input :telephone, :label => I18n.t(:telephone) %>

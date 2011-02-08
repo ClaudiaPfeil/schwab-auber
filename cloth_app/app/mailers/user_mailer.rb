@@ -53,6 +53,7 @@ class UserMailer < ActionMailer::Base
     setup_contact_email(user)
     @subject += I18n.t('get_in_contact')
     @user = user
+    @content_type = 'text/html'
   end
 
   def send_package_ordered_email(user, receiver, package, coupon)
