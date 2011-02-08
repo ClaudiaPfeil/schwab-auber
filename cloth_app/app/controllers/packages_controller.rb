@@ -88,12 +88,12 @@ class PackagesController < ApplicationController
       if @order.save!
         redirect_to payment_method_bank_detail_path(@package), :notice => I18n.t(:order_created)
       else
-        @packages = Package.all
+        @packages = Package.where(:state => 0)
         @notice = I18n.t(:order_not_created)
         render :action => 'index'
       end
     else
-      @packages = Package.all
+      @packages = Package.where(:state => 0)
       @notice = I18n.t(:check_failed)
       render :action => 'index'
     end

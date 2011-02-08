@@ -21,12 +21,13 @@ module ProfilesHelper
   end
 
   def packages_konto(profile)
-    pack_count  =   profile.packages.count
+    pack_count  =   profile.packages.count.to_i + 1
     ord_count   =   profile.orders.count
     success     =   "Sie haben noch #{credit_packages(profile)} Bestellung(en) offen bevor sie neue Kleiderpakete einstellen müssen."
     failure     =   "Sie schulden noch #{outstanding_packages(profile)} Kleiderpakete bevor sie wieder bestellen dürfen!"
     puts "Anz. eingestellter Kleiderpaket: " + pack_count.to_s
     puts "Anz. Bestellungen: " + ord_count.to_s
+    
     pack_count < ord_count ? failure : success
   end
 

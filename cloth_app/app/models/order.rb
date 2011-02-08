@@ -71,7 +71,7 @@ class Order < ActiveRecord::Base
     end
 
     def user_has_packages?
-      self.user.packages.count > Order.where(:user_id => self.user_id).count ? true : false  unless self.user.nil? 
+      self.user.packages.count.to_i + 1 > Order.where(:user_id => self.user_id).count ? true : false  unless self.user.nil?
     end
 
     def user_first_order?
