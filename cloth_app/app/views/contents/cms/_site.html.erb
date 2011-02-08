@@ -5,7 +5,7 @@
   <% @contents.each do |content| %>
 
     <% if content.is_published? || params[:preview] %>
-      <div class="span-18 last"><%= render "contents/cms/content",:content => content %></div> 
+      <%= render "contents/cms/content",:content => content %>
     <% end %>
 
   <% end%>

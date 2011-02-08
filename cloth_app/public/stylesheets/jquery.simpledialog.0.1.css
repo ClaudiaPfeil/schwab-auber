@@ -9,7 +9,12 @@
  position: absolute;
  background-color: #fff;
  border: solid 1px #ccc;
- text-align:center;
+ text-align:left;
+ overflow: auto;
+ height: 549px;/* IE is dumb */
+ max-height: 549px;/* Or the amount of pixels you want */
+ max-width: 600px;
+ width: 600px;
 }
 .sd_header{
  font-size: 125%;
