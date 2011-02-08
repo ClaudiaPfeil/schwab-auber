@@ -72,7 +72,6 @@ class PackagesController < ApplicationController
   end
 
   # create order
-  # set status to ordered = 1 and to paied = 2 if transaction was successfully
   def order
     @order = Order.new(:package_number => @package.serial_number,
                        :package_id     => @package.id,
@@ -82,7 +81,6 @@ class PackagesController < ApplicationController
   
     @order.package.accepted = 1
     @order.package.confirmed = 1
-    @order.package.user.accepted = 1
     
     if @order.check_change_principle == true && @order.check_holidays == true
       @order.order_number  = @order.get_order_number
