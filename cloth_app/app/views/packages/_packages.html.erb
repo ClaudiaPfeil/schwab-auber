@@ -31,7 +31,7 @@
         <% end %>
 
         <% if can? :read, Profile %>
-          <%#= link_to I18n.t(:profile), profile_path(package.user_id) %>
+          <%= link_to I18n.t(:profile), profile_path(package.user_id) %>
         <% end %>
 
       </div>

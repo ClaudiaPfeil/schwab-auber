@@ -8,7 +8,7 @@
   </div>
 </div>
 
-<div class="tr span-22">
+<div class="tr span-18">
   <div class="td first">&nbsp;</div>
   <% current_user.option.nil? && !(current_user.is? :admin) ?  result = I18n.t(:choose_settings) : @table_cols = get_table_cols(current_user) %>
   <% if @table_cols %>

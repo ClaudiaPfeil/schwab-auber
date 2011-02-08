@@ -2,56 +2,52 @@
 # To change this template, choose Tools | Templates
 # and open the template in the editor.
 %>
-<% unless (current_user.is? :admin) %>
+
+<div class="tr"><h3>Bewertungen</h3></div>
 
   <div class="tr span-18">
     <div class="td first">&nbsp;</div>
-    <%  @profile.orders.nil? || @profile.orders.blank? ? result = "Es wurden noch keine Bewertungen zu bestellten Kleiderpaketen erhalten." : @table_cols = get_table_order%>
-    <% if @table_cols && !@profile.orders.blank? %>
+    <% @table_cols = get_table_order %>
+    <% if @table_cols && !@profile.packages.blank? %>
 
       <% @table_cols.each do |column| %>
-        <div class="td span-6"><b><%=  I18n.t(column)%></b> </div>
+        <div class="td span-5"><b><%=  I18n.t(column)%></b> </div>
       <% end %>
-
-    <% else %>
-      <%= result %>
+        
     <% end %>
     <div class="td last">&nbsp;</div>
   </div>
 
-  <% if @profile.orders.count > 1  %>
+  
+  
+  <% if @profile.packages.count >= 1  %>
+    
+    <% @profile.packages.each do |package| %>
 
-    <% @profile.orders.each do |order| %>
-
-      <% model = Order.find_by_id(order.id) %>
-      <div class="tr span-18">
-        <%  @table_cols.each do |name| %>
-          <div class='td span-6'><%= model.attributes[name.to_s]%> </div>
-        <% end %>
-      </div>
-    <% end %>
-
-  <% else %>
-
-    <% unless  @profile.orders.blank? %>
-      <% @profile.orders.each do |order| %>
+      <% model = package.order %>
+      <% if model %>
         <div class="tr span-18">
-          <%  @table_cols.each do |name| %>
-            <div class='td span-6'><%= order.attributes[name.to_s]  %> </div>
-          <% end %>
+        <% @table_cols.each do |column| %>
+          <div class="td span-5"><b><%=  model.attributes[column.to_s] %></b> </div>
+        <% end %>
         </div>
       <% end %>
 
-      <%#*Anzeige des Punktestands%>
-      <% score, max, max_eva = @profile.calc_score(@profile.id) %>
-      <div class="tr span-18">
-        <div class="td span-6"><b>Score :</b> &nbsp;<%= score if score%> positive Bewertungen</div>
-        <div class="td span-6"><b>Maximale mögliche Punkte:</b>&nbsp;<%= max if max%> </div>
-        <div class="td span-6"><b>Maximal erreichte Punkte:</b>&nbsp;<%= max_eva if max_eva%></div>
-      </div>
-
     <% end %>
 
+    <%#*Anzeige des Punktestands%>
+        <% score, max, max_eva = @profile.calc_score %>
+        <div class="tr span-18">
+          <div class="td span-5"><b>Score </b></div>
+          <div class="td span-5"><b>Maximale mögliche Punkte</b></div>
+          <div class="td span-5"><b>Maximal erreichte Punkte</b></div>
+        </div>
+        <div class="tr span-18">
+          <div class="td span-5"> <%= score if score%> positive Bewertungen</div>
+          <div class="td span-5"> <%= max if max%></div>
+          <div class="td span-5"> &nbsp;<%= max_eva if max_eva%></div>
+        </div>
+  <% else %>
+    <p>Es wurden noch keine Bewertungen zu bestellten Kleiderpaketen abgegeben.</p>
   <% end %>
 
-<% end %>
