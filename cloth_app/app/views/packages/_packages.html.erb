@@ -21,8 +21,8 @@
         <% if can? :destroy, package %>
           <%= link_to I18n.t("destroy"), package, :confirm => I18n.t(:confirm_destroy), :method => :delete %><br>
         <%end%>
-
-       <% if can? :show, Package %>
+        
+        <% if can? :show, Package %>
           <%= link_to I18n.t(:detail), package_path(package) %><br>
         <% end %>
 

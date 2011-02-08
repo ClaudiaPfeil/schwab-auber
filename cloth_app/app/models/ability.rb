@@ -40,7 +40,7 @@ class Ability
       can :create,  Package if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
       can :update,  Package if (user.is? :registered) || (user.is? :premium) || (user.is? :admin) 
       can :destroy, Package if (user.is? :admin)
-      can :show,    Package if (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
+      can :show,    Package if user || (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
       can :search,  Package if (user.is? :guest) || (user.is? :registered) || (user.is? :premium) || (user.is? :admin)
 
       can :read,    Payment if (user.is? :admin)
