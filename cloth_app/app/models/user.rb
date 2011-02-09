@@ -125,7 +125,7 @@ class User < ActiveRecord::Base
       end
       
     elsif number_evas == 1
-      return do_eva(evas, max) unless evas.evaluation.blank?
+      return do_eva(evas.first, max) unless evas.first.evaluation.blank?
     end
     
   end
@@ -220,7 +220,7 @@ class User < ActiveRecord::Base
 
       max_eva = result[:very_good] + result[:good] + result[:ok] + result[:bad] + result[:very_bad]
       logger.info("max_eva=" + max_eva.to_s)
-      score = ((max_eva.to_i / (5 * max.to_i)) * 100 ).to_s + "%"
+      score = ((max_eva.to_f / (5 * max.to_f)) * 100 ).to_i.to_s + "%"
       logger.info("score=" + score.to_s)
       return (max * 5), max_eva, score
     end
