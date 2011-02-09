@@ -41,7 +41,7 @@
        <%end%>
 
         <% if can? :publish, Content %>
-          <%= link_to I18n.t(:publish), publish_content_path(content), :id => 'publish' %><br>
+          <%= link_to I18n.t(:publish), publish_content_path(content), :class => 'publish' %><br>
         <%end%>
 
         <% if can? :destroy, Content %>

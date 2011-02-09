@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
 
   def index
     user = User.find_by_id(current_user.id) if current_user
-    (user.is? :admin)? @profiles = User.where(:state => :active) : @profile = user if user
+    (user.is? :admin)? @profiles = User.all : @profile = user if user
   end
 
   def show; end
@@ -51,9 +51,15 @@ class ProfilesController < ApplicationController
         @profile.udpate_attribute(:canceled, 1)
         @notice = I18n.t(:profile_deleted_saved)
       end
-
     end
     
+  end
+
+  def reactivate
+    if current_user.is? :admin
+      @profile.reactivate
+      @notice = I18n.t(:profile_activated)
+    end
   end
 
   def search

@@ -13,7 +13,11 @@
   <% end %>
   
   <% if can? :destroy, Profile %>
-    <%=  link_to I18n.t(:delete), profile, :confirm => I18n.t(:confirm_profile) , :method => 'delete' if ((current_user.is? :admin) || profile.id.to_i == current_user.id.to_i)%>
+    <%=  link_to I18n.t(:delete), profile, :confirm => I18n.t(:confirm_profile) , :method => 'delete' if ( ((current_user.is? :admin) || profile.id.to_i == current_user.id.to_i ) && profile.state != 'deleted')%>
+  <% end %>
+
+  <% if can? :create, Profile %>
+    <%= link_to I18n.t(:activate), reactivate_user_path(profile), :class => 'reactivate' if ((current_user.is? :admin) && profile.state == 'deleted') %>
   <% end %>
 
 </div>

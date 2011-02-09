@@ -40,6 +40,7 @@ ClothApp::Application.routes.draw do
       put :unsuspend
       delete :purge
       get :confirm_delivery
+      get :reactivate
     end
 
     get :search, :on => :collection

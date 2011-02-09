@@ -35,3 +35,5 @@ de:
   town: Stadt
   land: Land
   address_missing:  Bitte geben sie ihre Lieferanschrift für ihr Nutzerkonto an.
+  user_reactivated: Profil erfolgreich wieder aktiviert
+  user_not_reactivated: Profil nicht wieder aktiviert werden

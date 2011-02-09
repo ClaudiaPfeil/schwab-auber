@@ -103,8 +103,6 @@ $(document).ready(function(){
     $('#package_label_input').show();
     $('#package_amount_labels_input').show();
     $('#package_colors_input').show();
-
-    
   })
 
   // vierte Seite
@@ -191,9 +189,7 @@ $(document).ready(function(){
     $('#back3').hide();
     $('#back2').hide();
     $('#back1').hide();
-
   })
-
 
   // Anzeigen, wenn Premium Mitgliedschaft angeklickt ist
   $('#user_membership_true').click(function (){
@@ -398,12 +394,11 @@ $(document).ready(function(){
 
     $('a.remote').click(getCheckedValues);
     //$('form#new_package input:checkbox').click(test);
- 
+
+    $('a.reactivate').click( function() { confirm('Möchten sie das Profil wirklich wieder aktivieren?') });
+    $('a.publish').click( function() { confirm('Möchten sie den Inhalt wirklich veröffentlichen?') });
 })
 
-
-
-//$('a.publish').onclick(confirm('Möchten sie den Inhalt wirklich veröffentlichen?'));
 
 jQuery(function($){
         $.datepicker.regional['de'] = {clearText: 'löschen', clearStatus: 'aktuelles Datum löschen',

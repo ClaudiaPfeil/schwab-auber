@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Protect these actions behind an admin login
   # before_filter :admin_required, :only => [:suspend, :unsuspend, :destroy, :purge]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :update, :invite_friend, :confirm_delivery, :reset_password]
+  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge, :update, :invite_friend, :confirm_delivery, :reset_password, :reactivate]
 
   # render new.rhtml
   def new
@@ -168,6 +168,16 @@ class UsersController < ApplicationController
       end
     end
     
+  end
+
+  def reactivate
+    if @user.update_attribute(:state, 'active')
+      redirect_to profiles_path, :notice => I18n.t(:user_reactivated)
+    else
+      @notice = I18n.t(:user_not_reactivated)
+      render :action => :index, :controller => :profiles
+    end
+
   end
   # There's no page here to update or destroy a user.  If you add those, be
   # smart -- make sure you check that the visitor is authorized to do so, that they
