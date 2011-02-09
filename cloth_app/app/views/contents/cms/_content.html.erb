@@ -7,7 +7,7 @@
   <h1><%= content.title %></h1><br></br>
   <h2><%= content.subtitle %> </h2>
   <p>
-    <%= content.article %>
+    <%=raw content.article %>
   </p>
   <p>
     <%= link_to "#{content.link_name}", content.link if content.link %>
