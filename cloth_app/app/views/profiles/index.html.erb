@@ -24,7 +24,7 @@
 <%= render :partial => "list_view"   if @table_cols%>
 
 <%#*Anzeige aller Bewertungen und des erreichten Punktestands%>
-<%= render :partial => "show_eva"  if @table_cols%>
+<%= render :partial => "show_eva"  if @table_cols && !(current_user.is? :admin)%>
 
 
 
