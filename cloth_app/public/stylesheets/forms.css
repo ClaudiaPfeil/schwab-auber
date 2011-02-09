@@ -94,8 +94,12 @@ input[type=text]:focus, input[type=password]:focus, input.text:focus, input.titl
 select {background-color:#fff;border-width:1px;border-style:solid;width: 280px;}
 input[type=text], input[type=password], input.text, input.title, textarea, select {margin:0.5em 0;}
 input.text, input.title {width:200px;padding:5px;}
-input.title {font-size:1.5em;}
+input.title { font-size:1.5em; }
+input#content_title { width: 500px; }
+input#content_subtitle { width: 500px; }
+select#content_category_id { width: 500px; }
 textarea {width:155px;height:50px;padding:5px;}
+textarea#content_article { height: 250px; padding: 5px; width: 500px; }
 form.inline {line-height:3;}
 form.inline p {margin-bottom:0;}
 .error, .alert, .notice, .success, .info {padding:0.8em;margin-bottom:1em;border:2px solid #ddd;}
