@@ -74,6 +74,10 @@ li.optional > fieldset > ol > li { font-style: normal; display: block;}
 li.optional > fieldset > ol > li > label > input { float: none;}
 li.commit > input { float: left; margin-left: 215pt;}
 li.commit > input#package_submit { float: left; margin-left: 115pt;}
+li.commit > input#content_submit { float: left; margin-left: 115pt;}
+li.commit > input#category_submit { float: left; margin-left: 115pt;}
+li.commit > input#order_submit { float: left; margin-left: 115pt;}
+li.commit > input#price_submit { float: left; margin-left: 115pt;}
 input#search_key {float: none;}
 ol, li { list-style-type: none;}
 
