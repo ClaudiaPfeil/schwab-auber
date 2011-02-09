@@ -72,8 +72,8 @@ li.optional > fieldset {  padding: 0; margin: 0; }
 /* li.optional > fieldset > ol { margin-left: 240px;}*/
 li.optional > fieldset > ol > li { font-style: normal; display: block;}
 li.optional > fieldset > ol > li > label > input { float: none;}
-li.commit > input { float: right; margin-right: 12em;}
-li.commit > input#package_submit { float: right; margin-right: 35em;}
+li.commit > input { float: left; margin-left: 215pt;}
+li.commit > input#package_submit { float: left; margin-left: 115pt;}
 input#search_key {float: none;}
 ol, li { list-style-type: none;}
 
