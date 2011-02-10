@@ -24,7 +24,7 @@ de:
   user_order_cartons: hat eben eine neue Kartonagen-Lieferung angefordert
   name: Name
   add_address:  Es wurden noch keine Anschriften hinterlegt. Bitte fügen sie eine Anschrift hinzu!
-  export_histories:  Alle Profile Historien
+  export_profiles:  Alle Profile Historien
   export_cartons: Alle Kartonagen-Bestellungen
   export_addresses: Alle Anschriften der heutigen Bestellungen
   export: Exportieren

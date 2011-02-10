@@ -91,8 +91,8 @@ class ProfilesController < ApplicationController
   end
 
   # Historie aller Profile exportieren als CSV
-  # Kunden-Nr. | Name | Vorname | Straße und Haus-Nr. | Postleitzahl | Ort|
-  def export_histories
+  # Kunden-Nr |	Vorname	| Nachname |	Straße |	PLZ	| Stadt	| E-Mail | Telefon	| Status	| Mitgliedschaft | Mitglied seit |	letzte Profil Aktualisierung |	Geburtsdatum	| Geschlecht |Versand-Kartonagen
+  def export_profiles
     @profiles = User.all if current_user.is? :admin
 
     if @profiles
@@ -100,14 +100,17 @@ class ProfilesController < ApplicationController
       name = 'alle_profile_historien.csv'
       File.new(path + name, "w").path
       input = ""
-
+      input << "Kunden-Nr., Vorname, Name, Straße, PLZ, Stadt, E-Mail, Telefon, Status, Mitgliedschaft, Mitglied seit, letzte Profil Aktualisierung, Geburtsdatum, Geschlecht, Versand-Kartonagen \n"
+      
       @profiles.each do |profi| 
         File.open(path+name, "w") do |histories|
           profi.addresses.each do |address|
             if address.kind.to_i == 1
-              input << "Kunden-Nr., Name, Vorname, Straße und Haus-Nr., Postleitzahl, Ort \n"
-              input << "#{profi.user_number}, #{profi.last_name}, #{profi.first_name}, #{address.street_and_number}, #{address.postcode}, #{address.town}, #{} \n"
-              input << "\n"
+              membership = ""
+              sex = ""
+              profi.membership ? membership << 'Premium' : membership << 'Basis'
+              profi.sex ? sex << 'Mann' : sex << 'Frau'
+              input << "#{profi.user_number}, #{profi.first_name}, #{profi.last_name},#{address.street_and_number}, #{address.postcode}, #{address.town}, #{profi.email}, #{profi.telephone}, #{profi.state}, #{membership}, #{formatted_date(profi.membership_starts)}, #{formatted_date(profi.updated_at)}, #{formatted_date(profi.date_of_birth)}, #{sex}, #{profi.cartons} \n"
             end
           end
           
